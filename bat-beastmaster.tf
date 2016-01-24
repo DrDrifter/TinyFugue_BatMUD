@@ -62,13 +62,20 @@
 /def -mglob -t"You can't make a fire if there is water in the room." firewaterroom = @mount %{mount}%;@party report (water in room, fire unavaliable)
 /def -F -mglob -t"* does not seem impressed." tameagain = /tm
 /def -F -mglob -t"You do something HORRIBLY wrong and piss * off!" tamefail = /tm
+/def -F -mglob -t"You feed * to * who eats it." feeded_mount = /repeat -6600 1 @party report (My mount is about to get hungry!)
 
 ;; Riding trigs
 /def -F -mglob -t"You are knocked off your mount!" knockedoff = /set riding_status=not%;@lead %{mount}%;/skillswap
 /def -F -mglob -t"Your annoyed mount throws you!" thrownoff = /set riding_status=not%;@lead %{mount}%;/skillswap
 /def -F -mglob -t"Your mount throws you!" thrownoff2 = /set riding_status=not%;@lead %{mount}%;/skillswap
 /def -F -mglob -t"* is being led." release_and_mount = @mount %{mount}
-/def -F -mglob -t"* gives you a big slobbery lick." mount_arrived = @mount %{mount}
+/def -F -mglob -t"* cannot be ridden right now." mount_huuuungry = @party report (Mount hungry!)
+/def -F -mglob -t"* gives you a big slobbery lick." mount_arrived = \
+	/if ({1} =~ {mount})\
+		@mount %{mount}%;\
+	/else \
+		@lead %{1} %{2}%;\
+	/endif
 /def swapmaul=/if (wielded =~ "whip") @remove whip%;@wield maul%;/endif
 /def swapempy=/if (wielded =~ "whip") @remove whip%;@wield empyrean%;/endif
 /def swapwhip=\

@@ -4,6 +4,7 @@
 /set axe_status=wielded
 /set hammer_status=wielded
 /set saw_status=unwielded
+/set tunnel=north
 ;@remove saw%;
 ;@put saw in bp%;
 ;@wield hammer%;
@@ -72,11 +73,13 @@
 /def -t'You mine the * deposit and retrieve *' mined = /mn
 /def -t'You mine for a long time, but don\'t find anything.' mined2 = /mn
 /def -t'A stroke of luck! You uncover a previously hidden vein!' mined3 = /mn
-/def -t'You dig through the rubble and create a new extension to your mine.' tunnel_digged = @n;tdn
+/def -t'You dig through the rubble and create a new extension to your mine.' tunnel_digged = /if (tunnel =~ "north") @n;tdn%;/else @d;tdd%;/endif
 /def -t'A pile of rubble' tunnel_rubble = @search rubble;ga
 /def -t'You skillfully cut the gem ore into a*' gemcutdone = /gc
 /def -t'You study the gem for a bit, but fail to see a good point to start cutting.' gemcutfail = /gc
 /def -t'You craft some spell reagents.' reagent_complete = /mr
+
+
 ;; You finish refining the anipium in m.  It is now divine.
 /def -aB -mregexp -t'You finish refining the ([A-z]+) in ([A-z]+).  It is now ([A-z]+).' refining_done = \
 /if ({P3} =~ "divine")\

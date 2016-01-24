@@ -155,14 +155,17 @@
 /def -p6 -aCbgyellow -aBCred -mglob -t'* wither flesh hits *' wither_flesh
 /def -p6 -aCbgyellow -aBCred -mglob -t'You hit * with your earthquake.' earthquake_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with {his|her|its} earthquake.' earthquake2_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* a fuming symbol of purify appears into the forehead of *' saintly_touch_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with her flames of righteousness.' flames_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes with {sheer|terrific|blazing|purifying|immense} {rage|force|glow|power} upon *' dispel_evil_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes {mightily|hard} upon *' dispel_evil_hit2
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {bursting|slamming|detonating|exploding|popping|crashing} on *' holy_bolt_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {blowing|unbalancing|damaging|dispelling|disrupting|rendering|annihilating|pulverizing} *' dispel_undead_hit
-/def -p6 -aCbgyelloy -aBCred -mglob -t'*as one big burst, {brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_bit
+/def -p6 -aCbgyelloy -aBCred -mglob -t'*as one big burst, {brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* DOUBLEs over in PAIN!' wither_hurts
 /def -p6 -aCbgyellow -aBCred -mglob -t'* celestial spark hits *' celestial_spark
+/def -p6 -aCbgyellow -aBCred -mglob -t'*as white lightning strikes through the air tickling *' holy_lance_hit
+
 
 ;; Acid blasts
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* disruption hits *' disruption
@@ -270,6 +273,7 @@
     /def -F -p3 -P0 -mregexp -t'^%{generic_amount_list} platinum coin' greed_plat = @get platinum%; \
     /def -F -p3 -P0 -mregexp -t'^%{generic_amount_list} gold coin' greed_gold = @get gold%; \
     /def -F -p3 -P0 -mregexp -t'^([Tt]he|%{generic_amount_list}) head.? of a (barbarian|troll)' greed_head = @get all head%;\
+    /def -F -p3 -P0 -mregexp -t'^an aquamarine compass' greed_compass = @get compass%;\
     /def -F -p9 -P0 -mregexp -t'^An old iron plate mail' greed_mail = @get mail%;\
     /def -F -p9 -P0 -mregexp -t'^A very sharp dagger' greed_dagger = @get dagger%;\
     /def -F -p9 -P0 -mregexp -t'^A wood club' greed_woodclub = @get wood club%;\
@@ -441,6 +445,7 @@
 ;; Stormfall gag
 /def -mglob -ag -t"Stormfall axe says*"
 /def -mglob -ag -t"Stormfall axe screams*"
+/def -mglob -ag -t"Stormfall axe asks*"
 
 /def -mglob -t"You awaken from your short rest, and feel slightly better." campdone = @party report (done camping)
 /def -mglob -t"You stretch yourself and consider camping." campready1 = @party report (can camp)
