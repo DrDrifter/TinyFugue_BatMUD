@@ -1,23 +1,31 @@
 /set lasttick=0
 /set damage_type=null
-/set offensive_target=null
+/set ceredone=_
+/set eqsetstatus=INT
+;;/set offensive_target=null
 
 #/status_rm @world
 #/status_rm @active
 #/status_rm @mail
 #/status_rm @read
-/status_add -c @more:8
-/status_add -A@more "[" damtype:12
-#/status_add -Adamtype padding:79
-/status_add -Adamtype "]" padding:2
-/status_add -Apadding "(" lasttick:4
-/status_add -Alasttick " sec )" padding2:10
-/status_add -Apadding2 @log
+/status_add -c "[" ceredone:1
+/status_add -Aceredone "]" padding1:1
+/status_add -Apadding1 "[" eqsetstatus:3
+/status_add -Aeqsetstatus "]" padding2:1
+/status_add -Apadding2 "[" damtype:12
+/status_add -Adamtype "]" padding3:1
+/status_add -Apadding3 "(" lasttick:4
+/status_add -Alasttick " sec )" padding4:10
+/status_add -Apadding4 @log
 /clock on
 
-# HP:459/459 SP:1449/1469 [-20] EP:285/285
+;; My old prompt or something
+;; HP:459/459 SP:1449/1469 [-20] EP:285/285
+;;/def -p20 -mregexp -t'^HP:-?[0-9]+/[0-9]+ SP:-?[0-9]+/-?[0-9]+ \[\+([0-9]+)\] EP:-?[0-9]+/-?[0-9]+' status_tick_event =\
 
-/def -p20 -mregexp -t'^HP:-?[0-9]+/[0-9]+ SP:-?[0-9]+/-?[0-9]+ \[\+([0-9]+)\] EP:-?[0-9]+/-?[0-9]+' status_tick_event =\
+;;hp: 431 (431) [] sp: 1963 (1963) [] 
+;;^hp: -?[0-9]+ \([0-9]+\) \[[\-+0-9]*\] sp: -?[0-9]+ \(-?[0-9]+\) \[\+([0-9]+)\] ep: -?[0-9]+ \(-?[0-9]+\) \[[\-+0-9]*\] cash: [0-9]+ \[[\-+0-9]*\] exp: [0-9]+ \[[\-+0-9]*\]
+/def -p20 -mregexp -t'^hp: -?[0-9]+ \([0-9]+\) \[[\-+0-9]*\] sp: -?[0-9]+ \(-?[0-9]+\) \[\+([0-9]+)\] ep: -?[0-9]+ \(-?[0-9]+\) \[[\-+0-9]*\] cash: [0-9]+ \[[+\-0-9]*\] exp: [0-9]+ \[[+\-0-9]*\]' status_tick_event =\
 /let last_tick_amount=%{P1}%;\
 /if (last_tick_amount>30) \
   /set time_last_tick=%{time_this_tick}%;\
@@ -27,3 +35,10 @@
 /endif
 
 /repeat -1 i /set lasttick=$(/formattime $[time()-{time_this_tick}])
+
+/def -i -mglob -t"You perform the ceremony." ceredonestatus=/set ceredone=C
+/def -i -mglob -t"You start chanting." cereoffstatus=/set ceredone=_
+/def -mglob -t"*Drifter spr set on." castmodestatus_spr=/set eqsetstatus=SPR
+/def -mglob -t"*Drifter wis set on." castmodestatus_wis=/set eqsetstatus=WIS
+/def -mglob -t"*Drifter int set on." castmodestatus_int=/set eqsetstatus=INT
+

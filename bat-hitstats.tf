@@ -90,6 +90,7 @@
 /def -Fp5 -mregexp -i -t"^([A-z| ]+)?[Yy]ou sink " pu_att6=/set puhit6=$[puhit6+1]
 /def -Fp5 -mregexp -i -t"^([A-z| ]+)?[Yy]ou puncture " pu_att5=/set puhit5=$[puhit5+1]
 /def -Fp5 -mregexp -i -t"^([A-z] ]+)?[Yy]ou pierce " pu_att4=/set puhit4=$[puhit4+1]
+/def -p99 -mglob -t"You scratch your head." catch_emote
 /def -Fp5 -mregexp -i -t"^([A-z| ]+)?[Yy]ou slightly pierce " pu_att3 =/set puhit3=$[puhit3+1]
 /def -Fp5 -mregexp -i -t"^([A-z| ]+)?[Yy]ou scratch " pu_att2=/set puhit2=$[puhit2+1]
 /def -Fp5 -mregexp -i -t"^([A-z| ]+)?[Yy]ou barely scratch " pu_att1=/set puhit1=$[puhit1+1]

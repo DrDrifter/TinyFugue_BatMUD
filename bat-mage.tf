@@ -7,20 +7,20 @@
 ;; No changelog but meddled with lotsa stuff
 ;;
 ;; Needs this file to run spell casting triggers
-/require -q /home/drifter/lib/tf-lib/bat-generic.tf
+/require -q /home/pi/tf-lib/bat-generic.tf
 ;; This is the tick reporting mode, spell points only
 /set sp_report=on
 ;; Auto caster
 ;; To use this type /set auto_cast on
 ;; This casts of avoid ambush messages, if you doing get message, doesn't cast
 ;; If you wish to use this, put your damtypes here
-/set damtype1=cold
-/set damtype2=asphyxiation
-/set damtype3=acid
+/set damtype1=electricity
+/set damtype2=acid
+/set damtype3=asphyxiation
 /set damtype4=magical
 /set damtype5=poison
-/set damtype6=electricity
-/set damtype7=fire
+/set damtype6=fire
+/set damtype7=cold
 
 ;; Ambush trig
 /def -F -p9 -mregexp -t"(Your small size avoids a nasty ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!|Your knowledge about [A-Za-z' ]* tactics enables you to avoid the ambush.|You superb intelligence enables you to avoif the ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!)" auto_caster =\
@@ -44,6 +44,7 @@
      /elseif ({spells}=~$(/eval /_echo %%{%{damtype2}}))/dam %{damtype3}%;/ex%;\
      /elseif ({spells}=~$(/eval /_echo %%{%{damtype3}}))/dam %{damtype4}%;/ex%;\
      /elseif ({spells}=~$(/eval /_echo %%{%{damtype4}}))/dam %{damtype4}%;/ex%;\
+     /elseif ({spells}=~$(/eval /_echo %%{%{damtype5}}))/dam %{damtype5}%;/ex%;\
      /endif%;\
    /endif
 ;;
@@ -160,15 +161,26 @@ suddenly stops breathing and jerks a couple of times\
 ;;
 ;; Hi-lites
 /def -F -mglob -aCbgred -aBCblack -p15 -t"* screams in pain." scream_pain
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* writhes in agony." writhe_agony= @party report Target writhes %damtype (20\%) 
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* grunts from the pain." grunt_pain= @party report Target grunts %damtype (60\%)
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* shudders from the force of the attack." shudder= @party report Target shrudders %damtype (40\%)
-/def -F -mglob -aCbgblack -aBCred -p15 -t"* shrugs off the attack." shrug= @party report Target SHRUGS %damtype
-/def -F -mglob -aCbgblack -aBCred -p15 -t"* winces a little from the pain." winces= @party report Target winces %damtype (80\%)
-/def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like your spell gained additional power." power= /echo -aB ** <dcrit 1> **
-/def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like you managed to channel additional POWER to your spell." power2= /echo -aB **** <dcrit 2> ****
-/def -F -mglob -aCbgyellow -aBCred -p15 -t'Your fingertips are surrounded with swirling ENERGY as you cast the spell.' power3= /echo -aB ****** <dcrit 3> ******
-/def -F -mglob -aCbgyellow -aBCred -p15 -t'Unseen BURSTS of magic are absorbed into the spell' power4= @party report <dcrit UNSEEN>
+/def -F -mglob -aCbgred -aBCblack -p15 -t"* writhes in agony." writhe_agony=\
+/echo -aB ### Target writhes %damtype (20\%) ###
+/def -F -mglob -aCbgred -aBCblack -p15 -t"* shudders from the force of the attack." shudder=\
+/echo -aB ### Target shrudders %damtype (40\%) ###
+/def -F -mglob -aCbgred -aBCblack -p15 -t"* grunts from the pain." grunt_pain=\
+/echo -aB ### Target grunts %damtype (60\%) ###
+/def -F -mglob -aCbgblack -aBCred -p15 -t"* winces a little from the pain." winces=\
+/echo -aB ### Target winces %damtype (80\%) ###
+/def -F -mglob -aCbgblack -aBCred -p15 -t"* shrugs off the attack." shrug=\
+/echo -aB ###### Target SHRUGS %damtype ######
+/def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like your spell gained additional power." power=\
+/echo -aB ** <dcrit 1> **
+/def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like you managed to channel additional POWER to your spell." power2=\
+/echo -aB **** <dcrit 2> ****
+/def -F -mglob -aCbgyellow -aBCred -p15 -t'Your fingertips are surrounded with swirling ENERGY as you cast the spell.' power3=\
+/echo -aB ****** <dcrit 3> ******
+/def -F -mglob -aCbgyellow -aBCred -p15 -t'Unseen BURSTS of magic are absorbed into the spell' power4=\
+/echo -aB ************************************%;\
+/echo -aB *****      <dcrit UNSEEN>      *****%;\
+/echo -aB ************************************
 /def -F -mglob -aB -t'Surge of power from your staff adds to the power of the spell.' staff_power1
 
 ;; /def -F -p1 -aCbgcyan -aBCmagenta -t'You hit * with your psychic storm.' psychic_storm_cast
@@ -176,16 +188,16 @@ suddenly stops breathing and jerks a couple of times\
 ;; /def -F -p1 -aCbgcyan -aBCmagenta -t'You crush * mind with your psychic attack!' psychic_crush_cast
 
 ;; bind f-keys to damtypes
-;/bind ^[[12~ = /dam cold
-;/bind ^[[13~ = /dam asphyxiation
-;/bind ^[[14~ = /dam acid
+;/bind ^[[12~ = /dam electricity
+;/bind ^[[13~ = /dam acid
+;/bind ^[[14~ = /dam asphyxiation
 ;/bind ^[[15~ = /dam magical
 ;/bind ^[[17~ = /dam poison
-;/bind ^[[18~ = /dam electricity
-;/bind ^[[19~ = /dam fire
-/def key_f2 = /dam cold
-/def key_f3 = /dam asphyxiation
-/def key_f4 = /dam acid
+;/bind ^[[18~ = /dam fire
+;/bind ^[[19~ = /dam cold
+/def key_f2 = /dam electricity
+/def key_f3 = /dam acid
+/def key_f4 = /dam asphyxiation
 /def key_f5 = /dam magical
 /def key_f6 = /dam poison
 
@@ -199,17 +211,25 @@ suddenly stops breathing and jerks a couple of times\
 /def key_f11 = /ex .
 /bind § = /dg .
 
-/def pb =/set targettype=off%;/set spell=prismatic_burst%;/do_spell %{*}
 /def dg =/set targettype=off%;/set spell=degenerate_person%;/do_spell %{*}
+/def dm =/set targettype=off%;/set spell=disrupt_magic%;/do_spell %{*}
 /def fd =/set targettype=misc%;/set spell=floating_disc%;/do_spell my disc
 /def fl =/set targettype=prot%;/set spell=floating%;/do_spell %{*}
 /def fw =/set targettype=item%;/set spell=feather_weight%;/do_spell %{*}
 /def hp =/set targettype=none%;/set spell=holding_pattern%;/do_spell
 /def hs =/set targettype=none%;/set spell=heal_self%;/do_spell
 /def inv=/set targettype=prot%;/set spell=invisibility%;/do_spell %{*}
+/def lb=/set targettype=misc%;/set spell=lock_biter%;/do_spell %{*}
 /def mi =/set targettype=prot%;/set spell=mirror_image%;/do_spell %{*}
 /def mns=/set targettype=none%;/set spell=moon_sense%;/do_spell
+/def pb =/set targettype=off%;/set spell=prismatic_burst%;/do_spell %{*}
+/def sa =/set targettype=none%;/set spell=ship_armour%;/do_spell
 /def uhl=/set targettype=misc%;/set spell=uncontrollable_hideous_laughter%;/do_spell %{*}
+/def twei=/set targettype=none%;/set spell=teleport_with_error%;/do_spell
+/def sum=/set targettype=tele%;/set spell=summon%;/do_spell %{*}
+/def weye=/set targettype=tele%;/set spell=wizard_eye%;/do_spell %{*}
+/def rel=/set targettype=tele%;/set spell=relocate%;/do_spell %{*}
+/def tele=/set targettype=none%;/set spell=teleport_without_error%;/do_spell
 
 /def -F -mglob -t"Your disc wavers dangerously." discgoingdown = @party report (Disc going down)
 /def -F -mglob -t'Your floating disc suddenly disappears.' discwentdown = @party report (Disc went poof!)
@@ -227,7 +247,7 @@ suddenly stops breathing and jerks a couple of times\
 ; You feel an inner warmth as you notice * starting to choke.
 
 ; Default to primary type
-/dam cold
+/dam electricity
 
 ;;
 ;; NB: FOR THIS TO WORK NEED protter.tf

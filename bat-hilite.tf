@@ -161,10 +161,15 @@
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes {mightily|hard} upon *' dispel_evil_hit2
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {bursting|slamming|detonating|exploding|popping|crashing} on *' holy_bolt_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {blowing|unbalancing|damaging|dispelling|disrupting|rendering|annihilating|pulverizing} *' dispel_undead_hit
-/def -p6 -aCbgyelloy -aBCred -mglob -t'*as one big burst, {brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'*as one big burst, {brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* emits fuming white aura around screaming *, brutally burning him.' dispel_undead_hit3
 /def -p6 -aCbgyellow -aBCred -mglob -t'* DOUBLEs over in PAIN!' wither_hurts
 /def -p6 -aCbgyellow -aBCred -mglob -t'* celestial spark hits *' celestial_spark
 /def -p6 -aCbgyellow -aBCred -mglob -t'*as white lightning strikes through the air tickling *' holy_lance_hit
+;;Smo frantically swings BURNING crucifix of Las and shrieks ' ¤Lassum¤ '
+;;Smo is bathed in bright light as heavenly choir plays celestial fanfare. The universe halts as WRATH OF LAS
+;;    thunders through Smo's sparkling BURNING crucifix of Las, cleansing Lich's soul by vaporizing the body!
+
 
 
 ;; Acid blasts
@@ -249,6 +254,10 @@
 /def -F -p6 -mregexp -t' starts grappling ([A-z]*)\\.$' grapplestart = @party report %P1 has been grappled!
 /def -F -p6 -mglob -t"You feel more vital." death_stats_gone = @party report (Recovered from death)
 /def -F -p6 -mglob -t"(*) fails to touch *" harm_missed = @say kurkota %P1 kurkota
+;; Vampire warnings
+/def -F -p99 -mglob -t"The water BURNS your skin." water_burns = @party say WATER BURNS!
+/def -F -p99 -mglob -t"Your greater darkness spell dissolves." darkness_down = @party report Greater darkness down, please recast!
+/def -F -p99 -mglob -t"The light here BURNS!!!" light_burns_poor_bat = @party report SUNLIGHT BURNS MEEEEE, OUCHOUCHOUCH!
 
 /set generic_amount_list=(One|one|Two|two|Three|three|Four|four|Five|five|Six|six|[Ss]even|[Ee]ight|[Nn]ine|[Tt]en|[Mm]any|[Aa] small pile of|[Aa] pile of|[Aa] huge pile of|[Aa] big pile of|[Aa] small hill of|[Aa] mountain of|[0-9]*)
 ;; Greed
@@ -364,7 +373,7 @@
   /endif
 ;/def -i -p9 -ag -mregexp -t' ([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\) [ ]*([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\) [ ]*([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\) \\| [ ]*([0-9]+) \\| [ ]*([0-9]+) \\|$' pcolour=\
 
-/def -ag -F -mregexp -t'^\\|([\\* ])([1-3\\?])\\.([1-3\\?])[ ]+([A-z]*)[ ]+(ldr|fol|rest|form|dead|mbr|ld|stun|unc|amb)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+\\|[ ]+([0-9]+)[ ]+\\|[ ]+([0-9]+)[ ]+\\|' pcolour=\
+/def -ag -F -mregexp -t'^\\|([\\* ])([1-3\\?])\\.([1-3\\?])[ ]+([A-z\\+]*)[ ]+(ldr|fol|rest|form|dead|mbr|ld|stun|unc|amb)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+\\|[ ]+([0-9IVX\\?]+)[ ]+\\|[ ]+([0-9]+)[ ]+\\|' pcolour=\
 /let TP2=$[pad({P1},1)]%;\
 /let TP3=$[pad({P4},-12)]%;\
 /let TP4=$[pad({P5}, 4)]%;\
@@ -452,6 +461,7 @@
 /def -mglob -t"You feel a bit tired." campready2 = @party report (can camp)
 /def -mglob -t"You feel like camping a little." campready3 = @party report (can camp)
 /def -mglob -t"You feel extra powers flowing into you from your bracers of divine knowledge." bracelet_boost = /echo -aB (TinyFugue) Int/spr boosted from bracers
+/def -mglob -ag -t"The turtle starts squirming."
 
 
 ;/def fmob = /quote -S -dsend emote !grep -i \'%{*}\' /home/drifter/lib/casters.txt
@@ -525,3 +535,6 @@
 /echo  |turquoise,malachite,garnet   |%;\
 /echo  |rhodonite,                   |%;\
 /echo  `-----------------------------` 
+
+;; Skill drain hit
+;; You feel DRAINED of knowledge!!!

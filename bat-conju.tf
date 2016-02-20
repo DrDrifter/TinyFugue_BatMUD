@@ -13,7 +13,7 @@
 ;;                                                                         ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-/require -q /home/drifter/lib/tf-lib/bat-generic.tf
+/require -q /home/pi/tf-lib/bat-generic.tf
 
 ;; conjuprots
 /def aoa   = /set targettype=prot%;/set spell=armour_of_aether%;/do_spell %{*}
@@ -45,11 +45,14 @@
 ;; other stuffs
 /def ad  = /set targettype=info%;/set spell=aura_detection%;/do_spell %{*}
 /def amf = /set targettype=none%;/set spell=anti_magic_field%;/do_spell
+/def ce  = /set targettype=misc%;/set spell=conjure_element%;/do_spell %{*}
 /def cf  = /set targettype=misc%;/set spell=create_food%;/do_spell .
+/def cle = /set targettype=misc%;/set spell=conjure_lesser_element%;/do_spell %{*}
+/def da  = /set targettype=misc%;/set spell=greater_darkness%;/do_spell .
 /def dmp = /set targettype=prot%;/set spell=dispel_magical_protection%;/do_spell %{*}
 /def id  = /set targettype=info%;/set spell=identify%;/do_spell %{*}
 /def iv  = /set targettype=prot%;/set spell=infravision%;/do_spell %{*}
-/def nf  = /set targettype=misc%;/set spell=neutralize_field%;/do_spell .
+/def nf  = /set targettype=none%;/set spell=neutralize_field%;/do_spell
 /def qs  = /set targettype=prot%;/set spell=quicksilver%;/do_spell %{*}
 /def re  = /set targettype=prot%;/set spell=resist_entropy%;/do_spell %{*}
 /def si  = /set targettype=prot%;/set spell=see_invisible%;/do_spell %{*}
