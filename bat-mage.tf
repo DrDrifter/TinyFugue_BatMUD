@@ -225,6 +225,7 @@ suddenly stops breathing and jerks a couple of times\
 /def mi =/set targettype=prot%;/set spell=mirror_image%;/do_spell %{*}
 /def mns=/set targettype=none%;/set spell=moon_sense%;/do_spell
 /def pb =/set targettype=off%;/set spell=prismatic_burst%;/do_spell %{*}
+/def rd =/set targettype=prot%;/set spell=resist_disintegrate%;/do_spell %{*}
 /def sa =/set targettype=none%;/set spell=ship_armour%;/do_spell
 /def uhl=/set targettype=misc%;/set spell=uncontrollable_hideous_laughter%;/do_spell %{*}
 /def twei=/set targettype=none%;/set spell=teleport_with_error%;/do_spell
