@@ -24,12 +24,13 @@
 ;                                                                     ;
 ; I'll try to keep a changelog here of the version changes            ;
 ;                                                                     ;
-; Last modified 24.07.2013                                            ;
+; Last modified 21.04.2016                                            ;
 ;                                                                     ;
-; Current Version 1.3.31                                              ;
+; Current Version 1.3.32                                              ;
+; - Added Air Shield (Asph mage special)                              ;
+;                                                                     ;
+; Changes to 1.3.31                                                   ;
 ; - Added missing chant words to Soul Shield                          ;
-;                                                                     ;
-; Changes to 1.3.30                                                   ;
 ;                                                                     ;
 ; Changes to 1.3.30                                                   ;
 ; - Fixed Regeneration spell typo                                     ;
@@ -208,7 +209,7 @@
 ; Path of where prot average times are stored,
 ; note that if you can't write or don't want to write avg time,
 ; just use /dev/null on this
-/set protavgfile=/cygdrive/e/Software/TinyFugue/protavg.times
+/set protavgfile=/home/pi/tf-lib/protavg.times
 ; Your characters name.
 /set You=Me
 ;Change to "say" if you prefer to report as party say (for hc)
@@ -564,7 +565,6 @@
 ;;;;;;;;;
 ;; Psi ;;
 ;;;;;;;;;
-
 /createprot -t0 -n"Awar" -w"{*} utters the magic words \'Bewareeeee!\'" -u"You feel more aware of your surroundings." -d"You feel your enhanced awareness subside." -p"Awareness"
 /createprot -t4 -n"Fshd" -w"{*} {are|is} surrounded by blue waves as you hear the words \'thoiiiiiisss huuuiahashn\'" -u"{*} forms a shield of force around you." -d"Your armour feels thinner." -p"Force Shield"
 ;/createprot -t0 -s -n"Mdev" -w"{*} {utter|utters} the magic words \'Annatheer graaweizta\'" -u"You feel your mind developing." -d"Your brain suddenly seems smaller." -p"Mind Development"
@@ -592,6 +592,7 @@
 /createprot -t4 -n"Ent" -w"{*} {utter|utters} the magic words \'Ourglazz Schmourglazz\'" -u"You feel your life force expanding." -d"You feel your hair is getting grayer." -p"Resist entropy"
 /createprot -t4 -n"Sticky" -w"{*} {utter|utters} the magic words \'zicks laai qluu\'" -u"You feel extra sticky for protection." -d"You feel less sticky." -p"Resist dispel"
 /createprot -t0 -n"IW" -w"{*} {utter|utters} the magic words \'nostaaaanndiz noszum\'" -u"You feel protected from being stunned." -d"You feel no longer protected from being stunned." -p"Iron Will"
+/createprot -t2 -n"AS" -w"{*} {draw|draws} a circle around {your|his|her|its} head with {your|his|her|its} fingertips while uttering \'ghht mar zrrprghh\'" -u"The circle forms an air mask before your face." -d"The air mask before your face vanishes." -p"Air shield"
 
 ; Has no downmessage! Thus it will bug like hell if used =(
 ;; /createprot -t4 -n"Disint" -w"{*} {utter|utters} the magic words \'bii thee dzname uv tii blaaaz drazon\'" -u"You feel very firm." -d"" -p"Resist disintegrate"

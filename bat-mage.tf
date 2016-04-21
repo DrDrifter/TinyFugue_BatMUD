@@ -19,11 +19,11 @@
 /set damtype3=asphyxiation
 /set damtype4=magical
 /set damtype5=poison
-/set damtype6=fire
-/set damtype7=cold
+;/set damtype6=fire
+;/set damtype7=cold
 
 ;; Ambush trig
-/def -F -p9 -mregexp -t"(Your small size avoids a nasty ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!|Your knowledge about [A-Za-z' ]* tactics enables you to avoid the ambush.|You superb intelligence enables you to avoif the ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!)" auto_caster =\
+/def -F -p9 -mregexp -t"(Your small size avoids a nasty ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!|Your knowledge about [A-Za-z' ]* tactics allows you to evade the ambush.|You superb intelligence enables you to avoid the ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!|The skilled leadership of [A-Za-z]+ saves you from ambush!)" auto_caster =\
    /if ({auto_cast}=~"on")\
 ;; Triggered to cast best spell, if you don't have that, change
 ;; to something you do
@@ -43,8 +43,8 @@
      /if ({spells}=~$(/eval /_echo %%{%{damtype1}}))/dam %{damtype2}%;/ex%;\
      /elseif ({spells}=~$(/eval /_echo %%{%{damtype2}}))/dam %{damtype3}%;/ex%;\
      /elseif ({spells}=~$(/eval /_echo %%{%{damtype3}}))/dam %{damtype4}%;/ex%;\
-     /elseif ({spells}=~$(/eval /_echo %%{%{damtype4}}))/dam %{damtype4}%;/ex%;\
-     /elseif ({spells}=~$(/eval /_echo %%{%{damtype5}}))/dam %{damtype5}%;/ex%;\
+     /elseif ({spells}=~$(/eval /_echo %%{%{damtype4}}))/dam %{damtype5}%;/ex%;\
+     /elseif ({spells}=~$(/eval /_echo %%{%{damtype5}}))/dam %{damtype1}%;/ex%;\
      /endif%;\
    /endif
 ;;
@@ -211,8 +211,10 @@ suddenly stops breathing and jerks a couple of times\
 /def key_f11 = /ex .
 /bind § = /dg .
 
+/def as =/set targettype=prot%;/set spell=air_shield%;/do_spell %{*}
 /def dg =/set targettype=off%;/set spell=degenerate_person%;/do_spell %{*}
 /def dm =/set targettype=off%;/set spell=disrupt_magic%;/do_spell %{*}
+/def ev =/set targettype=prot%;/set spell=enhance_vision%;/do_spell %{*}
 /def fd =/set targettype=misc%;/set spell=floating_disc%;/do_spell my disc
 /def fl =/set targettype=prot%;/set spell=floating%;/do_spell %{*}
 /def fw =/set targettype=item%;/set spell=feather_weight%;/do_spell %{*}
