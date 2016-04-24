@@ -8,30 +8,23 @@
 ;;
 ;; Needs this file to run spell casting triggers
 /require -q bat-generic.tf
+/require -q bat-analysis.tf
 ;; This is the tick reporting mode, spell points only
 /set sp_report=on
 ;;/set fire_entity_name=Fire entity
 /set fire_entity_name=Yazaemon the fire entity
 
 ;; Hi-lites
-/def -aB -t"Your entity is prepared to do the skill." entti_skilli_hilite
-/def -aB -t"* entity starts concentrating on a new offensive skill." entti_offuskilli_hilite
-/def -ag -t"Your entity doesn't know that skill." gag_skilli
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* screams in pain." scream_pain
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* writhes in agony." writhe_agony= @party report Target writhes %damtype (20\%) 
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* grunts from the pain." grunt_pain= @party report Target grunts %damtype (60\%)
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* shudders from the force of the attack." shudder= @party report Target shrudders %damtype (40\%)
-/def -F -mglob -aCbgblack -aBCred -p15 -t"* shrugs off the attack." shrug= @party report Target SHRUGS %damtype
-/def -F -mglob -aCbgblack -aBCred -p15 -t"* winces a little from the pain." winces= @party report Target winces %damtype (80\%)
-/def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like your spell gained additional power." power= /echo -aB ** <dcrit 1> **
-/def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like you managed to channel additional POWER to your spell." power2= /echo -aB **** <dcrit 2> ****
-/def -F -mglob -aCbgyellow -aBCred -p15 -t'Your fingertips are surrounded with swirling ENERGY as you cast the spell.' power3= /echo -aB ****** <dcrit 3> ******
-/def -F -mglob -aCbgyellow -aBCred -p15 -t'Unseen BURSTS of magic are absorbed into the spell' power4= @party report <dcrit UNSEEN>
-/def -F -mglob -t'Your hold on *\'s life energy slips away.' sparkbirth_off= @party report (Spark birth down on (%4)
+/def -F -mglob -aB -t"Your entity is prepared to do the skill." entti_skilli_hilite
+/def -F -mglob -aB -t"* entity starts concentrating on a new offensive skill." entti_offuskilli_hilite
+/def -F -mglob -ag -t"Your entity doesn't know that skill." gag_skilli
+/def -F -mglob -t'Your hold on *\'s life energy slips away.' sparkbirth_off= @party report Spark birth down on %4
 
+;; Spells
 /def bre=/set targettype=none%;/set spell=beckon_rift_entity%;/do_spell
 /def cr =/set targettype=misc%;/set spell=create_rift%;/set spell_rounds=10%;/do_spell %{*}
 /def cw =/set targettype=sac%;/set spell=consume_weapon%;/do_spell %{*}
+/def crw=/set targettype=none%;/set spell=create_rift_vortex%;/do_spell
 /def dl =/set targettype=off%;/set spell=dimensional_leech%;/set spell_rounds=3%;/do_spell %{*}
 /def dr =/set targettype=none%;/set spell=darkness%;/do_spell
 /def dre=/set targettype=none%;/set spell=dismiss_rift_entity%;/do_spell
@@ -50,16 +43,16 @@
 /def -t"(Fire|Air|Water|Earth) entity eats the last of its rift sparks, and starts to look around the room with a fierce hunger in its eyes." entity_hungry = @party report (entity needs sparks)
 
 ;; Redo rift skills
-/def -F -mglob -t"%fire_entity_name strikes its opponent a glancing blow to the shield arm." fire_entity_redo_skill1 = @gem cmd use blazing sunder
-/def -F -mglob -t"%fire_entity_name SMASHES * kneecap!"                                      fire_entity_redo_skill2 = @gem cmd use blazing sunder
-/def -F -mglob -t"%fire_entity_name quickly strikes its opponent's exposed weapon hand!"     fire_entity_redo_skill3 = @gem cmd use blazing sunder
-/def -F -mglob -t"%fire_entity_name swings widely, striking its enemy's instep."             fire_entity_redo_skill4 = @gem cmd use blazing sunder
-/def -F -mglob -t"%fire_entity_name carefully strikes foe's exposed thigh!"                  fire_entity_redo_skill5 = @gem cmd use blazing sunder
-/def -F -mglob -t"%fire_entity_name slaps * weapon aside, and strikes at the opening!"       fire_entity_redo_skill6 = @gem cmd use blazing sunder
-/def -F -mglob -t"* howls in pain as %fire_entity_name smashes *"                            fire_entity_redo_skill7 = @gem cmd use blazing sunder
-/def -F -mglob -t"* wails in agony as %fire_entity_name strikes *"                           fire_entity_redo_skill8 = @gem cmd use blazing sunder
-/def -F -mglob -t"%fire_entity_name feints high, then swiftly strikes low!"                  fire_entity_redo_skill9 = @gem cmd use blazing sunder
-/def -F -mglob -t"Your fire entity does some strange combat maneuver but doesn't hit anything." fire_entity_missed_redo = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t"^%{fire_entity_name} strikes its opponent a glancing blow to the shield arm." fire_entity_redo_skill1 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t"^%{fire_entity_name} SMASHES .+ kneecap!"                                     fire_entity_redo_skill2 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t"^%{fire_entity_name} quickly strikes its opponent's exposed weapon hand!"     fire_entity_redo_skill3 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t"^%{fire_entity_name} swings widely, striking its enemy's instep."             fire_entity_redo_skill4 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t"^%{fire_entity_name} carefully strikes foe's exposed thigh!"                  fire_entity_redo_skill5 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t"^%{fire_entity_name} .+ weapon aside, and strikes at the opening!"            fire_entity_redo_skill6 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t".+ howls in pain as %{fire_entity_name} smashes .+"                           fire_entity_redo_skill7 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t".+ wails in agony as %{fire_entity_name} strikes .+"                          fire_entity_redo_skill8 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t"^%{fire_entity_name} feints high, then swiftly strikes low!"                  fire_entity_redo_skill9 = @gem cmd use blazing sunder
+/def -F -mglob -t"Your fire entity does some strange combat maneuver but doesn't hit anything."         fire_entity_missed_redo = @gem cmd use blazing sunder
 /def -F -mglob -t"Your entity loses its concentration and cannot do the skill." any_entity_skill_broke = @gem cmd use blazing sunder;@gem cmd use suffocating embrace;@gem cmd use subjugating backwash;@gem cmd use earthen cover
 /def -F -mglob -t"Your air entity falters and its wispy tendrils fall to its sides."   air_entity_redo_skill = @gem cmd use suffocating embrace
 /def -F -mglob -t"Your water entity stops glowing and its skin becomes still."         water_entity_redo_skill = @gem cmd use subjugating backwash

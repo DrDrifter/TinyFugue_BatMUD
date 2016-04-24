@@ -28,6 +28,8 @@
 ;                                                                     ;
 ; Current Version 1.3.32                                              ;
 ; - Added Air Shield (Asph mage special)                              ;
+; - Added Camp/sleep prot message queue (not yet implemented)         ;
+; - Added Resist disintegrate (as now it has downmessage)             ;
 ;                                                                     ;
 ; Changes to 1.3.31                                                   ;
 ; - Added missing chant words to Soul Shield                          ;
@@ -217,7 +219,7 @@
 ;When we dont know who casts rather print "unknown" than some weirdo
 /set pcaster=Unknown
 /set matching=glob
-
+/set camping_status=awake
 
 ;; Converts seconds into minutes and seconds, very useful
 /def -i formattime=\
@@ -305,14 +307,25 @@
   /echo %1 %2 %choptime%|/writefile -a %protavgfile%; \
  /endif
 
+;; Separate function for messages when camping
+;; This is to check if you are camping/meditating and messages will not go to p channel
+/def -i msgprot = \
+ /let msg=%1%;\
+ /if (camp_status=~"sleeping") \
+  /push %msg campmessages%;\
+ /else \
+  @party %output $msg%;\
+ /endif
+
+; Set camping status for messages
+/def -F -i -t"You lie down and begin to rest for a while." camp_status_sleeping=/set camp_status=sleeping
+/def -F -i -t"You lie down for a short rest, soothed by the lullaby sung by *." camp_status_sleeping=/set camp_status=sleeping
+/def -F -i -t"You awaken from your short rest, and feel slightly better." camp_status_ready=/set camp_status=awake
+
 ; Prot & spell words wrapper
 ;
 ; Note: If protter messes up your spellquote too badly, change the priority value
 ; here or add -F, since the macro is non-fall thru.
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; You lie down for a short rest, soothed by the lullaby sung by xxx. ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 /def createprot=\
 ; /if (!getopts("w:p:n:u:d:t:sc", "0")) /break%;/endif%;\   /* Old style, non regexp line. */
@@ -593,9 +606,7 @@
 /createprot -t4 -n"Sticky" -w"{*} {utter|utters} the magic words \'zicks laai qluu\'" -u"You feel extra sticky for protection." -d"You feel less sticky." -p"Resist dispel"
 /createprot -t0 -n"IW" -w"{*} {utter|utters} the magic words \'nostaaaanndiz noszum\'" -u"You feel protected from being stunned." -d"You feel no longer protected from being stunned." -p"Iron Will"
 /createprot -t2 -n"AS" -w"{*} {draw|draws} a circle around {your|his|her|its} head with {your|his|her|its} fingertips while uttering \'ghht mar zrrprghh\'" -u"The circle forms an air mask before your face." -d"The air mask before your face vanishes." -p"Air shield"
-
-; Has no downmessage! Thus it will bug like hell if used =(
-;; /createprot -t4 -n"Disint" -w"{*} {utter|utters} the magic words \'bii thee dzname uv tii blaaaz drazon\'" -u"You feel very firm." -d"" -p"Resist disintegrate"
+/createprot -t4 -n"Disint" -w"{*} {utter|utters} the magic words \'bii thee dzname uv tii blaaaz drazon\'" -u"You feel very firm." -d"You feel somewhat weaker." -p"Resist disintegrate"
 
 ; - Weak typeprots -
 /createprot -c -t0 -n"Acid" -w"{*} {utter|utters} the magic words \'sulphiraidzik hydrochloodriz gidz zuf\'" -u"" -d"A disgusting yellow flash momentarily surrounds you and then vanishes." -p"Corrosion Shield"

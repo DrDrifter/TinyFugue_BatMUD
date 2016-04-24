@@ -384,4 +384,4 @@
 
 ;; Just some debug stuff
 /def debug=\
-   /echo -aB -p (Debug) skill=%{skill} executing_skill=%{executing_skill} start_flag=%{start_flag} targettype=%{targettype} %{targettype}_target=%%{%{targettype}_target}
+   /echo -aB -p (Debug) skill=%{skill} spell=%{spell} executing_skill=%{executing_skill} start_flag=%{start_flag} targettype=%{targettype} %{targettype}_target=%%{%{targettype}_target}

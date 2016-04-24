@@ -7,7 +7,8 @@
 ;; No changelog but meddled with lotsa stuff
 ;;
 ;; Needs this file to run spell casting triggers
-/require -q /home/pi/tf-lib/bat-generic.tf
+/require -q bat-generic.tf
+/require -q bat-analysis.tf
 ;; This is the tick reporting mode, spell points only
 /set sp_report=on
 ;; Auto caster
@@ -160,27 +161,6 @@ suddenly stops breathing and jerks a couple of times\
 
 ;;
 ;; Hi-lites
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* screams in pain." scream_pain
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* writhes in agony." writhe_agony=\
-/echo -aB ### Target writhes %damtype (20\%) ###
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* shudders from the force of the attack." shudder=\
-/echo -aB ### Target shrudders %damtype (40\%) ###
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* grunts from the pain." grunt_pain=\
-/echo -aB ### Target grunts %damtype (60\%) ###
-/def -F -mglob -aCbgblack -aBCred -p15 -t"* winces a little from the pain." winces=\
-/echo -aB ### Target winces %damtype (80\%) ###
-/def -F -mglob -aCbgblack -aBCred -p15 -t"* shrugs off the attack." shrug=\
-/echo -aB ###### Target SHRUGS %damtype ######
-/def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like your spell gained additional power." power=\
-/echo -aB ** <dcrit 1> **
-/def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like you managed to channel additional POWER to your spell." power2=\
-/echo -aB **** <dcrit 2> ****
-/def -F -mglob -aCbgyellow -aBCred -p15 -t'Your fingertips are surrounded with swirling ENERGY as you cast the spell.' power3=\
-/echo -aB ****** <dcrit 3> ******
-/def -F -mglob -aCbgyellow -aBCred -p15 -t'Unseen BURSTS of magic are absorbed into the spell' power4=\
-/echo -aB ************************************%;\
-/echo -aB *****      <dcrit UNSEEN>      *****%;\
-/echo -aB ************************************
 /def -F -mglob -aB -t'Surge of power from your staff adds to the power of the spell.' staff_power1
 
 ;; /def -F -p1 -aCbgcyan -aBCmagenta -t'You hit * with your psychic storm.' psychic_storm_cast
@@ -240,7 +220,10 @@ suddenly stops breathing and jerks a couple of times\
   
 ;; Essence specials
 ;You feel connected to the very essence of magic.
-/def -aB -t"You feel your skills in handling elemental forces improve." gain_essence = /echo -aB ############################%;/echo -aB ###### GAINED ESSENCE ######%;/echo -aB ############################
+/def -aB -t"You feel your skills in handling elemental forces improve." gain_essence =\
+/echo -aB ############################%;\
+/echo -aB ###### GAINED ESSENCE ######%;\
+/echo -aB ############################
 ; Your knowledge in elemental powers helps you to save the reagent for further use.
 
 ; cold
