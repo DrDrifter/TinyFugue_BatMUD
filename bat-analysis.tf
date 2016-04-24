@@ -6,30 +6,33 @@
 ;; Analysis of magic lore
 /def -F -mglob -aCbgred -aBCblack -p15 -t"* screams in pain." scream_pain
 /def -F -mregexp -aCbgred -aBCblack -p15 -t"(.+) writhes in agony." writhe_agony=\
-  /if ({spell} !~ "spark_birth")\
+  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### writhes %damtype (20\%) ###%;\
-    /if ({analysis_report} =~ "on") @party report [%1] writhes %damtype (20\%)%;/endif%;\
+    /if ({analysis_report} =~ "on") @party report [%P1] writhes %damtype (20\%)%;/endif%;\
   /endif
 /def -F -mregexp -aCbgred -aBCblack -p15 -t"(.+) shudders from the force of the attack." shudder=\
-  /if ({spell} !~ "spark_birth")\
+  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### Target shrudders %damtype (40\%) ###%;\
-    /if ({analysis_report} =~ "on") @party report [%1] shrudders %damtype (40\%)%;/endif%;\
+    /if ({analysis_report} =~ "on") @party report [%P1] shrudders %damtype (40\%)%;/endif%;\
   /endif
 /def -F -mregexp -aCbgred -aBCblack -p15 -t"(.+) grunts from the pain." grunt_pain=\
-  /if ({spell} !~ "spark_birth")\
+  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### GRUNTS %damtype (60\%) ###%;\
-    /if ({analysis_report} =~ "on") @party report [%1] grunts %damtype (60\%)%;/endif%;\
+    /if ({analysis_report} =~ "on") @party report [%P1] grunts %damtype (60\%)%;/endif%;\
   /endif
 /def -F -mregexp -aCbgblack -aBCred -p15 -t"(.+) winces a little from the pain." winces=\
-  /if ({spell} !~ "spark_birth")\
+  /if (({spell} !~ "spark_birth") & ({spell} != "rift_pulse"))\
   /echo -aB ### Target winces %damtype (80\%) ###%;\
-    /if ({analysis_report} =~ "on") @party report [%1] winces %damtype (80\%)%;/endif%;\
+    /if ({analysis_report} =~ "on") @party report [%P1] winces %damtype (80\%)%;/endif%;\
   /endif
 /def -F -mregexp -aCbgblack -aBCred -p15 -t"(.+) shrugs off the attack." shrug=\
-  /if ({spell} !~ "spark_birth")\
+  /if (({spell} !~ "spark_birth") & ({spell} != "rift_pulse"))\
   /echo -aB ###### SHRUGS %damtype ######%;\
-    /if ({analysis_report} =~ "on") @party report [%1] SHRUGS %damtype%;/endif%;\
+    /if ({analysis_report} =~ "on") @party report [%P1] SHRUGS %damtype%;/endif%;\
   /endif
+
+;; Added this since sometimes I use commands that launch this manually
+/def -F -mglob -t"You utter the magic words \'cwician ysl\'" sparkbirth_cast_manual = /set spell=spark_birth
 
 ;; Damage criticalities
 /def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like your spell gained additional power." power=\
