@@ -160,16 +160,17 @@
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes with {sheer|terrific|blazing|purifying|immense} {rage|force|glow|power} upon *' dispel_evil_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes {mightily|hard} upon *' dispel_evil_hit2
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {bursting|slamming|detonating|exploding|popping|crashing} on *' holy_bolt_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {blowing|unbalancing|damaging|dispelling|disrupting|rendering|annihilating|pulverizing} *' dispel_undead_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'*as one big burst, {brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'* emits fuming white aura around screaming *, brutally burning him.' dispel_undead_hit3
+/def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {blowing|unbalancing|damaging|dispelling|disrupting|incinerating|rendering|annihilating|pulverizing} *' dispel_undead_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'*as one big burst, {badly|brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* emits fuming white aura around screaming * {badly|brutally} {burning|crushing} {him|her|it}' dispel_undead_hit3
 /def -p6 -aCbgyellow -aBCred -mglob -t'* DOUBLEs over in PAIN!' wither_hurts
 /def -p6 -aCbgyellow -aBCred -mglob -t'* celestial spark hits *' celestial_spark
 /def -p6 -aCbgyellow -aBCred -mglob -t'*as white lightning strikes through the air tickling *' holy_lance_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* word of destruction hits *' word_of_destruction_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* dispel evil hits *' word_of_destruction_hit
 ;;Smo frantically swings BURNING crucifix of Las and shrieks ' ¤Lassum¤ '
 ;;Smo is bathed in bright light as heavenly choir plays celestial fanfare. The universe halts as WRATH OF LAS
 ;;    thunders through Smo's sparkling BURNING crucifix of Las, cleansing Lich's soul by vaporizing the body!
-
 
 
 ;; Acid blasts
@@ -269,7 +270,9 @@
     /undef greed_plat%;\
     /undef greed_gold%;\
     /undef greed_head%;\
+    /undef greed_compass%;\
     /undef greed_mail%;\
+    /undef greed_wings%;\
     /undef greed_dagger%;\
     /undef greed_woodclub%;\
     /undef greed_catcollar%;\
@@ -284,6 +287,7 @@
     /def -F -p3 -P0 -mregexp -t'^([Tt]he|%{generic_amount_list}) head.? of a (barbarian|troll)' greed_head = @get all head%;\
     /def -F -p3 -P0 -mregexp -t'^an aquamarine compass' greed_compass = @get compass%;\
     /def -F -p9 -P0 -mregexp -t'^An old iron plate mail' greed_mail = @get mail%;\
+    /def -F -p9 -P0 -mregexp -t'^a pair of insect wings' greed_wings = @get wings%;\
     /def -F -p9 -P0 -mregexp -t'^A very sharp dagger' greed_dagger = @get dagger%;\
     /def -F -p9 -P0 -mregexp -t'^A wood club' greed_woodclub = @get wood club%;\
     /def -F -p9 -P0 -mregexp -t'^Collar of the CatDemon' greed_catcollar = @get collar%;\
@@ -348,44 +352,43 @@
 ;; If you notice tf hanging up when someone swaps eq, comment the pcolour out
 ;; //Drif
 ;;
-/def -i percolor =\
-  /if ({2}!=0)\
-    /set tmpvar=$[({1}*100)/{2}]%;\
-  /else \
-    /if ({1}>=0)\
-      /set tmpvar=100%;\
-    /else \
-      /set tmpvar=0%;\
-    /endif%;\
-  /endif%;\
-  /if (tmpvar>75)\
-    /echo BCwhite%;\
-  /elseif (tmpvar>50)\
-    /echo BCyellow%;\
-  /elseif (tmpvar>35)\
-    /echo BCgreen%;\
-  /elseif (tmpvar>20)\
-    /echo BCmagenta%;\
-  /elseif (tmpvar>10)\
-    /echo BCred%;\
-  /elseif (tmpvar<10)\
-    /echo Cred%;\
-  /endif
-;/def -i -p9 -ag -mregexp -t' ([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\) [ ]*([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\) [ ]*([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\) \\| [ ]*([0-9]+) \\| [ ]*([0-9]+) \\|$' pcolour=\
+;/def -i percolor =\
+;  /if ({2}!=0)\
+;    /set tmpvar=$[({1}*100)/{2}]%;\
+;  /else \
+;    /if ({1}>=0)\
+;      /set tmpvar=100%;\
+;    /else \
+;      /set tmpvar=0%;\
+;    /endif%;\
+;  /endif%;\
+;  /if (tmpvar>75)\
+;    /echo BCwhite%;\
+;  /elseif (tmpvar>50)\
+;    /echo BCyellow%;\
+;  /elseif (tmpvar>35)\
+;    /echo BCgreen%;\
+;  /elseif (tmpvar>20)\
+;    /echo BCmagenta%;\
+;  /elseif (tmpvar>10)\
+;    /echo BCred%;\
+;  /elseif (tmpvar<10)\
+;    /echo Cred%;\
+;  /endif
 
-/def -ag -F -mregexp -t'^\\|([\\* ])([1-3\\?])\\.([1-3\\?])[ ]+([A-z\\+]*)[ ]+(ldr|fol|rest|form|dead|mbr|ld|stun|unc|amb)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+\\|[ ]+([0-9IVX\\?]+)[ ]+\\|[ ]+([0-9]+)[ ]+\\|' pcolour=\
-/let TP2=$[pad({P1},1)]%;\
-/let TP3=$[pad({P4},-12)]%;\
-/let TP4=$[pad({P5}, 4)]%;\
-/let TP5=$[pad({P6},4)]%;\
-/let TP6=$[pad({P7},4)]%;\
-/let TP7=$[pad({P8},4)]%;\
-/let TP8=$[pad({P9},4)]%;\
-/let TP9=$[pad({P10},3)]%;\
-/let TP10=$[pad({P11},3)]%;\
-/let TP11=$[pad({P12},3)]%;\
-/let TP12=$[pad({P13},12)]%;\
-/echo -w -p |%TP2 %P2.%P3   %TP3 %TP4 @{$(/percolor %P6 %P7)}%TP5@{n}(@{BCwhite}%TP6@{n}) @{$(/percolor %P8 %P9)}%TP7@{n}(@{BCwhite}%TP8@{n}) @{$(/percolor %P10 %P11)}%TP9@{n}(@{BCwhite}%TP10@{n}) | %TP11 | %TP12 |
+;/def -ag -F -mregexp -t'^\\|([\\* ])([1-3\\?])\\.([1-3\\?])[ ]+([A-z\\+]*)[ ]+(ldr|fol|rest|form|dead|mbr|ld|stun|unc|amb)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+\\|[ ]+([0-9IVX\\?]+)[ ]+\\|[ ]+([0-9]+)[ ]+\\|' pcolour=\
+;/let TP2=$[pad({P1},1)]%;\
+;/let TP3=$[pad({P4},-12)]%;\
+;/let TP4=$[pad({P5}, 4)]%;\
+;/let TP5=$[pad({P6},4)]%;\
+;/let TP6=$[pad({P7},4)]%;\
+;/let TP7=$[pad({P8},4)]%;\
+;/let TP8=$[pad({P9},4)]%;\
+;/let TP9=$[pad({P10},3)]%;\
+;/let TP10=$[pad({P11},3)]%;\
+;/let TP11=$[pad({P12},3)]%;\
+;/let TP12=$[pad({P13},12)]%;\
+;/echo -w -p |%TP2 %P2.%P3   %TP3 %TP4 @{$(/percolor %P6 %P7)}%TP5@{n}(@{BCwhite}%TP6@{n}) @{$(/percolor %P8 %P9)}%TP7@{n}(@{BCwhite}%TP8@{n}) @{$(/percolor %P10 %P11)}%TP9@{n}(@{BCwhite}%TP10@{n}) | %TP11 | %TP12 |
 
 
 
@@ -474,39 +477,6 @@
 
 /def -F -mglob -t'a tiny squirrel running around' darkwood_key = @kill squirrel
 /def -F -mglob -t'You wear Demonic Ring of Invisibility*' demonring_wear = /repeat -300 1 /echo -aB (TF Info): Demonic ring ready
-
-;; Draco race breath
-/set draco_breath=ready
-/def -mglob -t"You drift off into a deep daydream*" draconian_breath_ready = /set draco_breath_time=$[time()-draco_breath_timer]%;\
-   /let fdraco_breath_time=$(/formattime %draco_breath_time)%;\
-   /echo -aB (TF Info): Draconian breath available (%fdraco_breath_time)%;\
-   /set draco_breath=ready
-/def -mglob -t"Your innate power to breathe gas has restored." draconian_breath_ready2 = /set draco_breath_time=$[time()-draco_breath_timer]%;\
-   /let fdraco_breath_time=$(/formattime %draco_breath_time)%;\
-   /echo -aB (TF Info): Draconian breath available (%fdraco_breath_time)%;\
-   /set draco_breath=ready
-/def -mglob -t"You hit * with your blaze of magical fire." draconian_breath_used = /set draco_breath=charging%;/set draco_breath_timer=$[time()]
-/def -mglob -t"Your innate ability has not restored itself." draconian_breath_not_ready = /set draco_breath=charging
-
-;;
-;; Tank timers
-;;
-/set herb_timer=0
-
-/def -F -mglob -t'You eat a green mistletoe*' mistletoe_eaten = /set herb_timer=$[time()]%;/repeat -420 1 /echo -aB (TF Info): Herb ready
-/def -F -mglob -t'You eat yarrow flower*' yarrow_eaten = /set herb_timer=$[time()]%;/repeat -420 1 /echo -aB (TF Info): Herb ready
-/def -F -mglob -t'You eat burdock leaf*' burdock_eaten = /set herb_timer=$[time()]%;/repeat -420 1 /echo -aB (TF Info): Herb ready
-
-/def herbs= \
-	/if (herb_timer != 0)\
-		/let lastherbtime=$[time()-herb_timer]%;\
-		/let flastherb=$(/formattime %lastherbtime)%;\
-	/else \
-		/let flastherb=0:00%;\
-	/endif%;\
-	/echo -aB (TF Info): Breath: [%draco_breath]  Herb: [%flastherb]
-
-
 
 /def glovegem =\
 /echo  .-----------------------------.%;\

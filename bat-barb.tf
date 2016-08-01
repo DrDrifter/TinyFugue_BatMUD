@@ -139,4 +139,4 @@
 /def key_f9 = /bsh .
 /def key_f10 = /kk .
 /def key_f11 = /ll .
-/def key_f12 = /pnd .
+/def key_f12 = /clv .

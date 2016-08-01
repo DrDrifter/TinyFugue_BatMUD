@@ -21,10 +21,11 @@
 /def -F -mglob -t'Your hold on *\'s life energy slips away.' sparkbirth_off= @party report Spark birth down on %4
 
 ;; Spells
+/def am =/set targettype=none%;/set spell=absorbing_meld%;/do_spell
 /def bre=/set targettype=none%;/set spell=beckon_rift_entity%;/do_spell
 /def cr =/set targettype=misc%;/set spell=create_rift%;/set spell_rounds=10%;/do_spell %{*}
 /def cw =/set targettype=sac%;/set spell=consume_weapon%;/do_spell %{*}
-/def crw=/set targettype=none%;/set spell=create_rift_vortex%;/do_spell
+/def crv=/set targettype=none%;/set spell=create_rift_vortex%;/do_spell
 /def dl =/set targettype=off%;/set spell=dimensional_leech%;/set spell_rounds=3%;/do_spell %{*}
 /def dr =/set targettype=none%;/set spell=darkness%;/do_spell
 /def dre=/set targettype=none%;/set spell=dismiss_rift_entity%;/do_spell
@@ -37,8 +38,10 @@
 /eval /set off_spell_stack=%{off_spell_stack}|rift_pulse
 /def rp =/set targettype=off%;/set spell=rift_pulse%;/set spell_rounds=3%;/do_spell %{*}
 /def rre=/set targettype=ent%;/set spell=regenerate_rift_entity%;/do_spell %{*}
+/def rs =/set targettype=none%;/set spell=rift_scramble%;/do_spell
 /def sb =/set targettype=off%;/set spell=spark_birth%;/set spell_rounds=2%;/do_spell %{*}
 /def sre=/set targettype=sum%;/set spell=summon_rift_entity%;/do_spell %{*}
+/def tre=/set targettype=sum%;/set spell=transform_rift_entity%;/do_spell %{*}
 
 /def -t"(Fire|Air|Water|Earth) entity eats the last of its rift sparks, and starts to look around the room with a fierce hunger in its eyes." entity_hungry = @party report (entity needs sparks)
 
@@ -52,11 +55,14 @@
 /eval /def -F -mregexp -t".+ howls in pain as %{fire_entity_name} smashes .+"                           fire_entity_redo_skill7 = @gem cmd use blazing sunder
 /eval /def -F -mregexp -t".+ wails in agony as %{fire_entity_name} strikes .+"                          fire_entity_redo_skill8 = @gem cmd use blazing sunder
 /eval /def -F -mregexp -t"^%{fire_entity_name} feints high, then swiftly strikes low!"                  fire_entity_redo_skill9 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t"^%{fire_entity_name} trikes out, slashing a ragged wound in .+ forehead!"     fire_entity_redo_skill10 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t"^%{fire_entity_name} pummels .+ in the jaw!"                                  fire_entity_redo_skill11 = @gem cmd use blazing sunder
+/eval /def -F -mregexp -t"^%{fire_entity_name} quickly steps forward and strikes .+ in the temple!"     fire_entity_redo_skill12 = @gem cmd use blazing sunder
 /def -F -mglob -t"Your fire entity does some strange combat maneuver but doesn't hit anything."         fire_entity_missed_redo = @gem cmd use blazing sunder
-/def -F -mglob -t"Your entity loses its concentration and cannot do the skill." any_entity_skill_broke = @gem cmd use blazing sunder;@gem cmd use suffocating embrace;@gem cmd use subjugating backwash;@gem cmd use earthen cover
-/def -F -mglob -t"Your air entity falters and its wispy tendrils fall to its sides."   air_entity_redo_skill = @gem cmd use suffocating embrace
-/def -F -mglob -t"Your water entity stops glowing and its skin becomes still."         water_entity_redo_skill = @gem cmd use subjugating backwash
-/def -F -mglob -t"Your earth entity hunches down looking much less solid than a second ago." earth_entity_redo_skill = @gem cmd use earthen cover
+/def -F -mglob -t"Your entity loses its concentration and cannot do the skill."  any_entity_skill_broke = @gem cmd use blazing sunder;@gem cmd use suffocating embrace;@gem cmd use subjugating backwash;@gem cmd use earthen cover
+/def -F -mglob -t"Your air entity falters and its wispy tendrils fall to its sides."  air_entity_redo_skill = @gem cmd use suffocating embrace
+/def -F -mglob -t"Your water entity stops glowing and its skin becomes still."  water_entity_redo_skill = @gem cmd use subjugating backwash
+/def -F -mglob -t"Your earth entity hunches down looking much less solid than a second ago."  earth_entity_redo_skill = @gem cmd use earthen cover
 /def -ag -t"You do not have an entity to control, try summoning one." no_entity_no_target
 
 
