@@ -13,7 +13,7 @@
 /set fire_analysis=unknown
 
 
-;; Elec
+;; Match used spell and damtype
 /def -F -mregexp -t'^You watch with self-pride as your (electrocution|blast lightning|shocking grasp|lightning bolt|forked lightning) hits *' used_elec_type= /set used_type=ELEC
 /def -F -mregexp -t'^You watch with self-pride as your (disruption|acid wind|acid arrow|acid ray|acid blast) hits *' used_acid_type= /set used_type=ACID
 /def -F -mregexp -t'^You watch with self-pride as your (vacuumbolt|suffocation|chaos bolt|strangulation|blast vacuum) hits *' used_asphyx_type= /set used_type=ASPH
@@ -24,41 +24,41 @@
 
 
 ;; Analysis of magic lore messages
-/def -F -mglob -aCbgred -aBCblack -p15 -t"([A-Za-z \-\']+) screams in pain." scream_pain=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z ]+) screams in pain." scream_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=0%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\']+) writhes in agony\." writhe_agony=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z ]+) writhes in agony\." writhe_agony=\
   /set current_analysis_target=%P1%;\
   /set current_resist=20%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### writhes %damtype (20\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\']+) shudders from the force of the attack\." shudder=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z ]+) shudders from the force of the attack\." shudder=\
   /set current_analysis_target=%P1%;\
   /set current_resist=40%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### Target shudders %damtype (40\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\']+) grunts from the pain\." grunt_pain=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z ]+) grunts from the pain\." grunt_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=60%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### GRUNTS %damtype (60\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\']+) winces a little from the pain\." winces=\
+/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z ]+) winces a little from the pain\." winces=\
   /set current_analysis_target=%P1%;\
   /set current_resist=80%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### Target winces %damtype (80\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\']+) shrugs off the attack\." shrug=\
+/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z ]+) shrugs off the attack\." shrug=\
   /set current_analysis_target=%P1%;\
   /set current_resist=100%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
@@ -98,13 +98,13 @@
 
 /def do_report=\
   /set report_message=%;\
-  /if ({elec_analysis} !~ "unknown") /set report_message=$[strcat("Elec: ",{elec_analysis}," ",{report_message})]%;/endif%;\
-  /if ({acid_analysis} !~ "unknown") /set report_message=$[strcat("Acid: ",{acid_analysis}," ",{report_message})]%;/endif%;\
-  /if ({asph_analysis} !~ "unknown") /set report_message=$[strcat("Asph: ",{asph_analysis}," ",{report_message})]%;/endif%;\
-  /if ({cold_analysis} !~ "unknown") /set report_message=$[strcat("Cold: ",{cold_analysis}," ",{report_message})]%;/endif%;\
-  /if ({fire_analysis} !~ "unknown") /set report_message=$[strcat("Fire: ",{fire_analysis}," ",{report_message})]%;/endif%;\
-  /if ({mana_analysis} !~ "unknown") /set report_message=$[strcat("Mana: ",{mana_analysis}," ",{report_message})]%;/endif%;\
-  /if ({pois_analysis} !~ "unknown") /set report_message=$[strcat("Pois: ",{pois_analysis}," ",{report_message})]%;/endif%;\
+  /if ({elec_analysis} !~ "unknown") /set report_message=$[strcat("Elec: ",{elec_analysis},"% ",{report_message})]%;/endif%;\
+  /if ({acid_analysis} !~ "unknown") /set report_message=$[strcat("Acid: ",{acid_analysis},"% ",{report_message})]%;/endif%;\
+  /if ({asph_analysis} !~ "unknown") /set report_message=$[strcat("Asph: ",{asph_analysis},"% ",{report_message})]%;/endif%;\
+  /if ({cold_analysis} !~ "unknown") /set report_message=$[strcat("Cold: ",{cold_analysis},"% ",{report_message})]%;/endif%;\
+  /if ({fire_analysis} !~ "unknown") /set report_message=$[strcat("Fire: ",{fire_analysis},"% ",{report_message})]%;/endif%;\
+  /if ({mana_analysis} !~ "unknown") /set report_message=$[strcat("Mana: ",{mana_analysis},"% ",{report_message})]%;/endif%;\
+  /if ({pois_analysis} !~ "unknown") /set report_message=$[strcat("Pois: ",{pois_analysis},"% ",{report_message})]%;/endif%;\
   @party report [%{current_analysis_target}] Resists: [%{report_message}]
 
 ;; Added this since sometimes I use commands that launch this manually
