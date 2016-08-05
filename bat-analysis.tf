@@ -3,6 +3,8 @@
 ;;
 /set analysis_report=off
 /set last_analysis_target=none
+/set current_analysis_target=none
+/set current_resist=0
 /set used_type=none
 /set elec_analysis=unknown
 /set acid_analysis=unknown
@@ -22,77 +24,88 @@
 
 
 ;; Analysis of magic lore messages
-/def -F -mglob -aCbgred -aBCblack -p15 -t"* screams in pain." scream_pain
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"(.+) writhes in agony\." writhe_agony=\
+/def -F -mglob -aCbgred -aBCblack -p15 -t"([A-Za-z \-\']+) screams in pain." scream_pain=\
+  /set current_analysis_target=%P1%;\
+  /set current_resist=0%;\
+  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
+    /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
+  /endif
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\']+) writhes in agony\." writhe_agony=\
+  /set current_analysis_target=%P1%;\
+  /set current_resist=20%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### writhes %damtype (20\%) ###%;\
-    /if ({analysis_report} =~ "on") /report_analysis %P1 20%;/endif%;\
+    /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"(.+) shudders from the force of the attack\." shudder=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\']+) shudders from the force of the attack\." shudder=\
+  /set current_analysis_target=%P1%;\
+  /set current_resist=40%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
-  /echo -aB ### Target shrudders %damtype (40\%) ###%;\
-    /if ({analysis_report} =~ "on") /report_analysis %P1 40%;/endif%;\
+  /echo -aB ### Target shudders %damtype (40\%) ###%;\
+    /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"(.+) grunts from the pain\." grunt_pain=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\']+) grunts from the pain\." grunt_pain=\
+  /set current_analysis_target=%P1%;\
+  /set current_resist=60%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### GRUNTS %damtype (60\%) ###%;\
-    /if ({analysis_report} =~ "on") /report_analysis %P1 60%;/endif%;\
+    /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgblack -aBCred -p15 -t"(.+) winces a little from the pain\." winces=\
+/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\']+) winces a little from the pain\." winces=\
+  /set current_analysis_target=%P1%;\
+  /set current_resist=80%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### Target winces %damtype (80\%) ###%;\
-    /if ({analysis_report} =~ "on") /report_analysis %P1 80%;/endif%;\
+    /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgblack -aBCred -p15 -t"(.+) shrugs off the attack\." shrug=\
+/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\']+) shrugs off the attack\." shrug=\
+  /set current_analysis_target=%P1%;\
+  /set current_resist=100%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ###### SHRUGS %damtype ######%;\
-    /if ({analysis_report} =~ "on") /report_analysis %P1 100%;/endif%;\
+    /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
 
-/def report_analysis = \
 ;; analysis target is blast target (eg. Guard) and result is the result of the latest blast
-  /set analysis_target = {1}%;\
-  /set analysed_result = {2}%;\
 ;; If the target has changed, we will clear the old results
-  /if ({analysis_target} != {last_analysis_target})\
-    /set last_analysis_target = analysis_target%;\
+/def set_analysis = \
+  /if ({current_analysis_target} !~ {last_analysis_target})\
+    /set last_analysis_target=%current_analysis_target%;\
     /set elec_analysis=unknown%;\
     /set acid_analysis=unknown%;\
     /set asph_analysis=unknown%;\
     /set cold_analysis=unknown%;\
     /set fire_analysis=unknown%;\
-    /set report_message=""%;
+    /set pois_analysis=unknown%;\
+    /set mana_analysis=unknown%;\
+    /set report_message=%;\
   /endif%;\
-  /if ({used_type} =~ "ELEC" & ({elec_analysis} != "unknown" | {elec_analysis} != {analyzed_result}))\
-    /set elec_analysis=analysed_result%;\
-    /set report_message=$[strcat("Elec: "{elec_analysis}," ",{report_message})]%;
+  /if ({used_type}=~"ELEC" & {elec_analysis} !~ {current_resist})\
+    /set elec_analysis=%current_resist%;/do_report%;\
+  /elseif ({used_type}=~"ACID" & {acid_analysis} !~ {current_resist})\
+    /set acid_analysis=%current_resist%;/do_report%;\
+  /elseif ({used_type}=~"ASPH" & {asph_analysis} !~ {current_resist})\
+    /set asph_analysis=%current_resist%;/do_report%;\
+  /elseif ({used_type}=~"COLD" & {cold_analysis} !~ {current_resist})\
+    /set cold_analysis=%current_resist%;/do_report%;\
+  /elseif ({used_type}=~"FIRE" & {fire_analysis} !~ {current_resist})\
+    /set fire_analysis=%current_resist%;/do_report%;\
+  /elseif ({used_type}=~"MANA" & {mana_analysis} !~ {current_resist})\
+    /set mana_analysis=%current_resist%;/do_report%;\
+  /elseif ({used_type}=~"POIS" & {pois_analysis} != {current_resist})\
+    /set pois_analysis=%current_resist%;/do_report%;\
   /endif%;\
-  /if ({used_type} =~ "ACID" & ({acid_analysis} != "unknown" | {acid_analysis} != {analyzed_result}))\
-    /set acid_analysis=analysed_result%;
-    /set report_message=$[strcat("Acid: "{acid_analysis}," ",{report_message})]%;
-  /endif%;\
-  /if ({used_type} =~ "ASPH" & ({asph_analysis} != "unknown" | {asph_analysis} != {analyzed_result}))\
-    /set asph_analysis=analysed_result%;\
-    /set report_message=$[strcat("Asph: "{asph_analysis}," ",{report_message})]%;
-  /endif%;\
-  /if ({used_type} =~ "COLD" & ({cold_analysis} != "unknown" | {cold_analysis} != {analyzed_result}))\
-    /set cold_analysis=analysed_result%;\
-    /set report_message=$[strcat("Cold: "{cold_analysis}," ",{report_message})]%;
-  /endif%;\
-  /if ({used_type} =~ "FIRE" & ({fire_analysis} != "unknown" | {fire_analysis} != {analyzed_result}))\
-    /set fire_analysis=analysed_result%;\
-    /set report_message=$[strcat("Fire: "{fire_analysis}," ",{report_message})]%;
-  /endif%;\
-  /if ({used_type} =~ "MANA" & ({mana_analysis} != "unknown" | {mana_analysis} != {analyzed_result}))\
-    /set mana_analysis=analysed_result%;\
-    /set report_message=$[strcat("Mana: "{mana_analysis}," ",{report_message})]%;
-  /endif%;\
-  /if ({used_type} =~ "POIS" & ({pois_analysis} != "unknown" | {pois_analysis} != {analyzed_result}))\
-    /set pois_analysis=analysed_result%;\
-    /set report_message=$[strcat("Pois: "{pois_analysis}," ",{report_message})]%;
-  /endif%;\
-  @party report [{analysis_target}] Resists: [{report_message}]
 
+/def do_report=\
+  /set report_message=%;\
+  /if ({elec_analysis} !~ "unknown") /set report_message=$[strcat("Elec: ",{elec_analysis}," ",{report_message})]%;/endif%;\
+  /if ({acid_analysis} !~ "unknown") /set report_message=$[strcat("Acid: ",{acid_analysis}," ",{report_message})]%;/endif%;\
+  /if ({asph_analysis} !~ "unknown") /set report_message=$[strcat("Asph: ",{asph_analysis}," ",{report_message})]%;/endif%;\
+  /if ({cold_analysis} !~ "unknown") /set report_message=$[strcat("Cold: ",{cold_analysis}," ",{report_message})]%;/endif%;\
+  /if ({fire_analysis} !~ "unknown") /set report_message=$[strcat("Fire: ",{fire_analysis}," ",{report_message})]%;/endif%;\
+  /if ({mana_analysis} !~ "unknown") /set report_message=$[strcat("Mana: ",{mana_analysis}," ",{report_message})]%;/endif%;\
+  /if ({pois_analysis} !~ "unknown") /set report_message=$[strcat("Pois: ",{pois_analysis}," ",{report_message})]%;/endif%;\
+  @party report [%{current_analysis_target}] Resists: [%{report_message}]
 
 ;; Added this since sometimes I use commands that launch this manually
 /def -F -mglob -t"You utter the magic words \'cwician ysl\'" sparkbirth_cast_manual = /set spell=spark_birth

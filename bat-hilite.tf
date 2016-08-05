@@ -108,12 +108,12 @@
 /def -F -p5 -P1Cred -mregexp -t"(DEAD, R.I.P.)" dead_rip
 
 ;; Fire blasts
-/def -p6 -aCbgred -aBCyellow -mglob -t'* lava blast hits *' lava_blast
-/def -p6 -aCbgred -aBCyellow -mglob -t'* flame arrow hits *' flame_arrow
-/def -p6 -aCbgred -aBCyellow -mglob -t'* firebolt hits *' firebolt
-/def -p6 -aCbgred -aBCyellow -mglob -t'* fire blast hits *' fire_blast
+/def -F -p6 -aCbgred -aBCyellow -mglob -t'* lava blast hits *' lava_blast
+/def -F -p6 -aCbgred -aBCyellow -mglob -t'* flame arrow hits *' flame_arrow
+/def -F -p6 -aCbgred -aBCyellow -mglob -t'* firebolt hits *' firebolt
+/def -F -p6 -aCbgred -aBCyellow -mglob -t'* fire blast hits *' fire_blast
+/def -F -p6 -aCbgred -aBCyellow -mglob -t'* meteor blast hits *' meteor_blast
 /def -p6 -aCbgred -aBCyellow -mglob -t'* meteor swarm hits *' meteor_swarm
-/def -p6 -aCbgred -aBCyellow -mglob -t'* meteor blast hits *' meteor_blast
 /def -p6 -aCbgred -aBCyellow -mglob -t'* lava storm hits *' lava_storm
 /def -p6 -aCbgred -aBCyellow -mglob -t'* con fioco hits *' con_fiocio
 /def -p6 -aCbgred -aBCyellow -mglob -t'* gem fire hits *' gem_fire
@@ -121,34 +121,35 @@
 /def -p6 -aCbgred -aBCyellow -mglob -t'* hits * with * meteor swarm.' meteor_swarm_2
 
 ;; Cold blasts
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'* cold ray hits *' cold_ray
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'* chill touch hits *' chill_touch
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'* flaming ice hits *' flaming_ice
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'* darkfire hits *' darkfire
+/def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* cold ray hits *' cold_ray
+/def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* chill touch hits *' chill_touch
+/def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* flaming ice hits *' flaming_ice
+/def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* darkfire hits *' darkfire
+/def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* icebolt hits *' ice_bolt
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* cone of cold hits *' cone_cold
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'* icebolt hits *' ice_bolt
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* hail storm hits *' hail_storm
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* hoar frost hits *' hoar_frost
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* spark birth hits *' spark_birth_hits
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* rift pulse hits *' rift_pulse_hits
+/def -p6 -aCbgwhite -aBCcyan -mglob -t'* dimensional leech hits *' dimensional_leech_hits
 
 ;; Poison blasts
-/def -p6 -aCbggreen -aBCred -mglob -t'* thorn spray hits *' thorn_spray
-/def -p6 -aCbggreen -aBCred -mglob -t'* poison blast hits *' poison_blast
-/def -p6 -aCbggreen -aBCred -mglob -t'* venom strike hits *' venom_strike
+/def -F -p6 -aCbggreen -aBCred -mglob -t'* thorn spray hits *' thorn_spray
+/def -F -p6 -aCbggreen -aBCred -mglob -t'* poison blast hits *' poison_blast
+/def -F -p6 -aCbggreen -aBCred -mglob -t'* venom strike hits *' venom_strike
+/def -F -p6 -aCbggreen -aBCred -mglob -t'* power blast hits *' power_blast
+/def -F -p6 -aCbggreen -aBCred -mglob -t'* summon carnal spores hits *' carnal_spores
 /def -p6 -aCbggreen -aBCred -mglob -t'* poison spray hits *' poison_spray
-/def -p6 -aCbggreen -aBCred -mglob -t'* power blast hits *' power_blast
 /def -p6 -aCbggreen -aBCred -mglob -t'* killing cloud hits *' killing_cloud
-/def -p6 -aCbggreen -aBCred -mglob -t'* summon carnal spores hits *' carnal_spores
 /def -p6 -aCbggreen -aBCred -mglob -t'* splashes a bubbling red liquid onto {his|her|its} foe, causing a scream of pain!*' aelena_poison
 
 ;; Magical blasts
-/def -p6 -aCbgyellow -aBCred -mglob -t'* golden arrow hits *' golden_arrow
-/def -p6 -aCbgyellow -aBCred -mglob -t'* magic missile hits *' magic_missile
-/def -p6 -aCbgyellow -aBCred -mglob -t'* summon lesser spores hits *' lesser_spores
-/def -p6 -aCbgyellow -aBCred -mglob -t'* levin bolt hits *' levin_bolt
+/def -F -p6 -aCbgyellow -aBCred -mglob -t'* golden arrow hits *' golden_arrow
+/def -F -p6 -aCbgyellow -aBCred -mglob -t'* magic missile hits *' magic_missile
+/def -F -p6 -aCbgyellow -aBCred -mglob -t'* summon lesser spores hits *' lesser_spores
+/def -F -p6 -aCbgyellow -aBCred -mglob -t'* levin bolt hits *' levin_bolt
+/def -F -p6 -aCbgyellow -aBCred -mglob -t'* summon greater spores hits *' greater_spores
 /def -p6 -aCbgyellow -aBCred -mglob -t'* magic wave hits *' magic_wave
-/def -p6 -aCbgyellow -aBCred -mglob -t'* summon greater spores hits *' greater_spores
 /def -p6 -aCbgyellow -aBCred -mglob -t'* magic eruption hits *' magic_eruption
 /def -p6 -aCbgyellow -aBCred -mglob -t'* channelball hits *' channelball
 /def -p6 -aCbgyellow -aBCred -mglob -t'* star light hits *' star_light
@@ -174,35 +175,36 @@
 
 
 ;; Acid blasts
-/def -p6 -aCbgyellow -aBCgreen -mglob -t'* disruption hits *' disruption
-/def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid wind hits *' acid_wind
-/def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid arrow hits *' acid_arrow
+/def -F -p6 -aCbgyellow -aBCgreen -mglob -t'* disruption hits *' disruption
+/def -F -p6 -aCbgyellow -aBCgreen -mglob -t'* acid wind hits *' acid_wind
+/def -F -p6 -aCbgyellow -aBCgreen -mglob -t'* acid arrow hits *' acid_arrow
+/def -F -p6 -aCbgyellow -aBCgreen -mglob -t'* acid ray hits *' acid_ray
+/def -F -p6 -aCbgyellow -aBCgreen -mglob -t'* acid blast hits *' acid_blast
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid rain hits *' acid_rain1
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* with {his|her|its} acid rain.' acid_rain2
-/def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid ray hits *' acid_ray
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid storm hits *' acid_storm
-/def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid blast hits *' acid_blast
 
 ;; Electric blasts
-/def -p6 -aCbgblue -aBCyellow -mglob -t'* blast lightning hits *' blast_lightning
-/def -p6 -aCbgblue -aBCyellow -mglob -t'* shocking grasp hits *' shocking_grasp
-/def -p6 -aCbgblue -aBCyellow -mglob -t'* lightning bolt hits *' lightning_bolt
+;; Single mage blasts need to be fallthroug
+/def -F -p6 -aCbgblue -aBCyellow -mglob -t'* blast lightning hits *' blast_lightning
+/def -F -p6 -aCbgblue -aBCyellow -mglob -t'* shocking grasp hits *' shocking_grasp
+/def -F -p6 -aCbgblue -aBCyellow -mglob -t'* lightning bolt hits *' lightning_bolt
+/def -F -p6 -aCbgblue -aBCyellow -mglob -t'* forked lightning hits *' forked_lightning
+/def -F -p6 -aCbgblue -aBCyellow -mglob -t'* electrocution hits *' electrocution
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* chain lightning hits *' chain_lightning1
 /def -p6 -aCbgblue -aBCyellow -mglob -t'You hit * chain lightning' chain_lightning2
-/def -p6 -aCbgblue -aBCyellow -mglob -t'* forked lightning hits *' forked_lightning
-/def -p6 -aCbgblue -aBCyellow -mglob -t'* electrocution hits *' electrocution
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* storm lightning hits *' storm_lightning
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* channelbolt hits *' channelbolt
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* summon storm hits *' summon_storm
 
 ;; Asphx blasts
-/def -p6 -aCbgmagenta -aBCblue -mglob -t'* vacuumbolt hits *' vacuumbolt
-/def -p6 -aCbgmagenta -aBCblue -mglob -t'* suffocation hits *' suffocation
-/def -p6 -aCbgmagenta -aBCblue -mglob -t'* chaos bolt hits *' chaos_bolt
+/def -F -p6 -aCbgmagenta -aBCblue -mglob -t'* vacuumbolt hits *' vacuumbolt
+/def -F -p6 -aCbgmagenta -aBCblue -mglob -t'* suffocation hits *' suffocation
+/def -F -p6 -aCbgmagenta -aBCblue -mglob -t'* chaos bolt hits *' chaos_bolt
+/def -F -p6 -aCbgmagenta -aBCblue -mglob -t'* strangulation hits *' strangulation
+/def -F -p6 -aCbgmagenta -aBCblue -mglob -t'* blast vacuum hits *' blast_vacuum
 /def -p6 -aCbgmagenta -aBCblue -mglob -t'* vacuum ball hits *' vacuum_ball
-/def -p6 -aCbgmagenta -aBCblue -mglob -t'* strangulation hits *' strangulation
 /def -p6 -aCbgmagenta -aBCblue -mglob -t'* vacuum globe hits *' vacuum_globe
-/def -p6 -aCbgmagenta -aBCblue -mglob -t'* blast vacuum hits *' blast_vacuum
 
 ;; Psi blasts
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* mind blast hits *' mind_blast
