@@ -210,13 +210,6 @@
     /do_skill%;\
   /endif
 ;;                                                                            ;;
-;; Report shape                                                               ;;
-;; Add your favourite corpse disposal methods to end of                       ;;
-;; victim_is_dead                                                             ;;
-;/def make_report_shape=\
-;     /def -F -p9 -mregexp -t"^$[strcat(toupper(substr({*}, 0, 1)), substr({*}, 1))] is" report_shape=/if ({shape}!~{PR})/set shape=%%{PR}%%;/echo -aB -p (TF info) %%{PR}%%;/endif%;\
-;     /def -F -p5 -mregexp -t"$[strcat(toupper(substr({*}, 0, 1)), substr({*}, 1))] is DEAD, R.I.P." victim_is_dead=/set skill_rounds=DONE%%;save
-;;                                                                            ;;
 ;; Battle rounds (monitors skill progress)                                    ;;
 ;; /def -t'\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*' battle_rounds=\
 ;; Notice: at 18.2.2011 I noted that the rounds separator has changed:
@@ -254,7 +247,6 @@
 /def -F -p20 -t'You decide to change the skill to new one.' cast_stop2=/set skill_rounds=DONE%;/set start_flag=done%;/set skill_input=manual
 /def -F -p20 -t'Your movement prevents you from doing the skill.' movement=/set skill_rounds=DONE%;/set start_flag=done
 /def -F -p20 -t'You are not doing anything at the moment.' use_stop=/set skill_rounds=DONE%;/set start_flag=done
-;;/def -F -p15 -t"At who?" no_target=zz
 ;; Spells, works in same way as skills trigger
 ;; except you can specify targets based on offensive or
 ;; defensive spells
