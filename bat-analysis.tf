@@ -30,7 +30,7 @@
 
 
 ;; Analysis of magic lore messages, grab the target's short name from here
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,]+) screams in pain." scream_pain=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,]+) screams in pain\." scream_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=0%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
@@ -132,12 +132,12 @@
 /echo -aB *****      <dcrit UNSEEN>      *****%;\
 /echo -aB ************************************
 
-/def do_spell_stats=\
-@%{stats_inform} Critical statistics:
-@%{stats_inform} Total single offensive casts: %total_count_blasts
-@%{stats_inform} Dcrit1: %count_dcrit1 ($[(%total_count_blasts / %count_dcrit1)*100])
-@%{stats_inform} Dcrit2: %count_dcrit2 ($[(%total_count_blasts / %count_dcrit2)*100])
-@%{stats_inform} Dcrit3: %count_dcrit3 ($[(%total_count_blasts / %count_dcrit3)*100])
+/def spell_stats=\
+@%{stats_inform} Critical statistics:%;\
+@%{stats_inform} Total single offensive casts: %total_count_blasts%;\
+@%{stats_inform} Dcrit1: %count_dcrit1 ($[(%total_count_blasts / %count_dcrit1)*100])%;\
+@%{stats_inform} Dcrit2: %count_dcrit2 ($[(%total_count_blasts / %count_dcrit2)*100])%;\
+@%{stats_inform} Dcrit3: %count_dcrit3 ($[(%total_count_blasts / %count_dcrit3)*100])%;\
 
 /def anal=\
   /if (({1}=~"on") & ({2}=~"party"))\
@@ -160,13 +160,13 @@
     /echo -aB (TF info): damage analysis will be reported on party report channel (default) %;\
   /elseif (({1}=~"stats") & ({2}=~"party"))\
     /set stats_inform=party report%;\
-    /do_spell_stats%;\
+    /spell_stats%;\
   /elseif (({1}=~"stats") & ({2}=~"emote"))\
     /set stats_inform=party report%;\
-    /do_spell_stats%;\
+    /spell_stats%;\
   /elseif (({1}=~"stats") & ({2}!~""))\
     /set stats_inform=party report%;\
-    /do_spell_stats%;\
+    /spell_stats%;\
   /elseif ({1}=~"off")\
     /set analysis_report=off%;\
     /echo -aB (TF info): damage analysis iwill no longer be reported%;\
