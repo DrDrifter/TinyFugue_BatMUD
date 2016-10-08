@@ -29,7 +29,7 @@
 /def dl =/set targettype=off%;/set spell=dimensional_leech%;/set spell_rounds=3%;/do_spell %{*}
 /def dr =/set targettype=none%;/set spell=darkness%;/do_spell
 /def dre=/set targettype=none%;/set spell=dismiss_rift_entity%;/do_spell
-/def eec=/set targettype=none%;/set spell=establish_entity_control%;/do_spell
+/def eec=/set targettype=none%;/set spell=establish_entity_control%;/do_spell%;get ohjauskeppi from bp%;remove nova arcanum%;wield ohjauskeppi
 /def fab=/set targettype=prot%;/set spell=force_absorption%;/do_spell %{*}
 /def fl =/set targettype=prot%;/set spell=floating%;/do_spell %{*}
 /def inv=/set targettype=prot%;/set spell=invisibility%;/do_spell %{*}
@@ -43,6 +43,7 @@
 /def sre=/set targettype=sum%;/set spell=summon_rift_entity%;/do_spell %{*}
 /def tre=/set targettype=sum%;/set spell=transform_rift_entity%;/do_spell %{*}
 
+/def -mglob -t"You successfully establish control over your entity." entity_controlled = @put ohjauskeppi in bp;wear nova arcanum
 /def -t"(Fire|Air|Water|Earth) entity eats the last of its rift sparks, and starts to look around the room with a fierce hunger in its eyes." entity_hungry = @party report (entity needs sparks)
 
 ;; Redo rift skills

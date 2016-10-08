@@ -48,13 +48,14 @@
 /def ce  = /set targettype=misc%;/set spell=conjure_element%;/do_spell %{*}
 /def cf  = /set targettype=misc%;/set spell=create_food%;/do_spell .
 /def cle = /set targettype=misc%;/set spell=conjure_lesser_element%;/do_spell %{*}
-/def da  = /set targettype=misc%;/set spell=greater_darkness%;/do_spell .
+/def da  = /set targettype=none%;/set spell=greater_darkness%;/do_spell
 /def dmp = /set targettype=prot%;/set spell=dispel_magical_protection%;/do_spell %{*}
 /def id  = /set targettype=info%;/set spell=identify%;/do_spell %{*}
 /def iv  = /set targettype=prot%;/set spell=infravision%;/do_spell %{*}
 /def nf  = /set targettype=none%;/set spell=neutralize_field%;/do_spell
 /def qs  = /set targettype=prot%;/set spell=quicksilver%;/do_spell %{*}
 /def re  = /set targettype=prot%;/set spell=resist_entropy%;/do_spell %{*}
+/def rst = /set targettype=misc%;/set spell=restore%;/do_spell %{*}
 /def si  = /set targettype=prot%;/set spell=see_invisible%;/do_spell %{*}
 /def sl  = /set targettype=misc%;/set spell=shelter%;/do_spell .
 /def sm  = /set targettype=prot%;/set spell=see_magic%;/do_spell %{*}

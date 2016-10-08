@@ -15,6 +15,7 @@
 ;; To use this type /set auto_cast on
 ;; This casts of avoid ambush messages, if you doing get message, doesn't cast
 ;; If you wish to use this, put your damtypes here
+/set auto_type=off
 /set damtype1=electricity
 /set damtype2=acid
 /set damtype3=asphyxiation
@@ -40,7 +41,7 @@
 ;;
 ;; Auto change damtype, make sure they are defined in the list above
 /def change_damtype=\
-   /if ({auto_cast}=~"on")\
+   /if ({auto_cast}=~"on" & {auto_type}=~"on")\
      /if ({spells}=~$(/eval /_echo %%{%{damtype1}}))/dam %{damtype2}%;/ex%;\
      /elseif ({spells}=~$(/eval /_echo %%{%{damtype2}}))/dam %{damtype3}%;/ex%;\
      /elseif ({spells}=~$(/eval /_echo %%{%{damtype3}}))/dam %{damtype4}%;/ex%;\
@@ -61,7 +62,7 @@
      /endif%;\
    /endif
 ;;
-;; Dead recognition trig, changes damtype to 1st
+;; Dead recognition trig, might want to change damtype to 1st?
 /def -F -p5 -aCred -mregexp -t"(\
 moves on to happier hunting grounds.|\
 staggers for a moment|\
@@ -201,8 +202,10 @@ suddenly stops breathing and jerks a couple of times\
 /def hp =/set targettype=none%;/set spell=holding_pattern%;/do_spell
 /def hs =/set targettype=none%;/set spell=heal_self%;/do_spell
 /def inv=/set targettype=prot%;/set spell=invisibility%;/do_spell %{*}
-/def lb=/set targettype=misc%;/set spell=lock_biter%;/do_spell %{*}
+/def lb =/set targettype=misc%;/set spell=lock_biter%;/do_spell %{*}
+/def nof=/set targettype=none%;/set spell=noxious_fumes%;/do_spell
 /def mi =/set targettype=prot%;/set spell=mirror_image%;/do_spell %{*}
+/def ml =/set targettype=misc%;/set spell=magnetic_levitation%;/do_spell %{*}
 /def mns=/set targettype=none%;/set spell=moon_sense%;/do_spell
 /def pb =/set targettype=off%;/set spell=prismatic_burst%;/do_spell %{*}
 /def rd =/set targettype=prot%;/set spell=resist_disintegrate%;/do_spell %{*}
@@ -241,3 +244,4 @@ suddenly stops breathing and jerks a couple of times\
 ; Mage prots
 /createprot -t2 -n"MB" -w"You utter the magic words \'Ouch ouch ow oww!\'" -u"A glimmering white barrier surrounds you!" -d"The white barrier surrounding you sparkles and bursts into thousands of tiny stars!" -p"Mana Barrier"
 /createprot -t2 -n"HP" -w"You roll your eyes and chant \'niotalucaje erutamerp!\'" -u"You enter a trance, ready to unleash your powers." -d"You can\'t concentrate anymore, the trance ends." -p"Holding Pattern"
+/createprot -t2 -n"Nf" -w"You sweat murky green liquid and utter \'krkx murk arrsunt\'" -u"You squirm and struggle to keep composure as your glands start swell violently from the foul liquid gushing into them. With a burning sensation your skin begins releasing deadly gases." -d"The fumes dissipate from around you leaving only few moisty green sparkles on the ground." -p"Noxious Fumes"
