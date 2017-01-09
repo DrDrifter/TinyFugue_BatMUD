@@ -1,5 +1,5 @@
 ;; Skie
-/def -mglob -t"You BLEED and suffer." skie_special = @emote bleeding like a teenage working girl :'(
+/def -mglob -t"You BLEED and suffer." skie_special = say Kuka vei teiniltä tamppoonin? Mä vuodan! :'(
 
 ;; Henry stuff
 /def -mglob -t'Henry waves his hand over * and says \'BEGONE!\'' henry_banish = @party say Henry banished %{1}!
@@ -9,6 +9,9 @@
 
 ;; Jane
 /def -mglob -t'Jane the Goddess snaps her fingers and * is consumed by bright white light.' jane_banished = @party say Jane banished [ %{1} ] 
+
+;; Cavebeast
+/def -abB -t"Beast gets MAD as HELL and starts snarling at YOU!" beast_tart
 
 ;; Valentina
 

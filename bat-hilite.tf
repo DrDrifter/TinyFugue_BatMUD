@@ -43,6 +43,7 @@
 /def -F -p9 -aCred -t"{*} turns very pale and shivers as if {he|she|it} had just been poisoned." stouch_in
 /def -F -p6 -aBCgreen -t"*\'s flex shield wobbles." flexwork
 /def -F -p6 -aBCwhite -t"Magical barrier dissolves." havendown
+/def -F -p6 -aB -t"* acquires * from you\!" acuired_my_eq = @party report (WARNING: EQ ACQUIRED!)
 
 ;; Priestcrit
 /def -F -p9 -aB -aCwhite -t"* ..The power of Burglefloogah takes over *" habocrit
@@ -60,6 +61,7 @@
 /def -F -p9 -aB -aCwhite -t"Gods smile on * SUPERNATURAL glow takes over her tears of Oxtoth." nun_dcrit11
 /def -F -p9 -aB -aCwhite -t"Heavenly aura surrounds Entor as she releases the spell." nun_dcrit12
 /def -F -p9 -aB -aCwhite -t"Space-time continuum collapses as ENORMOUS wave of energy streams through *" nun_dcrit13
+/def -F -p9 -aB -aCwhite -t"* hands jolt as she draws TREMENDOUS amount of holy force from the surroundings." nun_dcrit14
 
 ;; Mage crits
 /def -F -p6 -aB -aCwhite -t"* fingertips are surrounded with swirling ENERGY as {he|she|it} casts the spell." see_damcrit2
@@ -111,14 +113,17 @@
 /def -F -p6 -aCbgred -aBCyellow -mglob -t'* lava blast hits *' lava_blast
 /def -F -p6 -aCbgred -aBCyellow -mglob -t'* flame arrow hits *' flame_arrow
 /def -F -p6 -aCbgred -aBCyellow -mglob -t'* firebolt hits *' firebolt
+/def -F -p6 -aCbgred -aBCyellow -mglob -t'* hits * with * fireball.' fireball
 /def -F -p6 -aCbgred -aBCyellow -mglob -t'* fire blast hits *' fire_blast
 /def -F -p6 -aCbgred -aBCyellow -mglob -t'* meteor blast hits *' meteor_blast
 /def -p6 -aCbgred -aBCyellow -mglob -t'* meteor swarm hits *' meteor_swarm
-/def -p6 -aCbgred -aBCyellow -mglob -t'* lava storm hits *' lava_storm
-/def -p6 -aCbgred -aBCyellow -mglob -t'* con fioco hits *' con_fiocio
-/def -p6 -aCbgred -aBCyellow -mglob -t'* gem fire hits *' gem_fire
-/def -p6 -aCbgred -aBCyellow -mglob -t'* channelburn hits *' channelburn
 /def -p6 -aCbgred -aBCyellow -mglob -t'* hits * with * meteor swarm.' meteor_swarm_2
+/def -p6 -aCbgred -aBCyellow -mglob -t'* lava storm hits *' lava_storm
+/def -p6 -aCbgred -aBCyellow -mglob -t'* hits * with * lava storm.' lava_storm_2
+/def -p6 -aCbgred -aBCyellow -mglob -t'You hit * with your lava storm.' lava_storm_3
+/def -F -p6 -aCbgred -aBCyellow -mglob -t'* con fioco hits *' con_fiocio
+/def -F -p6 -aCbgred -aBCyellow -mglob -t'* gem fire hits *' gem_fire
+/def -F -p6 -aCbgred -aBCyellow -mglob -t'* channelburn hits *' channelburn
 
 ;; Cold blasts
 /def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* cold ray hits *' cold_ray
@@ -127,7 +132,8 @@
 /def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* darkfire hits *' darkfire
 /def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* icebolt hits *' ice_bolt
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* cone of cold hits *' cone_cold
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'* hail storm hits *' hail_storm
+/def -p6 -aCbgwhite -aBCcyan -mglob -t'* hailstorm hits *' hail_storm
+/def -p6 -aCbgwhite -aBCcyan -mglob -t'You hit * with your hailstorm.' hail_storm_2
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* hoar frost hits *' hoar_frost
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* spark birth hits *' spark_birth_hits
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* rift pulse hits *' rift_pulse_hits
@@ -141,6 +147,7 @@
 /def -F -p6 -aCbggreen -aBCred -mglob -t'* summon carnal spores hits *' carnal_spores
 /def -p6 -aCbggreen -aBCred -mglob -t'* poison spray hits *' poison_spray
 /def -p6 -aCbggreen -aBCred -mglob -t'* killing cloud hits *' killing_cloud
+/def -p6 -aCbggreen -aBCred -mglob -t'You hit * with your killing cloud.' killing_cloud_2
 /def -p6 -aCbggreen -aBCred -mglob -t'* splashes a bubbling red liquid onto {his|her|its} foe, causing a scream of pain!*' aelena_poison
 
 ;; Magical blasts
@@ -151,6 +158,7 @@
 /def -F -p6 -aCbgyellow -aBCred -mglob -t'* summon greater spores hits *' greater_spores
 /def -p6 -aCbgyellow -aBCred -mglob -t'* magic wave hits *' magic_wave
 /def -p6 -aCbgyellow -aBCred -mglob -t'* magic eruption hits *' magic_eruption
+/def -p6 -aCbgyellow -aBCred -mglob -t'You hit * with your magic eruption.' magic_eruption_2
 /def -p6 -aCbgyellow -aBCred -mglob -t'* channelball hits *' channelball
 /def -p6 -aCbgyellow -aBCred -mglob -t'* star light hits *' star_light
 /def -p6 -aCbgyellow -aBCred -mglob -t'* wither flesh hits *' wither_flesh
@@ -161,14 +169,15 @@
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes with {sheer|terrific|blazing|purifying|immense} {rage|force|glow|power} upon *' dispel_evil_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes {mightily|hard} upon *' dispel_evil_hit2
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {bursting|slamming|detonating|exploding|popping|crashing} on *' holy_bolt_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {blowing|unbalancing|damaging|dispelling|disrupting|incinerating|rendering|annihilating|pulverizing} *' dispel_undead_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {annihilating|blowing|unbalancing|damaging|dispelling|disrupting|incinerating|rendering|pulverizing|shocking} *' dispel_undead_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*as one big burst, {badly|brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* emits fuming white aura around screaming * {badly|brutally} {burning|crushing} {him|her|it}' dispel_undead_hit3
 /def -p6 -aCbgyellow -aBCred -mglob -t'* DOUBLEs over in PAIN!' wither_hurts
 /def -p6 -aCbgyellow -aBCred -mglob -t'* celestial spark hits *' celestial_spark
 /def -p6 -aCbgyellow -aBCred -mglob -t'*as white lightning strikes through the air tickling *' holy_lance_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* word of destruction hits *' word_of_destruction_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'* dispel evil hits *' word_of_destruction_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* dispel evil hits *' dispel_evil_hits
+/def -p6 -aCbgyellow -aBCred -mglob -t'* ghost light hits *' ghost_light_hits
 ;;Smo frantically swings BURNING crucifix of Las and shrieks ' ¤Lassum¤ '
 ;;Smo is bathed in bright light as heavenly choir plays celestial fanfare. The universe halts as WRATH OF LAS
 ;;    thunders through Smo's sparkling BURNING crucifix of Las, cleansing Lich's soul by vaporizing the body!
@@ -183,6 +192,7 @@
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid rain hits *' acid_rain1
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* with {his|her|its} acid rain.' acid_rain2
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid storm hits *' acid_storm
+/def -p6 -aCbgyellow -aBCgreen -mglob -t'You hit * with your acid storm.' acid_storm2
 
 ;; Electric blasts
 ;; Single mage blasts need to be fallthroug
@@ -192,8 +202,9 @@
 /def -F -p6 -aCbgblue -aBCyellow -mglob -t'* forked lightning hits *' forked_lightning
 /def -F -p6 -aCbgblue -aBCyellow -mglob -t'* electrocution hits *' electrocution
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* chain lightning hits *' chain_lightning1
-/def -p6 -aCbgblue -aBCyellow -mglob -t'You hit * chain lightning' chain_lightning2
-/def -p6 -aCbgblue -aBCyellow -mglob -t'* storm lightning hits *' storm_lightning
+/def -p6 -aCbgblue -aBCyellow -mglob -t'You hit * with your chain lightning.' chain_lightning2
+/def -p6 -aCbgblue -aBCyellow -mglob -t'* lightning storm hits *' lightning_storm
+/def -p6 -aCbgblue -aBCyellow -mglob -t'You hit * with your lightning storm.' lightning_storm2
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* channelbolt hits *' channelbolt
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* summon storm hits *' summon_storm
 
@@ -205,6 +216,8 @@
 /def -F -p6 -aCbgmagenta -aBCblue -mglob -t'* blast vacuum hits *' blast_vacuum
 /def -p6 -aCbgmagenta -aBCblue -mglob -t'* vacuum ball hits *' vacuum_ball
 /def -p6 -aCbgmagenta -aBCblue -mglob -t'* vacuum globe hits *' vacuum_globe
+/def -p6 -aCbgmagenta -aBCblue -mglob -t'You hit * with your vacuum globe.' vacuum_globe2
+
 
 ;; Psi blasts
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* mind blast hits *' mind_blast
@@ -272,7 +285,6 @@
     /undef greed_plat%;\
     /undef greed_gold%;\
     /undef greed_head%;\
-    /undef greed_compass%;\
     /undef greed_mail%;\
     /undef greed_wings%;\
     /undef greed_dagger%;\
@@ -287,7 +299,6 @@
     /def -F -p3 -P0 -mregexp -t'^%{generic_amount_list} platinum coin' greed_plat = @get platinum%; \
     /def -F -p3 -P0 -mregexp -t'^%{generic_amount_list} gold coin' greed_gold = @get gold%; \
     /def -F -p3 -P0 -mregexp -t'^([Tt]he|%{generic_amount_list}) head.? of a (barbarian|troll)' greed_head = @get all head%;\
-    /def -F -p3 -P0 -mregexp -t'^an aquamarine compass' greed_compass = @get compass%;\
     /def -F -p9 -P0 -mregexp -t'^An old iron plate mail' greed_mail = @get mail%;\
     /def -F -p9 -P0 -mregexp -t'^a pair of insect wings' greed_wings = @get wings%;\
     /def -F -p9 -P0 -mregexp -t'^A very sharp dagger' greed_dagger = @get dagger%;\
@@ -431,23 +442,27 @@
 
 /def -mregexp -t'^([A-Za-z]+) twirls before you.' reportdg = /lastdg
 
+;
 ;special eq hilites, theyse are my own
+;
 /def -mglob -t"You feel a sharp stab in your finger as if something bit you!" tazbal_special = @party report (Stats boosted by ring)
 /def -mglob -t"Suddenly, the runes on the Shield of the Wind glow bright*" shield_of_wind = @party report (Wind special avail)
+/def -mglob -t"Your orb sparkles." orbready = @party report (Wind invoke reloaded)
 /def -mglob -t"You finish sucking the soul. You feel younger!" ripper_done = hh
 /def -mglob -t"The corpse isn't powerful enough for this." ripper_unable = hh
+/def -mglob -t"You feel strength flowing between you and *" ringkiss = /repeat -00:10 1 @party report (Ring kiss loaded)
 ;; Thundermace
-/def -mglob -aCbgblue -aBCyellow -t"* blazes with blue flames as a ray of lightning hits *" mace_special1
-/def -mglob -aCbgblue -aBCyellow -t"* sparkles under heavy magical pressure finally ZAPPING *" mace_special2
-/def -mglob -aCbgblue -aBCyellow -t"Air crackles around * as blue lightning electrocutes *" mace_special3
-/def -mglob -aCbgblue -aBCyellow -t"* fumes with electric power and hurls a ray of lightning*" mace_special4
-/def -mglob -aCbgblue -aBCyellow -t"* cuts deep into * flesh opening nasty wounds." mace_special5
-/def -mglob -aCbgblue -aBCyellow -t"You yell in trance, \'Glory to Curath\' and slashes *" mace_special6
-/def -mglob -aCbgblue -aBCyellow -t"* mace of Thunder in your hand is suddenly surrounded with bright blue*" mace_special7
-/def -mglob -aCbgblue -aBCyellow -t"You wave * mace of Thunder menacingly before *" mace_special8
-/def -mglob -aCbgblue -aBCyellow -t"The air around your * mace of Thunder is suddenly heavily*" mace_special9
-/def -mglob -aCbgblue -aBCyellow -t"The skies above open and ENORMOUS flash of lightning dashes down from the*" mace_special10
-/def -mglob -aCbgblue -aBCyellow -t"The skies above open and an ENORMOUS flash of lightning dashes down, SCORCHING*" mace_special11
+;/def -mglob -aCbgblue -aBCyellow -t"* blazes with blue flames as a ray of lightning hits *" mace_special1
+;/def -mglob -aCbgblue -aBCyellow -t"* sparkles under heavy magical pressure finally ZAPPING *" mace_special2
+;/def -mglob -aCbgblue -aBCyellow -t"Air crackles around * as blue lightning electrocutes *" mace_special3
+;/def -mglob -aCbgblue -aBCyellow -t"* fumes with electric power and hurls a ray of lightning*" mace_special4
+;/def -mglob -aCbgblue -aBCyellow -t"* cuts deep into * flesh opening nasty wounds." mace_special5
+;/def -mglob -aCbgblue -aBCyellow -t"You yell in trance, \'Glory to Curath\' and slashes *" mace_special6
+;/def -mglob -aCbgblue -aBCyellow -t"* mace of Thunder in your hand is suddenly surrounded with bright blue*" mace_special7
+;/def -mglob -aCbgblue -aBCyellow -t"You wave * mace of Thunder menacingly before *" mace_special8
+;/def -mglob -aCbgblue -aBCyellow -t"The air around your * mace of Thunder is suddenly heavily*" mace_special9
+;/def -mglob -aCbgblue -aBCyellow -t"The skies above open and ENORMOUS flash of lightning dashes down from the*" mace_special10
+;/def -mglob -aCbgblue -aBCyellow -t"The skies above open and an ENORMOUS flash of lightning dashes down, SCORCHING*" mace_special11
 ;; Empyrean
 /def -mglob -aCbgwhite -aBCcyan -t"Suddenly there are icicles flying from the blade of Empyrean towards *" empyrean_special1
 /def -mglob -aCbgyellow -aBCred -t"Holy power engulfs you as Empyrean unleashes it's wrath on *" empyrean_special2

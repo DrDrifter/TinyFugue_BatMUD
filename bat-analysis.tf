@@ -46,28 +46,28 @@
 /def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,]+) shudders from the force of the attack\." shudder=\
   /set current_analysis_target=%P1%;\
   /set current_resist=40%;\
-  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
+  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
   /echo -aB ### Target shudders %damtype (40\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
 /def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,]+) grunts from the pain\." grunt_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=60%;\
-  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
+  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
   /echo -aB ### GRUNTS %damtype (60\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
 /def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\'\,]+) winces a little from the pain\." winces=\
   /set current_analysis_target=%P1%;\
   /set current_resist=80%;\
-  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
+  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
   /echo -aB ### Target winces %damtype (80\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
 /def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\'\,]+) shrugs off the attack\." shrug=\
   /set current_analysis_target=%P1%;\
   /set current_resist=100%;\
-  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
+  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
   /echo -aB ###### SHRUGS %damtype ######%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif

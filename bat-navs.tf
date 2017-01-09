@@ -1,8 +1,8 @@
 ;;/require -q bat-generic.tf
-/def stars    =/set targettype=tele%;/set skill=stargazing%;/do_skill .
+/def stars    =/set targettype=none%;/set skill=stargazing%;/do_skill
 /def locmem   =/set targettype=tele%;/set skill=location_memory%;/do_skill remember %{*}
 /def locforget=/set targettype=tele%;/set skill=location_memory%;/do_skill forget %{*}
-/def dim      =/set targettype=none%;/set spell=dimension_door%;/do_spell .
+/def dim      =/set targettype=none%;/set spell=dimension_door%;/do_spell
 /def twie     =/set targettype=none%;/set spell=teleport_with_error%;/do_spell
 /def sum      =/set targettype=tele%;/set spell=summon%;/do_spell %{*}
 /def weye     =/set targettype=tele%;/set spell=wizard_eye%;/do_spell %{*}
@@ -11,6 +11,7 @@
 /def ban      =/set targettype=tele%;/set spell=banish%;/do_spell %{*}
 /def rel      =/set targettype=tele%;/set spell=relocate%;/do_spell %{*}
 /def go       =/set targettype=tele%;/set spell=go%;/do_spell %{*}
+/def gos      =/set targettype=tele%;/set spell=goto_ship%;/do_spell %{*}
 /def cannon   =/set targettype=tele%;/set spell=mobile_cannon%;/do_spell %{*}
 /def row      =/set targettype=none%;/set spell=rune_of_warding%;/do_spell .
 

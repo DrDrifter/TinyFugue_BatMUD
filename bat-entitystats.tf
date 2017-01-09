@@ -15,87 +15,87 @@
 /set summoned_entity_name=Yazaemon the fire entity
 
 ;; Bashing hits
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BARBARICALLY BASHES " cr_att26=/set crhit26=$[crhit26+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} CRUELLY CUFFS " cr_att25=/set crhit25=$[crhit25+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BRUTALLY BEATS " cr_att24=/set crhit24=$[crhit24+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} REALLY WHACKS " cr_att23=/set crhit23=$[crhit23+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} savagely strikes " cr_att22=/set crhit22=$[crhit22+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} savagely socks " cr_att21=/set crhit21=$[crhit21+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} horribly thrusts " cr_att20=/set crhit20=$[crhit20+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} badly smashes " cr_att19=/set crhit19=$[crhit19+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cruelly beats " cr_att18=/set crhit18=$[crhit18+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} smashes " cr_att17=/set crhit17=$[crhit17+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} beats " cr_att16=/set crhit16=$[crhit16+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} whacks " cr_att15=/set crhit15=$[crhit15+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} flails " cr_att14=/set crhit14=$[crhit14+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} knocks " cr_att13=/set crhit13=$[crhit13+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cuffs " cr_att12=/set crhit12=$[crhit12+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} socks " cr_att11=/set crhit11=$[crhit11+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} strikes " cr_att10=/set crhit10=$[crhit10+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} bashes " cr_att9=/set crhit9=$[crhit9+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} jabs " cr_att8=/set crhit8=$[crhit8+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} thrusts " cr_att7=/set crhit7=$[crhit7+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} strokes " cr_att6=/set crhit6=$[crhit6+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} thumps " cr_att5=/set crhit5=$[crhit5+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} bumps " cr_att4=/set crhit4=$[crhit4+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} butts " cr_att3=/set crhit3=$[crhit3+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} jostles " cr_att2 =/set crhit2=$[crhit2+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} lightly jostles " cr_att1 =/set crhit1=$[crhit1+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BARBARICALLY BASHES " cr_att26=/set crhit26=$[crhit26+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} CRUELLY CUFFS " cr_att25=/set crhit25=$[crhit25+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BRUTALLY BEATS " cr_att24=/set crhit24=$[crhit24+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} REALLY WHACKS " cr_att23=/set crhit23=$[crhit23+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} savagely strikes " cr_att22=/set crhit22=$[crhit22+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} savagely socks " cr_att21=/set crhit21=$[crhit21+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} horribly thrusts " cr_att20=/set crhit20=$[crhit20+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} badly smashes " cr_att19=/set crhit19=$[crhit19+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cruelly beats " cr_att18=/set crhit18=$[crhit18+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} smashes " cr_att17=/set crhit17=$[crhit17+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} beats " cr_att16=/set crhit16=$[crhit16+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} whacks " cr_att15=/set crhit15=$[crhit15+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} flails " cr_att14=/set crhit14=$[crhit14+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} knocks " cr_att13=/set crhit13=$[crhit13+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cuffs " cr_att12=/set crhit12=$[crhit12+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} socks " cr_att11=/set crhit11=$[crhit11+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} strikes " cr_att10=/set crhit10=$[crhit10+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} bashes " cr_att9=/set crhit9=$[crhit9+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} jabs " cr_att8=/set crhit8=$[crhit8+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} thrusts " cr_att7=/set crhit7=$[crhit7+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} strokes " cr_att6=/set crhit6=$[crhit6+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} thumps " cr_att5=/set crhit5=$[crhit5+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} bumps " cr_att4=/set crhit4=$[crhit4+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} butts " cr_att3=/set crhit3=$[crhit3+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} jostles " cr_att2 =/set crhit2=$[crhit2+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} lightly jostles " cr_att1 =/set crhit1=$[crhit1+1]
 ;; Cutting hits (slash)
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} CRUELLY DISMEMBERS " sl_att26=/set slhit26=$[slhit26+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} DISMEMBERS " sl_att25=/set slhit25=$[slhit25+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BARBARICALLY RENDS " sl_att24=/set slhit24=$[slhit24+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} CRUELLY RENDS " sl_att23=/set slhit23=$[slhit23+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} SAVAGELY SHREDS " sl_att22=/set slhit22=$[slhit22+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BRUTALLY TEARS " sl_att21=/set slhit21=$[slhit21+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} savagely rips " sl_att20=/set slhit20=$[slhit20+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} quickly cuts " sl_att19=/set slhit19=$[slhit19+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} uncontrollably slashes " sl_att18=/set slhit18=$[slhit18+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cruelly slashes " sl_att17=/set slhit17=$[slhit17+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} rives " sl_att16=/set slhit16=$[slhit16+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} savagely shaves " sl_att15=/set slhit15=$[slhit15+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cruelly tatters " sl_att14=/set slhit14=$[slhit14+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} slits " sl_att13=/set slhit13=$[slhit13+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} incisively tears " sl_att12=/set slhit12=$[slhit12+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} incisively cuts " sl_att11=/set slhit11=$[slhit11+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} slashes " sl_att10=/set slhit10=$[slhit10+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} horribly shreds " sl_att9=/set slhit9=$[slhit9+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} shreds " sl_att8=/set slhit8=$[slhit8+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} incises " sl_att7=/set slhit7=$[slhit7+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} tears " sl_att6=/set slhit6=$[slhit6+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cuts " sl_att5=/set slhit5=$[slhit5+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} lightly cuts " sl_att4=/set slhit4=$[slhit4+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} gashes " sl_att3=/set slhit3=$[slhit3+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} solidly slashes " sl_att2 =/set slhit2=$[slhit2+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} barely grazes " sl_att1 =/set slhit1=$[slhit1+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} CRUELLY DISMEMBERS " sl_att26=/set slhit26=$[slhit26+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} DISMEMBERS " sl_att25=/set slhit25=$[slhit25+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BARBARICALLY RENDS " sl_att24=/set slhit24=$[slhit24+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} CRUELLY RENDS " sl_att23=/set slhit23=$[slhit23+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} SAVAGELY SHREDS " sl_att22=/set slhit22=$[slhit22+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BRUTALLY TEARS " sl_att21=/set slhit21=$[slhit21+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} savagely rips " sl_att20=/set slhit20=$[slhit20+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} quickly cuts " sl_att19=/set slhit19=$[slhit19+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} uncontrollably slashes " sl_att18=/set slhit18=$[slhit18+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cruelly slashes " sl_att17=/set slhit17=$[slhit17+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} rives " sl_att16=/set slhit16=$[slhit16+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} savagely shaves " sl_att15=/set slhit15=$[slhit15+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cruelly tatters " sl_att14=/set slhit14=$[slhit14+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} slits " sl_att13=/set slhit13=$[slhit13+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} incisively tears " sl_att12=/set slhit12=$[slhit12+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} incisively cuts " sl_att11=/set slhit11=$[slhit11+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} slashes " sl_att10=/set slhit10=$[slhit10+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} horribly shreds " sl_att9=/set slhit9=$[slhit9+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} shreds " sl_att8=/set slhit8=$[slhit8+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} incises " sl_att7=/set slhit7=$[slhit7+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} tears " sl_att6=/set slhit6=$[slhit6+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cuts " sl_att5=/set slhit5=$[slhit5+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} lightly cuts " sl_att4=/set slhit4=$[slhit4+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} gashes " sl_att3=/set slhit3=$[slhit3+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} solidly slashes " sl_att2 =/set slhit2=$[slhit2+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} barely grazes " sl_att1 =/set slhit1=$[slhit1+1]
 ;; Stabbing hits
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BARBARICALLY PIERCES " pu_att26=/set puhit26=$[puhit26+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BRUTALLY BORES " pu_att25=/set puhit25=$[puhit25+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} CRUELLY RIDDLES " pu_att24=/set puhit24=$[puhit24+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} REALLY DRILLS " pu_att23=/set puhit23=$[puhit23+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} uncontrollably digs through " pu_att22=/set puhit22=$[puhit22+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} savagely shafts " pu_att21=/set puhit21=$[puhit21+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cruelly craters " pu_att20=/set puhit20=$[puhit20+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} powerfully pierces " pu_att19=/set puhit19=$[puhit19+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} powerfully perforates " pu_att18=/set puhit18=$[puhit18+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} drills " pu_att17=/set puhit17=$[puhit17+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} chasms " pu_att16=/set puhit16=$[puhit16+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} digs through " pu_att15=/set puhit15=$[puhit15+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} digs into " pu_att14=/set puhit14=$[puhit14+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} riddles " pu_att13=/set puhit13=$[puhit13+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} really pokes " pu_att12=/set puhit12=$[puhit12+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} gorges " pu_att11=/set puhit11=$[puhit11+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} shafts " pu_att10=/set puhit10=$[puhit10+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cavitates " pu_att9=/set puhit9=$[puhit9+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} craters " pu_att8=/set puhit8=$[puhit8+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} bores " pu_att7=/set puhit7=$[puhit7+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} sinks " pu_att6=/set puhit6=$[puhit6+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} punctures " pu_att5=/set puhit5=$[puhit5+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} pierces " pu_att4=/set puhit4=$[puhit4+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BARBARICALLY PIERCES " pu_att26=/set puhit26=$[puhit26+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} BRUTALLY BORES " pu_att25=/set puhit25=$[puhit25+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} CRUELLY RIDDLES " pu_att24=/set puhit24=$[puhit24+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} REALLY DRILLS " pu_att23=/set puhit23=$[puhit23+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} uncontrollably digs through " pu_att22=/set puhit22=$[puhit22+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} savagely shafts " pu_att21=/set puhit21=$[puhit21+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cruelly craters " pu_att20=/set puhit20=$[puhit20+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} powerfully pierces " pu_att19=/set puhit19=$[puhit19+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} powerfully perforates " pu_att18=/set puhit18=$[puhit18+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} drills " pu_att17=/set puhit17=$[puhit17+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} chasms " pu_att16=/set puhit16=$[puhit16+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} digs through " pu_att15=/set puhit15=$[puhit15+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} digs into " pu_att14=/set puhit14=$[puhit14+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} riddles " pu_att13=/set puhit13=$[puhit13+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} really pokes " pu_att12=/set puhit12=$[puhit12+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} gorges " pu_att11=/set puhit11=$[puhit11+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} shafts " pu_att10=/set puhit10=$[puhit10+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} cavitates " pu_att9=/set puhit9=$[puhit9+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} craters " pu_att8=/set puhit8=$[puhit8+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} bores " pu_att7=/set puhit7=$[puhit7+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} sinks " pu_att6=/set puhit6=$[puhit6+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} punctures " pu_att5=/set puhit5=$[puhit5+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} pierces " pu_att4=/set puhit4=$[puhit4+1]
 /def -p99 -mglob -t"You scratch your head." catch_emote
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} slightly pierces " pu_att3 =/set puhit3=$[puhit3+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} scratches " pu_att2=/set puhit2=$[puhit2+1]
-/def -Fp5 -mregexp -i -t"^%{summoned_entity_name} barely scratches " pu_att1=/set puhit1=$[puhit1+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} slightly pierces " pu_att3 =/set puhit3=$[puhit3+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} scratches " pu_att2=/set puhit2=$[puhit2+1]
+/eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} barely scratches " pu_att1=/set puhit1=$[puhit1+1]
 ;; unarmed 
 /eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} tickles " ma_att1=/set mahit1=$[mahit1+1]
 /eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} steps on " ma_att2=/set mahit2=$[mahit2+1]
@@ -124,11 +124,11 @@
 /eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} SAVAGELY BELLY SMASHES " ma_att25=/set mahit25=$[mahit25+1]
 /eval /def -Fp5 -mregexp -i -t"^%{summoned_entity_name} CRUELLY TIGER STRIKES " ma_att26=/set mahit26=$[mahit26+1]
 
-/eval /def -Fp1 -mglob -i -aBCblack -t"* successfully dodges %{summoned_entity_name}'s futile pierce." pu_dodges =/set hitdod=$[hitdod+1] 
-/eval /def -Fp1 -mglob -i -aBCblack -t"* successfully dodges %{summoned_entity_name}'s futile slash." sl_dodges =/set hitdod=$[hitdod+1]
-/eval /def -Fp1 -mglob -i -aBCblack -t"* successfully dodges %{summoned_entity_name}'s futile bash." cr_dodges =/set hitdod=$[hitdod+1]
+/eval /def -Fp1 -mglob -i -aBCblack -t"* successfully dodges %{summoned_entity_name}'s pierce." pu_dodges =/set hitdod=$[hitdod+1] 
+/eval /def -Fp1 -mglob -i -aBCblack -t"* successfully dodges %{summoned_entity_name}'s slash." sl_dodges =/set hitdod=$[hitdod+1]
+/eval /def -Fp1 -mglob -i -aBCblack -t"* successfully dodges %{summoned_entity_name}'s bash." cr_dodges =/set hitdod=$[hitdod+1]
 /eval /def -Fp1 -mglob -i -aBCblack -t"* successfully dodges %{summoned_entity_name}'s attack." ma_dodges =/set hitdod=$[hitdod+1]
-/eval /def -Fp1 -mglob -i -aBCblack -t"* successfully dodges %{summoned_entity_name}'s futile bludgeon" ua_dodges=/set hitdod=$[hitdod+1]
+/eval /def -Fp1 -mglob -i -aBCblack -t"* successfully dodges %{summoned_entity_name}'s bludgeon." ua_dodges=/set hitdod=$[hitdod+1]
 /eval /def -Fp1 -mglob -i -aBCblack -t"* successfully parries %{summoned_entity_name}'s pierce." pu_parries =/set hitpar=$[hitpar+1] 
 /eval /def -Fp1 -mglob -i -aBCblack -t"* successfully parries %{summoned_entity_name}'s slash." sl_parries =/set hitpar=$[hitpar+1] 
 /eval /def -Fp1 -mglob -i -aBCblack -t"* successfully parries %{summoned_entity_name}'s bash." cr_parries =/set hitpar=$[hitpar+1] 
@@ -142,60 +142,76 @@
 	/echo .......................................%;\
 	/echo -p BARBARIC. BEAT :@{h}%uahit26@{n} (@{h}%$[(uahit26*100)/total]\@{n}\%)   \
              CRUEL.DISMEMBER:@{h}%slhit26@{n} (@{h}%$[(slhit26*100)/total]\@{n}\%)   \
-             BARBARIC.PIERCE:@{h}%puhit26@{n} (@{h}%$[(puhit26*100)/total]\@{n}\%)%;\
+             BARBARIC.PIERCE:@{h}%puhit26@{n} (@{h}%$[(puhit26*100)/total]\@{n}\%)   \
+             CRUELLY STRIKE :@{h}%mahit26@{n} (@{h}%$[(mahit26*100)/total]\@{n}\%)%;\
 	/echo -p BRUTALLY BOOT  :@{h}%uahit25@{n} (@{h}%$[(uahit25*100)/total]\@{n}\%)   \
              DISMEMBER      :@{h}%slhit25@{n} (@{h}%$[(slhit25*100)/total]\@{n}\%)   \
-             BRUTALLY BORE  :@{h}%puhit25@{n} (@{h}%$[(puhit25*100)/total]\@{n}\%)%;\
+             BRUTALLY BORE  :@{h}%puhit25@{n} (@{h}%$[(puhit25*100)/total]\@{n}\%)   \
+             SAVAGELY SMASH :@{h}%mahit25@{n} (@{h}%$[(mahit25*100)/total]\@{n}\%)%;\
 	/echo -p REALLY SMASH   :@{h}%uahit24@{n} (@{h}%$[(uahit24*100)/total]\@{n}\%)   \
              BARBARICAL.REND:@{h}%slhit24@{n} (@{h}%$[(slhit24*100)/total]\@{n}\%)   \
-             CRUELLY RIDDLE :@{h}%puhit24@{n} (@{h}%$[(puhit24*100)/total]\@{n}\%)%;\
+             CRUELLY RIDDLE :@{h}%puhit24@{n} (@{h}%$[(puhit24*100)/total]\@{n}\%)   \
+             BRUTALLY TH.RIP:@{h}%mahit24@{n} (@{h}%$[(mahit24*100)/total]\@{n}\%)%;\
 	/echo -p Run into       :@{h}%uahit23@{n} (@{h}%$[(uahit23*100)/total]\@{n}\%)   \
              CRUELLY REND   :@{h}%slhit23@{n} (@{h}%$[(slhit23*100)/total]\@{n}\%)   \
-             REALLY DRILL   :@{h}%puhit23@{n} (@{h}%$[(puhit23*100)/total]\@{n}\%)%;\
+             REALLY DRILL   :@{h}%puhit23@{n} (@{h}%$[(puhit23*100)/total]\@{n}\%)   \
+             DEVASTATE      :@{h}%mahit23@{n} (@{h}%$[(mahit23*100)/total]\@{n}\%)%;\
 	/echo -p Bodyslam       :@{h}%uahit22@{n} (@{h}%$[(uahit22*100)/total]\@{n}\%)   \
              SAVAGELY SHRED :@{h}%slhit22@{n} (@{h}%$[(slhit22*100)/total]\@{n}\%)   \
-             Unc.dig through:@{h}%puhit22@{n} (@{h}%$[(puhit22*100)/total]\@{n}\%)%;\
+             Unc.dig through:@{h}%puhit22@{n} (@{h}%$[(puhit22*100)/total]\@{n}\%)   \
+             Leap,spin,KICK :@{h}%mahit22@{n} (@{h}%$[(mahit22*100)/total]\@{n}\%)%;\
 	/echo -p Roundhouse     :@{h}%uahit21@{n} (@{h}%$[(uahit21*100)/total]\@{n}\%)   \
              BRUTALLY TEAR  :@{h}%slhit21@{n} (@{h}%$[(slhit21*100)/total]\@{n}\%)   \
-             Savagely shaft :@{h}%puhit21@{n} (@{h}%$[(puhit21*100)/total]\@{n}\%)%;\
+             Savagely shaft :@{h}%puhit21@{n} (@{h}%$[(puhit21*100)/total]\@{n}\%)   \
+             Pummel,ch punch:@{h}%mahit21@{n} (@{h}%$[(mahit21*100)/total]\@{n}\%)%;\
 	/echo -p Svg triple-kick:@{h}%uahit20@{n} (@{h}%$[(uahit20*100)/total]\@{n}\%)   \
              Savagely rip   :@{h}%slhit20@{n} (@{h}%$[(slhit20*100)/total]\@{n}\%)   \
-             Cruelly crater :@{h}%puhit20@{n} (@{h}%$[(puhit20*100)/total]\@{n}\%)%;\
+             Cruelly crater :@{h}%puhit20@{n} (@{h}%$[(puhit20*100)/total]\@{n}\%)   \
+             Sname-strike   :@{h}%mahit20@{n} (@{h}%$[(mahit20*100)/total]\@{n}\%)%;\
 	/echo -p Dragon-punch   :@{h}%uahit19@{n} (@{h}%$[(uahit19*100)/total]\@{n}\%)   \
              Quickly cut    :@{h}%slhit19@{n} (@{h}%$[(slhit19*100)/total]\@{n}\%)   \
-             Power.pierce   :@{h}%puhit19@{n} (@{h}%$[(puhit19*100)/total]\@{n}\%)%;\
+             Power.pierce   :@{h}%puhit19@{n} (@{h}%$[(puhit19*100)/total]\@{n}\%)   \
+             Feint groin-rip:@{h}%mahit19@{n} (@{h}%$[(mahit19*100)/total]\@{n}\%)%;\
 	/echo -p Cruel. headbutt:@{h}%uahit18@{n} (@{h}%$[(uahit18*100)/total]\@{n}\%)   \
              Uncontrol.slash:@{h}%slhit18@{n} (@{h}%$[(slhit18*100)/total]\@{n}\%)   \
-             Power.perforate:@{h}%puhit18@{n} (@{h}%$[(puhit18*100)/total]\@{n}\%)%;\
+             Power.perforate:@{h}%puhit18@{n} (@{h}%$[(puhit18*100)/total]\@{n}\%)   \
+             Dragon-claw    :@{h}%mahit18@{n} (@{h}%$[(mahit18*100)/total]\@{n}\%)%;\
 	/echo -p headbutt       :@{h}%uahit17@{n} (@{h}%$[(uahit17*100)/total]\@{n}\%)   \
              Cruelly slash  :@{h}%slhit17@{n} (@{h}%$[(slhit17*100)/total]\@{n}\%)   \
-             Drill          :@{h}%puhit17@{n} (@{h}%$[(puhit17*100)/total]\@{n}\%)%;\
+             Drill          :@{h}%puhit17@{n} (@{h}%$[(puhit17*100)/total]\@{n}\%)   \
+             Jump side-kick :@{h}%mahit17@{n} (@{h}%$[(mahit17*100)/total]\@{n}\%)%;\
 	/echo -p Spin-kick      :@{h}%uahit16@{n} (@{h}%$[(uahit16*100)/total]\@{n}\%)   \
              Rive           :@{h}%slhit16@{n} (@{h}%$[(slhit16*100)/total]\@{n}\%)   \
-             Chasm   	    :@{h}%puhit16@{n} (@{h}%$[(puhit16*100)/total]\@{n}\%)%;\
+             Chasm   	    :@{h}%puhit16@{n} (@{h}%$[(puhit16*100)/total]\@{n}\%)   \
+             Spinn backfist :@{h}%mahit16@{n} (@{h}%$[(mahit16*100)/total]\@{n}\%)%;\
 	/echo -p Kidneypunch    :@{h}%uahit15@{n} (@{h}%$[(uahit15*100)/total]\@{n}\%)   \
              Savagely shave :@{h}%slhit15@{n} (@{h}%$[(slhit15*100)/total]\@{n}\%)   \
-             Dig through    :@{h}%puhit15@{n} (@{h}%$[(puhit15*100)/total]\@{n}\%)%;\
+             Dig through    :@{h}%puhit15@{n} (@{h}%$[(puhit15*100)/total]\@{n}\%)   \
+             Phx-eye punch  :@{h}%mahit15@{n} (@{h}%$[(mahit15*100)/total]\@{n}\%)%;\
 	/echo -p Uppercut       :@{h}%uahit14@{n} (@{h}%$[(uahit14*100)/total]\@{n}\%)   \
              Cruelly tatter :@{h}%slhit14@{n} (@{h}%$[(slhit14*100)/total]\@{n}\%)   \
-             Dig into       :@{h}%puhit14@{n} (@{h}%$[(puhit14*100)/total]\@{n}\%)%;\
+             Dig into       :@{h}%puhit14@{n} (@{h}%$[(puhit14*100)/total]\@{n}\%)   \
+             Spinn back kick:@{h}%mahit14@{n} (@{h}%$[(mahit14*100)/total]\@{n}\%)%;\
 	/echo -p Jump-kick      :@{h}%uahit13@{n} (@{h}%$[(uahit13*100)/total]\@{n}\%)   \
              Slit           :@{h}%slhit13@{n} (@{h}%$[(slhit13*100)/total]\@{n}\%)   \
-             Riddle  	    :@{h}%puhit13@{n} (@{h}%$[(puhit13*100)/total]\@{n}\%)%;\
+             Riddle  	    :@{h}%puhit13@{n} (@{h}%$[(puhit13*100)/total]\@{n}\%)   \
+             Back kick      :@{h}%mahit13@{n} (@{h}%$[(mahit13*100)/total]\@{n}\%)%;\
 	/echo -p Badly kick     :@{h}%uahit12@{n} (@{h}%$[(uahit12*100)/total]\@{n}\%)   \
              Inc. slash     :@{h}%slhit12@{n} (@{h}%$[(slhit12*100)/total]\@{n}\%)   \
-             Really poke    :@{h}%puhit12@{n} (@{h}%$[(puhit12*100)/total]\@{n}\%)%;\
+             Really poke    :@{h}%puhit12@{n} (@{h}%$[(puhit12*100)/total]\@{n}\%)   \
+             Joint-twist    :@{h}%mahit12@{n} (@{h}%$[(mahit12*100)/total]\@{n}\%)%;\
 	/echo -p Knee-kick      :@{h}%uahit11@{n} (@{h}%$[(uahit11*100)/total]\@{n}\%)   \
              Inc. cut       :@{h}%slhit11@{n} (@{h}%$[(slhit11*100)/total]\@{n}\%)   \
-             Gorge          :@{h}%puhit11@{n} (@{h}%$[(puhit11*100)/total]\@{n}\%)%;\
+             Gorge          :@{h}%puhit11@{n} (@{h}%$[(puhit11*100)/total]\@{n}\%)   \
+             Finger-jab     :@{h}%mahit11@{n} (@{h}%$[(mahit11*100)/total]\@{n}\%)%;\
 	/echo -p Stomp          :@{h}%uahit10@{n} (@{h}%$[(uahit10*100)/total]\@{n}\%)   \
              Slash          :@{h}%slhit10@{n} (@{h}%$[(slhit10*100)/total]\@{n}\%)   \
-             Shaft  	       :@{h}%puhit10@{n} (@{h}%$[(puhit10*100)/total]\@{n}\%)   \
+             Shaft          :@{h}%puhit10@{n} (@{h}%$[(puhit10*100)/total]\@{n}\%)   \
              Twist and throw:@{h}%mahit10@{n} (@{h}%$[(mahit10*100)/total]\@{n}\%)%;\
 	/echo -p Ankle-stomp    :@{h}%uahit9@{n} (@{h}%$[(uahit9*100)/total]\@{n}\%)   \
              Horribly shred :@{h}%slhit9@{n} (@{h}%$[(slhit9*100)/total]\@{n}\%)   \
              Cavitate  	    :@{h}%puhit9@{n} (@{h}%$[(puhit9*100)/total]\@{n}\%)   \
-             Foot-step  	    :@{h}%mahit9@{n} (@{h}%$[(mahit9*100)/total]\@{n}\%)%;\
+             Foot-step 	    :@{h}%mahit9@{n} (@{h}%$[(mahit9*100)/total]\@{n}\%)%;\
 	/echo -p Suckerpunch    :@{h}%uahit8@{n} (@{h}%$[(uahit8*100)/total]\@{n}\%)   \
              Shred          :@{h}%slhit8@{n} (@{h}%$[(slhit8*100)/total]\@{n}\%)   \
              Crater         :@{h}%puhit8@{n} (@{h}%$[(puhit8*100)/total]\@{n}\%)   \
