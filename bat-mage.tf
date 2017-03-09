@@ -9,6 +9,7 @@
 ;; Needs this file to run spell casting triggers
 /require -q bat-generic.tf
 /require -q bat-analysis.tf
+/require -q bat-status.tf
 ;; This is the tick reporting mode, spell points only
 /set sp_report=on
 ;; Auto caster
@@ -16,13 +17,13 @@
 ;; This casts of avoid ambush messages, if you doing get message, doesn't cast
 ;; If you wish to use this, put your damtypes here
 /set auto_type=off
-/set damtype1=electricity
-/set damtype2=acid
-/set damtype3=asphyxiation
-/set damtype4=magical
-/set damtype5=poison
-;/set damtype6=fire
-;/set damtype7=cold
+/set damtype1=asphyxiation
+/set damtype2=electricity
+/set damtype3=acid
+/set damtype4=fire
+/set damtype5=cold
+;/set damtype6=mana
+;/set damtype7=poison
 
 ;; Ambush trig
 /def -F -p9 -mregexp -t"(Your small size avoids a nasty ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!|Your knowledge about [A-Za-z' ]* tactics allows you to evade the ambush.|You superb intelligence enables you to avoid the ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!|The skilled leadership of [A-Za-z]+ saves you from ambush!)" auto_caster =\
@@ -164,10 +165,6 @@ suddenly stops breathing and jerks a couple of times\
 ;; Hi-lites
 /def -F -mglob -aB -t'Surge of power from your staff adds to the power of the spell.' staff_power1
 
-;; /def -F -p1 -aCbgcyan -aBCmagenta -t'You hit * with your psychic storm.' psychic_storm_cast
-;; /def -F -p1 -aCbgcyan -aBCmagenta -t'You hit * with your psychic shout.' psychic_shout_cast
-;; /def -F -p1 -aCbgcyan -aBCmagenta -t'You crush * mind with your psychic attack!' psychic_crush_cast
-
 ;; bind f-keys to damtypes
 ;/bind ^[[12~ = /dam electricity
 ;/bind ^[[13~ = /dam acid
@@ -176,11 +173,13 @@ suddenly stops breathing and jerks a couple of times\
 ;/bind ^[[17~ = /dam poison
 ;/bind ^[[18~ = /dam fire
 ;/bind ^[[19~ = /dam cold
-/def key_f2 = /dam electricity
-/def key_f3 = /dam acid
-/def key_f4 = /dam asphyxiation
-/def key_f5 = /dam magical
-/def key_f6 = /dam poison
+/def key_f2 = /dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
+/def key_f3 = /dam electricity%;@eqset wear elec%;/set eqsetstatus=INT
+/def key_f4 = /dam acid%;@eqset wear acid%;/set eqsetstatus=INT
+/def key_f5 = /dam fire%;@eqset wear cast%;/set eqsetstatus=INT
+/def key_f6 = /dam cold%;@eqset wear cast%;/set eqsetstatus=INT
+/def key_f17 = @eqset wear spr%;/set eqsetstatus=SPR
+/def key_f18 = @eqset wear prot%;/set eqsetstatus=WIS
 
 ;; bind quickblastkeys
 ;; Depending on your keyboard settings you might want to tweak this
@@ -192,24 +191,25 @@ suddenly stops breathing and jerks a couple of times\
 /def key_f11 = /ex .
 /bind § = /dg .
 
-/def as =/set targettype=prot%;/set spell=air_shield%;/do_spell %{*}
+/def as =/set targettype=misc%;/set spell=air_shield%;/do_spell %{*}
 /def dg =/set targettype=off%;/set spell=degenerate_person%;/do_spell %{*}
 /def dm =/set targettype=off%;/set spell=disrupt_magic%;/do_spell %{*}
-/def ev =/set targettype=prot%;/set spell=enhance_vision%;/do_spell %{*}
-/def fd =/set targettype=misc%;/set spell=floating_disc%;/do_spell my disc
-/def fl =/set targettype=prot%;/set spell=floating%;/do_spell %{*}
+/def ev =/set targettype=misc%;/set spell=enhance_vision%;/do_spell %{*}
+/def fd =/set targettype=disc%;/set spell=floating_disc%;/do_spell my disc
+/def fl =/set targettype=misc%;/set spell=floating%;/do_spell %{*}
 /def fw =/set targettype=item%;/set spell=feather_weight%;/do_spell %{*}
 /def hp =/set targettype=none%;/set spell=holding_pattern%;/do_spell
 /def hs =/set targettype=none%;/set spell=heal_self%;/do_spell
-/def inv=/set targettype=prot%;/set spell=invisibility%;/do_spell %{*}
+/def inv=/set targettype=misc%;/set spell=invisibility%;/do_spell %{*}
 /def lb =/set targettype=misc%;/set spell=lock_biter%;/do_spell %{*}
 /def nof=/set targettype=none%;/set spell=noxious_fumes%;/do_spell
-/def mi =/set targettype=prot%;/set spell=mirror_image%;/do_spell %{*}
+/def mi =/set targettype=misc%;/set spell=mirror_image%;/do_spell %{*}
 /def ml =/set targettype=misc%;/set spell=magnetic_levitation%;/do_spell %{*}
 /def mns=/set targettype=none%;/set spell=moon_sense%;/do_spell
 /def pb =/set targettype=off%;/set spell=prismatic_burst%;/do_spell %{*}
-/def rd =/set targettype=prot%;/set spell=resist_disintegrate%;/do_spell %{*}
+/def rd =/set targettype=misc%;/set spell=resist_disintegrate%;/do_spell %{*}
 /def sa =/set targettype=none%;/set spell=ship_armour%;/do_spell
+/def sf =/set targettype=misc%;/set spell=searing_fervor%;/do_spell %{*}
 /def uhl=/set targettype=misc%;/set spell=uncontrollable_hideous_laughter%;/do_spell %{*}
 /def twei=/set targettype=none%;/set spell=teleport_with_error%;/do_spell
 /def sum=/set targettype=tele%;/set spell=summon%;/do_spell %{*}
@@ -236,7 +236,7 @@ suddenly stops breathing and jerks a couple of times\
 ; You feel an inner warmth as you notice * starting to choke.
 
 ; Default to primary type
-/dam electricity
+/dam asphyxiation
 
 ;;
 ;; NB: FOR THIS TO WORK NEED protter.tf

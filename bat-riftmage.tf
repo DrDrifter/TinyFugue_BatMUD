@@ -122,7 +122,7 @@ $[10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*strlen(satkut)+10*strlen(ky
 /def -mglob -t"You successfully establish control over your entity." entity_controlled = @put ohjauskeppi in bp;wear nova arcanum
 /def -mregexp -t"(Fire|Air|Water|Earth|Magic) entity eats the last of its rift sparks, and starts to look around the room with a fierce hunger in its eyes." entity_hungry = @party report (Entity needs sparks)
 /def -mglob -t"You notice your entity's weapon glow with power!" entity_weapon_up = @party report (Entity weapon gained gem)
-/eval /def -mregexp -t"^%{fire_entity_name} (licks you\.|hugs you\.|cackles gleefully at you\.|slaps a thundering high-five with you\.|flexes its muscles before you\.|giggles inanely at you\.|screams happily\.|drools uncontrollably over you\.|lets out a yell of perverse delight as it feels the pain of battle\!|exclaims \'show me more pain master\!\')" fire_entity_got_critted = @gem cmd parry 51
+/eval /def -mregexp -t"^%{fire_entity_name} (licks you\.|hugs you\.|cackles gleefully at you\.|slaps a thundering high-five with you\.|flexes its muscles before you\.|giggles inanely at you\.|screams happily\.|drools uncontrollably over you\.|lets out a yell of perverse delight as it feels the pain of battle\!|exclaims \'show me more pain master\!\'|lets out a yell of BEASTIAL bliss as it feels the pain of battle\!)" fire_entity_got_critted = @gem cmd parry 51
 /eval /def -mregexp -t"^%{fire_entity_name}\'s battle joys come to an end." fire_entity_battlejoy_down = @gem cmd parry 0
 
 ;Yazaemon the fire entity giggles inanely at you.

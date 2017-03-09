@@ -133,7 +133,8 @@
 /def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* icebolt hits *' ice_bolt
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* cone of cold hits *' cone_cold
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* hailstorm hits *' hail_storm
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'You hit * with your hailstorm.' hail_storm_2
+/def -p6 -aCbgwhite -aBCcyan -mglob -t'* hits * with * hailstorm.' hail_storm_2
+/def -p6 -aCbgwhite -aBCcyan -mglob -t'You hit * with your hailstorm.' hail_storm_3
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* hoar frost hits *' hoar_frost
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* spark birth hits *' spark_birth_hits
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* rift pulse hits *' rift_pulse_hits
@@ -147,7 +148,8 @@
 /def -F -p6 -aCbggreen -aBCred -mglob -t'* summon carnal spores hits *' carnal_spores
 /def -p6 -aCbggreen -aBCred -mglob -t'* poison spray hits *' poison_spray
 /def -p6 -aCbggreen -aBCred -mglob -t'* killing cloud hits *' killing_cloud
-/def -p6 -aCbggreen -aBCred -mglob -t'You hit * with your killing cloud.' killing_cloud_2
+/def -p6 -aCbggreen -aBCred -mglob -t'* hits * with * killing cloud.' killing_cloud_2
+/def -p6 -aCbggreen -aBCred -mglob -t'You hit * with your killing cloud.' killing_cloud_3
 /def -p6 -aCbggreen -aBCred -mglob -t'* splashes a bubbling red liquid onto {his|her|its} foe, causing a scream of pain!*' aelena_poison
 
 ;; Magical blasts
@@ -158,20 +160,24 @@
 /def -F -p6 -aCbgyellow -aBCred -mglob -t'* summon greater spores hits *' greater_spores
 /def -p6 -aCbgyellow -aBCred -mglob -t'* magic wave hits *' magic_wave
 /def -p6 -aCbgyellow -aBCred -mglob -t'* magic eruption hits *' magic_eruption
-/def -p6 -aCbgyellow -aBCred -mglob -t'You hit * with your magic eruption.' magic_eruption_2
+/def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with * magic eruption.' magic_eruption_2
+/def -p6 -aCbgyellow -aBCred -mglob -t'You hit * with your magic eruption.' magic_eruption_3
 /def -p6 -aCbgyellow -aBCred -mglob -t'* channelball hits *' channelball
 /def -p6 -aCbgyellow -aBCred -mglob -t'* star light hits *' star_light
 /def -p6 -aCbgyellow -aBCred -mglob -t'* wither flesh hits *' wither_flesh
 /def -p6 -aCbgyellow -aBCred -mglob -t'You hit * with your earthquake.' earthquake_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with {his|her|its} earthquake.' earthquake2_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* a fuming symbol of purify appears into the forehead of *' saintly_touch_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with her flames of righteousness.' flames_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with {his|her|its} flames of righteousness.' flames_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with {his|her|its} holy wind.' holy_wind_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes with {sheer|terrific|blazing|purifying|immense} {rage|force|glow|power} upon *' dispel_evil_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes {mightily|hard} upon *' dispel_evil_hit2
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {bursting|slamming|detonating|exploding|popping|crashing} on *' holy_bolt_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {annihilating|blowing|unbalancing|damaging|dispelling|disrupting|incinerating|rendering|pulverizing|shocking} *' dispel_undead_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*as one big burst, {badly|brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* emits fuming white aura around screaming * {badly|brutally} {burning|crushing} {him|her|it}' dispel_undead_hit3
+/def -p6 -aCbgyellow -aBCred -mglob -t'* glimmers divinely as a blazing symbol of purify appears into the forehead of *' saintly_touch_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* is bathed in bright light as heavenly choir plays celestial fanfare. The universe halts as WRATH OF LAS thunders through *' wrath_of_las_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* DOUBLEs over in PAIN!' wither_hurts
 /def -p6 -aCbgyellow -aBCred -mglob -t'* celestial spark hits *' celestial_spark
 /def -p6 -aCbgyellow -aBCred -mglob -t'*as white lightning strikes through the air tickling *' holy_lance_hit
@@ -192,7 +198,8 @@
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid rain hits *' acid_rain1
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* with {his|her|its} acid rain.' acid_rain2
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid storm hits *' acid_storm
-/def -p6 -aCbgyellow -aBCgreen -mglob -t'You hit * with your acid storm.' acid_storm2
+/def -p6 -aCbgyellow -aBCgreen -mglob -t'* hits * with * acid storm.' acid_storm_2
+/def -p6 -aCbgyellow -aBCgreen -mglob -t'You hit * with your acid storm.' acid_storm_3
 
 ;; Electric blasts
 ;; Single mage blasts need to be fallthroug
@@ -204,7 +211,8 @@
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* chain lightning hits *' chain_lightning1
 /def -p6 -aCbgblue -aBCyellow -mglob -t'You hit * with your chain lightning.' chain_lightning2
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* lightning storm hits *' lightning_storm
-/def -p6 -aCbgblue -aBCyellow -mglob -t'You hit * with your lightning storm.' lightning_storm2
+/def -p6 -aCbgblue -aBCyellow -mglob -t'* hits * with * lightning storm.' lightning_storm_2
+/def -p6 -aCbgblue -aBCyellow -mglob -t'You hit * with your lightning storm.' lightning_storm_3
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* channelbolt hits *' channelbolt
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* summon storm hits *' summon_storm
 
@@ -216,7 +224,8 @@
 /def -F -p6 -aCbgmagenta -aBCblue -mglob -t'* blast vacuum hits *' blast_vacuum
 /def -p6 -aCbgmagenta -aBCblue -mglob -t'* vacuum ball hits *' vacuum_ball
 /def -p6 -aCbgmagenta -aBCblue -mglob -t'* vacuum globe hits *' vacuum_globe
-/def -p6 -aCbgmagenta -aBCblue -mglob -t'You hit * with your vacuum globe.' vacuum_globe2
+/def -p6 -aCbgmagenta -aBCblue -mglob -t'* hits * with * vacuum globe.' vacuum_globe_2
+/def -p6 -aCbgmagenta -aBCblue -mglob -t'You hit * with your vacuum globe.' vacuum_globe_3
 
 
 ;; Psi blasts
@@ -226,6 +235,7 @@
 /def -p7 -aCbgcyan -aBCmagenta -mglob -t'* mind disruption hits *' mind_disruption
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* psychic shout hits *' psychic_shout
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* psychic storm hits *' psychic_storm
+/def -p6 -aCbgcyan -aBCmagenta -mglob -t'* hits * with * psychic storm.' psychic_storm_2
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'A psychic crush hits *' psychic_crush4
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* crushes * mind with a powerful psychic attack!' psychic_crush
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* devastates * mind with {his|her|its} powers.' psychic_crush3

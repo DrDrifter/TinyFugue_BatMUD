@@ -2,16 +2,20 @@
 /def -mglob -t"You BLEED and suffer." skie_special = say Kuka vei teiniltä tamppoonin? Mä vuodan! :'(
 
 ;; Henry stuff
-/def -mglob -t'Henry waves his hand over * and says \'BEGONE!\'' henry_banish = @party say Henry banished %{1}!
+/def -mglob -t'Henry waves his hand over * and says \'BEGONE!\'' henry_banish = @party report Henry banished %{1}!
 
 ;; Soth special
-/def -mglob -t'* is overwhelmed with pain as Lord Soth casts a Death spell on *' soth_death = @party say [ %{1} ] is now DEATH target!
+/def -mglob -t'* is overwhelmed with pain as Lord Soth casts a Death spell on *' soth_death = @party report [ %{1} ] is now DEATH target!
 
 ;; Jane
-/def -mglob -t'Jane the Goddess snaps her fingers and * is consumed by bright white light.' jane_banished = @party say Jane banished [ %{1} ] 
+/def -mglob -t'Jane the Goddess snaps her fingers and * is consumed by bright white light.' jane_banished = @party report Jane banished [ %{1} ] 
 
 ;; Cavebeast
 /def -abB -t"Beast gets MAD as HELL and starts snarling at YOU!" beast_tart
+/def -t'Beast gets MAD as HELL and starts snarling at YOU!' throwtart = /repeat -3 1 @throw tart
+
+;; Megasaur
+/def -t'Megasaurlets out a fearful \*ROAR\*' megasaur_roared = @party report Watch out! Pekka Sauri tahtoo eduskuntaan!
 
 ;; Valentina
 
@@ -60,6 +64,10 @@
 /def -mglob -t'A chilling aura of holy power protects Rasael.' rasael_protected_cold = /echo -aB WARNING: NO COLD to RASAEL
 /def -mglob -t'A chilling aura of holy power protects Tobias.' tobias_protected_cold = /echo -aB WARNING: NO COLD to TOBIAS
 
+/def -mglob -t'^Cherub, a High Angel, blazing with divine flames of purity.' cherub1 = @party report SHOOT COLD TO CHERUB
+/def -mglob -t'^Cherub, a High Angel, enclosed in a crackling field of electricity.' cherub2 = @party report SHOOT MANA TO CHERUB
+/def -mglob -t'^Cherub, a High Angel, surrounded by a field of circulatin rocks and gravel.' cherub3 = @party report SHOOT ACID TO CHERUB
+/def -mglob -t'^Cherub, a High Angel, encapsulated by a vacillating layer water.' cherub4 = @party report SHOOT FIRE TO CHERUB
 ;; Define command:
 ;; command ll 'll' is a command-alias to 'grep -q 'is protected|is surrounded|protects' look at isabel;grep -q 'is protected|is surrounded|protects' look at tobias;grep -q 'is protected|is surrounded|protects' look at rasael'.
 ;;/def -mglob -t'\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\**' rounds_isabel = @ll

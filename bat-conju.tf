@@ -77,6 +77,7 @@
 /def -F -p15 -t"You perform the ceremony." ceremony_on=\
    /set ceremony_status=on
 /def -F -p15 -t"You start chanting." ceremony_off= /set ceremony_status=off
+/def -F -p15 -t"You start concentrating." ceremony_off_2= /set ceremony_status=off
 
 ;; Keybind ceremony to f12
 ;/bind ^[[24~ = /uc

@@ -44,7 +44,8 @@
 
 /def -F -i -mglob -t"You perform the ceremony." ceredonestatus=/set ceredone=C
 /def -F -i -mglob -t"You start chanting." cereoffstatus=/set ceredone=_
-/def -mglob -t"*Drifter spr set on." castmodestatus_spr=/set eqsetstatus=SPR
-/def -mglob -t"*Drifter wis set on." castmodestatus_wis=/set eqsetstatus=WIS
-/def -mglob -t"*Drifter int set on." castmodestatus_int=/set eqsetstatus=INT
+def -F -i -mglob -t"You start concentrating." cereoffstatus2=/set ceredone=_
+;; /def -mglob -t"*Drifter spr set on." castmodestatus_spr=/set eqsetstatus=SPR
+;; /def -mglob -t"*Drifter wis set on." castmodestatus_wis=/set eqsetstatus=WIS
+;; /def -mglob -t"*Drifter int set on." castmodestatus_int=/set eqsetstatus=INT
 
