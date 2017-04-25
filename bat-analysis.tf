@@ -1,5 +1,6 @@
 ;; BatMud
 ;; Supplementary triggers for all caster guilds that have analysis of magic lore
+;; Author: Drifter (drifter@bat.org)
 ;;
 /set analysis_report=off
 /set last_analysis_target=none
@@ -20,15 +21,15 @@
 ;; Yeah, right...
 /set count_unseen=0
 
-
 ;; Match used spell and damtype (only grab offensive mage singleblasts)
-/def -F -mregexp -t'^You watch with self-pride as your (vacuumbolt|suffocation|chaos bolt|strangulation|blast vacuum) hits *' used_asphyx_type= /set used_type=ASPH
-/def -F -mregexp -t'^You watch with self-pride as your (electrocution|blast lightning|shocking grasp|lightning bolt|forked lightning) hits *' used_elec_type= /set used_type=ELEC
-/def -F -mregexp -t'^You watch with self-pride as your (disruption|acid wind|acid arrow|acid ray|acid blast) hits *' used_acid_type= /set used_type=ACID
-/def -F -mregexp -t'^You watch with self-pride as your (flame arrow|firebolt|fire blast|meteor blast|lava blast) hits *' used_fire_type= /set used_type=FIRE
-/def -F -mregexp -t'^You watch with self-pride as your (chill touch|flaming ice|darkfire|icebolt|cold ray) hits *' used_cold_type= /set used_type=COLD
-/def -F -mregexp -t'^You watch with self-pride as your (magic missile|summon lesser spores|levin bolt|summon greater spores|golden arrow) hits *' used_mana_type= /set used_type=MANA
-/def -F -mregexp -t'^You watch with self-pride as your (thorn spray|poison blast|venom strike|power blast|summon carnal spores) hits *' used_poison_type= /set used_type=POIS
+;; NOTE: statistics only count MAGE spells
+/def -F -mregexp -t'^You watch with self-pride as your (vacuumbolt|suffocation|chaos bolt|strangulation|blast vacuum) hits *' used_asphyx_type= /set used_type=ASPH%;/set total_count_blasts=$[total_count_blasts+1]
+/def -F -mregexp -t'^You watch with self-pride as your (electrocution|blast lightning|shocking grasp|lightning bolt|forked lightning) hits *' used_elec_type= /set used_type=ELEC%;/set total_count_blasts=$[total_count_blasts+1]
+/def -F -mregexp -t'^You watch with self-pride as your (disruption|acid wind|acid arrow|acid ray|acid blast) hits *' used_acid_type= /set used_type=ACID%;/set total_count_blasts=$[total_count_blasts+1]
+/def -F -mregexp -t'^You watch with self-pride as your (flame arrow|firebolt|fire blast|meteor blast|lava blast) hits *' used_fire_type= /set used_type=FIRE%;/set total_count_blasts=$[total_count_blasts+1]
+/def -F -mregexp -t'^You watch with self-pride as your (chill touch|flaming ice|darkfire|icebolt|cold ray) hits *' used_cold_type= /set used_type=COLD%;/set total_count_blasts=$[total_count_blasts+1]
+/def -F -mregexp -t'^You watch with self-pride as your (magic missile|summon lesser spores|levin bolt|summon greater spores|golden arrow) hits *' used_mana_type= /set used_type=MANA%;/set total_count_blasts=$[total_count_blasts+1]
+/def -F -mregexp -t'^You watch with self-pride as your (thorn spray|poison blast|venom strike|power blast|summon carnal spores) hits *' used_poison_type= /set used_type=POIS%;/set total_count_blasts=$[total_count_blasts+1]
 
 ;; Added this since sometimes I use direct commands that launch this manually
 /def -F -mglob -t"You utter the magic words \'cwician ysl\'" sparkbirth_cast_manual = /set spell=spark_birth
@@ -103,6 +104,7 @@
     /set mana_analysis=unknown%;\
     /set report_message=%;\
   /endif%;\
+  /eval /def -F -p1 -mglob -t"%{current_analysis_target} is DEAD, R.I.P." clear_report_target = /set last_analysis_target=none%;\
   /if ({used_type}=~"ASPH" & {asph_analysis} !~ {current_resist})\
     /set asph_analysis=%current_resist%;/do_report%;\
   /elseif ({used_type}=~"ELEC" & {elec_analysis} !~ {current_resist})\
@@ -117,7 +119,7 @@
     /set mana_analysis=%current_resist%;/do_report%;\
   /elseif ({used_type}=~"POIS" & {pois_analysis} !~ {current_resist})\
     /set pois_analysis=%current_resist%;/do_report%;\
-  /endif%;\
+  /endif
 
 ;; Echo the actual result back however you want it to be reported
 ;; (Note: This can also be triggered manually if you want to report resists)
@@ -132,26 +134,39 @@
   /if ({asph_analysis} !~ "unknown") /set report_message=$[strcat("Asph: ",{asph_analysis},"% ",{report_message})]%;/endif%;\
   @%{analysis_inform} [%{current_analysis_target}] Resists: [%{report_message}]
 
-
 ;; Damage criticalities
+;; Note: does not count riftwalker crits
 /def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like your spell gained additional power." power=\
-/set count_dcrit1=$[count_dcrit1+1]%;/echo -aB ** <dcrit 1> **
+/if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
+/set count_dcrit1=$[count_dcrit1+1]%;/echo -aB ** <dcrit 1> **%;\
+/endif
 /def -F -mglob -aCbgyellow -aBCred -p15 -t"You feel like you managed to channel additional POWER to your spell." power2=\
-/set count_dcrit2=$[count_dcrit2+1]%;/echo -aB **** <dcrit 2> ****
+/if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
+/set count_dcrit2=$[count_dcrit2+1]%;/echo -aB **** <dcrit 2> ****%;\
+/endif
 /def -F -mglob -aCbgyellow -aBCred -p15 -t'Your fingertips are surrounded with swirling ENERGY as you cast the spell.' power3=\
-/set count_dcrit3=$[count_dcrit3+1]%;/echo -aB ****** <dcrit 3> ******
+/if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
+/set count_dcrit3=$[count_dcrit3+1]%;/echo -aB ****** <dcrit 3> ******%;\
+/endif
 /def -F -mglob -aCbgyellow -aBCred -p15 -t'Unseen BURSTS of magic are absorbed into the spell!' power4=\
 /set count_unseen=$[count_unseen+1]%;\
 /echo -aB ************************************%;\
 /echo -aB *****      <dcrit UNSEEN>      *****%;\
 /echo -aB ************************************
 
+;; Mage specials, to be added at some point
+; You feel in contact with the essence of asphyxiation.
+; You feel an inner warmth as you notice <target> starting to choke.
+; The electricity crackles all around <target>.
+
 /def spell_stats=\
+/let total_dcrit=$[%count_dcrit1+%count_dcrit2+%count_dcrit3]%;\
 @%{stats_inform} Critical statistics:%;\
 @%{stats_inform} Total single offensive casts: %total_count_blasts%;\
-@%{stats_inform} Dcrit1: %count_dcrit1 ($[(%total_count_blasts / %count_dcrit1)*100])%;\
-@%{stats_inform} Dcrit2: %count_dcrit2 ($[(%total_count_blasts / %count_dcrit2)*100])%;\
-@%{stats_inform} Dcrit3: %count_dcrit3 ($[(%total_count_blasts / %count_dcrit3)*100])%;\
+@%{stats_inform} Total dcrits: %total_dcrit ($[(%total_dcrit*100) / %total_count_blasts] \%)%;\
+@%{stats_inform} Dcrit1: %count_dcrit1 ($[(%count_dcrit1*100) / %total_count_blasts] \%)%;\
+@%{stats_inform} Dcrit2: %count_dcrit2 ($[(%count_dcrit2*100) / %total_count_blasts] \%)%;\
+@%{stats_inform} Dcrit3: %count_dcrit3 ($[(%count_dcrit3*100) / %total_count_blasts] \%)%;\
 
 /def anal=\
   /if (({1}=~"on") & ({2}=~"party"))\
@@ -176,9 +191,9 @@
     /set stats_inform=party report%;\
     /spell_stats%;\
   /elseif (({1}=~"stats") & ({2}=~"emote"))\
-    /set stats_inform=party report%;\
+    /set stats_inform=emote%;\
     /spell_stats%;\
-  /elseif (({1}=~"stats") & ({2}!~""))\
+  /elseif (({1}=~"stats") & ({2}=~""))\
     /set stats_inform=party report%;\
     /spell_stats%;\
   /elseif ({1}=~"off")\
@@ -188,4 +203,3 @@
     /echo -aB (TF info): damage analysis can be toggled either on or off.%;\
     /echo -aB (TF info): Usage: /anal [on|off|stats] (party|report|emote)%;\
   /endif
-

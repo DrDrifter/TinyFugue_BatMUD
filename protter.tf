@@ -24,7 +24,10 @@
 ;                                                                     ;
 ; I'll try to keep a changelog here of the version changes            ;
 ;                                                                     ;
-; Last modified 21.04.2016                                            ;
+; Last modified 16.02.2017                                            ;
+;                                                                     ;
+; Current Version 1.3.33                                              ;
+; - Added Searing Fervor (Fire mage special)                          ;
 ;                                                                     ;
 ; Current Version 1.3.32                                              ;
 ; - Added Air Shield (Asph mage special)                              ;
@@ -531,7 +534,7 @@
 ;;;;;;;;;
 ;; Nun ;;
 ;;;;;;;;;
-/createprot -r1 -t2 -n"PfE" -w"^[A-z]+ (furiously (wave|waves) (your|her) [A-z ]* and (utters|utter)|(stare|stares) intensively at [A-z ]* and (state|states)|(hop|hops) with one leg while praising Las and (utter|utters)|(roll|rolls) (your|her) eyes while rubbing halo and (sing|sings) out|(cut|cuts) the air with [A-z ]*, loudly reciting|(mutter|mutters) the holy words|(rub|rubs) (your|her) [A-z ]* while humbly reciting|(roll|rolls) (her|your) eyes while rubbing halo and (sing|sings) out|(raise|raises) (your|her) [A-z ]* toward the heavens and (recite|recites)|(cherish|cherishes) (your|her) [A-z ]+ and determinedly (chant|chants)|(touch|touches) (your|her) [A-z ]* and quickly (recite|recites)|fuming with celestial force (utter|utters) the words|(praise|praises) the saints and (raise|raises) [A-z ]* while exclaiming|(kiss|kisses) [A-z ]* while chanting|frantically (swing|swings) [A-z ]* and (shriek|shrieks)|(spread|spreads) white glow with (your|her) [A-z ]+ and (exclaim|exclaims)|(squeeze|squeezes) tightly on (your|her) [A-z ]* and (utter|utters)|(mutter|mutters) the magic words|(swing|swings) (your|her) [A-z ]* and humbly (utter|utters)|(wave|waves) [A-z ]* while praising Las and (exclaim|exclaims)|(raise|raises) (your|her) [A-z ]* while muttering|(hold|holds) (your|her) [A-z ]* close and humbly (mutter|mutters)|(kneel|kneels) down squeezing [A-z ]* and (recite|recites)|(raise|raises) [A-z ]* high in the air and (mutter|mutters)|(hold|holds) [A-z ]* tightly and (exclaim|exclaims)|(rub|rubs) [A-z ]* and (utters|utter) with sinister voice|(are|is) surrounded by fuming white aura as (you|she) (mutter|mutters)|(gaze|gazes) to the heights while holding [A-z ]* close and (utter|uttering)) \'sanctus Exzordus\'" -u"([A-z ]* with sheer power as you are surrounded)" -d"^(You suddenly feel more vulnerable to evil.|Your glow fades away and you suddenly feel more vulnerable to evil.)" -p"Protection from Evil"
+/createprot -r1 -t0 -n"PfE" -w"^[A-z]+ (furiously (wave|waves) (your|her) [A-z ]* and (utters|utter)|(stare|stares) intensively at [A-z ]* and (state|states)|(hop|hops) with one leg while praising Las and (utter|utters)|(roll|rolls) (your|her) eyes while rubbing halo and (sing|sings) out|(cut|cuts) the air with [A-z ]*, loudly reciting|(mutter|mutters) the holy words|(rub|rubs) (your|her) [A-z ]* while humbly reciting|(roll|rolls) (her|your) eyes while rubbing halo and (sing|sings) out|(raise|raises) (your|her) [A-z ]* toward the heavens and (recite|recites)|(cherish|cherishes) (your|her) [A-z ]+ and determinedly (chant|chants)|(touch|touches) (your|her) [A-z ]* and quickly (recite|recites)|fuming with celestial force (utter|utters) the words|(praise|praises) the saints and (raise|raises) [A-z ]* while exclaiming|(kiss|kisses) [A-z ]* while chanting|frantically (swing|swings) [A-z ]* and (shriek|shrieks)|(spread|spreads) white glow with (your|her) [A-z ]+ and (exclaim|exclaims)|(squeeze|squeezes) tightly on (your|her) [A-z ]* and (utter|utters)|(mutter|mutters) the magic words|(swing|swings) (your|her) [A-z ]* and humbly (utter|utters)|(wave|waves) [A-z ]* while praising Las and (exclaim|exclaims)|(raise|raises) (your|her) [A-z ]* while muttering|(hold|holds) (your|her) [A-z ]* close and humbly (mutter|mutters)|(kneel|kneels) down squeezing [A-z ]* and (recite|recites)|(raise|raises) [A-z ]* high in the air and (mutter|mutters)|(hold|holds) [A-z ]* tightly and (exclaim|exclaims)|(rub|rubs) [A-z ]* and (utters|utter) with sinister voice|(are|is) surrounded by fuming white aura as (you|she) (mutter|mutters)|(gaze|gazes) to the heights while holding [A-z ]* close and (utter|uttering)) \'sanctus Exzordus\'" -u"([A-z ]* with sheer power as you are surrounded)" -d"^(You suddenly feel more vulnerable to evil.|Your glow fades away and you suddenly feel more vulnerable to evil.)" -p"Protection from Evil"
 
 /createprot -r1 -t2 -n"Ss" -w"^[A-z]+ ((raise|raises) (your|her) [A-z ]* toward the heavens and (recite|recites)|(swing|swings) (your|her) [A-z ]* and humbly (utter|utters)|(cut|cuts) the air with [A-z ]*, loudly reciting|(stare|stares) intensively at [A-z ]* and (state|states)|(hop|hops) with one leg while praising Las and (utter|utters)|furiously (wave|waves) her [A-z ]* and (utter|utters)|(wave|waves) [A-z ]* while praising Las and (exclaim|exclaims)|(touch|touches) her pulsing halo and quickly (recite|recites)|(rub|rubs) [A-z ]* and (utter|utters) with sinister voice|(roll|rolls) (your|her) eyes while rubbing halo and (singing|sings) out|(kneel|kneels) down squeezing [A-z ]* and (recite|recites)|(mutter|mutters) the (holy|magic) words|(hold|holds) (your|her) [A-z ]* close and humbly (mutter|mutters)|(kiss|kisses) [A-z ]* while chanting|(praise|praises) the saints and (raise|raises) [A-z ]* while exclaiming|(squeeze|squeezes) tightly on her [A-z ]* and (utter|utters)|fuming with celestial force (utter|utters) the words|(spread|spreads) white glow with her [A-z ]* and (exclaim|exclaims)|frantically (swing|swings) [A-z ]* and (shriek|shrieks)|(are|is) surrounded by fuming white aura as (you|she) (mutter|mutters)|(gaze|gazes) to the heights while holding [A-z ]* and (utter|uttering)|(hold|holds) [A-z ]* tightly and (exclaim|exclaims)|(cherish|cherishes) (her|your) [A-z ]* and determinedly (chant|chants)|(raise|raises) (your|her) [A-z ]* while muttering) \'sanctus angeliq\'" -u"^([A-z]+ spiritually (reach|reaches) out for your soul, protecting it with holy force.|[A-z]+ (place|places) (your|her) hand over you and blesses your soul in the name of Las.)" -d"^(Your soul feels suddenly more vulnerable.)" -p"Soul shield"
 
@@ -539,7 +542,6 @@
 
 ;# Amd's Feather Cross flashes uncanny as you are suddenly surrounded by millions
 ;#of dazzling white particles dancing enchantedly around your body.
-
 
 /createprot -t2 -n"MS" -w"{*} * \'nullum driiiks umbah mana\'" -u"You feel your magical power expanding." -d"Your life force seems weaker." -p"Mana Shield"
 
@@ -607,6 +609,7 @@
 /createprot -t0 -n"IW" -w"{*} {utter|utters} the magic words \'nostaaaanndiz noszum\'" -u"You feel protected from being stunned." -d"You feel no longer protected from being stunned." -p"Iron Will"
 /createprot -t2 -n"AS" -w"{*} {draw|draws} a circle around {your|his|her|its} head with {your|his|her|its} fingertips while uttering \'ghht mar zrrprghh\'" -u"The circle forms an air mask before your face." -d"The air mask before your face vanishes." -p"Air shield"
 /createprot -t4 -n"Disint" -w"{*} {utter|utters} the magic words \'bii thee dzname uv tii blaaaz drazon\'" -u"You feel very firm." -d"You feel somewhat weaker." -p"Resist disintegrate"
+/createprot -t2 -n"SF" -w"{*} {draw|draws} a sphere of fire in the air while uttering \'fah mar nak prztrzz\'" -u"You feel uncomfortable warmth emanate within the bloodstream from your heart, slowly crawling its way through your body and limbs.  An oppressive feeling overcomes you as you can feel your heartbeat surge at the your fingertips.  Your heart must struggle to even out the temperature!" -d"The unnatural warmth evens out and stabilizes back to normal. As your fervor subsides, the exhaustion sets in." -p"Searing fervor"
 
 ; - Weak typeprots -
 /createprot -c -t0 -n"Acid" -w"{*} {utter|utters} the magic words \'sulphiraidzik hydrochloodriz gidz zuf\'" -u"" -d"A disgusting yellow flash momentarily surrounds you and then vanishes." -p"Corrosion Shield"
@@ -708,8 +711,6 @@
 ;/createprot -r1 -t2 -n"PbS" -w"^([A-z]+ kneel in front of [A-z]+ and whisper \'With my life I\'ll protect yours\'.|[A-z]+ kneels before you and whispers \'With my life I\'ll protect yours\'.)" -u"^(Soldier\'s vow has been given.|(He|She|It) stands up with a solemn look on (his|her|its) face.)" -d"^(You no longer protect *|[A-z]+ no longer protects you.)" -p"Protection by sacrifice"
 /createprot -r1 -t0 -n"PbS" -w"^(You kneel in front of [A-z]+ and whisper \'With my life I\'ll protect yours\'.|[A-z]+ kneels before you and whispers \'With my life I\'ll protect yours\'.)" -u"^(Soldier\'s vow has been given.)" -d"^(You no longer protect *|[A-z]+ no longer protects you.)" -p"Protection by sacrifice"
 /createprot -r1 -t0 -n"Images" -w"^([A-z]+ (break|breaks) up a mirror and (chant|chants) \'peilikuvia ja lasinsirpaleita\')" -u"^(Suddenly [a-z0-9]+ images of yourself appear.)" -d"^(All of your images vanish!|You have no more mirror images.)" -p"Mirror Image"
-;/createprot -c -t0 -n"Blur" -w"\'ziiiuuuuns wiz\'" -u"" -d"You feel less invisible." -p"Blurred image"
-;/createprot -c -t0 -n"Displacement" -w"\'diiiiuuunz aaanziz\'" -u"" -d"You feel less invisible." -p"Displacement"
 
 /def -aB -F -t'You perform the ceremony.' cere_up=\
  /let timenow=$[time()]%; \
@@ -737,7 +738,6 @@
 
 /def -p1 -aCgreen -t'^You shiver and suffer from POISON!!' poison = @party %output (Poisoned)
 /def -p1 -t'^You feel the poison leaving your veins!' poisongone = @party %output (Poison cured)
-;; /def -p1 -t'You feel no longer *' iwoff = @party %output (iw down) ;; Old iw down message
 /def -p1 -mregexp -t'^You feel that (.*) doesn\'t enjoy your presence\\.$' banish = @party say (%P1 banished me)
 /def -p1 -mregexp -t'^[A-z]+ disappears into thick air.' otherbanish = @party say (%-L4 was banished)
 /def -p1 -mregexp -t'^You feel relieved.' suppressoff = @party %output No longer suppressed
