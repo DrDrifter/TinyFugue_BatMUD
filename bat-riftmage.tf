@@ -137,5 +137,5 @@ $[10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*strlen(satkut)+10*strlen(ky
 /def -t'Entity sense: You feel the pain of your entity as it is stunned!' entity_is_stunned = @party report (Entity is STUNNED)
 /def -t'Entity sense: You feel free of your master but it leaves you feeling weak.' entity_ec_down = @party report (Entity Control down)
 /def -t'Entity sense: Your crystal clear shield fades out.' entity_aoa_down = @party report (Entity AOA down)
-/def -t'Entity sense: You feel no longer protected from being stunned.' entity_iw_down @party report (Entity IW down)
+/def -t'Entity sense: You feel no longer protected from being stunned.' entity_iw_down = @party report (Entity IW down)
 /def -t'Entity sense: A skin brown flash momentarily surrounds you and then vanishes.' entity_fabs_down = @party report (Entity fabs down)

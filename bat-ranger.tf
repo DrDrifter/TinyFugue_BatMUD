@@ -45,6 +45,7 @@
 /def -t"The fire burns out, spoiling anything in it." newfire = /fb
 /def -t"You fail to start the fire." fireagain = /fb
 /def -t"You use your knife and start skinning the corpse." leathercrafted = @remove knife%;@wield marion axe
+/def -t"No such item here." leathercraftnocorpse = @remove knife%;@wield marion axe
 ;;/def -t"You louse things up and break your flint." flintbroke = @party say (damnit, broke my flint!)
 
 ;; BFury messages:
