@@ -10,6 +10,7 @@
 /require -q bat-generic.tf
 /require -q bat-analysis.tf
 /require -q bat-status.tf
+/require -q bat-essencecount.tf
 ;; This is the tick reporting mode, spell points only
 /set sp_report=on
 ;; Auto caster
@@ -148,31 +149,12 @@ suddenly stops breathing and jerks a couple of times\
 /def ga=/set spell_number=6%;/set spell_rounds=4%;/get_spell %{*}
 ;; Excellent area
 /def ea=/set spell_number=7%;/set spell_rounds=6%;/get_spell %{*}
-;; Psionic
-;; /def -F -p20 -t"You clench your fists and yell 'tora tora tora'" psychic_crush_recast= /set spell=NOTHING%; /set spell_number=5%; /do_spell %{victim}
-
-;;
-;; Concealed
-
-; N.B. Commented out since no-one uses it anymore?
-;
-;/def -F -p15 -t"You surreptitiously conceal your spell casting." concealed=\
-;/if ({targettype}=~"off")\
-;   @party report (silent casting)%;\
-;/endif
 
 ;;
 ;; Hi-lites
 /def -F -mglob -aB -t'Surge of power from your staff adds to the power of the spell.' staff_power1
 
 ;; bind f-keys to damtypes
-;/bind ^[[12~ = /dam electricity
-;/bind ^[[13~ = /dam acid
-;/bind ^[[14~ = /dam asphyxiation
-;/bind ^[[15~ = /dam magical
-;/bind ^[[17~ = /dam poison
-;/bind ^[[18~ = /dam fire
-;/bind ^[[19~ = /dam cold
 /def key_f2 = /dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
 /def key_f3 = /dam electricity%;@eqset wear elec%;/set eqsetstatus=INT
 /def key_f4 = /dam acid%;@eqset wear acid%;/set eqsetstatus=INT
@@ -183,9 +165,6 @@ suddenly stops breathing and jerks a couple of times\
 
 ;; bind quickblastkeys
 ;; Depending on your keyboard settings you might want to tweak this
-;/bind ^[[20~ = /ea .
-;/bind ^[[21~ = /ex
-;/bind ^[[23~ = /ex .
 /def key_f9  = /ea .
 /def key_f10 = /ex
 /def key_f11 = /ex .
@@ -206,7 +185,7 @@ suddenly stops breathing and jerks a couple of times\
 /def mi =/set targettype=misc%;/set spell=mirror_image%;/do_spell %{*}
 /def ml =/set targettype=misc%;/set spell=magnetic_levitation%;/do_spell %{*}
 /def mns=/set targettype=none%;/set spell=moon_sense%;/do_spell
-/def pb =/set targettype=off%;/set spell=prismatic_burst%;/do_spell %{*}
+/def pb =/set targettype=off%;/set spell=prismatic_burst%;/do_spell %{*}%;@party report Arcane RaInBoW Fart -> %1
 /def rd =/set targettype=misc%;/set spell=resist_disintegrate%;/do_spell %{*}
 /def sa =/set targettype=none%;/set spell=ship_armour%;/do_spell
 /def sf =/set targettype=misc%;/set spell=searing_fervor%;/do_spell %{*}
@@ -229,11 +208,16 @@ suddenly stops breathing and jerks a couple of times\
 /echo -aB ############################
 ; Your knowledge in elemental powers helps you to save the reagent for further use.
 
+/def -aB -t"You masterfully channel the elemental powers." plaque_blast = @party report *** Plaque blast! ***
+
 ; cold
 ; Your icy whirlwind of magic numbs Scientist to the bone.
 
 ;asph
 ; You feel an inner warmth as you notice * starting to choke.
+
+;elec
+; The electricity JOLTS through the * worn by *!
 
 ; Default to primary type
 /dam asphyxiation
