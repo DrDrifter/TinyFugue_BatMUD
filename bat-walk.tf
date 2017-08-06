@@ -61,3 +61,7 @@
 /def skeep-roth=@travel s;travel s;4 s;15 se;15 e;20 se;20 e;5 se;S;SW;S;SW;W;nw;2 n
 /def roth-skeep=@2 s;se;E;NE;N;NE;N;n;travel nw;travel n;travel nw
 
+;; Luce
+/def luce-lore=@s;travel s;n;n
+/def lore-luce=@travel n;n
+/def lore-anthill=@2 w;nw;3 w;4 sw;2 s;8 sw;2 w;2 nw;6 w;4 nw;w;2 sw;2 w;sw;20 w;7 w;3 nw;4 w;6 nw;7 ne;3 n
