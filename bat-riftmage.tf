@@ -1,10 +1,5 @@
 ;; BatMUD
-;; Triggers for use with mage guild
-;; Also incorporates psionic offensive spells
-;; Jenny@bat.org 1998
-;;
-;; Modified and maintained by Drifter since 1999->?
-;; No changelog but meddled with lotsa stuff
+;; Triggers for use with riftwalker
 ;;
 ;; Needs this file to run spell casting triggers
 /require -q bat-generic.tf
@@ -19,7 +14,7 @@
 /def -F -mglob -aB -t"* entity starts concentrating on a new offensive skill." entti_offuskilli_hilite
 /def -F -mglob -ag -t"Your entity doesn't know that skill." gag_skilli
 /def -F -mglob -t'Your hold on *\'s life energy slips away.' sparkbirth_off= @party report Spark birth down on %4
-/def -F -mglob -aB -t'You bring the channelling to an end, and the dark shadow around Efriiti starts to dissipate.' dimleech_ends
+/def -F -mglob -aB -t'You bring the channelling to an end, and the dark shadow around * starts to dissipate.' dimleech_ends
 
 ;; Spells
 /def am =/set targettype=none%;/set spell=absorbing_meld%;/do_spell
@@ -46,30 +41,31 @@
 
 
 ;; Redo rift skills
-/eval /def -mregexp -t"^%{fire_entity_name} strikes its opponent a glancing blow to the shield arm." fire_entity_redo_skill1 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"^%{fire_entity_name} SMASHES .+ kneecap!"                                     fire_entity_redo_skill2 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"^%{fire_entity_name} quickly strikes its opponent's exposed weapon hand!"     fire_entity_redo_skill3 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"^%{fire_entity_name} swings widely, striking its enemy's instep."             fire_entity_redo_skill4 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"^%{fire_entity_name} carefully strikes foe's exposed thigh!"                  fire_entity_redo_skill5 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"^%{fire_entity_name} .+ weapon aside, and strikes at the opening!"            fire_entity_redo_skill6 = @gem cmd use blazing sunder
-/eval /def -mregexp -t".+ howls in pain as %{fire_entity_name} smashes .+"                           fire_entity_redo_skill7 = @gem cmd use blazing sunder
-/eval /def -mregexp -t".+ wails in agony as %{fire_entity_name} strikes .+"                          fire_entity_redo_skill8 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"^%{fire_entity_name} feints high, then swiftly strikes low!"                  fire_entity_redo_skill9 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"^%{fire_entity_name} trikes out, slashing a ragged wound in .+ forehead!"     fire_entity_redo_skill10 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"^%{fire_entity_name} pummels .+ in the jaw!"                                  fire_entity_redo_skill11 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"^%{fire_entity_name} quickly steps forward and strikes .+ in the temple!"     fire_entity_redo_skill12 = @gem cmd use blazing sunder
-/eval /def -mregexp -t".+ eyes bulge with pain as %{fire_entity_name} strikes .+"                    fire_entity_redo_skill13 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"%{fire_entity_name} delivers a crushing blow to .+ windpipe!"                 fire_entity_redo_skill14 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"%{fire_entity_name} ducks aside and delivers a stout blow to .+ head!"        fire_entity_redo_skill15 = @gem cmd use blazing sunder
-/eval /def -mregexp -t"You hear a muffled crunch, as %{fire_entity_name} smashes .+ collarbone!"     fire_entity_redo_skill16 = @gem cmd use blazing sunder
-/def -F -mglob -t"Your fire entity does some strange combat maneuver but doesn't hit anything."      fire_entity_missed_redo = @gem cmd use blazing sunder
-/def -F -mglob -t"Your entity loses its concentration and cannot do the skill."  any_entity_skill_broke = @gem cmd use blazing sunder;@gem cmd use suffocating embrace;@gem cmd use subjugating backwash;@gem cmd use earthen cover
-/def -F -mglob -t"Your air entity falters and its wispy tendrils fall to its sides."  air_entity_redo_skill = @gem cmd use suffocating embrace
-/def -F -mglob -t"Your water entity stops glowing and its skin becomes still."  water_entity_redo_skill = @gem cmd use subjugating backwash
-/def -F -mglob -t"Your earth entity hunches down looking much less solid than a second ago."  earth_entity_redo_skill = @gem cmd use earthen cover
-/def -F -mglob -t"Your magic entity starts to move more normally." magic_entity_redo_skill = @gem cmd use wondrous stimulus
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} strikes its opponent a glancing blow to the shield arm." fire_entity_redo_skill1 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} SMASHES .+ kneecap!"                                     fire_entity_redo_skill2 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} quickly strikes its opponent's exposed weapon hand!"     fire_entity_redo_skill3 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} swings widely, striking its enemy's instep."             fire_entity_redo_skill4 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} carefully strikes foe's exposed thigh!"                  fire_entity_redo_skill5 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} .+ weapon aside, and strikes at the opening!"            fire_entity_redo_skill6 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t".+ howls in pain as %{fire_entity_name} smashes .+"                           fire_entity_redo_skill7 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t".+ wails in agony as %{fire_entity_name} strikes .+"                          fire_entity_redo_skill8 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} feints high, then swiftly strikes low!"                  fire_entity_redo_skill9 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} trikes out, slashing a ragged wound in .+ forehead!"     fire_entity_redo_skill10 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} pummels .+ in the jaw!"                                  fire_entity_redo_skill11 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} quickly steps forward and strikes .+ in the temple!"     fire_entity_redo_skill12 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t".+ eyes bulge with pain as %{fire_entity_name} strikes .+"                    fire_entity_redo_skill13 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} delivers a crushing blow to .+ windpipe!"                fire_entity_redo_skill14 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} ducks aside and delivers a stout blow to .+ head!"       fire_entity_redo_skill15 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"You hear a muffled crunch, as %{fire_entity_name} smashes .+ collarbone!"     fire_entity_redo_skill16 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} strikes .+ chest REALLY hard!"                           fire_entity_redo_skill17 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t".+ blood splatters on you as %{fire_entity_name} strikes .+ temple!"          fire_entity_redo_skill18 = @gem cmd use blazing sunder
+/def -pmaxpri -F -mglob -t"Your fire entity does some strange combat maneuver but doesn't hit anything."      fire_entity_missed_redo = @gem cmd use blazing sunder
+/def -pmaxpri -F -mglob -t"Your entity loses its concentration and cannot do the skill."  any_entity_skill_broke = @gem cmd use blazing sunder;@gem cmd use suffocating embrace;@gem cmd use subjugating backwash;@gem cmd use earthen cover
+/def -pmaxpri -F -mglob -t"Your air entity falters and its wispy tendrils fall to its sides."          air_entity_redo_skill = @gem cmd use suffocating embrace
+/def -pmaxpri -F -mglob -t"Your water entity stops glowing and its skin becomes still."                water_entity_redo_skill = @gem cmd use subjugating backwash
+/def -pmaxpri -F -mglob -t"Your earth entity hunches down looking much less solid than a second ago."  earth_entity_redo_skill = @gem cmd use earthen cover
+/def -pmaxpri -F -mglob -t"Your magic entity starts to move more normally."                            magic_entity_redo_skill = @gem cmd use wondrous stimulus
 /def -ag -t"You do not have an entity to control, try summoning one." no_entity_no_target
-
 
 ;; Ceremony
 /set ceremony_status off

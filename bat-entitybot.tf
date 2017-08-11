@@ -78,23 +78,45 @@
 /def -mglob -t"The bald mole is on guard"                      perinsmole16 = @kk mole
 /def -mglob -t"The cute fluffy mole thinks its a guard"        perinsmole17 = @kk mole
 /def -mglob -t"a large mole digger is here avoiding work"      perinsmole18 = @kk mole
+/def -mglob -t"A little mole prances around"                   perinsmole19 = @kk mole
+/def -mglob -t"A skinny little mole prince is here"            perinsmole20 = @kk mole
 /def -mglob -t"a huge vorth stands here happily eating the stone" perinsvorth1 = @kk vorth
 /def -mglob -t"a huge female vorth is here"                       perinsvorth2 = @kk vorth
 
 ;; Smurville
-/def -mglob -t"a blue smurf with white pants on"          smurville1 = @kk smurf
-/def -mglob -t"a smurf kicking some small stones"         smurville2 = @kk smurf
-/def -mglob -t"an angry smurf stomping around here"       smurville3 = @kk smurf
-/def -mglob -t"Smurfette, the girl smurf"                 smurville4 = @kk smurf
-/def -mglob -t"the present-maker smurf is working with his presents here" smurville5 = @kk smurf
-/def -mglob -t"a baker-smurf, the cook and baker of Smurville" smurville6 = @kk smurf
-/def -mglob -t"a smurf wearing a black belt walks here"   smurville7 = @kk smurf
-/def -mglob -t"an inventive smurf is scratching his head here" smurville8 = @kk smurf
-/def -mglob -t"a smurf with a white beard and red pants"  smurville9 = @kk smurf
-/def -mglob -t"a blue smurf"                              smurville10 = @kk smurf
-/def -mglob -t"a dreamer smurf daydreaming a dream"       smurville11 = @kk smurf
-/def -mglob -t"Azriel, Gargamel's cat"                    smurville12 = @kk cat
-/def -mglob -t"a nasty human wizard called Gargamel"      smurville13 = @kk wizard
+/def -F -mglob -t"a blue smurf with white pants on"          smurville1 = @kk smurf
+/def -F -mglob -t"a smurf kicking some small stones"         smurville2 = @kk smurf
+/def -F -mglob -t"an angry smurf stomping around here"       smurville3 = @kk smurf
+/def -F -mglob -t"Smurfette, the girl smurf"                 smurville4 = @kk smurf
+/def -F -mglob -t"the present-maker smurf is working with his presents here" smurville5 = @kk smurf
+/def -F -mglob -t"a baker-smurf, the cook and baker of Smurville" smurville6 = @kk smurf
+/def -F -mglob -t"a smurf wearing a black belt walks here"   smurville7 = @kk smurf
+/def -F -mglob -t"an inventive smurf is scratching his head here" smurville8 = @kk smurf
+/def -F -mglob -t"a smurf with a white beard and red pants"  smurville9 = @kk smurf
+/def -F -mglob -t"a blue smurf"                              smurville10 = @kk smurf
+/def -F -mglob -t"a dreamer smurf daydreaming a dream"       smurville11 = @kk smurf
+/def -F -mglob -t"Azriel, Gargamel's cat"                    smurville12 = @kk cat
+/def -F -mglob -t"a nasty human wizard called Gargamel"      smurville13 = @kk wizard
+
+;; Eowyns
+/def -F -mglob -t"A moose standing calmly"                         eowyns1 = @kk moose
+/def -F -mglob -t"An owl stares intensively at you"                eowyns2 = @kk owl
+/def -F -mglob -t"A large * pigeon dozes on the ground"            eowyns3 = @kk pigeon
+/def -F -mglob -t"A woodpecker hammering an old oak with its beak" eowyns4 = @kk pecker
+/def -F -mglob -t"A * bunny hops around"                           eowyns5 = @kk bunny
+/def -F -mglob -t"A rabid wild-boar"                               eowyns6 = @kk boar
+/def -F -mglob -t"A * fox hides on the bushes"                     eowyns7 = @kk fox
+/def -F -mglob -t"A mole furiously digging a hole"                 eowyns8 = @kk mole
+/def -F -mglob -t"A huge black ant"                                eowyns9 = @kk ant
+/def -F -mglob -t"A tiny ant"                                      eowyns10 = @kk ant
+/def -F -mglob -t"A long green snake wriggles smoothly"            eowyns11 = @kk snake 
+/def -F -mglob -t"A * goat chewing grass intensively"              eowyns12 = @kk goat
+/def -F -mglob -t"A royal deer of the King"                        eowyns13 = @kk deer 
+/def -F -mglob -t"A majestic deer of the King"                     eowyns14 = @kk deer 
+/def -F -mglob -t"A large * tortoise"                              eowyns15 = @kk tortoise
+/def -F -mglob -t"A goldfish glimmering on the sun"                eowyns16 = @kk fish
+/def -F -mglob -t"A cute duckling paddles happily"                 eowyns17 = @kk duck
+/def -F -mglob -t"A white beautiful swan"                          eowyns18 = @kk swan
 
 ;; NForest
 /def -mglob -t"Small slimy kobold muttering something"     nforest01 = @kk kobold
@@ -132,6 +154,14 @@
 /def -mglob -t"a winged serpent meditates here"                 mguild26 = @kk couatl
 /def -mglob -t"a frost giant visiting the complex"              mguild27 = @kk giant
 /def -mglob -t"an ice elemental"                                mguild28 = @kk elemental
+
+/def -mglob -t"An orphan process, looking for something to attach itself to." clock1 = /sb orphan
+/def -mglob -t"This strange object seems to be floating in space."            clock2 = /sb object
+/def -mglob -t"A small error"                                                 clock3 = /sb error
+/def -mglob -t"Baby Lag Monster, gumming up the works"                        clock4 = @kk baby
+/def -mglob -t"A newbie wizard"                                               clock5 = @kk wizard
+/def -mglob -t"A Bat, carrying messages"                                      clock6 = /sb bat
+/def -mglob -t"A Big Error"                                                   clock7 = /sb error
 
 /def -mglob -t"Zorb starts skinning the corpse."                skinnedcorpse = @crap
 /def -mglob -t"Zorb takes her knife and starts doing something rather disgusting with the corpse." skinnedcorpse2 = @crap
@@ -176,6 +206,18 @@
  /undef beastlands11%;\
  /undef beastlands12%;\
  /undef beastlands13%;\
+ /undef beastlands14%;\
+ /undef beastlands15%;\
+ /undef beastlands16%;\
+ /undef beastlands17%;\
+ /undef beastlands18%;\
+ /undef beastlands19%;\
+ /undef beastlands20%;\
+ /undef beastlands21%;\
+ /undef beastlands22%;\
+ /undef beastlands23%;\
+ /undef beastlands24%;\
+ /undef beastlands25%;\
  /undef perinsmole1%;\
  /undef perinsmole2%;\
  /undef perinsmole3%;\
@@ -194,6 +236,8 @@
  /undef perinsmole16%;\
  /undef perinsmole17%;\
  /undef perinsmole18%;\
+ /undef perinsmole19%;\
+ /undef perinsmole20%;\
  /undef perinsvorth1%;\
  /undef perinsvorth2%;\
  /undef smurville1%;\
@@ -209,10 +253,63 @@
  /undef smurville11%;\
  /undef smurville12%;\
  /undef smurville13%;\
+ /undef eowyns1%;\
+ /undef eowyns2%;\
+ /undef eowyns3%;\
+ /undef eowyns4%;\
+ /undef eowyns5%;\
+ /undef eowyns6%;\
+ /undef eowyns7%;\
+ /undef eowyns8%;\
+ /undef eowyns9%;\
+ /undef eowyns10%;\
+ /undef eowyns11%;\
+ /undef eowyns12%;\
+ /undef eowyns13%;\
+ /undef eowyns14%;\
+ /undef eowyns15%;\
+ /undef eowyns16%;\
+ /undef eowyns17%;\
+ /undef eowyns18%;\
  /undef nforest01%;\
  /undef nforest02%;\
  /undef nforest03%;\
  /undef nforest04%;\
  /undef nforest05%;\
+ /undef mguild01%;\
+ /undef mguild02%;\
+ /undef mguild03%;\
+ /undef mguild04%;\
+ /undef mguild05%;\
+ /undef mguild06%;\
+ /undef mguild07%;\
+ /undef mguild08%;\
+ /undef mguild09%;\
+ /undef mguild10%;\
+ /undef mguild11%;\
+ /undef mguild12%;\
+ /undef mguild13%;\
+ /undef mguild14%;\
+ /undef mguild15%;\
+ /undef mguild16%;\
+ /undef mguild17%;\
+ /undef mguild18%;\
+ /undef mguild19%;\
+ /undef mguild20%;\
+ /undef mguild21%;\
+ /undef mguild22%;\
+ /undef mguild23%;\
+ /undef mguild24%;\
+ /undef mguild25%;\
+ /undef mguild26%;\
+ /undef mguild27%;\
+ /undef mguild28%;\
+ /undef clock1%;\
+ /undef clock2%;\
+ /undef clock3%;\
+ /undef clock4%;\
+ /undef clock5%;\
+ /undef clock6%;\
+ /undef clock7%;\
  /undef skinnedcorpse%;\
- /undef skinnedcorpse
+ /undef skinnedcorpse2
