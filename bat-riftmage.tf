@@ -6,7 +6,6 @@
 /require -q bat-analysis.tf
 ;; This is the tick reporting mode, spell points only
 /set sp_report=on
-;;/set fire_entity_name=Fire entity
 /set fire_entity_name=Yazaemon the fire entity
 
 ;; Hi-lites
@@ -68,7 +67,7 @@
 /def -ag -t"You do not have an entity to control, try summoning one." no_entity_no_target
 
 ;; Ceremony
-/set ceremony_status off
+/set ceremony_status=off
 /def uc=\
    /if ({ceremony_status}=~"off")\
      /set skill=ceremony%;\
@@ -120,14 +119,6 @@ $[10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*strlen(satkut)+10*strlen(ky
 /def -mglob -t"You notice your entity's weapon glow with power!" entity_weapon_up = @party report (Entity weapon gained gem)
 /eval /def -mregexp -t"^%{fire_entity_name} (licks you\.|hugs you\.|cackles gleefully at you\.|slaps a thundering high-five with you\.|flexes its muscles before you\.|giggles inanely at you\.|screams happily\.|drools uncontrollably over you\.|lets out a yell of perverse delight as it feels the pain of battle\!|exclaims \'show me more pain master\!\'|lets out a yell of BEASTIAL bliss as it feels the pain of battle\!)" fire_entity_got_critted = @gem cmd parry 51
 /eval /def -mregexp -t"^%{fire_entity_name}\'s battle joys come to an end." fire_entity_battlejoy_down = @gem cmd parry 0
-
-;Yazaemon the fire entity giggles inanely at you.
-
-;Yazaemon the fire entity slaps a thundering high-five with you.
-;Yazaemon the fire entity screams happily.
-;Yazaemon the fire entity drools uncontrollably over you.
-;Yazaemon the fire entity lets out a yell of perverse delight as it feels the pain of battle!
-;Yazaemon the fire entity's battle joys come to an end.
 
 ;; Reports
 /def -t'Entity sense: You feel the pain of your entity as it is stunned!' entity_is_stunned = @party report (Entity is STUNNED)

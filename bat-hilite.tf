@@ -13,7 +13,6 @@
 ;;                                                                            ;;
 
 /set matching=glob
-/set draconian_breath=unknown
 
 ;; Castle dirs to ease movement
 /def up = door u open ;;u ;;door d locked
@@ -120,7 +119,7 @@
 /def -p6 -aCbgred -aBCyellow -mglob -t'* hits * with * meteor swarm.' meteor_swarm_2
 /def -p6 -aCbgred -aBCyellow -mglob -t'* lava storm hits *' lava_storm
 /def -p6 -aCbgred -aBCyellow -mglob -t'* hits * with * lava storm.' lava_storm_2
-/def -p6 -aCbgred -aBCyellow -mglob -t'You hit * with your lava storm.' lava_storm_3
+/def -F -p6 -aCbgred -aBCyellow -mglob -t'You hit * with your lava storm.' lava_storm_3
 /def -F -p6 -aCbgred -aBCyellow -mglob -t'* con fioco hits *' con_fiocio
 /def -F -p6 -aCbgred -aBCyellow -mglob -t'* gem fire hits *' gem_fire
 /def -F -p6 -aCbgred -aBCyellow -mglob -t'* channelburn hits *' channelburn
@@ -134,7 +133,7 @@
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* cone of cold hits *' cone_cold
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* hailstorm hits *' hail_storm
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* hits * with * hailstorm.' hail_storm_2
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'You hit * with your hailstorm.' hail_storm_3
+/def -F -p6 -aCbgwhite -aBCcyan -mglob -t'You hit * with your hailstorm.' hail_storm_3
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* hoar frost hits *' hoar_frost
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* spark birth hits *' spark_birth_hits
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* rift pulse hits *' rift_pulse_hits
@@ -149,7 +148,7 @@
 /def -p6 -aCbggreen -aBCred -mglob -t'* poison spray hits *' poison_spray
 /def -p6 -aCbggreen -aBCred -mglob -t'* killing cloud hits *' killing_cloud
 /def -p6 -aCbggreen -aBCred -mglob -t'* hits * with * killing cloud.' killing_cloud_2
-/def -p6 -aCbggreen -aBCred -mglob -t'You hit * with your killing cloud.' killing_cloud_3
+/def -F -p6 -aCbggreen -aBCred -mglob -t'You hit * with your killing cloud.' killing_cloud_3
 /def -p6 -aCbggreen -aBCred -mglob -t'* splashes a bubbling red liquid onto {his|her|its} foe, causing a scream of pain!*' aelena_poison
 
 ;; Magical blasts
@@ -161,13 +160,14 @@
 /def -p6 -aCbgyellow -aBCred -mglob -t'* magic wave hits *' magic_wave
 /def -p6 -aCbgyellow -aBCred -mglob -t'* magic eruption hits *' magic_eruption
 /def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with * magic eruption.' magic_eruption_2
-/def -p6 -aCbgyellow -aBCred -mglob -t'You hit * with your magic eruption.' magic_eruption_3
+/def -F -p6 -aCbgyellow -aBCred -mglob -t'You hit * with your magic eruption.' magic_eruption_3
 /def -p6 -aCbgyellow -aBCred -mglob -t'* channelball hits *' channelball
 /def -p6 -aCbgyellow -aBCred -mglob -t'* star light hits *' star_light
 /def -p6 -aCbgyellow -aBCred -mglob -t'* wither flesh hits *' wither_flesh
 /def -p6 -aCbgyellow -aBCred -mglob -t'You hit * with your earthquake.' earthquake_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with {his|her|its} earthquake.' earthquake2_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'* a fuming symbol of purify appears into the forehead of *' saintly_touch_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* a {blazing|fuming} symbol of purify appears into the forehead of *' saintly_touch_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'* saintly touch hits *' saintly_touch_hit2
 /def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with {his|her|its} flames of righteousness.' flames_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with {his|her|its} holy wind.' holy_wind_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes with {sheer|terrific|blazing|purifying|immense} {rage|force|glow|power} upon *' dispel_evil_hit
@@ -175,10 +175,9 @@
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {bursting|slamming|detonating|exploding|popping|crashing} on *' holy_bolt_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {annihilating|blowing|unbalancing|damaging|dispelling|disrupting|incinerating|rendering|pulverizing|shocking} *' dispel_undead_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*as one big burst, {badly|brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'* emits fuming white aura around screaming * {badly|brutally} {burning|crushing} {him|her|it}' dispel_undead_hit3
-/def -p6 -aCbgyellow -aBCred -mglob -t'* glimmers divinely as a blazing symbol of purify appears into the forehead of *' saintly_touch_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'* is bathed in bright light as heavenly choir plays celestial fanfare. The universe halts as WRATH OF LAS thunders through *' wrath_of_las_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'* DOUBLEs over in PAIN!' wither_hurts
+/def -p6 -aCbgyellow -aBCred -mglob -t'*emits fuming white aura around screaming * {badly|brutally} {burning|crushing} {him|her|it}*' dispel_undead_hit3
+/def -p6 -aCbgyellow -aBCred -mglob -t'*is bathed in bright light as heavenly choir plays celestial fanfare. The universe halts as WRATH OF LAS thunders through *' wrath_of_las_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'*DOUBLEs over in PAIN!' wither_hurts
 /def -p6 -aCbgyellow -aBCred -mglob -t'* celestial spark hits *' celestial_spark
 /def -p6 -aCbgyellow -aBCred -mglob -t'*as white lightning strikes through the air tickling *' holy_lance_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* word of destruction hits *' word_of_destruction_hit
@@ -199,10 +198,9 @@
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* with {his|her|its} acid rain.' acid_rain2
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* acid storm hits *' acid_storm
 /def -p6 -aCbgyellow -aBCgreen -mglob -t'* hits * with * acid storm.' acid_storm_2
-/def -p6 -aCbgyellow -aBCgreen -mglob -t'You hit * with your acid storm.' acid_storm_3
+/def -F -p6 -aCbgyellow -aBCgreen -mglob -t'You hit * with your acid storm.' acid_storm_3
 
 ;; Electric blasts
-;; Single mage blasts need to be fallthroug
 /def -F -p6 -aCbgblue -aBCyellow -mglob -t'* blast lightning hits *' blast_lightning
 /def -F -p6 -aCbgblue -aBCyellow -mglob -t'* shocking grasp hits *' shocking_grasp
 /def -F -p6 -aCbgblue -aBCyellow -mglob -t'* lightning bolt hits *' lightning_bolt
@@ -212,7 +210,7 @@
 /def -p6 -aCbgblue -aBCyellow -mglob -t'You hit * with your chain lightning.' chain_lightning2
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* lightning storm hits *' lightning_storm
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* hits * with * lightning storm.' lightning_storm_2
-/def -p6 -aCbgblue -aBCyellow -mglob -t'You hit * with your lightning storm.' lightning_storm_3
+/def -F -p6 -aCbgblue -aBCyellow -mglob -t'You hit * with your lightning storm.' lightning_storm_3
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* channelbolt hits *' channelbolt
 /def -p6 -aCbgblue -aBCyellow -mglob -t'* summon storm hits *' summon_storm
 
@@ -225,7 +223,7 @@
 /def -p6 -aCbgmagenta -aBCblue -mglob -t'* vacuum ball hits *' vacuum_ball
 /def -p6 -aCbgmagenta -aBCblue -mglob -t'* vacuum globe hits *' vacuum_globe
 /def -p6 -aCbgmagenta -aBCblue -mglob -t'* hits * with * vacuum globe.' vacuum_globe_2
-/def -p6 -aCbgmagenta -aBCblue -mglob -t'You hit * with your vacuum globe.' vacuum_globe_3
+/def -F -p6 -aCbgmagenta -aBCblue -mglob -t'You hit * with your vacuum globe.' vacuum_globe_3
 
 
 ;; Psi blasts
@@ -234,12 +232,12 @@
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* psi blast hits *' psi_blast
 /def -p7 -aCbgcyan -aBCmagenta -mglob -t'* mind disruption hits *' mind_disruption
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* psychic shout hits *' psychic_shout
-/def -p6 -aCbgcyan -aBCmagenta -mglob -t'* psychic storm hits *' psychic_storm
+/def -F -p6 -aCbgcyan -aBCmagenta -mglob -t'* psychic storm hits *' psychic_storm
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* hits * with * psychic storm.' psychic_storm_2
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'A psychic crush hits *' psychic_crush4
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* crushes * mind with a powerful psychic attack!' psychic_crush
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* devastates * mind with {his|her|its} powers.' psychic_crush3
-/def -p6 -aCbgcyan -aBCmagenta -mglob -t'* grins as her psychic crush hits *' Psychic_crush2
+/def -p6 -aCbgcyan -aBCmagenta -mglob -t'* psychic crush hits *' Psychic_crush2
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* paralyzes *' paralyzes
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* is stunned from the intrusion into {his|her|its} mind.' mind_seize
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'Your mental pathways dissolve under massive psychic forces!' crush_onme
@@ -262,31 +260,22 @@
 /def -p9 -aB -aCyellow -mglob -t'* winces and looks a bit braver.' wither_ends
 /def -p6 -aCbgwhite -aBCred -mglob -t'* noituloves dischord hits *' bard_discord
 
+
 ;; Ambush
-;; NB: I commented out the avoid stuff, after hitting a room with 20 aggromobs you can
-;; imagine in a 9man party what happens when everyone has a trig like that...
-/def -F -p6 -mglob -t'You cannot leave, you have been AMBUSHED.' ambush= @party say I'm AMBUSHED!
-;;/def -F -p6 -mregexp -t"(Your small size avoids a nasty ambush.|
-;;Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance
-;;seconds before the ambush!|Your knowledge about [A-Za-z '-]* tactics enables you to avoid the ambush.|
-;;Your superb intelligence enables you to avoif
-;;the ambush.)" avoid_ambush1= @party say avoided ambush
+/def -F -p6 -mglob -t'You cannot leave, you have been AMBUSHED.' ambush=@party say I'm AMBUSHED!
+
 
 ;; Party
-;;/def -F -p9 -t"* offers you membership to party:*" party_join= party join
-/def -F -p9 -abCyellow -mglob -t"* is the new leader of the party." party_new_leader= party follow
-/def -F -p9 -aBCyellow -mglob -t'You are the new leader of the party.' party_leader= party forcefollow all
+/def -F -p9 -t"* offers you membership to party:*" party_join=@party join
+/def -F -p9 -abCyellow -mglob -t"* is the new leader of the party." party_new_leader=@party follow
+/def -F -p9 -aBCyellow -mglob -t'You are the new leader of the party.' party_leader=@party forcefollow all
 ;;/def -F -p9 -aBCyellow -t'lapses into unconsciousness from severe loss of blood.' unconscious= party say %{1} UNCONSCIOUS
 /def -F -p6 -mregexp -t' starts grappling ([A-z]*)\\.$' grapplestart = @party report %P1 has been grappled!
 /def -F -p6 -mglob -t"You feel more vital." death_stats_gone = @party report (Recovered from death)
-/def -F -p6 -mglob -t"(*) fails to touch *" harm_missed = @say kurkota %P1 kurkota
-;; Vampire warnings
-/def -F -p99 -mglob -t"The water BURNS your skin." water_burns = @party say WATER BURNS!
-/def -F -p99 -mglob -t"Your greater darkness spell dissolves." darkness_down = @party report Greater darkness down, please recast!
-/def -F -p99 -mglob -t"The light here BURNS!!!" light_burns_poor_bat = @party report SUNLIGHT BURNS MEEEEE, OUCHOUCHOUCH!
 
-/set generic_amount_list=(One|one|Two|two|Three|three|Four|four|Five|five|Six|six|[Ss]even|[Ee]ight|[Nn]ine|[Tt]en|[Mm]any|[Aa] small pile of|[Aa] pile of|[Aa] huge pile of|[Aa] big pile of|[Aa] small hill of|[Aa] mountain of|[0-9]*)
+
 ;; Greed
+/set generic_amount_list=(One|one|Two|two|Three|three|Four|four|Five|five|Six|six|[Ss]even|[Ee]ight|[Nn]ine|[Tt]en|[Mm]any|[Aa] small pile of|[Aa] pile of|[Aa] huge pile of|[Aa] big pile of|[Aa] small hill of|[Aa] mountain of|[0-9]*)
 /def greed=\
   /if ({1}!~"on") \
     /undef greed_mith%;\
@@ -318,107 +307,10 @@
     /echo -aB TF info: Greed triggers (on)%; \
   /endif
 
-;; Crap money
-;/def -c0 -F -p5 -mregexp -t"^[0-9]+ coins \\(" crap_money=\
-;   /edit -c100 extra_crap_money%;\
-;   /repeat -1 1 /edit -c0 extra_crap_money%;\
-;   /while ({#})\
-;     /if ((regmatch(("silver|bronze|copper|tin|zinc|mowgles"), {1})) & (!(regmatch("platinum", {1}))))\
-;       /if ((substr({1},-1,1)=~",") | (substr({1},-1,1)=~")"))\
-;         /let crapmoney=$[substr({1},0,-1)]%;\
-;       /else \
-;         /let crapmoney=%{1}%;\
-;       /endif%;\
-;     drop %{crapmoney}%;\
-;     /endif%;\
-;     /shift%;\
-;   /done
-;/def -F -p5 -c0 -mregexp -t"\\[Cash:" extra_crap_money=\
-;   /while ({#})\
-;     /if ((regmatch(("silver|bronze|copper|tin|zinc|mowgles"), {1})) & (!(regmatch("platinum", {1}))))\
-;       /if ((substr({1},-1,1)=~",") | (substr({1},-1,1)=~")"))\
-;         /let crapmoney=$[substr({1},0,-1)]%;\
-;       /else \
-;         /let crapmoney=%{1}%;\
-;       /endif%;\
-;     drop %{crapmoney}%;\
-;     /endif%;\
-;     /shift%;\
-;   /done
 
-;; Donates
-;; Give approximation only. Valuable stuff doesn't donate for as much.
-;;
-;; Has bugs, commented out. im not fixing.
-
-;/set donated=0
-;/def -F -p2 -mregexp -t'which was worth ([0-9]+) gold' damogran_donates =\
-;   /set donated=$[donated +{P1}]%;\
-;   /echo -aB TF info: total amount donated %{donated}
-;
-;/def -F -p2 -t"has donated stuff worth {*} gold" actual_donated=\
-;   /if ({1}=~"{my-name}")/set donated=%{6}%;/endif
-;/def -F -p5 -t"List of donaters:" start_donate_list= /set total_donated=0
-;/def -F -p3 -t"* has donated stuff worth {*} gold" total_donations= /set total_donated=$[{total_donated} + {6}]
-;/def donates=\
-;   /echo -aB TF info: your %% of total donates = $[({donated}*100)/{total_donated}]%%
-
-;;
-;; Percolor and party trig belong to Spid@batmud.org
-;;
-;; NB: I had this part commented out for a while because of some lil bugs,
-;; mostly with eq labels. I copied from spid's other pshow trig the regexp
-;; (I'm lazy, but I don't have to re-invent the wheel) and it "should" work
-;;
-;; Addenum: In the end I had to tweak the trig a bit, not sure if it works
-;;
-;; If you notice tf hanging up when someone swaps eq, comment the pcolour out
-;; //Drif
-;;
-;/def -i percolor =\
-;  /if ({2}!=0)\
-;    /set tmpvar=$[({1}*100)/{2}]%;\
-;  /else \
-;    /if ({1}>=0)\
-;      /set tmpvar=100%;\
-;    /else \
-;      /set tmpvar=0%;\
-;    /endif%;\
-;  /endif%;\
-;  /if (tmpvar>75)\
-;    /echo BCwhite%;\
-;  /elseif (tmpvar>50)\
-;    /echo BCyellow%;\
-;  /elseif (tmpvar>35)\
-;    /echo BCgreen%;\
-;  /elseif (tmpvar>20)\
-;    /echo BCmagenta%;\
-;  /elseif (tmpvar>10)\
-;    /echo BCred%;\
-;  /elseif (tmpvar<10)\
-;    /echo Cred%;\
-;  /endif
-
-;/def -ag -F -mregexp -t'^\\|([\\* ])([1-3\\?])\\.([1-3\\?])[ ]+([A-z\\+]*)[ ]+(ldr|fol|rest|form|dead|mbr|ld|stun|unc|amb)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+\\|[ ]+([0-9IVX\\?]+)[ ]+\\|[ ]+([0-9]+)[ ]+\\|' pcolour=\
-;/let TP2=$[pad({P1},1)]%;\
-;/let TP3=$[pad({P4},-12)]%;\
-;/let TP4=$[pad({P5}, 4)]%;\
-;/let TP5=$[pad({P6},4)]%;\
-;/let TP6=$[pad({P7},4)]%;\
-;/let TP7=$[pad({P8},4)]%;\
-;/let TP8=$[pad({P9},4)]%;\
-;/let TP9=$[pad({P10},3)]%;\
-;/let TP10=$[pad({P11},3)]%;\
-;/let TP11=$[pad({P12},3)]%;\
-;/let TP12=$[pad({P13},12)]%;\
-;/echo -w -p |%TP2 %P2.%P3   %TP3 %TP4 @{$(/percolor %P6 %P7)}%TP5@{n}(@{BCwhite}%TP6@{n}) @{$(/percolor %P8 %P9)}%TP7@{n}(@{BCwhite}%TP8@{n}) @{$(/percolor %P10 %P11)}%TP9@{n}(@{BCwhite}%TP10@{n}) | %TP11 | %TP12 |
-
-
-
-;/def -i -h"PROMPT * * * * * >" prompt_colour=\
-;   /echo -p hp:@{$(/percolor %{1} %{2})}%{1}@{n} ep:@{$(/percolor %{3} %{4})}%{3}@{n} exp:%{5} >
-;/def -F -p5 -t"HELL ()." in_hell=/edit -c0 prompt_colour
-;/def -F -p5 -t"You enter the corpse." outa_hell=/edit -c100 prompt_colour
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Degen/COT/Touch timer ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 /set degentimer=0
 /set cotintimer=0
@@ -452,12 +344,14 @@
 
 /def -mregexp -t'^([A-Za-z]+) twirls before you.' reportdg = /lastdg
 
-;
-;special eq hilites, theyse are my own
-;
+
+;;;;;;;;;;;;;;;;;;;;;
+;; Misc eq hilites ;;
+;;;;;;;;;;;;;;;;;;;;;
+
 /def -mglob -t"You feel a sharp stab in your finger as if something bit you!" tazbal_special = @party report (Stats boosted by ring)
-/def -mglob -t"Suddenly, the runes on the Shield of the Wind glow bright*" shield_of_wind = @party report (Wind special avail)
-/def -mglob -t"Your orb sparkles." orbready = @party report (Wind invoke reloaded)
+/def -mglob -t"Suddenly, the runes on the Shield of the Wind glow bright*" shield_of_wind = /echo -aB (TF Info): Wind special avail
+/def -mglob -t"Your orb sparkles." orbready = /echo -aB (TF Info): Wind invoke reloaded
 /def -mglob -t"You finish sucking the soul. You feel younger!" ripper_done = hh
 /def -mglob -t"The corpse isn't powerful enough for this." ripper_unable = hh
 /def -mglob -t"You feel strength flowing between you and *" ringkiss = /repeat -00:10 1 @party report (Ring kiss loaded)
@@ -474,37 +368,41 @@
 ;/def -mglob -aCbgblue -aBCyellow -t"The skies above open and ENORMOUS flash of lightning dashes down from the*" mace_special10
 ;/def -mglob -aCbgblue -aBCyellow -t"The skies above open and an ENORMOUS flash of lightning dashes down, SCORCHING*" mace_special11
 ;; Empyrean
-/def -mglob -aCbgwhite -aBCcyan -t"Suddenly there are icicles flying from the blade of Empyrean towards *" empyrean_special1
-/def -mglob -aCbgyellow -aBCred -t"Holy power engulfs you as Empyrean unleashes it's wrath on *" empyrean_special2
-/def -mglob -aCbgred -aBCyellow -t"White hot flame from Empyrean shoots outward, incinerating *" empyrean_special3
-/def -mglob -aCbgblue -aBCyellow -t"Supernatural lightnings from Empyrean STRIKES*" empyrean_special4
-/def -mglob -aCbgyellow -aBCred -t"Divine flame surrounds you while the Empyrean strikes furiously at *" empyrean_special5
-/def -mglob -t"As you channel your will to Las through Empyrean, the god grants you a protective shield of Faith." empyrean_sof_ok = @party say (empyrean SoF active)
-/def -mglob -t"You try to channel your will through Empyrean.. but something goes wrong." empyrean_wof_fail = @party say EMPYREAN FUCKED!
-;; Stormfall gag
-/def -mglob -ag -t"Stormfall axe says*"
-/def -mglob -ag -t"Stormfall axe screams*"
-/def -mglob -ag -t"Stormfall axe asks*"
+;/def -mglob -aCbgwhite -aBCcyan -t"Suddenly there are icicles flying from the blade of Empyrean towards *" empyrean_special1
+;/def -mglob -aCbgyellow -aBCred -t"Holy power engulfs you as Empyrean unleashes it's wrath on *" empyrean_special2
+;/def -mglob -aCbgred -aBCyellow -t"White hot flame from Empyrean shoots outward, incinerating *" empyrean_special3
+;/def -mglob -aCbgblue -aBCyellow -t"Supernatural lightnings from Empyrean STRIKES*" empyrean_special4
+;/def -mglob -aCbgyellow -aBCred -t"Divine flame surrounds you while the Empyrean strikes furiously at *" empyrean_special5
+;/def -mglob -t"As you channel your will to Las through Empyrean, the god grants you a protective shield of Faith." empyrean_sof_ok = @party say (empyrean SoF active)
+;/def -mglob -t"You try to channel your will through Empyrean.. but something goes wrong." empyrean_wof_fail = @party say EMPYREAN FUCKED!
 
 /def -mglob -t"You awaken from your short rest, and feel slightly better." campdone = @party report (done camping)
 /def -mglob -t"You stretch yourself and consider camping." campready1 = @party report (can camp)
 /def -mglob -t"You feel a bit tired." campready2 = @party report (can camp)
 /def -mglob -t"You feel like camping a little." campready3 = @party report (can camp)
-/def -mglob -t"You feel extra powers flowing into you from your bracers of divine knowledge." bracelet_boost = /echo -aB (TinyFugue) Int/spr boosted from bracers
-/def -mglob -ag -t"The turtle starts squirming."
+;;/def -mglob -t"You feel extra powers flowing into you from your bracers of divine knowledge." bracelet_boost = /echo -aB (TinyFugue) Int/spr boosted from bracers
 
+/def -F -mglob -t'You wear Demonic Ring of Invisibility*' demonring_wear = /repeat -0:10 1 /echo -aB (TF Info): Demonic ring ready
+;;/def -F -mglob -t'a tiny squirrel running around' darkwood_key = @kill squirrel
 
-;/def fmob = /quote -S -dsend emote !grep -i \'%{*}\' /home/drifter/lib/casters.txt
-;/def fmob = /quote -S -dsend emote !/home/drifter/lib/findmob.pl %{*}
+;;;;;;;;;;;;;
+;; GAGGING ;;
+;;;;;;;;;;;;;
 
-/def -mglob -t"This location is now surrounded in a shimmering blue forcefield." shelt_is_up = /set sheltertimer=$[time()]
-/def -mglob -t"The shimmering blue forcefield vanishes." shelter_is_down = /let shelttime=$[time()-sheltertimer]%;\
-   /let fshelttime=$(/formattime %shelttime)%;\
-   /echo -aB (TinyFugue) Shelter DOWN, timer: %fshelttime
+/def -mglob -ag -t"The turtle starts squirming." turtlesquirm_gag
 
-/def -F -mglob -t'a tiny squirrel running around' darkwood_key = @kill squirrel
-/def -F -mglob -t'You wear Demonic Ring of Invisibility*' demonring_wear = /repeat -300 1 /echo -aB (TF Info): Demonic ring ready
+;; Swashbucking gag
+/def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1
+/def -mglob -ag -t"* speech doesn't seem to interest *" swashbuckling_gag2
+/def -mglob -ag -t"* speech doesn't seem to have very strong influence on *" swashbuckling_gag3
+/def -mglob -ag -t"* speech is too provocative to you." swashbuckling_gag4
 
+;; Stormfall gag
+/def -mglob -ag -t"Stormfall axe says*"    stormfall_axe_gag1
+/def -mglob -ag -t"Stormfall axe screams*" stormfall_axe_gag2
+/def -mglob -ag -t"Stormfall axe asks*"    stormfall_axe_gag3
+
+;; Praixor glove help
 /def glovegem =\
 /echo  .-----------------------------.%;\
 /echo  |   Praixor's Gem Zap List    |%;\

@@ -35,6 +35,7 @@
 /def barb-castello=@e;13 ne;20 n;20 n;20 n
 /def castello-sailor=@8 s;5 se;5 e;8 se;8 e;9 se;4 e;2 ne;2 n;ne;2 n;2 w;sw;list
 /def sailor-castello=@ne;2 e;2 s;sw;2 s;2 sw;4 w;9 nw;8 w;8 nw;5 w;5 nw;8 n
+/def castello-mist=@8 s;travel se;travel se;11 e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;3 e;4 se;3 e;ne;2 e;3 se;4 e;4 se;9 e;3 ne;4 e;4 ne;20 e;3 e;12 se;20 s;10 s;se;10 s;sw;s
 
 ;; Deso
 /def caly-deso=@travel se;travel se;10 e
@@ -60,6 +61,8 @@
 ;; Roth
 /def skeep-roth=@travel s;travel s;4 s;15 se;15 e;20 se;20 e;5 se;S;SW;S;SW;W;nw;2 n
 /def roth-skeep=@2 s;se;E;NE;N;NE;N;n;travel nw;travel n;travel nw
+/def skeep-barb=@9 s;4 sw;19 s;6 se;8 ne;13 e;20 ne;5 ne;11 e;13 ne;8 e;6 ne;6 e;6 ne;17 e;se;e;se;e;ne;e;ne;8 e;3 se;e;2 ne;e;6 ne;7 e;2 ne
+/def barb-skeep=@2 sw;7 w;6 sw;w;2 sw;2 w;3 nw;8 w;sw;w;sw;w;nw;w;nw;17 w;6 sw;6 w;6 sw;8 w;13 sw;11 w;5 sw;20 sw;13 w;8 sw;6 nw;19 n;4 ne;9 n
 
 ;; Luce
 /def luce-lore=@s;travel s;n;n

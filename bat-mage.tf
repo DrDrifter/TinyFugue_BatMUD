@@ -159,7 +159,7 @@ suddenly stops breathing and jerks a couple of times\
 /def key_f3 = /dam electricity%;@eqset wear elec%;/set eqsetstatus=INT
 /def key_f4 = /dam acid%;@eqset wear acid%;/set eqsetstatus=INT
 /def key_f5 = /dam fire%;@eqset wear cast%;/set eqsetstatus=INT
-/def key_f6 = /dam cold%;@eqset wear cast%;/set eqsetstatus=INT
+/def key_f6 = /dam cold%;@eqset wear cold%;/set eqsetstatus=INT
 /def key_f17 = @eqset wear spr%;/set eqsetstatus=SPR
 /def key_f18 = @eqset wear prot%;/set eqsetstatus=WIS
 
@@ -175,6 +175,7 @@ suddenly stops breathing and jerks a couple of times\
 /def dm =/set targettype=off%;/set spell=disrupt_magic%;/do_spell %{*}
 /def ev =/set targettype=misc%;/set spell=enhance_vision%;/do_spell %{*}
 /def fd =/set targettype=disc%;/set spell=floating_disc%;/do_spell my disc
+/def fle=/set targettype=numb%;/set spell=floating_letters%;/do_spell %{*}
 /def fl =/set targettype=misc%;/set spell=floating%;/do_spell %{*}
 /def fw =/set targettype=item%;/set spell=feather_weight%;/do_spell %{*}
 /def hp =/set targettype=none%;/set spell=holding_pattern%;/do_spell

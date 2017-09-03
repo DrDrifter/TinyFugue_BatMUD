@@ -161,6 +161,108 @@
 ;       /endif%;\
 ;       /echo -aB (TF Info): Breath: [%draco_breath]  Herb: [%flastherb]
 
+;; Crap money
+;/def -c0 -F -p5 -mregexp -t"^[0-9]+ coins \\(" crap_money=\
+;   /edit -c100 extra_crap_money%;\
+;   /repeat -1 1 /edit -c0 extra_crap_money%;\
+;   /while ({#})\
+;     /if ((regmatch(("silver|bronze|copper|tin|zinc|mowgles"), {1})) & (!(regmatch("platinum", {1}))))\
+;       /if ((substr({1},-1,1)=~",") | (substr({1},-1,1)=~")"))\
+;         /let crapmoney=$[substr({1},0,-1)]%;\
+;       /else \
+;         /let crapmoney=%{1}%;\
+;       /endif%;\
+;     drop %{crapmoney}%;\
+;     /endif%;\
+;     /shift%;\
+;   /done
+;/def -F -p5 -c0 -mregexp -t"\\[Cash:" extra_crap_money=\
+;   /while ({#})\
+;     /if ((regmatch(("silver|bronze|copper|tin|zinc|mowgles"), {1})) & (!(regmatch("platinum", {1}))))\
+;       /if ((substr({1},-1,1)=~",") | (substr({1},-1,1)=~")"))\
+;         /let crapmoney=$[substr({1},0,-1)]%;\
+;       /else \
+;         /let crapmoney=%{1}%;\
+;       /endif%;\
+;     drop %{crapmoney}%;\
+;     /endif%;\
+;     /shift%;\
+;   /done
+
+;; Donates
+;; Give approximation only. Valuable stuff doesn't donate for as much.
+;;
+;; Has bugs, commented out. im not fixing.
+
+;/set donated=0
+;/def -F -p2 -mregexp -t'which was worth ([0-9]+) gold' damogran_donates =\
+;   /set donated=$[donated +{P1}]%;\
+;   /echo -aB TF info: total amount donated %{donated}
+;
+;/def -F -p2 -t"has donated stuff worth {*} gold" actual_donated=\
+;   /if ({1}=~"{my-name}")/set donated=%{6}%;/endif
+;/def -F -p5 -t"List of donaters:" start_donate_list= /set total_donated=0
+;/def -F -p3 -t"* has donated stuff worth {*} gold" total_donations= /set total_donated=$[{total_donated} + {6}]
+;/def donates=\
+;   /echo -aB TF info: your %% of total donates = $[({donated}*100)/{total_donated}]%%
+
+;;
+;; Percolor and party trig belong to Spid@batmud.org
+;;
+;; NB: I had this part commented out for a while because of some lil bugs,
+;; mostly with eq labels. I copied from spid's other pshow trig the regexp
+;; (I'm lazy, but I don't have to re-invent the wheel) and it "should" work
+;;
+;; Addenum: In the end I had to tweak the trig a bit, not sure if it works
+;;
+;; If you notice tf hanging up when someone swaps eq, comment the pcolour out
+;; //Drif
+;;
+;/def -i percolor =\
+;  /if ({2}!=0)\
+;    /set tmpvar=$[({1}*100)/{2}]%;\
+;  /else \
+;    /if ({1}>=0)\
+;      /set tmpvar=100%;\
+;    /else \
+;      /set tmpvar=0%;\
+;    /endif%;\
+;  /endif%;\
+;  /if (tmpvar>75)\
+;    /echo BCwhite%;\
+;  /elseif (tmpvar>50)\
+;    /echo BCyellow%;\
+;  /elseif (tmpvar>35)\
+;    /echo BCgreen%;\
+;  /elseif (tmpvar>20)\
+;    /echo BCmagenta%;\
+;  /elseif (tmpvar>10)\
+;    /echo BCred%;\
+;  /elseif (tmpvar<10)\
+;    /echo Cred%;\
+;  /endif
+
+;/def -ag -F -mregexp -t'^\\|([\\* ])([1-3\\?])\\.([1-3\\?])[ ]+([A-z\\+]*)[ ]+(ldr|fol|rest|form|dead|mbr|ld|stun|unc|amb)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+([\\-]*[0-9]+)\\([ ]*([\\-]*[0-9]+)\\)[ ]+\\|[ ]+([0-9IVX\\?]+)[ ]+\\|[ ]+([0-9]+)[ ]+\\|' pcolour=\
+;/let TP2=$[pad({P1},1)]%;\
+;/let TP3=$[pad({P4},-12)]%;\
+;/let TP4=$[pad({P5}, 4)]%;\
+;/let TP5=$[pad({P6},4)]%;\
+;/let TP6=$[pad({P7},4)]%;\
+;/let TP7=$[pad({P8},4)]%;\
+;/let TP8=$[pad({P9},4)]%;\
+;/let TP9=$[pad({P10},3)]%;\
+;/let TP10=$[pad({P11},3)]%;\
+;/let TP11=$[pad({P12},3)]%;\
+;/let TP12=$[pad({P13},12)]%;\
+;/echo -w -p |%TP2 %P2.%P3   %TP3 %TP4 @{$(/percolor %P6 %P7)}%TP5@{n}(@{BCwhite}%TP6@{n}) @{$(/percolor %P8 %P9)}%TP7@{n}(@{BCwhite}%TP8@{n}) @{$(/percolor %P10 %P11)}%TP9@{n}(@{BCwhite}%TP10@{n}) | %TP11 | %TP12 |
+
+
+
+;/def -i -h"PROMPT * * * * * >" prompt_colour=\
+;   /echo -p hp:@{$(/percolor %{1} %{2})}%{1}@{n} ep:@{$(/percolor %{3} %{4})}%{3}@{n} exp:%{5} >
+;/def -F -p5 -t"HELL ()." in_hell=/edit -c0 prompt_colour
+;/def -F -p5 -t"You enter the corpse." outa_hell=/edit -c100 prompt_colour
+
 ;; Draco race breath
 /set draco_breath=ready
 /def -mglob -t"You drift off into a deep daydream*" draconian_breath_ready = /set draco_breath_time=$[time()-draco_breath_timer]%;\
@@ -173,4 +275,9 @@
    /set draco_breath=ready
 /def -mglob -t"You hit * with your blaze of magical fire." draconian_breath_used = /set draco_breath=charging%;/set draco_breath_timer=$[time()]
 /def -mglob -t"Your innate ability has not restored itself." draconian_breath_not_ready = /set draco_breath=charging
+
+;; Vampire warnings
+/def -F -p99 -mglob -t"The water BURNS your skin." water_burns = @party say WATER BURNS!
+/def -F -p99 -mglob -t"Your greater darkness spell dissolves." darkness_down = @party report Greater darkness down, please recast!
+/def -F -p99 -mglob -t"The light here BURNS!!!" light_burns_poor_bat = @party report SUNLIGHT BURNS MEEEEE, OUCHOUCHOUCH!
 

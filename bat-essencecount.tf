@@ -53,14 +53,14 @@
 /def esset=\
  /writenew%;\
  /readcount%;\
-/echo ,-----------------------------%;\
-/echo | Elec: %elecblast    %;\
-/echo | Acid: %acidblast    %;\
-/echo | Asph: %asphblast    %;\
-/echo | Mana: %manablast    %;\
-/echo | Pois: %poisblast    %;\
-/echo | Cold: %coldblast    %;\
-/echo | Fire: %fireblast    %;\
+/echo ,--essence--next---current----%;\
+/echo | Elec: 43  4500 / %elecblast %;\
+/echo | Acid: 32  3000 / %acidblast %;\
+/echo | Asph: 35  3000 / %asphblast %;\
+/echo | Mana: 21  1500 / %manablast %;\
+/echo | Pois: 17   350 / %poisblast %;\
+/echo | Cold: 12   350 / %coldblast %;\
+/echo | Fire: 17   350 / %fireblast %;\
 /echo `-----------------------------
 
 /def writenew =\
