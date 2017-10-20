@@ -155,6 +155,7 @@
 /def -mglob -t"a frost giant visiting the complex"              mguild27 = @kk giant
 /def -mglob -t"an ice elemental"                                mguild28 = @kk elemental
 
+;; Arelium clock
 /def -mglob -t"An orphan process, looking for something to attach itself to." clock1 = /sb orphan
 /def -mglob -t"This strange object seems to be floating in space."            clock2 = /sb object
 /def -mglob -t"A small error"                                                 clock3 = /sb error
@@ -162,6 +163,9 @@
 /def -mglob -t"A newbie wizard"                                               clock5 = @kk wizard
 /def -mglob -t"A Bat, carrying messages"                                      clock6 = /sb bat
 /def -mglob -t"A Big Error"                                                   clock7 = /sb error
+
+;; Beaumont hamel
+/def -mglob -t"An insect, buzzing around your head"             hamel1 = @kk insect
 
 /def -mglob -t"Zorb starts skinning the corpse."                skinnedcorpse = @crap
 /def -mglob -t"Zorb takes her knife and starts doing something rather disgusting with the corpse." skinnedcorpse2 = @crap
@@ -311,5 +315,6 @@
  /undef clock5%;\
  /undef clock6%;\
  /undef clock7%;\
+ /undef hamel1%;\
  /undef skinnedcorpse%;\
  /undef skinnedcorpse2

@@ -18,6 +18,7 @@
 ;; Wandu stuff
 /def wcannon  =/set targettype=none%;@vortex create slingshot vortex at %{1} to %{2}
 /def wdim     =/set targettype=none%;@vortex create planar gate at %{*}
+/def wgate    =/set targettype=none%;@vortex create planar gate at %{*}
 /def wrelo    =/set targettype=none%;@vortex create escape velocity at %{*}
 /def wsum     =/set targettype=none%;@vortex create dimensional vacuum at %{*}
 

@@ -48,6 +48,8 @@
 /def soy-caly=@20 n;9 n;16 e;2 ne;11 e;2 ne;9 e;14 ne;11 e;3 ne;10 e;9 ne;e;20 e;11 ne
 /def caly-village=@20 w;5 nw;2 n;4 ne
 /def village-caly=@4 sw;2 s;5 se;20 e
+/def deso-tinmen=@19 w;11 nw;2 n;6 nw;6 n
+/def tinmen-deso=@6 s;6 se;2 s;11 se;19 e
 
 ;; Furn
 /def furn-brantis=@20 s;5 s;travel s;travel sw;nw

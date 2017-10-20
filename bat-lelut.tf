@@ -71,7 +71,7 @@
 /echo  |   Drifter's tweak eq status |%;\
 /echo  +-----------------------------+%;\
 /echo  | Fields:
-/echo  |  Athame [%athame_status] [%athame_cd]%;\
+/echo  |  Athame (asev) [%athame_status] [%athame_cd]%;\
 /echo  |  Rainstaff (rain) [%rainstaff_status] [%rainstaff_cd]%;\
 /echo  |  Entity Wind (entw,ewind) [%ewind_status] [%ewind_cd] %;\
 /echo  |  Magestaff (iss,ism) [%magestaff_status]%;\
@@ -88,6 +88,6 @@
 /echo  |  Prism mirrors [%prism_mirrors_status] [%prism_mirrors_cd]%;\
 /echo  | %;\
 /echo  | Other: %;\
-/echo  |  Mask of Gluttony [%mask_of_gluttony_status] [%mask_of_gluttony_cd]%;\
+/echo  |  Mask of Gluttony (wispill) [%mask_of_gluttony_status] [%mask_of_gluttony_cd]%;\
 /echo  |  Demonic Ring [%demonic_ring_status] [%demonic_ring_cd]%;\
 /echo  `-----------------------------`

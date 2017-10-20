@@ -158,7 +158,7 @@ suddenly stops breathing and jerks a couple of times\
 /def key_f2 = /dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
 /def key_f3 = /dam electricity%;@eqset wear elec%;/set eqsetstatus=INT
 /def key_f4 = /dam acid%;@eqset wear acid%;/set eqsetstatus=INT
-/def key_f5 = /dam fire%;@eqset wear cast%;/set eqsetstatus=INT
+/def key_f5 = /dam fire%;@eqset wear fire%;/set eqsetstatus=INT
 /def key_f6 = /dam cold%;@eqset wear cold%;/set eqsetstatus=INT
 /def key_f17 = @eqset wear spr%;/set eqsetstatus=SPR
 /def key_f18 = @eqset wear prot%;/set eqsetstatus=WIS
@@ -171,13 +171,15 @@ suddenly stops breathing and jerks a couple of times\
 /bind § = /dg .
 
 /def as =/set targettype=misc%;/set spell=air_shield%;/do_spell %{*}
-/def dg =/set targettype=off%;/set spell=degenerate_person%;/do_spell %{*}
-/def dm =/set targettype=off%;/set spell=disrupt_magic%;/do_spell %{*}
+/def caa=/set targettype=foo%; /set spell=create_air_armour%;/do_spell %{1}
+/def dg =/set targettype=off%; /set spell=degenerate_person%;/do_spell %{*}
+/def dm =/set targettype=off%; /set spell=disrupt_magic%;/do_spell %{*}
 /def ev =/set targettype=misc%;/set spell=enhance_vision%;/do_spell %{*}
 /def fd =/set targettype=disc%;/set spell=floating_disc%;/do_spell my disc
 /def fle=/set targettype=numb%;/set spell=floating_letters%;/do_spell %{*}
 /def fl =/set targettype=misc%;/set spell=floating%;/do_spell %{*}
 /def fw =/set targettype=item%;/set spell=feather_weight%;/do_spell %{*}
+/def gw =/set targettype=off%; /set spell=touch_of_glacial_winds%;/do_spell %{*}
 /def hp =/set targettype=none%;/set spell=holding_pattern%;/do_spell
 /def hs =/set targettype=none%;/set spell=heal_self%;/do_spell
 /def inv=/set targettype=misc%;/set spell=invisibility%;/do_spell %{*}
@@ -186,7 +188,7 @@ suddenly stops breathing and jerks a couple of times\
 /def mi =/set targettype=misc%;/set spell=mirror_image%;/do_spell %{*}
 /def ml =/set targettype=misc%;/set spell=magnetic_levitation%;/do_spell %{*}
 /def mns=/set targettype=none%;/set spell=moon_sense%;/do_spell
-/def pb =/set targettype=off%;/set spell=prismatic_burst%;/do_spell %{*}%;@party report Arcane RaInBoW Fart -> %1
+/def pb =/set targettype=off%; /set spell=prismatic_burst%;/do_spell %{*}%;@party report Arcane Unicorn RaInBoW Fart -> %1
 /def rd =/set targettype=misc%;/set spell=resist_disintegrate%;/do_spell %{*}
 /def sa =/set targettype=none%;/set spell=ship_armour%;/do_spell
 /def sf =/set targettype=misc%;/set spell=searing_fervor%;/do_spell %{*}
@@ -203,10 +205,10 @@ suddenly stops breathing and jerks a couple of times\
   
 ;; Essence specials
 ;You feel connected to the very essence of magic.
-/def -aB -t"You feel your skills in handling elemental forces improve." gain_essence =\
-/echo -aB ############################%;\
-/echo -aB ###### GAINED ESSENCE ######%;\
-/echo -aB ############################
+;/def -aB -t"You feel your skills in handling elemental forces improve." gain_essence =\
+;/echo -aB ############################%;\
+;/echo -aB ###### GAINED ESSENCE ######%;\
+;/echo -aB ############################
 ; Your knowledge in elemental powers helps you to save the reagent for further use.
 
 /def -aB -t"You masterfully channel the elemental powers." plaque_blast = @party report *** Plaque blast! ***

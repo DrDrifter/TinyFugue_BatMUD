@@ -19,6 +19,11 @@
 /def -F -p5 -mregexp -t"^You hit .+ with your hailstorm\." hailstorm_count_up = /addone cold%;/addone cold
 /def -F -p5 -mregexp -t"^You hit .+ with your lava storm\." lava_storm_count_up = /addone fire%;/addone fire
 
+/def -aB -t"You feel your skills in handling elemental forces improve." gain_essence =\
+/echo -aB ############################%;\
+/echo -aB ###### GAINED ESSENCE ######%;\
+/echo -aB ############################
+
 /def -i chomp=\
  /let count=%2%;\
  /_echo %count
@@ -54,13 +59,13 @@
  /writenew%;\
  /readcount%;\
 /echo ,--essence--next---current----%;\
+/echo | Asph: 38  3000 / %asphblast %;\
 /echo | Elec: 43  4500 / %elecblast %;\
 /echo | Acid: 32  3000 / %acidblast %;\
-/echo | Asph: 35  3000 / %asphblast %;\
+/echo | Fire: 20   350 / %fireblast %;\
+/echo | Cold: 15   350 / %coldblast %;\
 /echo | Mana: 21  1500 / %manablast %;\
 /echo | Pois: 17   350 / %poisblast %;\
-/echo | Cold: 12   350 / %coldblast %;\
-/echo | Fire: 17   350 / %fireblast %;\
 /echo `-----------------------------
 
 /def writenew =\

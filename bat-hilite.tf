@@ -43,6 +43,7 @@
 /def -F -p6 -aBCgreen -t"*\'s flex shield wobbles." flexwork
 /def -F -p6 -aBCwhite -t"Magical barrier dissolves." havendown
 /def -F -p6 -aB -t"* acquires * from you\!" acuired_my_eq = @party report (WARNING: EQ ACQUIRED!)
+/def -F -p6 -t"The swirling movement of the rift vortex catches your eye." rvs_available = /echo -aB (Tinyfugue) RVS Available
 
 ;; Priestcrit
 /def -F -p9 -aB -aCwhite -t"* ..The power of Burglefloogah takes over *" habocrit
@@ -313,11 +314,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 /set degentimer=0
-/set cotintimer=0
+/set cottimer=0
+/set touchtimer=0
+/set togwtimer=0
 
-/def -mglob -t"* turns very pale!" cotwentin = /set cotintimer=$[time()]
-/def -mglob -t"* appears weakened!" degenin = /set degentimer=$[time()]
-/def -mglob -t"* turns very pale and shivers as if {he|she|it} had just been poisoned." touchin = /set touchtimer=$[time()]
+/def -mglob -t"* turns very pale!" cotwentin = /set cottimer=$[time()]%;/set cottgt=%{1}
+/def -mglob -t"* appears weakened!" degenin = /set degentimer=$[time()]%;/set degentgt=%{1}
+/def -mglob -t"* turns very pale and shivers as if {he|she|it} had just been poisoned." touchin = /set touchtimer=$[time()]%;/set touchtgt=%{1}
+/def -mglob -t"* shivers as it is trapped in the cold center of the funnel." togwin = /set togwtimer=$[time()]%;/set togwtgt=%{1}
+/def -mglob -t"* is moving normally again." togwdown = @party report (Glacial Wind is down!)
 
 /def lastdg= \
   /if (degentimer!=0)\
@@ -326,8 +331,8 @@
   /else \
     /let dgin=0:00%;\
   /endif%;\
-  /if (cotintimer!=0)\
-    /let lastcottime=$[time()-cotintimer]%;\
+  /if (cottimer!=0)\
+    /let lastcottime=$[time()-cottimer]%;\
     /let cotin=$(/formattime %lastcottime)%;\
   /else \
     /let cotin=0:00%;\
@@ -338,9 +343,19 @@
   /else \
     /let touchin=0:00%;\
   /endif%;\
-  @party report ,--------------------------------------------------.%;\
-  @party report #  TIMERS [ degene: %dgin  cot: %cotin touch: %touchin]  #%;\
-  @party report `--------------------------------------------------'
+  /if (togwtimer!=0)\
+    /let lasttogwtime=$[time()-togwtimer]%;\
+    /let gwindin=$(/formattime %lasttogwtime)%;\
+  /else \
+     /let gwindin=0:00%;\
+  /endif%;\
+  @emote ,-----------------------------.%;\
+  @emote |  TIMERS                     |%;\
+  @emote `-----------------------------'%;\
+  @emote |  Degen: %dgin (%dgtgt)%;\
+  @emote |  Cot:   %cotin (%cottgt)%;\
+  @emote |  Touch: %touchin (%touchtgt)%;\
+  @emote |  GWind: %gwindin (%gwindtgt)
 
 /def -mregexp -t'^([A-Za-z]+) twirls before you.' reportdg = /lastdg
 

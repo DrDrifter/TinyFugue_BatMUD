@@ -46,7 +46,7 @@
 /def ad  = /set targettype=info%;/set spell=aura_detection%;/do_spell %{*}
 /def amf = /set targettype=none%;/set spell=anti_magic_field%;/do_spell
 /def ce  = /set targettype=misc%;/set spell=conjure_element%;/do_spell %{*}
-/def cf  = /set targettype=misc%;/set spell=create_food%;/do_spell .
+/def cf  = /set targettype=food%;/set spell=create_food%;/do_spell %{*}
 /def cle = /set targettype=misc%;/set spell=conjure_lesser_element%;/do_spell %{*}
 /def da  = /set targettype=none%;/set spell=greater_darkness%;/do_spell
 /def dmp = /set targettype=prot%;/set spell=dispel_magical_protection%;/do_spell %{*}

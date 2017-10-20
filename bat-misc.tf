@@ -1,7 +1,7 @@
 ;; Skie
 /def -mglob -t"You BLEED and suffer." skie_special = say Kuka vei teiniltä tamppoonin? Mä vuodan! :'(
 
-;;
+;; Baal
 /def -t"Baal-naygash raises its massive claw and recites an utterly low-pitched chant." baal_special = @party report BAAL SPECIAL COMING, MOVE MOVE!
 
 ;; Henry stuff
@@ -19,6 +19,12 @@
 
 ;; Megasaur
 /def -t'Megasaurlets out a fearful \*ROAR\*' megasaur_roared = @party report Watch out! Pekka Sauri tahtoo eduskuntaan!
+
+;; Rotahunt
+/def -mglob -t"Rotahunt grabs * and tosses * into his lovely iron maiden!" rotathrow = @party report HÄLÄRM! Rotahunt iron maidened %{1}
+
+;; Tyra banish
+/def -mglob -t"Tyranicus waves his hand at * and says 'Begone'" tyrathrow = @party report HÄLÄRM! Tyra banished %{6}
 
 ;; Valentina
 

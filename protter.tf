@@ -24,12 +24,16 @@
 ;                                                                     ;
 ; I'll try to keep a changelog here of the version changes            ;
 ;                                                                     ;
-; Last modified 16.02.2017                                            ;
+; Last modified 20.10.2017                                            ;
 ;                                                                     ;
-; Current Version 1.3.33                                              ;
+;  Current version 1.3.34                                             ;
+;  - Added Suppress prot (RVS)                                        ;
+;                                                                     ;
+; Changes to 1.3.33                                                   ;
 ; - Added Searing Fervor (Fire mage special)                          ;
+;   NB: Commented out! Too much spam                                  ;
 ;                                                                     ;
-; Current Version 1.3.32                                              ;
+; Changes to 1.3.32                                                   ;
 ; - Added Air Shield (Asph mage special)                              ;
 ; - Added Camp/sleep prot message queue (not yet implemented)         ;
 ; - Added Resist disintegrate (as now it has downmessage)             ;
@@ -609,7 +613,7 @@
 /createprot -t0 -n"IW" -w"{*} {utter|utters} the magic words \'nostaaaanndiz noszum\'" -u"You feel protected from being stunned." -d"You feel no longer protected from being stunned." -p"Iron Will"
 /createprot -t2 -n"AS" -w"{*} {draw|draws} a circle around {your|his|her|its} head with {your|his|her|its} fingertips while uttering \'ghht mar zrrprghh\'" -u"The circle forms an air mask before your face." -d"The air mask before your face vanishes." -p"Air shield"
 /createprot -t4 -n"Disint" -w"{*} {utter|utters} the magic words \'bii thee dzname uv tii blaaaz drazon\'" -u"You feel very firm." -d"You feel somewhat weaker." -p"Resist disintegrate"
-/createprot -t2 -n"SF" -w"{*} {draw|draws} a sphere of fire in the air while uttering \'fah mar nak prztrzz\'" -u"You feel uncomfortable warmth emanate within the bloodstream from your heart, slowly crawling its way through your body and limbs.  An oppressive feeling overcomes you as you can feel your heartbeat surge at the your fingertips.  Your heart must struggle to even out the temperature!" -d"The unnatural warmth evens out and stabilizes back to normal. As your fervor subsides, the exhaustion sets in." -p"Searing fervor"
+;;/createprot -t2 -n"SF" -w"{*} {draw|draws} a sphere of fire in the air while uttering \'fah mar nak prztrzz\'" -u"You feel uncomfortable warmth emanate within the bloodstream from your heart, slowly crawling its way through your body and limbs.  An oppressive feeling overcomes you as you can feel your heartbeat surge at the your fingertips.  Your heart must struggle to even out the temperature!" -d"The unnatural warmth evens out and stabilizes back to normal. As your fervor subsides, the exhaustion sets in." -p"Searing fervor"
 
 ; - Weak typeprots -
 /createprot -c -t0 -n"Acid" -w"{*} {utter|utters} the magic words \'sulphiraidzik hydrochloodriz gidz zuf\'" -u"" -d"A disgusting yellow flash momentarily surrounds you and then vanishes." -p"Corrosion Shield"
@@ -695,6 +699,8 @@
 ;; Animisit ;;
 ;;;;;;;;;;;;;;
 /createprot -r1 -t0 -n"AA" -w"^([A-z]+ (touch|touches) (your|his|her|its) talisman and (whisper|whispers) to it \'Animal Aspects\')" -u"^You feel the aspect of ([A-z ]+) taking over you! You feel ([A-z ]+)." -d"^(You are no longer spellbound by the animal aspect.)" -p"Animal Aspect"
+
+/createprot -t0 -n"RVS" -w"You deftly pluck a dark orb from the rift vortex. The orb twists and bends as you hold it, gradually solidifying into a lump of stone." -u"As you grasp the vortex stone, it melts into nothing leaving you empty handed! You feel a pulse of energy flow up through your arm, giving you a tingling sensation." -d"You no longer tingle." -p"Rift Vortex Stone"
 
 ;;;;;;;;;;;
 ;; Other ;;

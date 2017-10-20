@@ -368,11 +368,9 @@
    /def -F -mregexp -p7 -t"^%{tmp_target} leaves ([a-z]+)\\\\.$$" do_follow= %%{P1}
 
 ;; Find mob in database
-/def xmob=\
-   /quote -S /echo !~/lib/findmob.pl \'%{*}\'
-
-/def pmob=\
-   /quote -0 : !~/lib/findmob.pl \'%{*}\'
+;/def xmob=/quote -S /echo !~/lib/findmob.pl \'%{*}\'
+;/def pmob=/quote -0 : !~/lib/findmob.pl \'%{*}\'
+/def fmob=/quote -S /echo -aB (TF info): !/home/pi/findmob.pl %{*}
 
 ;; Just some debug stuff
 /def debug=\
