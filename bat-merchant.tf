@@ -1,6 +1,11 @@
 ;;
 ;;
 ;;
+
+/loaded __TFLIB__/bat-merchant.tf
+
+/require bat-generic.tf
+
 /set axe_status=wielded
 /set hammer_status=wielded
 /set saw_status=unwielded

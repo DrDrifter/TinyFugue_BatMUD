@@ -1,3 +1,5 @@
+/require -q bat-generic.tf
+/require protter.tf
 
 ; Skills
 /stack bash off_skill_stack
