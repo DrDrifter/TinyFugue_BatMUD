@@ -11,6 +11,8 @@
 /def -mglob -t"an ant that is raiding a picnic site" diggas8 = /sb ant
 /def -mglob -t"A marmot lies here sunning itself."   diggas9 = @kk marmot
 /def -mglob -t"A very old, but HUGE, sage sits here mumbling to himself" diggas10 = @kk sage
+/def -mglob -t"a tired guard for the city of Raven"  diggas11 = @kk guard
+/def -mglob -t"The Taskmaster"                       diggas12 = @kk human
 
 ;; NBMountain
 /def -mglob -t"small grey wood louse"                      mountain1 = /sb louse
@@ -125,6 +127,27 @@
 /def -mglob -t"Newbie guard guarding newbie fortress"      nforest04 = @kk guard
 /def -mglob -t"Mudman is trying to dig a grave to himself" nforest05 = @kk mudman
 
+;; Wrebie
+/def -mglob -t"Wrebie child is playing here with it's friends." wrebie01 = /sb child
+/def -mglob -t"Wrebie hunter has just returned from forest."    wrebie02 = @kk wrebie
+/def -mglob -t"Very old Wrebie is sleeping in a bed."           wrebie03 = @kk wrebie
+/def -mglob -t"Wrebie female is cooking something."             wrebie04 = @kk wrebie
+/def -mglob -t"Busy Wrebie is trying to fix some thing."        wrebie05 = @kk wrebie
+/def -mglob -t"Wrebie child is staring out of the window."      wrebie06 = @kk wrebie
+/def -mglob -t"Wrebie hunter is returning from the forest empty handed." wrebie07 = @kk wrebie
+/def -mglob -t"Tall Wrebie is babbling and drooling here."      wrebie08 = @kk wrebie
+/def -mglob -t"Wrebie is cleaning weapons."                     wrebie09 = @kk wrebie
+/def -mglob -t"Leader of Wrebie hunters is peering in to the cave." wrebie10 = @kk wrebie
+/def -mglob -t"Wrebie Hunter is following it's leader."         wrebie11 = @kk wrebie
+/def -mglob -t"Wrebie Hunter is searching for insects."         wrebie12 = @kk wrebie
+/def -mglob -t"Wrebie youngster is trying to learn hunting."    wrebie13 = @kk wrebie
+/def -mglob -t"Bored Wrebie Guard twiddles it's tiny thumbs."   wrebie14 = @kk wrebie
+/def -mglob -t"Wrebie Guard is trying not to fall asleep."      wrebie15 = @kk wrebie
+/def -mglob -t"Wrebie child is happily bouncing around."        wrebie16 = @kk wrebie
+
+/def -mglob -t"Slender maggot is moving rapidly around the cave." wrebie20 = @kk maggot
+/def -mglob -t"Big and fat maggot stares at you."                 wrebie21 = @kk maggot
+
 ;; Mage guild
 /def -mglob -t"an apprentice wearing canary yellow clothing"    mguild01 = @kk apprentice
 /def -mglob -t"an apprentice wearing painfully orange clothing" mguild02 = @kk apprentice
@@ -181,6 +204,8 @@
  /undef diggas8%;\
  /undef diggas9%;\
  /undef diggas10%;\
+ /undef diggas11%;\
+ /undef diggas12%;\
  /undef mountain1%;\
  /undef mountain2%;\
  /undef mountain3%;\
@@ -280,6 +305,24 @@
  /undef nforest03%;\
  /undef nforest04%;\
  /undef nforest05%;\
+ /undef wrebie01%;\
+ /undef wrebie02%;\
+ /undef wrebie03%;\
+ /undef wrebie04%;\
+ /undef wrebie05%;\
+ /undef wrebie06%;\
+ /undef wrebie07%;\
+ /undef wrebie08%;\
+ /undef wrebie09%;\
+ /undef wrebie10%;\
+ /undef wrebie11%;\
+ /undef wrebie12%;\
+ /undef wrebie13%;\
+ /undef wrebie14%;\
+ /undef wrebie15%;\
+ /undef wrebie16%;\
+ /undef wrebie20%;\
+ /undef wrebie21%;\
  /undef mguild01%;\
  /undef mguild02%;\
  /undef mguild03%;\

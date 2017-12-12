@@ -291,6 +291,7 @@
     /undef greed_woodclub%;\
     /undef greed_catcollar%;\
     /undef greed_pike%;\
+    /undef greed_essence%;\
     /echo -aB TF info: Greed triggers (off)%; \
   /else \
     /def -F -p3 -P0 -mregexp -t'^%{generic_amount_list} mithril coin' greed_mith = @get mithril%; \
@@ -305,6 +306,7 @@
     /def -F -p9 -P0 -mregexp -t'^A wood club' greed_woodclub = @get wood club%;\
     /def -F -p9 -P0 -mregexp -t'^Collar of the CatDemon' greed_catcollar = @get collar%;\
     /def -F -p9 -P0 -mregexp -t'^a well made pike' greed_pike = @get pike%;\
+    /def -F -p9 -P0 -mregexp -t'.* spills some of (his|her|its) essence.' greed_essence = @get essence%;\
     /echo -aB TF info: Greed triggers (on)%; \
   /endif
 
@@ -405,6 +407,7 @@
 ;;;;;;;;;;;;;
 
 /def -mglob -ag -t"The turtle starts squirming." turtlesquirm_gag
+/def -mregexp -ag -t"A cart labeled \'.*\' emotes \'.*\'" merchantcart_gag
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1

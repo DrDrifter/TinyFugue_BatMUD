@@ -58,6 +58,7 @@
 /eval /def -pmaxpri -mregexp -t"You hear a muffled crunch, as %{fire_entity_name} smashes .+ collarbone!"     fire_entity_redo_skill16 = @gem cmd use blazing sunder
 /eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} strikes .+ chest REALLY hard!"                           fire_entity_redo_skill17 = @gem cmd use blazing sunder
 /eval /def -pmaxpri -mregexp -t".+ blood splatters on you as %{fire_entity_name} strikes .+ temple!"          fire_entity_redo_skill18 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t".+ pales as they watch %{fire_entity_name} do an impossibly complex series of movements, building in momentum and energy!.*"          fire_entity_redo_skill19 = @gem cmd use blazing sunder
 /def -pmaxpri -F -mglob -t"Your fire entity does some strange combat maneuver but doesn't hit anything."      fire_entity_missed_redo = @gem cmd use blazing sunder
 /def -pmaxpri -F -mglob -t"Your entity loses its concentration and cannot do the skill."  any_entity_skill_broke = @gem cmd use blazing sunder;@gem cmd use suffocating embrace;@gem cmd use subjugating backwash;@gem cmd use earthen cover
 /def -pmaxpri -F -mglob -t"Your air entity falters and its wispy tendrils fall to its sides."          air_entity_redo_skill = @gem cmd use suffocating embrace
@@ -91,11 +92,11 @@
 /def key_f16 = /bre
 
 ;; Entity rep in numbers okthxbye
-/def -ag -mregexp -i -t'^\| Power: ([O]*)([o]*)([!]*)([:]*)([,]*)' poikelot=\
-/set kymppitonnit=%P1%;/set tonnit=%P2%;/set satkut=%P3%;/set kympit=%P4%;/set ykkoset=%P5%;\
+/def -ag -mregexp -i -t'^\| Power: ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)' poikelot=\
+/set sadattonnit=%P1%;/set kymppitonnit=%P2%;/set tonnit=%P3%;/set satkut=%P4%;/set kympit=%P5%;/set ykkoset=%P6%;\
 /set pisteet=\
-$[10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*strlen(satkut)+10*strlen(kympit)+strlen(ykkoset)]%;\
-/set stringi=$[strcat(kymppitonnit,tonnit,satkut,kympit,ykkoset)]%;\
+$[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*strlen(satkut)+10*strlen(kympit)+strlen(ykkoset)]%;\
+/set stringi=$[strcat(sadattonnit,kymppitonnit,tonnit,satkut,kympit,ykkoset)]%;\
 /echo  | Power: %stringi (%pisteet points)
 
 ;; Eitoimi

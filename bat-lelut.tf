@@ -9,6 +9,7 @@
 /set magestaff_status=X
 /set orb_status=_
 /set orb_time=$[time()]
+/set ankh_status=X
 /set henry_plate_status=X
 /set henry_plate_amount=750
 /set yaboz_bracelets_status=_
@@ -30,6 +31,9 @@
 
 ;; Orb of wind and rain
 /def -mglob -t"Your orb sparkles." orbready = /set orb_status=X
+
+;; Ankh
+/def -mglob -t"Your Amberley Ankh activates." ankh_activated = /set ankh_status=_%;/set ankh_time=$[time()]%;/repeat -00:30 1 /set ankh_status=X
 
 ;; Henry plate
 /def -mglob -t"You feel magical powers flowing from it back to you." = /set henry_plate_amount = %henry_plate_amount-50
@@ -76,6 +80,7 @@
 /echo  |  Entity Wind (entw,ewind) [%ewind_status] [%ewind_cd] %;\
 /echo  |  Magestaff (iss,ism) [%magestaff_status]%;\
 /echo  |  Orb wind (owind) [%orb_status] [%orb_cd] %;\
+/echo  |  Ankh (aa) [%ankh_status] [%ankh_cd] %;\
 /echo  | %;\
 /echo  | SP Stores: %;\
 /echo  |  Henry plate (bget,bput) [%henry_plate_status] [%henry_plate_amount] sp%;\

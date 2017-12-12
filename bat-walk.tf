@@ -9,8 +9,8 @@
      /set walk_dir=%{*}%; %{walk_dir}%;\
      /set move_count=2%;\
    /endif%;\
-   /def -F -p99 -n1 -mregexp -t"^([[A-Za-z ]+]*) \\\\([nw,n,ne,w,e,sw,s,se,u,d,enter]+\\\\).$$" terrain= /set terrain_type=%%{P1}%%;\
-   /def -F -p99 -mregexp -t"^([[A-Za-z ]+]*) \\\\\\\\([nw,n,ne,w,e,sw,s,se,u,d,enter,path,portal]+\\\\\\\\).$$$" terrain_walk= /let terrain_checked_type=%%%{P1}%%%; /if ({terrain_type}!~{terrain_checked_type}) /undef terrain_walk%%%; /undef end_walk%%%; @map%%%; /elseif ({terrain_type}=~{terrain_checked_type}) /set move_count=$$$[{move_count}+1]%%%; /if ({move_count}<31) %%%{walk_dir}%%%; /else /undef terrain_walk%%%; /undef end_walk%%%; map%%%; /endif%%%; /endif%%;\
+   /def -F -p99 -n1 -mregexp -t"^([A-Za-z ]*)\[?[0-9,]*\]? \\\\([nw,n,ne,w,e,sw,s,se,u,d,enter]+\\\\).$$" terrain= /set terrain_type=%%{P1}%%;\
+   /def -F -p99 -mregexp -t"^([A-Za-z ]*)\[?[0-9,]*\]? \\\\\\\\([nw,n,ne,w,e,sw,s,se,u,d,enter,path,portal]+\\\\\\\\).$$$" terrain_walk= /let terrain_checked_type=%%%{P1}%%%; /if ({terrain_type}!~{terrain_checked_type}) /undef terrain_walk%%%; /undef end_walk%%%; @map%%%; /elseif ({terrain_type}=~{terrain_checked_type}) /set move_count=$$$[{move_count}+1]%%%; /if ({move_count}<31) %%%{walk_dir}%%%; /else /undef terrain_walk%%%; /undef end_walk%%%; map%%%; /endif%%%; /endif%%;\
    /def -F -p99 -n1 -t"You can't go that way!" end_walk= /undef terrain_walk%;\
    %{walk_dir}
 
@@ -36,6 +36,7 @@
 /def castello-sailor=@8 s;5 se;5 e;8 se;8 e;9 se;4 e;2 ne;2 n;ne;2 n;2 w;sw;list
 /def sailor-castello=@ne;2 e;2 s;sw;2 s;2 sw;4 w;9 nw;8 w;8 nw;5 w;5 nw;8 n
 /def castello-mist=@8 s;travel se;travel se;11 e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;3 e;4 se;3 e;ne;2 e;3 se;4 e;4 se;9 e;3 ne;4 e;4 ne;20 e;3 e;12 se;20 s;10 s;se;10 s;sw;s
+/def castello-wrebie=@8 s;travel se;travel se;travel e;travel e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;3 e;4 se;3 e;ne;2 e;3 se;4 e;2 se;11 s
 
 ;; Deso
 /def caly-deso=@travel se;travel se;10 e

@@ -95,10 +95,10 @@
 
 
 ;Moonrind
-/def -mglob -t'The very ground you are standing on begins to tremble.' moonrind_fissure_coming = /echo -aB WARNING: SPECIAL COMING
+/def -ab -mglob -t'The very ground you are standing on begins to tremble.' moonrind_fissure_coming = /echo -aB WARNING: SPECIAL COMING
 /def -mglob -t'Some green vines are growing out of the fissures, feeling for something to grab! Better avoid them, now!' moonrind_fissue_NOW = /echo -aB *** WARNING: jump left/right NOW ***
 ;; command ll grep 'Reverse damage' show effects
-;;/def -mglob -t'\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\**' rounds_moonrind = @ll
+/def -mglob -t'\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\**' rounds_moonrind = @ll
 /def -mregexp -t'^Moonrind tells you \'Raugh\!' moonrind_riddle = @party report MOONRIND RIDDLE!%;@quote 'tell last 1' party say
 ; You feel the flow of abjurative magic towards Moonrind!
 
