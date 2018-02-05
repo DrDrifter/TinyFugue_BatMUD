@@ -1,18 +1,28 @@
 
 
 ;; Diggas
-/def -mglob -t"a cute little bunny rabbit"           diggas1 = /sb bunny
-/def -mglob -t"a frog is hopping here"               diggas2 = @kk frog
-/def -mglob -t"A beautiful deer grazes nearby"       diggas3 = @kk deer
-/def -mglob -t"Smokey the Bear stands here"          diggas4 = @kk bear
-/def -mglob -t"Booboo the Bear"                      diggas5 = @kk bear
-/def -mglob -t"Yogi the Bear"                        diggas6 = @kk bear
-/def -mglob -t"The Ranger"                           diggas7 = @kk ranger
-/def -mglob -t"an ant that is raiding a picnic site" diggas8 = /sb ant
-/def -mglob -t"A marmot lies here sunning itself."   diggas9 = @kk marmot
+/def -mglob -t"a cute little bunny rabbit"             diggas1 = /sb bunny
+/def -mglob -t"a frog is hopping here"                 diggas2 = @kk frog
+/def -mglob -t"A beautiful deer grazes nearby"         diggas3 = @kk deer
+/def -mglob -t"Smokey the Bear stands here"            diggas4 = @kk bear
+/def -mglob -t"Booboo the Bear"                        diggas5 = @kk bear
+/def -mglob -t"Yogi the Bear"                          diggas6 = @kk bear
+/def -mglob -t"The Ranger"                             diggas7 = @kk ranger
+/def -mglob -t"an ant that is raiding a picnic site"   diggas8 = /sb ant
+/def -mglob -t"A marmot lies here sunning itself."     diggas9 = @kk marmot
 /def -mglob -t"A very old, but HUGE, sage sits here mumbling to himself" diggas10 = @kk sage
-/def -mglob -t"a tired guard for the city of Raven"  diggas11 = @kk guard
-/def -mglob -t"The Taskmaster"                       diggas12 = @kk human
+/def -mglob -t"a tired guard for the city of Raven"    diggas11 = @kk guard
+/def -mglob -t"a muscular guard for the city of Raven, with bulging clothes" diggas12 = @kk guard
+/def -mglob -t"a guard for the city of Raven, looking bored" diggas13 = @kk guard
+/def -mglob -t"a * guard for the city of Raven"        diggas14 = @kk guard
+/def -mglob -t"A guard is pouring boiling oil on the enemies" diggas15 = @kk guard
+/def -mglob -t"a guard for the city of Raven, looking vigilant" diggas16 = @kk guard
+/def -mglob -t"a shifty-eyed guard for the city of Raven, looking suspiciously around" diggas17 = @kk guard
+/def -mglob -t"A townperson wandering Raven looking for a safe spot" diggas20 = @kk human
+/def -mglob -t"A nervous looking adventurer"           diggas21 = @kk human
+/def -mglob -t"The Taskmaster"                         diggas22 = @kk human
+/def -mglob -t"A fearless barbarian stands here, weapon ready" diggas23 = @kk human
+/def -mglob -t"An overworked and underpaid cleric wraps a guard's bandages here" diggas24 = @kk cleric
 
 ;; NBMountain
 /def -mglob -t"small grey wood louse"                      mountain1 = /sb louse
@@ -33,6 +43,7 @@
 /def -mglob -t"weak looking rock-digger chipping away at the wall" weakdigger   = @kk digger
 /def -mglob -t"fully grown rock-digger chipping away at the wall"  mediumdigger = @kk digger
 /def -mglob -t"large rock-digger is breaking up the wall"          largedigger  = @kk digger
+/def -mglob -t"The massive king rock-digger, sitting quietly"      kingdigger   = @kk digger
 
 ;; Beastlands
 /def -mglob -t"a large black stallion"             beastlands1 = @kk horse
@@ -206,6 +217,16 @@
  /undef diggas10%;\
  /undef diggas11%;\
  /undef diggas12%;\
+ /undef diggas13%;\
+ /undef diggas14%;\
+ /undef diggas15%;\
+ /undef diggas16%;\
+ /undef diggas17%;\
+ /undef diggas20%;\
+ /undef diggas21%;\
+ /undef diggas22%;\
+ /undef diggas23%;\
+ /undef diggas24%;\
  /undef mountain1%;\
  /undef mountain2%;\
  /undef mountain3%;\
@@ -222,6 +243,7 @@
  /undef weakdigger%;\
  /undef mediumdigger%;\
  /undef largedigger%;\
+ /undef kingdigger%;\
  /undef beastlands1%;\
  /undef beastlands2%;\
  /undef beastlands3%;\

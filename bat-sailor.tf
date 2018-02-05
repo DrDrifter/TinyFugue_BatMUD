@@ -1,3 +1,27 @@
+
+
+
+
+;The ship shudders as it plows into the side of *
+;The ship shudders as it plows into the side of Curious Rose, splintering its hull.
+;Nella tells you 'We missed tha *
+;Nella tells you 'Tha ship 'as been shielded.'
+;Nella tells you 'The ship's protective shield drops.'
+
+;You swing your hands in a pattern of disruption while muttering 'aquar dminop'
+;Something weird happens just as your spell is about to take effect, and it simply drains away.
+
+;You swing your hands in a pattern of disruption while muttering 'shatter aquar sphorq'
+;The magi on board the Curious Rose managed to counter your spell!
+
+;You swing your hands in a pattern of disruption while muttering 'pinoe vinoe minoe aquar'
+;The magi on board the Curious Rose managed to counter your spell!
+
+;You swing your hands in a pattern of disruption while muttering 'lnarel nox aquar'
+;The magi on board the Curious Rose managed to counter your spell!
+
+
+
 ;;;;;;;;;; Class Identification
 
 /DEF -mregexp -t"^The ([A-Z]+) Boat " ship_c1_sub = \

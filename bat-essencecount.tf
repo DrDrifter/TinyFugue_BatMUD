@@ -2,6 +2,13 @@
 /set countfile=~/tf-lib/magecount.txt
 /set ctype=fire
 /set reset=false
+/set asphessu=0
+/set elecessu=0
+/set acidessu=0
+/set fireessu=0
+/set coldessu=0
+/set manaessu=0
+/set poisessu=0
 
 /def -F -p5 -mregexp -t"^You feel your skills in handling elemental forces improve\." essence_reset = /set reset=true
 /def -F -p5 -mregexp -t"^You watch with self-pride as your electrocution hits .+\." electrocuition_count_up = /addone elec
@@ -22,7 +29,8 @@
 /def -aB -t"You feel your skills in handling elemental forces improve." gain_essence =\
 /echo -aB ############################%;\
 /echo -aB ###### GAINED ESSENCE ######%;\
-/echo -aB ############################
+/echo -aB ############################%;\
+/readessut
 
 /def -i chomp=\
  /let count=%2%;\
@@ -58,15 +66,36 @@
 /def esset=\
  /writenew%;\
  /readcount%;\
-/echo ,--essence--next---current----%;\
-/echo | Asph: 38  3000 / %asphblast %;\
-/echo | Elec: 43  4500 / %elecblast %;\
-/echo | Acid: 32  3000 / %acidblast %;\
-/echo | Fire: 20   350 / %fireblast %;\
-/echo | Cold: 15   350 / %coldblast %;\
-/echo | Mana: 21  1500 / %manablast %;\
-/echo | Pois: 17   350 / %poisblast %;\
-/echo `-----------------------------
+ /let asphessunext=$(/countnext %asphessu)%;\
+ /let elecessunext=$(/countnext %elecessu)%;\
+ /let acidessunext=$(/countnext %acidessu)%;\
+ /let fireessunext=$(/countnext %fireessu)%;\
+ /let coldessunext=$(/countnext %coldessu)%;\
+ /let manaessunext=$(/countnext %manaessu)%;\
+ /let poisessunext=$(/countnext %poisessu)%;\
+ /let asphblastfloat=$[%asphblast+0.0]%;\
+ /let elecblastfloat=$[%elecblast+0.0]%;\
+ /let acidblastfloat=$[%acidblast+0.0]%;\
+ /let fireblastfloat=$[%fireblast+0.0]%;\
+ /let coldblastfloat=$[%coldblast+0.0]%;\
+ /let manablastfloat=$[%manablast+0.0]%;\
+ /let poisblastfloat=$[%poisblast+0.0]%;\
+ /let asphprc=$[%asphblastfloat/%asphessunext*100]%;\
+ /let elecprc=$[%elecblastfloat/%elecessunext*100]%;\
+ /let acidprc=$[%acidblastfloat/%acidessunext*100]%;\
+ /let fireprc=$[%fireblastfloat/%fireessunext*100]%;\
+ /let coldprc=$[%coldblastfloat/%coldessunext*100]%;\
+ /let manaprc=$[%manablastfloat/%manaessunext*100]%;\
+ /let poisprc=$[%poisblastfloat/%poisessunext*100]%;\
+/_echo ,-Essence--count---next--%;\
+/_echo | Asph: %asphessu $[pad(%asphblast,5)] / $[pad(%asphessunext,-5)] ($[pad(substr(%asphprc,0,5),3)])% %;\
+/_echo | Elec: %elecessu $[pad(%elecblast,5)] / $[pad(%elecessunext,-5)] ($[pad(substr(%elecprc,0,5),3)])% %;\
+/_echo | Acid: %acidessu $[pad(%acidblast,5)] / $[pad(%acidessunext,-5)] ($[pad(substr(%acidprc,0,5),3)])% %;\
+/_echo | Fire: %fireessu $[pad(%fireblast,5)] / $[pad(%fireessunext,-5)] ($[pad(substr(%fireprc,0,5),3)])% %;\
+/_echo | Cold: %coldessu $[pad(%coldblast,5)] / $[pad(%coldessunext,-5)] ($[pad(substr(%coldprc,0,5),3)])% %;\
+/_echo | Mana: %manaessu $[pad(%manablast,5)] / $[pad(%manaessunext,-5)] ($[pad(substr(%manaprc,0,5),3)])% %;\
+/_echo | Pois: %poisessu $[pad(%poisblast,5)] / $[pad(%poisessunext,-5)] ($[pad(substr(%poisprc,0,5),3)])% %;\
+/_echo `-----------------------------
 
 /def writenew =\
  /echo elec %elecblast%|/writefile %countfile%;\
@@ -76,6 +105,17 @@
  /echo pois %poisblast%|/writefile -a %countfile%;\
  /echo cold %coldblast%|/writefile -a %countfile%;\
  /echo fire %fireblast%|/writefile -a %countfile
+
+/def -ag -p99 -F -mregexp -t"\| Essence of asphyxiation        \|  (\d+) \|" asphessutrig = /set asphessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of electricity         \|  (\d+) \|" elecessutrig = /set elecessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of corrosion           \|  (\d+) \|" acidessutrig = /set acidessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of pyromania           \|  (\d+) \|" fireessutrig = /set fireessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of arctic powers       \|  (\d+) \|" coldessutrig = /set coldessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of magic lore          \|  (\d+) \|" manaessutrig = /set manaessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of toxicology          \|  (\d+) \|" poisessutrig = /set poisessu=%P1
+
+/def readessut =\
+ @grep "Essence of" skills
 
 /def readcount =\
  /let eleccount=$(/readfile %countfile%| /egrep ^elec [0-9]+ )%;\
@@ -107,6 +147,25 @@
  /set coldblast=%coldcount%;\
  /set fireblast=%firecount
 
+/def countnext =\
+ /let current=%1%;\
+ /if (%current>0 & %current<10) /let next=150%;\
+ /elseif (%current>9 & %current<20) /let next= 350%;\
+ /elseif (%current>19 & %current<30) /let next=1500%;\
+ /elseif (%current>29 & %current<40) /let next=3000%;\
+ /elseif (%current>39 & %current<50) /let next=4500%;\
+ /elseif (%current>49 & %current<60) /let next=6000%;\
+ /elseif (%current>59 & %current<70) /let next=7500%;\
+ /elseif (%current>60 & %current<80) /let next=9000%;\
+ /elseif (%current>79 & %current<90) /let next=10500%;\
+ /elseif (%current>89 & %current<101) /let next=12000%;\
+ /endif%;\
+ /_echo %next
+
+
+
 /repeat -0:5 i /writenew
 
 /readcount
+
+/repeat -3 1 /readessut

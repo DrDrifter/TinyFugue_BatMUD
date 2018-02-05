@@ -27,16 +27,16 @@
 /def -mglob -t"Tyranicus waves his hand at * and says 'Begone'" tyrathrow = @party report HÄLÄRM! Tyra banished %{6}
 
 ;; Valentina
-
-;;Your actions make you feel as a disgrace to your race.
-;;You feel ashamed by the seed of evil in your actions.
-
-;; She is protected from your attacks.
+/def -mglob -t'Your actions make you feel as a disgrace to your race.' valentina_checktarget1 = @cast info%;/echo -aB ^^^ CHECK TARGET ^^^
+/def -mglob -t'You feel ashamed by the seed of evil in your actions.' valentina_checktarget2 = @cast info%;/echo -aB ^^^ CHECK TARGET ^^^
 
 /def -mglob -t'You can feel your blood boiling as Valentina casts her spell at you!' valentina_bblood_up = @party report Burning blood ON!
 /def -mglob -t'The effects of \'Burning blood\' wear off.' valentina_bblood_down = @party report Burning blood down
 
+;; Razael/Tobias/Isael
+
 /def -ag -mglob -t'He is protected from your attacks.' rasael_protected_personal = /echo -aB * PERSONAL PROT !!! PERSONAL PROT !!! PERSONAL PROT !!! 
+/def -ag -mglob -t'She is protected from your attacks.' isabel_protected_personal = /echo -aB * PERSONAL PROT !!! PERSONAL PROT !!! PERSONAL PROT !!! 
 
 /def -ag -mglob -t'He is surrounded by a blazing field of cleansing fire.' rasael_protected_field_fire = /echo -aB WARNING: NO FIRE to RASAEL/TOBIAS
 /def -ag -mglob -t'She is surrounded by a blazing field of cleansing fire.' isabel_protected_field_fire = /echo -aB WARNING: NO FIRE to ISABEL
@@ -87,11 +87,11 @@
 
 /def -mglob -t'The thick white haze subsides.' haze_lifted = @party report Haze lifted!
 
+;; Gatekeeper
 ;;Gatekeeper raises Sword of Clouds to the heights and mutters some magic words.
-;;White magic enfolds Lammas's body and in a blink of eye he is turned into a
+;;White magic enfolds <playername>'s body and in a blink of eye he is turned into a
 ;;glass statue.
-;;PUFF! Glaced Lammas vanishes into thin air.
-;;Glaced Lammas has moved to a new environment.
+/def -mglob -t'PUFF! Glaced * vanishes into thin air.' partymember_glaced = /echo -aB WARNING: PARTYMEMBER GLACED!
 
 
 ;Moonrind

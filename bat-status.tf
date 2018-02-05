@@ -16,7 +16,7 @@
 ;; Then define what we want to see
 /status_add -c "[" ceredone:1
 /status_add -Aceredone -s0 "]" padding1:1
-/status_add -Apadding1 "[" eqsetstatus:3
+/status_add -Apadding1 -s0 "[" eqsetstatus:3
 /status_add -Aeqsetstatus -s0 "]" padding2:1
 /status_add -Apadding2 -s0 "[" damtype:12
 /status_add -Adamtype -s0 "]" padding3:1

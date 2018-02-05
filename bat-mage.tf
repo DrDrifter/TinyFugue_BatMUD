@@ -171,7 +171,7 @@ suddenly stops breathing and jerks a couple of times\
 /bind § = /dg .
 
 /def as =/set targettype=misc%;/set spell=air_shield%;/do_spell %{*}
-/def caa=/set targettype=foo%; /set spell=create_air_armour%;/do_spell %{1}
+/def caa=/set targettype=foo%; /set spell=create_air_armour%;/do_spell %{*}
 /def dg =/set targettype=off%; /set spell=degenerate_person%;/do_spell %{*}
 /def dm =/set targettype=off%; /set spell=disrupt_magic%;/do_spell %{*}
 /def ev =/set targettype=misc%;/set spell=enhance_vision%;/do_spell %{*}

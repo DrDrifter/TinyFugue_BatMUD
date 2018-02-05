@@ -16,6 +16,7 @@
 /def row      =/set targettype=none%;/set spell=rune_of_warding%;/do_spell .
 
 ;; Wandu stuff
+/def vs       =@vortex support
 /def wcannon  =/set targettype=none%;@vortex create slingshot vortex at %{1} to %{2}
 /def wdim     =/set targettype=none%;@vortex create planar gate at %{*}
 /def wgate    =/set targettype=none%;@vortex create planar gate at %{*}

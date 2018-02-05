@@ -408,6 +408,7 @@
 
 /def -mglob -ag -t"The turtle starts squirming." turtlesquirm_gag
 /def -mregexp -ag -t"A cart labeled \'.*\' emotes \'.*\'" merchantcart_gag
+/def -mglob -ag -t"The devil monkey of Drifter whispers*" asmomoney_gag
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1
