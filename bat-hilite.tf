@@ -292,6 +292,7 @@
     /undef greed_catcollar%;\
     /undef greed_pike%;\
     /undef greed_essence%;\
+    /undef greed_fulgurite_map%;\
     /echo -aB TF info: Greed triggers (off)%; \
   /else \
     /def -F -p3 -P0 -mregexp -t'^%{generic_amount_list} mithril coin' greed_mith = @get mithril%; \
@@ -307,6 +308,7 @@
     /def -F -p9 -P0 -mregexp -t'^Collar of the CatDemon' greed_catcollar = @get collar%;\
     /def -F -p9 -P0 -mregexp -t'^a well made pike' greed_pike = @get pike%;\
     /def -F -p9 -P0 -mregexp -t'.* spills some of (his|her|its) essence.' greed_essence = @get essence%;\
+    /def -F -p9 -P0 -mregexp -t'^a piece of a map' greed_fulgurite_map = @get map%;\
     /echo -aB TF info: Greed triggers (on)%; \
   /endif
 
