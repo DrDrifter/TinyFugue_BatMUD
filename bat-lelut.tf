@@ -16,6 +16,8 @@
 /set yaboz_bracelets_amount=0
 /set nithem_skull_status=X
 /set pfe_helmet_status=X
+/set bra_status=_
+/set fqueen_wand_status=X
 
 ;; Athame
 /def -t"The athame severs the field surrounding this area." athamesever = @remove Leikkuri;put Leikkuri in bp;/set athame_status=_%;/set athame_time=$[time()]%;/repeat -00:10 1 /set athame_status=X
@@ -36,11 +38,11 @@
 /def -mglob -t"Your Amberley Ankh activates." ankh_activated = /set ankh_status=_%;/set ankh_time=$[time()]%;/repeat -00:30 1 /set ankh_status=X
 
 ;; Henry plate
-/def -mglob -t"You feel magical powers flowing from it back to you." = /set henry_plate_amount = %henry_plate_amount-50
-/def -mglob -t"You feel magical powers flowing from you to the breastplate." = \
+/def -mglob -t"You feel magical powers flowing from it back to you." henry_plate_charged = /set henry_plate_amount = %henry_plate_amount-50
+/def -mglob -t"You feel magical powers flowing from you to the breastplate." henry_plate_drained = \
    /set henry_plate_status=X%;\
    /set henry_plate_amount=%henry_plate_amount+50
-/def -mglob -t"But the plate is without response." = /set henry_plate_status=_
+/def -mglob -t"But the plate is without response." henry_plate_empty = /set henry_plate_status=_
 
 ;; Yaboz bracelets
 ;; You mumble the ancient words 'chushak phuzzs'
@@ -56,6 +58,10 @@
    /set pfe_helmet_status=_%;\
    /repeat -0:20 1 /set pfe_helmet_status=X
 
+;; Fairy bra
+/def -mglob -t"You store * in the spell matrix." bra_stored = /set bra_status=X
+/def -mglob -t"You rub the brassiere (being a little over-eager, damaging it in the process) and thus cast the spell from the spell matrix." bra_cast = /set bra_status=_
+
 ;; Praixor gloves
 
 ;; Prism mirrors
@@ -69,6 +75,9 @@
 
 ;; Werelizard rings
 /def -mglob -t"You feel strength flowing between you and *" ringkiss = /repeat -00:10 1 @party report (Ring kiss loaded)
+
+;; Fqueen wand
+/def -mlob -t"You swing the wand one last time, pointing at *" fqueen_wand_zapped = /set fqueen_wand_status=_
 
 /def lelut=\
 /echo  .-----------------------------.%;\
@@ -89,10 +98,14 @@
 /echo  | Zaps: %;\
 /echo  |  Nithem skull (garr,gara,scss,scsa) [%nithem_skull_status] [%nithem_skull_cd]%;\
 /echo  |  PfE Helmet (phelm) [%pfe_helmet_status] [%pfe_helmet_cd]%;\
+/echo  |  Fairy bra (bzap) [%bra_status]%;\
 /echo  |  Praixor Glove [%praixor_glove_status]%;\
 /echo  |  Prism mirrors [%prism_mirrors_status] [%prism_mirrors_cd]%;\
 /echo  | %;\
 /echo  | Other: %;\
 /echo  |  Mask of Gluttony (wispill) [%mask_of_gluttony_status] [%mask_of_gluttony_cd]%;\
 /echo  |  Demonic Ring [%demonic_ring_status] [%demonic_ring_cd]%;\
+/echo  |  Lizard ring1 []%;\
+/echo  |  Lizard ring2 []%;\
+/echo  |  Fairy wand (frest) [%fqueen_wand_status] [%fqueen_wand_cd]%;\
 /echo  `-----------------------------`
