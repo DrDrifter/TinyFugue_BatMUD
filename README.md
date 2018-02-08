@@ -21,7 +21,7 @@ where xxx is the name of the guild, eg. "ranger"
 
 ## Example
 As I mostly play mage myself, here is an example of a possible .tfrc file:
-`
+```
 /load protter.tf
 /load bat-status.tf
 /load bat-hilite.tf
@@ -33,7 +33,7 @@ As I mostly play mage myself, here is an example of a possible .tfrc file:
 /load bat-walk.tf
 /load bat-navs.tf
 /load log.tf
-`
+```
 ## Specific files and what they do:
 
 ### bat-generic.tf
@@ -41,7 +41,7 @@ This is the main support file which will be automatically loaded with guild file
 
 ### bat-hilite.tf
 Hilites text, players, important events, tells, flex wobbles etc. Colors blasts of certain types with certain colors as follows:
-`
+```
 +----------+------------+---------+----------------------------------------------------------------
 | Type     | Background | Text    | Spells
 +----------+------------+---------+----------------------------------------------------------------
@@ -54,7 +54,7 @@ Hilites text, players, important events, tells, flex wobbles etc. Colors blasts 
 | Asphyx   | Magenta    | Blue    | Mage blasts
 | Psi      | Cyan       | Magenta | Psi & Folklorist blasts
 +----------+------------+---------+---------------------------------------------------------------
-`
+```
 ### protter.tf
 Old-style protter that will report prots that are up and when they go down. Includes a prot spell name parser.
 
