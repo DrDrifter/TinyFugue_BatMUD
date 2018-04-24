@@ -37,6 +37,7 @@
 /def sailor-castello=@ne;2 e;2 s;sw;2 s;2 sw;4 w;9 nw;8 w;8 nw;5 w;5 nw;8 n
 /def castello-mist=@8 s;travel se;travel se;11 e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;3 e;4 se;3 e;ne;2 e;3 se;4 e;4 se;9 e;3 ne;4 e;4 ne;20 e;3 e;12 se;20 s;10 s;se;10 s;sw;s
 /def castello-wrebie=@8 s;travel se;travel se;travel e;travel e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;3 e;4 se;3 e;ne;2 e;3 se;4 e;2 se;11 s
+/def wrebie-sc=@7n;2 ne;4 nw;4 w;3 nw;2 w;sw;3 w;4 nw;3 w;11 nw;2 n;2 nw;4 n;5 nw;8 n;nw;6 n;4 w
 
 ;; Deso
 /def caly-deso=@travel se;travel se;10 e
@@ -51,6 +52,8 @@
 /def village-caly=@4 sw;2 s;5 se;20 e
 /def deso-tinmen=@19 w;11 nw;2 n;6 nw;6 n
 /def tinmen-deso=@6 s;6 se;2 s;11 se;19 e
+/def deso-templar=@10 w;travel w;travel n;15 se;10 e;7 se;E;SE;E;ne;E;ne;E;ne;E;ne;E;SE;E;E;NE;E;SE;s
+/def templar-deso=@n;nw;W;SW;W;W;NW;W;sw;W;sw;W;sw;W;sw;W;NW;W;w;travel se;travel se;10 e
 
 ;; Furn
 /def furn-brantis=@20 s;5 s;travel s;travel sw;nw
@@ -60,14 +63,20 @@
 /def kutanakor-furn=@9 nw;20 n;2 nw;18 n;3 ne;6 n;7 ne;2 n;11 ne;travel e;3 sw;5 nw;5 n
 /def furn-perins=@20 s;16 s;9 sw;20 s;8 se;7 e;8 se;5 e;6 se;19 e;9 se;11 e;6 ne;12 e;5 s
 /def peris-furn=@5 n;12 w;6 sw;11 w;9 nw;19 w;6 nw;5 w;8 nw;7 w;8 nw;20 n;9 ne;16 n;20 n
+/def darkwood-twisted=@3 nw;5 w;travel w;11 sw;S;SW;S;SW;S;SW;W;SW;2 nw
+/def twisted-darwood=@2 se;NE;E;NE;N;NE;N;NE;2 n;travel ne;20 e;12 e;3 se
 
 ;; Roth
 /def skeep-roth=@travel s;travel s;4 s;15 se;15 e;20 se;20 e;5 se;S;SW;S;SW;W;nw;2 n
 /def roth-skeep=@2 s;se;E;NE;N;NE;N;n;travel nw;travel n;travel nw
 /def skeep-barb=@9 s;4 sw;19 s;6 se;8 ne;13 e;20 ne;5 ne;11 e;13 ne;8 e;6 ne;6 e;6 ne;17 e;se;e;se;e;ne;e;ne;8 e;3 se;e;2 ne;e;6 ne;7 e;2 ne
 /def barb-skeep=@2 sw;7 w;6 sw;w;2 sw;2 w;3 nw;8 w;sw;w;sw;w;nw;w;nw;17 w;6 sw;6 w;6 sw;8 w;13 sw;11 w;5 sw;20 sw;13 w;8 sw;6 nw;19 n;4 ne;9 n
+/def beast-skeep=@18 se;e;5 ne;20 e;5 ne;20 e;5 ne;16 n;16 ne;20 e;5 e;s;5 se;e;18 se;travel s;travel sw;nw;3 w;3 sw
 
 ;; Luce
 /def luce-lore=@s;travel s;n;n
 /def lore-luce=@travel n;n
 /def lore-anthill=@2 w;nw;3 w;4 sw;2 s;8 sw;2 w;2 nw;6 w;4 nw;w;2 sw;2 w;sw;20 w;7 w;3 nw;4 w;6 nw;7 ne;3 n
+/def barb-lore=@sw;2 s;4 se;6 e;2 se;2 e;8 ne;2 n;4 ne;3 e;se;2 e
+/def anthill-lore=@3 s;7 sw;6 se;4 e;3 se;7 e;20 e;ne;2 e;2 ne;e;4 se;6 e;2 se;2 e;8 ne;2 n;4 ne;3 e;se;2 e
+/def zebells-lore=@n;nw;3 n;2 nw;2 n;w;6 nw;nw;n;5 nw;3 n;5 nw;n;nw;n;6 nw;2 n;5 nw;5 ne;2 n;4 ne;3 e;se;2 e
