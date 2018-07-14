@@ -38,7 +38,7 @@
 ;; other conjuprots
 /def blur = /set targettype=prot%;/set spell=blurred_image%;/do_spell %{*}
 /def disp = /set targettype=prot%;/set spell=displacement%;/do_spell %{*}
-/def iw   = /set targettype=prot%;/set spell=iron_will%;/do_spell %{*}
+/def iw   = /set targettype=help%;/set spell=iron_will%;/do_spell %{*}
 /def sop  = /set targettype=prot%;/set spell=shield_of_protection%;/do_spell %{*}
 /def mb   = /set targettype=none%;/set spell=mana_barrier%;/do_spell
 
@@ -51,18 +51,18 @@
 /def da  = /set targettype=none%;/set spell=greater_darkness%;/do_spell
 /def dmp = /set targettype=prot%;/set spell=dispel_magical_protection%;/do_spell %{*}
 /def id  = /set targettype=info%;/set spell=identify%;/do_spell %{*}
-/def iv  = /set targettype=prot%;/set spell=infravision%;/do_spell %{*}
+/def iv  = /set targettype=help%;/set spell=infravision%;/do_spell %{*}
 /def nf  = /set targettype=none%;/set spell=neutralize_field%;/do_spell
-/def qs  = /set targettype=prot%;/set spell=quicksilver%;/do_spell %{*}
-/def re  = /set targettype=prot%;/set spell=resist_entropy%;/do_spell %{*}
-/def rst = /set targettype=misc%;/set spell=restore%;/do_spell %{*}
-/def si  = /set targettype=prot%;/set spell=see_invisible%;/do_spell %{*}
-/def sl  = /set targettype=misc%;/set spell=shelter%;/do_spell .
-/def sm  = /set targettype=prot%;/set spell=see_magic%;/do_spell %{*}
-/def ww  = /set targettype=prot%;/set spell=water_walking%;/do_spell %{*}
+/def qs  = /set targettype=help%;/set spell=quicksilver%;/do_spell %{*}
+/def re  = /set targettype=help%;/set spell=resist_entropy%;/do_spell %{*}
+/def rst = /set targettype=help%;/set spell=restore%;/do_spell %{*}
+/def si  = /set targettype=help%;/set spell=see_invisible%;/do_spell %{*}
+/def sl  = /set targettype=none%;/set spell=shelter%;/do_spell
+/def sm  = /set targettype=help%;/set spell=see_magic%;/do_spell %{*}
+/def ww  = /set targettype=help%;/set spell=water_walking%;/do_spell %{*}
 
 ;; Special ,)
-/def sticky = /set targettype=prot%;/set spell=resist_dispel%;/do_spell %{*}
+/def sticky = /set targettype=help%;/set spell=resist_dispel%;/do_spell %{*}
 
 ;; ceremony
 /set ceremony_status off
