@@ -67,3 +67,8 @@ rwho.tf
 spell.tf
 bat-zorb.tf
 bat-entitybot.tf
+*.tf~
+bat-dullring.tf
+bat-cavebeast.tf
+bat-tiamat.tf
+icesus.tf
