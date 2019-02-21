@@ -1,7 +1,55 @@
+;;
+;; Tiamat triggers and commands
+;;
+
+;; Define idler aliases
+alias idler1 rhoads
+alias idler2 larppa
+alias idler3 montez
+alias idler4 malos
+alias idler5 ugliness
+alias idler6 voronoi
+alias idler7 demoncore
+alias idler8 motorhead
+alias idler9 nyriori
+alias idler10 nyriori
+
+;;
+;; Standard commands for tiamat, edit as you see fit
+;; 
+;; cla clair command needs to be customized for your eq
+;; dbox and dball commands should shoot any off spell (not dispel evil etc, celestial spark works)
+;; fix and unal commands need to be changed to your actual partymembers
+;; effectively 'fix' is a combination of 'unal'+'drop boulder'+'fixpro'+'fixsc'+'throw globe'
+;; This is important! -> if you are in a BIG MESS, just type "fix"
+;;
+battle round_scan off
+battle round_cast_info off
+alias say say Drifter:
+command cla    wear replacing HomoHuppu;clairvoyance;wear replacing Riemutatti
+command db     drop all boulder;gem cmd drop all boulder
+command dball  cast blast vacuum at iron ball
+command dbox   cast dimensional leech at box
+command fix    unalias durtle;unalias huppu;unalias parsin;unalias glaurung;unalias hurin;unalias woocca;unalias searc;unalias drifter;unalias toper;unalias dragon;unalias monster;unalias tiamat;drop all boulder;prompt Hp:<hp>/<maxhp> Sp:<sp>/<maxsp> Ep:<ep>/<maxep> Exp:<exp> >;sc set hp: {colorhp} (<maxhp>) [{diffhp}] sp: {colorsp} (<maxsp>) [{diffsp}] ep: {colorep} (<maxep>) [{diffep}] cash: <cash> [{diffcash}] exp: <exp> [{diffexp}];sc on;throw glove at idler1;throw glove at idler2;throw glove at idler3;throw glove at idler4;throw glove at idler5;throw glove at idler6;throw glove at idler7;throw glove at idler8;throw glove at idler9;throw glove at idler10
+command fixansi ansi aggrmons red;ansi armours light_magenta;ansi familiars yellow;ansi items light_blue;ansi mounts yellow;ansi openitems blue;ansi player light_cyan;ansi regmons green;ansi weapons light_yellow;ansi woundedaggrmons light_red;ansi woundedmons light_green
+command fixpro prompt Hp:<hp>/<maxhp> Sp:<sp>/<maxsp> Ep:<ep>/<maxep> Exp:<exp> >
+command fixsc  sc set hp: {colorhp} (<maxhp>) [{diffhp}] sp: {colorsp} (<maxsp>) [{diffsp}] ep: {colorep} (<maxep>) [{diffep}] cash: <cash> [{diffcash}] exp: <exp> [{diffexp}];sc on
+command pe     wear replacing green amulet;grep -q '(You peer|Tiamat|Durtle|Huppu|Parsin|Glaurung|Hurin|Woocca|Searc|Drifter|Toper|demon|spirit)' peer north;grep -q '(You peer|Tiamat|Durtle|Huppu|Parsin|Glaurung|Hurin|Woocca|Searc|Drifter|Toper|demon|spirit)' peer west;grep -q '(You peer|Tiamat|Durtle|Huppu|Parsin|Glaurung|Hurin|Woocca|Searc|Drifter|Toper|demon|spirit)' peer east;grep -q '(You peer|Tiamat|Durtle|Huppu|Parsin|Glaurung|Hurin|Woocca|Searc|Drifter|Toper|demon|spirit)' peer south 
+command gtl unalias drifter;party say PARTY LEADER DRIFTER
+command pld unalias $1;party leader $1;party follow
+command tg   throw glove at idler1;throw glove at idler2;throw glove at idler3;throw glove at idler4;throw glove at idler5;throw glove at idler6;throw glove at idler7;throw glove at idler8;throw glove at idler9;throw glove at idler10
+command scan   fdgfdgdfgfdgdfgdfg
+command unal   unalias durtle;unalias huppu;unalias parsin;unalias glaurung;unalias hurin;unalias woocca;unalias searc;unalias drifter;unalias toper;unalias dragon;unalias monster;unalias tiamat
+command x      dsfdfdfsfdsf
+command xa     dsfdsfdsfsdfdsf
+
+
 ;;---Aura Detection reporter for spell and belt---
 
 ;;I filed a bug report to Tarken about the belt not obeying cutter, so until
 ;;then the belt trigger doesnt work.
+
+;; Note 2019: this might have something to do with cutter setting, testing this later
 
 
 ;;Gag these if you want:
@@ -96,7 +144,7 @@
 ;;---End Aura detection---
 
 ;;---Mage blaster---
-;;shoots (should) the correct type with f1
+;;shoots (should) the correct type with f11
 ;;
 
 /def -mregexp -t'^(Hrr\.\.\.It is cold here.*)' tiamatcoldroom = /substitute -p @{BCwhite}COLD ROOM: @{BCcyan}%{P1}@{n}%;/set currentroom=COLD
@@ -115,6 +163,7 @@
 				/elseif ({currentroom}=~"ACID") /if ({reverseblasting}) @cast lightning storm%;/else @cast acid storm%;/endif%;\
 				/elseif ({currentroom}=~"ELEC") /if ({reverseblasting}) @cast acid storm%;/else @cast lightning storm%;/endif%;\
 			 /endif
+/def key_f1 = /tiamatswitchblasts
 /def key_f11 = /tiamatblaster
 /def key_f9 = /tiamatareablaster
                                                                                     
@@ -146,7 +195,7 @@
           party say Died in %{tiamatroomtype} room
 
 ;;---fixdirs for 3rd incarnation---
-;; This command is important, bind it to a function key!
+;; This command is important, bind it to a function key or invoke manually!
 ;; /def key_f3 = /reversedirs
 ;; /def key_f4 = /fixdirs
 
