@@ -13,7 +13,7 @@
 ;    Broetchen (party): Shreds/jabs: 371 (14.5%)  
 
 ;/set summoned_entity_name=Yazaemon the fire entity
-/set summoned_entity_name=(Yazaemon the fire entity|Benkei the air entity|Goemon the water entity|Hattori the earth entity)
+/set summoned_entity_name=(Bael the fire entity|Lyft the air entity|Fleot the water entity|Eard the earth entity)
 
 ;; Bashing hits
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} BARBARICALLY BASHES " cr_att26=/set crhit26=$$[crhit26+1]
@@ -30,11 +30,11 @@
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} whacks " cr_att15=/set crhit15=$$[crhit15+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} flails " cr_att14=/set crhit14=$$[crhit14+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} knocks " cr_att13=/set crhit13=$$[crhit13+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} cuffs " cr_att12=/set crhit12=$$[crhit12+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} socks " cr_att11=/set crhit11=$$[crhit11+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} strikes " cr_att10=/set crhit10=$$[crhit10+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} bashes " cr_att9=/set crhit9=$$[crhit9+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} jabs " cr_att8=/set crhit8=$$[crhit8+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} cuffs " cr_att12=/set crhit12=$$[crhit12+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} socks " cr_att11=/set crhit11=$$[crhit11+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} strikes " cr_att10=/set crhit10=$$[crhit10+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} bashes " cr_att9=/set crhit9=$$[crhit9+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} jabs " cr_att8=/set crhit8=$$[crhit8+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} thrusts " cr_att7=/set crhit7=$$[crhit7+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} strokes " cr_att6=/set crhit6=$$[crhit6+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} thumps " cr_att5=/set crhit5=$$[crhit5+1]
@@ -57,11 +57,11 @@
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} savagely shaves " sl_att15=/set slhit15=$$[slhit15+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} cruelly tatters " sl_att14=/set slhit14=$$[slhit14+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} slits " sl_att13=/set slhit13=$$[slhit13+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} incisively tears " sl_att12=/set slhit12=$$[slhit12+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} incisively cuts " sl_att11=/set slhit11=$$[slhit11+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} slashes " sl_att10=/set slhit10=$$[slhit10+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} horribly shreds " sl_att9=/set slhit9=$$[slhit9+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} shreds " sl_att8=/set slhit8=$$[slhit8+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} incisively tears " sl_att12=/set slhit12=$$[slhit12+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} incisively cuts " sl_att11=/set slhit11=$$[slhit11+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} slashes " sl_att10=/set slhit10=$$[slhit10+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} horribly shreds " sl_att9=/set slhit9=$$[slhit9+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} shreds " sl_att8=/set slhit8=$$[slhit8+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} incises " sl_att7=/set slhit7=$$[slhit7+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} tears " sl_att6=/set slhit6=$$[slhit6+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} cuts " sl_att5=/set slhit5=$$[slhit5+1]
@@ -84,11 +84,11 @@
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} digs through " pu_att15=/set puhit15=$$[puhit15+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} digs into " pu_att14=/set puhit14=$$[puhit14+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} riddles " pu_att13=/set puhit13=$$[puhit13+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} really pokes " pu_att12=/set puhit12=$$[puhit12+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} gorges " pu_att11=/set puhit11=$$[puhit11+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} shafts " pu_att10=/set puhit10=$$[puhit10+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} cavitates " pu_att9=/set puhit9=$$[puhit9+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} craters " pu_att8=/set puhit8=$$[puhit8+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} really pokes " pu_att12=/set puhit12=$$[puhit12+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} gorges " pu_att11=/set puhit11=$$[puhit11+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} shafts " pu_att10=/set puhit10=$$[puhit10+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} cavitates " pu_att9=/set puhit9=$$[puhit9+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} craters " pu_att8=/set puhit8=$$[puhit8+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} bores " pu_att7=/set puhit7=$$[puhit7+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} sinks " pu_att6=/set puhit6=$$[puhit6+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} punctures " pu_att5=/set puhit5=$$[puhit5+1]
@@ -104,11 +104,11 @@
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} knees " ma_att5=/set mahit5=$$[mahit5+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} elbows " ma_att6=/set mahit6=$$[mahit6+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} elbow-smashes " ma_att7=/set mahit7=$$[mahit7+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} stomp-kicks " ma_att8=/set mahit8=$$[mahit8+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} foot-steps " ma_att9=/set mahit9=$$[mahit9+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} twists and throws " ma_att10=/set mahit10=$$[mahit10+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} finger-jabs " ma_att11=/set mahit11=$$[mahit11+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} joint-twists " ma_att12=/set mahit12=$$[mahit12+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} stomp-kicks " ma_att8=/set mahit8=$$[mahit8+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} foot-steps " ma_att9=/set mahit9=$$[mahit9+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} twists and throws " ma_att10=/set mahit10=$$[mahit10+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} finger-jabs " ma_att11=/set mahit11=$$[mahit11+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} joint-twists " ma_att12=/set mahit12=$$[mahit12+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} back kicks " ma_att13=/set mahit13=$$[mahit13+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} spinning back kicks " ma_att14=/set mahit14=$$[mahit14+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} phoenix-eye punches " ma_att15=/set mahit15=$$[mahit15+1]
@@ -131,11 +131,11 @@
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} lightly slams "      sh_att5=/set shhit5=$$[shhit5+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} lightly crushes "    sh_att6=/set shhit6=$$[shhit6+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} heavily shoves "     sh_att7=/set shhit7=$$[shhit7+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} batters "            sh_att8=/set shhit8=$$[shhit8+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} heavily pushes "     sh_att9=/set shhit9=$$[shhit9+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} heavily bashes "     sh_att10=/set shhit10=$$[shhit10+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} slams "              sh_att11=/set shhit11=$$[shhit11+1]
-/eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} crushes "            sh_att12=/set shhit12=$$[shhit12+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} batters "            sh_att8=/set shhit8=$$[shhit8+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} heavily pushes "     sh_att9=/set shhit9=$$[shhit9+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} heavily bashes "     sh_att10=/set shhit10=$$[shhit10+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} slams "              sh_att11=/set shhit11=$$[shhit11+1]
+/eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} crushes "            sh_att12=/set shhit12=$$[shhit12+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} really shoves "      sh_att13=/set shhit13=$$[shhit13+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} really batters "     sh_att14=/set shhit14=$$[shhit14+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} really pushes "      sh_att15=/set shhit15=$$[shhit15+1]
@@ -240,7 +240,7 @@
              Knock  	    :@{h}%crhit13@{n} (@{h}%$[(crhit13*100)/total]\@{n}\%)   \
              Really shove   :@{h}%shhit13@{n} (@{h}%$[(shhit13*100)/total]\@{n}\%)%;\
 	/echo -p Joint-twist    :@{h}%mahit12@{n} (@{h}%$[(mahit12*100)/total]\@{n}\%)   \
-             Inc. slash     :@{h}%slhit12@{n} (@{h}%$[(slhit12*100)/total]\@{n}\%)   \
+             Inc. tear      :@{h}%slhit12@{n} (@{h}%$[(slhit12*100)/total]\@{n}\%)   \
 ;;             Really poke    :@{h}%puhit12@{n} (@{h}%$[(puhit12*100)/total]\@{n}\%)   \
              Cuff           :@{h}%crhit12@{n} (@{h}%$[(crhit12*100)/total]\@{n}\%)   \
              Crush          :@{h}%shhit12@{n} (@{h}%$[(shhit12*100)/total]\@{n}\%)%;\

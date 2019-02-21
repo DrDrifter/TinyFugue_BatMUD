@@ -29,6 +29,15 @@
 /status_add -Ashelterstatus @log
 /clock on
 
+;; Converts seconds into minutes and seconds, very useful
+/def -i formattime=\
+ /set tmptime=%1%;\
+ /set tmpmin=$[trunc(tmptime/60)]%;\
+ /set tmpsek=$[trunc(tmptime-(tmpmin*60))]%;\
+ /if ({tmpsek}<10) /set tmpsek=0%{tmpsek}%;/endif%;\
+ /_echo %{tmpmin}:%{tmpsek}
+
+
 ;; Heartbeat dunk dunk counter, requires stethoscope
 /def -ag -mregexp -t'^Dunk dunk' status_hb_event = /set counthb=$[{counthb}+1]
 

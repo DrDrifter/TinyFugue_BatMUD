@@ -87,10 +87,10 @@
 /def skeep-barb=@9 s;4 sw;19 s;6 se;8 ne;13 e;20 ne;5 ne;11 e;13 ne;8 e;6 ne;6 e;6 ne;17 e;se;e;se;e;ne;e;ne;8 e;3 se;e;2 ne;e;6 ne;7 e;2 ne
 /def skeep-beast=@3 ne;4 e;travel n;20 n;14 nw;10 n;20 nw;w;3 nw;n;20 w;5 w;16 sw;16 s;5 sw;20 w;5 sw;20 w;5 sw;w;18 nw
 /def skeep-katvil=@3 ne;4 e;6 n;7 ne;6 s
-/def skeep-roth=@travel s;travel s;4 s;15 se;15 e;20 se;20 e;5 se;S;SW;S;SW;W;nw;2 n
+/def skeep-roth=@travel s;travel s;4 s;15 se;15 e;20 se;20 e;5 se;13 s;12 sw;6 s;12 sw;9 w;nw;2 n
 /def skeep-snowdevils=@3 ne;4 e;6 n;10 ne;5 e;13 ne;8 e;6 s;3 w
 /def skeep-study=@3 ne;4 e;travel n;20 n;14 nw;10 n;20 nw;w;3 nw;n;20 w;5 w;5 nw;11 n
-/def roth-skeep=@2 s;se;E;NE;N;NE;N;n;travel nw;travel n;travel nw
+/def roth-skeep=@2 s;se;9e;12 ne;6 n;12 ne;13 n;n;travel nw;travel n;travel nw
 /def barb-skeep=@2 sw;7 w;6 sw;w;2 sw;2 w;3 nw;8 w;sw;w;sw;w;nw;w;nw;17 w;6 sw;6 w;6 sw;8 w;13 sw;11 w;5 sw;20 sw;13 w;8 sw;6 nw;19 n;4 ne;9 n
 /def beast-skeep=@18 se;e;5 ne;20 e;5 ne;20 e;5 ne;16 n;16 ne;20 e;5 e;s;5 se;e;18 se;travel s;travel sw;nw;3 w;3 sw
 /def katvil-skeep=@6 n;7 sw;6 s;4 w;3 sw

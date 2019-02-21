@@ -34,7 +34,8 @@
 /def -F -p9 -arB -aCred -t'* starts concentrating on a new offensive spell.' offensive
 /def -F -p9 -aB -aCyellow -t'* has summoned *' summoned
 /def -F -p8 -aB -aCyellow -t'When your eyes clear, * stands before you.' reloced
-/def -F -p8 -aCbgyellow -aCred -t'Bank transfer from *' transfer
+/def -F -p8 -aCbgyellow -aCred -t'Bank transfer from *' money_transfer
+/def -F -p8 -aCbgyellow -aCred -t'* transferred * fulgurite * to you.' fulgurite_transfer
 /def -F -p9 -aCbgcyan -t'You are so exhausted.' hurtmove
 /def -F -p9 -aCred -t"* \'se on sarki nyt\'" destroy_armour
 /def -F -p9 -aCred -t"* \'rikki ja poikki\'" destroy_weapon
@@ -244,7 +245,6 @@
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'Your mental pathways dissolve under massive psychic forces!' crush_onme
 /def -p6 -aCbgcyan -aBCmagenta -mglob -t'* bolt of knowledge hits *' bolt_of_know_hits
 
-
 ;; Other blasts
 ;;/def -p6 -aCbgblue -aBCwhite -t'* dispel evil hits *' dispel_evil
 /def -p6 -aCbgblue -aBCwhite -mglob -t'* dispel good hits *' dispel_good
@@ -261,10 +261,8 @@
 /def -p9 -aB -aCyellow -mglob -t'* winces and looks a bit braver.' wither_ends
 /def -p6 -aCbgwhite -aBCred -mglob -t'* noituloves dischord hits *' bard_discord
 
-
 ;; Ambush
 /def -F -p6 -mglob -t'You cannot leave, you have been AMBUSHED.' ambush=@party say I'm AMBUSHED!
-
 
 ;; Party
 /def -F -p9 -t"* offers you membership to party:*" party_join=@party join
@@ -273,7 +271,6 @@
 ;;/def -F -p9 -aBCyellow -t'lapses into unconsciousness from severe loss of blood.' unconscious= party say %{1} UNCONSCIOUS
 /def -F -p6 -mregexp -t' starts grappling ([A-z]*)\\.$' grapplestart = @party report %P1 has been grappled!
 /def -F -p6 -mglob -t"You feel more vital." death_stats_gone = @party report (Recovered from death)
-
 
 ;; Greed
 /set generic_amount_list=(One|one|Two|two|Three|three|Four|four|Five|five|Six|six|[Ss]even|[Ee]ight|[Nn]ine|[Tt]en|[Mm]any|[Aa] small pile of|[Aa] pile of|[Aa] huge pile of|[Aa] big pile of|[Aa] small hill of|[Aa] mountain of|[0-9]*)
@@ -287,10 +284,12 @@
     /undef greed_head%;\
     /undef greed_mail%;\
     /undef greed_wings%;\
+    /undef greed_hugewings%;\
     /undef greed_dagger%;\
     /undef greed_woodclub%;\
     /undef greed_catcollar%;\
     /undef greed_pike%;\
+    /undef greed_lightstone%;\
     /undef greed_essence%;\
     /undef greed_fulgurite_map%;\
     /echo -aB TF info: Greed triggers (off)%; \
@@ -303,10 +302,12 @@
     /def -F -p3 -P0 -mregexp -t'^([Tt]he|%{generic_amount_list}) head.? of a (barbarian|troll)' greed_head = @get all head%;\
     /def -F -p9 -P0 -mregexp -t'^An old iron plate mail' greed_mail = @get mail%;\
     /def -F -p9 -P0 -mregexp -t'^a pair of insect wings' greed_wings = @get wings%;\
+    /def -F -p9 -P0 -mregexp -t'^a pair of HUGE insect wings' greed_hugewings = @get wings%;\
     /def -F -p9 -P0 -mregexp -t'^A very sharp dagger' greed_dagger = @get dagger%;\
     /def -F -p9 -P0 -mregexp -t'^A wood club' greed_woodclub = @get wood club%;\
     /def -F -p9 -P0 -mregexp -t'^Collar of the CatDemon' greed_catcollar = @get collar%;\
     /def -F -p9 -P0 -mregexp -t'^a well made pike' greed_pike = @get pike%;\
+    /def -F -p9 -P0 -mregexp -t'^a brightly glowing lightstone' greed_lightstone = @get lightstone%;\
     /def -F -p9 -P0 -mregexp -t'.* spills some of (his|her|its) essence.' greed_essence = @get essence%;\
     /def -F -p9 -P0 -mregexp -t'^a piece of a map' greed_fulgurite_map = @get map%;\
     /echo -aB TF info: Greed triggers (on)%; \
@@ -356,10 +357,10 @@
   @emote ,-----------------------------.%;\
   @emote |  TIMERS                     |%;\
   @emote `-----------------------------'%;\
-  @emote |  Degen: %dgin (%dgtgt)%;\
+  @emote |  Degen: %dgin (%degentgt)%;\
   @emote |  Cot:   %cotin (%cottgt)%;\
   @emote |  Touch: %touchin (%touchtgt)%;\
-  @emote |  GWind: %gwindin (%gwindtgt)
+  @emote |  GWind: %gwindin (%togwtgt)
 
 /def -mregexp -t'^([A-Za-z]+) twirls before you.' reportdg = /lastdg
 
@@ -368,12 +369,10 @@
 ;; Misc eq hilites ;;
 ;;;;;;;;;;;;;;;;;;;;;
 
-/def -mglob -t"You feel a sharp stab in your finger as if something bit you!" tazbal_special = @party report (Stats boosted by ring)
-/def -mglob -t"Suddenly, the runes on the Shield of the Wind glow bright*" shield_of_wind = /echo -aB (TF Info): Wind special avail
-/def -mglob -t"Your orb sparkles." orbready = /echo -aB (TF Info): Wind invoke reloaded
-/def -mglob -t"You finish sucking the soul. You feel younger!" ripper_done = hh
-/def -mglob -t"The corpse isn't powerful enough for this." ripper_unable = hh
-/def -mglob -t"You feel strength flowing between you and *" ringkiss = /repeat -00:10 1 @party report (Ring kiss loaded)
+;;/def -mglob -t"You feel a sharp stab in your finger as if something bit you!" tazbal_special = @party report (Stats boosted by ring)
+;;/def -mglob -t"Suddenly, the runes on the Shield of the Wind glow bright*" shield_of_wind = /echo -aB (TF Info): Wind special avail
+;;/def -mglob -t"Your orb sparkles." orbready = /echo -aB (TF Info): Wind invoke reloaded
+;;/def -mglob -t"You feel strength flowing between you and *" ringkiss = /repeat -00:10 1 @party report (Ring kiss loaded)
 ;; Thundermace
 ;/def -mglob -aCbgblue -aBCyellow -t"* blazes with blue flames as a ray of lightning hits *" mace_special1
 ;/def -mglob -aCbgblue -aBCyellow -t"* sparkles under heavy magical pressure finally ZAPPING *" mace_special2
@@ -407,10 +406,16 @@
 ;;;;;;;;;;;;;
 ;; GAGGING ;;
 ;;;;;;;;;;;;;
-
+/def -ag -mregexp -t"\[\d\d:\d\d\]:[A-z]+\s[\{\(\[]\w+[\)\]\}]:.*mapsies.*" gagmapsies
 /def -mglob -ag -t"The turtle starts squirming." turtlesquirm_gag
+/def -mglob -ag -t"The green turtle makes some tiny snoring noises." turtlesnore_gag
+/def -mglob -ag -t"The green turtle slumber peacefully." turtleslumber_gag
 /def -mregexp -ag -t"A cart labeled \'.*\' emotes \'.*\'" merchantcart_gag
-/def -mglob -ag -t"The devil monkey of Drifter whispers*" asmomoney_gag
+/def -mglob -ag -t"The devil monkey of * whispers*" asmomoney_gag
+/def -mglob -ag -t"Shasti tells you *" shasti_gag
+/def -mglob -ag -t"Ramon tells you *"  ramon_gag
+/def -mglob -ag -t"Biff Swift shouts*" biffswift_gag
+/def -mglob -ag -t"Garunia tells you*" garunia_gag
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1

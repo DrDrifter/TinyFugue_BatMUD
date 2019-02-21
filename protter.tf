@@ -26,7 +26,10 @@
 ;                                                                     ;
 ; Last modified 25.12.2017                                            ;
 ;                                                                     ;
-; Current version 1.3.36                                              ;
+; Current version 1.3.37                                              ;
+;                                                                     ;
+; Changes to 1.3.37                                                   ;
+; - Fixed Heavenly prot (typo)                                        ;
 ;                                                                     ;
 ; Changes to 1.3.36                                                   ;
 ; - Added one Soul shield message                                     ;
@@ -344,7 +347,6 @@
 ; here or add -F, since the macro is non-fall thru.
 
 /def createprot=\
-; /if (!getopts("w:p:n:u:d:t:sc", "0")) /break%;/endif%;\   /* Old style, non regexp line. */
  /if (!getopts("w:r:p:n:u:d:t:sc", "0")) /break%;/endif%;\
   /if (!opt_r) /set matching=glob%;/else /set matching=regexp%;/endif%;\
   /def -i -p80 -ag -t'%{opt_w}' %{opt_n}_aux_up=\
@@ -548,14 +550,8 @@
 ;; Nun ;;
 ;;;;;;;;;
 /createprot -r1 -t0 -n"PfE" -w"(^[A-z]+ (furiously (wave|waves) (your|her) [A-z ]* and (utters|utter)|(stare|stares) intensively at [A-z ]* and (state|states)|(hop|hops) with one leg while praising Las and (utter|utters)|(roll|rolls) (your|her) eyes while rubbing halo and (sing|sings) out|(cut|cuts) the air with [A-z ]*, loudly reciting|(mutter|mutters) the holy words|(rub|rubs) (your|her) [A-z ]* while humbly reciting|(roll|rolls) (her|your) eyes while rubbing halo and (sing|sings) out|(raise|raises) (your|her) [A-z ]* toward the heavens and (recite|recites)|(cherish|cherishes) (your|her) [A-z ]+ and determinedly (chant|chants)|(touch|touches) (your|her) [A-z ]* and quickly (recite|recites)|fuming with celestial force (utter|utters) the words|(praise|praises) the saints and (raise|raises) [A-z ]* while exclaiming|(kiss|kisses) [A-z ]* while chanting|frantically (swing|swings) [A-z ]* and (shriek|shrieks)|(spread|spreads) white glow with (your|her) [A-z ]+ and (exclaim|exclaims)|(squeeze|squeezes) tightly on (your|her) [A-z ]* and (utter|utters)|(mutter|mutters) the magic words|(swing|swings) (your|her) [A-z ]* and humbly (utter|utters)|(wave|waves) [A-z ]* while praising Las and (exclaim|exclaims)|(raise|raises) (your|her) [A-z ]* while muttering|(hold|holds) (your|her) [A-z ]* close and humbly (mutter|mutters)|(kneel|kneels) down squeezing [A-z ]* and (recite|recites)|(raise|raises) [A-z ]* high in the air and (mutter|mutters)|(hold|holds) [A-z ]* tightly and (exclaim|exclaims)|(rub|rubs) [A-z ]* and (utters|utter) with sinister voice|(are|is) surrounded by fuming white aura as (you|she) (mutter|mutters)|(gaze|gazes) to the heights while holding [A-z ]* close and (utter|uttering)) \'sanctus Exzordus\'|[The spirit of Morrigaine] appears in your visions and grants you protection.)" -u"([A-z ]* with sheer power as you are surrounded|A white holy aura surrounds you and you feel more protected against evil.)" -d"^(You suddenly feel more vulnerable to evil.|Your glow fades away and you suddenly feel more vulnerable to evil.)" -p"Protection from Evil"
-
 /createprot -r1 -t2 -n"Ss" -w"^[A-z]+ ((rub|rubs) (your|her) [A-z ]* while humbly reciting|(raise|raises) (your|her) [A-z ]* toward the heavens and (recite|recites)|(swing|swings) (your|her) [A-z ]* and humbly (utter|utters)|(cut|cuts) the air with [A-z ]*, loudly reciting|(stare|stares) intensively at [A-z ]* and (state|states)|(hop|hops) with one leg while praising Las and (utter|utters)|furiously (wave|waves) her [A-z ]* and (utter|utters)|(wave|waves) [A-z ]* while praising Las and (exclaim|exclaims)|(touch|touches) her pulsing halo and quickly (recite|recites)|(rub|rubs) [A-z ]* and (utter|utters) with sinister voice|(roll|rolls) (your|her) eyes while rubbing halo and (singing|sings) out|(kneel|kneels) down squeezing [A-z ]* and (recite|recites)|(mutter|mutters) the (holy|magic) words|(hold|holds) (your|her) [A-z ]* close and humbly (mutter|mutters)|(kiss|kisses) [A-z ]* while chanting|(praise|praises) the saints and (raise|raises) [A-z ]* while exclaiming|(squeeze|squeezes) tightly on her [A-z ]* and (utter|utters)|fuming with celestial force (utter|utters) the words|(spread|spreads) white glow with her [A-z ]* and (exclaim|exclaims)|frantically (swing|swings) [A-z ]* and (shriek|shrieks)|(are|is) surrounded by fuming white aura as (you|she) (mutter|mutters)|(gaze|gazes) to the heights while holding [A-z ]* and (utter|uttering)|(hold|holds) [A-z ]* tightly and (exclaim|exclaims)|(cherish|cherishes) (her|your) [A-z ]* and determinedly (chant|chants)|(raise|raises) (your|her) [A-z ]* while muttering|(raise|raises) [A-z ]* high in the air and (mutter|mutters)) \'sanctus angeliq\'" -u"^([A-z]+ spiritually (reach|reaches) out for your soul, protecting it with holy force.|[A-z]+ (place|places) (your|her) hand over you and blesses your soul in the name of Las.)" -d"^(Your soul feels suddenly more vulnerable.)" -p"Soul shield"
-
-/createprot -r1 -t2 -n"HP" -w"[A-z]+ .* \'sanctus . o O\'" -u"^[A-z]+\'s [A-z ]* (vibrates under magical pressure|flashes uncanny) as you are suddenly" -d"^(Holy particles slow down, rapidly fading away.)" -p"Heavenly prot"
-
-;# Amd's Feather Cross flashes uncanny as you are suddenly surrounded by millions
-;#of dazzling white particles dancing enchantedly around your body.
-
+/createprot -r1 -t2 -n"HP" -w"^[A-z]+ .* \'sanctus \. o O\'" -u"^[A-z]+\'s [A-z ]* (vibrates under magical pressure|flashes uncanny) as you are suddenly" -d"^(Holy particles slow down, rapidly fading away.)" -p"Heavenly prot"
 /createprot -t2 -n"MS" -w"{*} * \'nullum driiiks umbah mana\'" -u"You feel your magical power expanding." -d"Your life force seems weaker." -p"Mana Shield"
 
 ;;;;;;;;;;;;
@@ -659,7 +655,7 @@
 ;; Folklorists ;;
 ;;;;;;;;;;;;;;;;;
 /createprot -t0 -n"MinP" -w"{*} {consult|consults} {your|his|her|its} guide and {chant|chants} \'parvus munimentum\'" -u"You feel slightly protected." -d"The minor protection fades away." -p"Minor protection"
-/createprot -r1 -t0 -n"Racp" -w"^([A-z]+ (consult|consults) (your|his|her|its) guide and (chant|chants) \'genus munimentum\')" -u"^You feel protected from (catfolk|cyclops|drows|dwarves|elves|ents|hobbit|humans|kenders|kobolds|merfolk|ogres|orcs|tinmen|trolls|wolfmen)." -d"^(The racial protection fades away.)" -p"Racial protection"
+/createprot -r1 -t0 -n"Racp" -w"^([A-z]+ (consult|consults) (your|his|her|its) guide and (chant|chants) \'genus munimentum\')" -u"^You feel protected from (beasts|catfolk|cyclops|demons|dragons|drows|dwarves|elves|ents|goddesses|hobbits|humans|hydras|kenders|kobolds|leeches|liches|lizardmans|merfolk|ogres|orcs|tinmen|trolls|wolfmen)." -d"^(The racial protection fades away.)" -p"Racial protection"
 ;; /createprot -r1 -t0 -n"ZooP" -w"^([A-z]+ (consult|consults) (your|his|her|its) guide and (chant|chants) \'\')" -u"^You feel protected from (ants|apes|bats|bears|bees|bugs|cats|cows|dogs|ducks|eels|gnus|oxes|owls|pigeons|pumas|rams|rats|squids|swans|turtles|whales|yaks|zebras)" -d"^(The Zoological protection fades away.)" -p"Zoological protection"
 ;; /createprot -r1 -t0 -n"CryP" -w"^([A-z]+ )" -u"" -d"" -p"Cryptozoological Protection"
 ;; /createprot -r1 -t0 -n"KinP" -w"^([A-z]+ )" -u"" -d"" -p"Kinemortological protection"

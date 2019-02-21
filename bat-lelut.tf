@@ -4,7 +4,8 @@
 
 ;; Init params
 /set athame_status=X
-/set rainstaff_status=X
+/set rainstaff01_status=X
+/set rainstaff02_status=X
 /set ewind_status=X
 /set magestaff_status=X
 /set orb_status=_
@@ -28,7 +29,9 @@
 
 ;; Rain Staff
 ;; Assuming 10 minute cooldown
-/def -mglob -t"You strike your rain staff in the ground." strikestaff=/set rainstaff_status=_%;/set rainstaff_time=$[time()]%;/repeat -00:10 1 /set rainstaff_status=X
+/def -mglob -t"You take an old oak staff with several odd knobs labeled as SaunaVihta *" setstaff01 = /set staff = 01
+/def -mglob -t"You take an old oak staff with several odd knobs labeled as KutinaKeppi *" setstaff02 = /set staff = 02
+/def -mglob -t"Some moisture begins to form on the staff." strikestaff=/set rainstaff%{staff}_status=_%;/set rainstaff_time=$[time()]%;/repeat -00:10 1 /set rainstaff%{staff}_status=X
 
 ;; Entity drying wind
 ;; Needs update, have 2 shields
@@ -60,10 +63,12 @@
 
 ;; Pfe Helmet
 ;; Note: Cooldown is actually 15-25 minutes!
+/def -F -mglob -t"You remove The Mask of Higher Consciousness labeled as HomoHuppu." alias_removedmask = @alias removeditem HomoHuppu
 /def -mglob -t"The spirit of Morrigaine appears in your visions and grants you protection." pfe_helmet_used =\
    /set pfe_helmet_status=_%;\
    /set pfe_helmet_time=$[time()]%;\
    /repeat -0:20 1 /set pfe_helmet_status=X
+/def -F -mglob -t"You press the diamond on the white dragonscale helmet." pressedhelm = @wear removeditem
 
 ;; Fairy bra
 /def -mglob -t"You store * in the spell matrix." bra_stored = /set bra_status=X
@@ -94,7 +99,7 @@
 /echo  +-----------------------------+%;\
 /echo  | Fields:%;\
 /echo  |  Athame (asev) [%athame_status] [%athame_cd]%;\
-/echo  |  Rainstaff (rain) [%rainstaff_status] [%rainstaff_cd]%;\
+/echo  |  Rainstaff (rain) [%rainstaff01_status] [%rainstaff01_cd]    Rainstaff2 (rain2) [%rainstaff02_status] [%rainstaff02_cd]%;\
 /echo  |  Entity Wind (entw,ewind) [%ewind_status] [%ewind_cd] %;\
 /echo  |  Magestaff (iss,ism) [%magestaff_status]%;\
 /echo  |  Orb wind (owind) [%orb_status] [%orb_cd] %;\

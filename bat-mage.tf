@@ -27,7 +27,7 @@
 ;/set damtype7=poison
 
 ;; Ambush trig
-/def -F -p9 -mregexp -t"(Your small size avoids a nasty ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!|Your knowledge about [A-Za-z' ]* tactics allows you to evade the ambush.|You superb intelligence enables you to avoid the ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!|The skilled leadership of [A-Za-z]+ saves you from ambush!)" auto_caster =\
+/def -F -p9 -mregexp -t"(Your small size avoids a nasty ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!|Your knowledge about [A-Za-z'\- ]* tactics allows you to evade the ambush.|You superb intelligence enables you to avoid the ambush.|Your marvelous intellect avoids a nasty ambush.|Your keen senses note a disturbance seconds before the ambush!|The skilled leadership of [A-Za-z]+ saves you from ambush!)" auto_caster =\
    /if ({auto_cast}=~"on")\
 ;; Triggered to cast best spell, if you don't have that, change
 ;; to something you do
@@ -183,7 +183,7 @@ suddenly stops breathing and jerks a couple of times\
 /def hp =/set targettype=none%;/set spell=holding_pattern%;/do_spell
 /def hs =/set targettype=none%;/set spell=heal_self%;/do_spell
 /def inv=/set targettype=misc%;/set spell=invisibility%;/do_spell %{*}
-/def lb =/set targettype=misc%;/set spell=lock_biter%;/do_spell %{*}
+/def lb =/set targettype=lock%;/set spell=lock_biter%;/do_spell %{*}
 /def nof=/set targettype=none%;/set spell=noxious_fumes%;/do_spell
 /def mi =/set targettype=misc%;/set spell=mirror_image%;/do_spell %{*}
 /def ml =/set targettype=misc%;/set spell=magnetic_levitation%;/do_spell %{*}
@@ -203,14 +203,6 @@ suddenly stops breathing and jerks a couple of times\
 /def -F -mglob -t'Your floating disc suddenly disappears.' discwentdown = @party report (Disc went poof!)
 /def -F -mglob -t"* appears weakened!" degenewentin = @party report (Degenerate person hits!)
   
-;; Essence specials
-;You feel connected to the very essence of magic.
-;/def -aB -t"You feel your skills in handling elemental forces improve." gain_essence =\
-;/echo -aB ############################%;\
-;/echo -aB ###### GAINED ESSENCE ######%;\
-;/echo -aB ############################
-; Your knowledge in elemental powers helps you to save the reagent for further use.
-
 /def -aB -t"You masterfully channel the elemental powers." plaque_blast = @party report *** Plaque blast! ***
 
 ; cold
@@ -225,10 +217,14 @@ suddenly stops breathing and jerks a couple of times\
 ; Default to primary type
 /dam asphyxiation
 
+;; Put reagent pouch and maul to pocket
+/REPEAT -10 1 /SEND @put pew in pocket
+/REPEAT -10 1 /SEND @put mahtileka in pocket
+
 ;;
 ;; NB: FOR THIS TO WORK NEED protter.tf
 ;;
 ; Mage prots
 /createprot -t2 -n"MB" -w"You utter the magic words \'Ouch ouch ow oww!\'" -u"A glimmering white barrier surrounds you!" -d"The white barrier surrounding you sparkles and bursts into thousands of tiny stars!" -p"Mana Barrier"
 /createprot -t2 -n"HP" -w"You roll your eyes and chant \'niotalucaje erutamerp!\'" -u"You enter a trance, ready to unleash your powers." -d"You can\'t concentrate anymore, the trance ends." -p"Holding Pattern"
-/createprot -t2 -n"Nf" -w"You sweat murky green liquid and utter \'krkx murk arrsunt\'" -u"You squirm and struggle to keep composure as your glands start swell violently from the foul liquid gushing into them. With a burning sensation your skin begins releasing deadly gases." -d"The fumes dissipate from around you leaving only few moisty green sparkles on the ground." -p"Noxious Fumes"
+;;/createprot -t2 -n"Nf" -w"You sweat murky green liquid and utter \'krkx murk arrsunt\'" -u"You squirm and struggle to keep composure as your glands start swell violently from the foul liquid gushing into them. With a burning sensation your skin begins releasing deadly gases." -d"The fumes dissipate from around you leaving only few moisty green sparkles on the ground." -p"Noxious Fumes"

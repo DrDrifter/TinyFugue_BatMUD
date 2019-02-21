@@ -6,13 +6,13 @@
 /require -q bat-analysis.tf
 ;; This is the tick reporting mode, spell points only
 /set sp_report=on
-/set fire_entity_name=Yazaemon the fire entity
+/set fire_entity_name=Bael the fire entity
 
 ;; Hi-lites
 /def -F -mglob -aB -t"Your entity is prepared to do the skill." entti_skilli_hilite
 /def -F -mglob -aB -t"* entity starts concentrating on a new offensive skill." entti_offuskilli_hilite
 /def -F -mglob -ag -t"Your entity doesn't know that skill." gag_skilli
-/def -F -mglob -t'Your hold on *\'s life energy slips away.' sparkbirth_off= @party report Spark birth down on %4
+/def -F -mregexp -t'Your hold on ([A-z ]+)\'s life energy slips away.' sparkbirth_off = @party report Spark birth down on %P1
 /def -F -mglob -aB -t'You bring the channelling to an end, and the dark shadow around * starts to dissipate.' dimleech_ends
 
 ;; Spells
@@ -24,7 +24,7 @@
 /def dl =/set targettype=off%;/set spell=dimensional_leech%;/set spell_rounds=3%;/do_spell %{*}
 /def dr =/set targettype=none%;/set spell=darkness%;/do_spell
 /def dre=/set targettype=none%;/set spell=dismiss_rift_entity%;/do_spell
-/def eec=/set targettype=none%;/set spell=establish_entity_control%;/do_spell%;get ohjauskeppi from bp%;remove nova arcanum%;wield ohjauskeppi
+/def eec=/set targettype=none%;/set spell=establish_entity_control%;/do_spell%;@eecwear
 /def fab=/set targettype=prot%;/set spell=force_absorption%;/do_spell %{*}
 /def fl =/set targettype=prot%;/set spell=floating%;/do_spell %{*}
 /def inv=/set targettype=prot%;/set spell=invisibility%;/do_spell %{*}
@@ -32,14 +32,14 @@
 /def mi =/set targettype=prot%;/set spell=mirror_image%;/do_spell %{*}
 /eval /set off_spell_stack=%{off_spell_stack}|rift_pulse
 /def rp =/set targettype=off%;/set spell=rift_pulse%;/set spell_rounds=3%;/do_spell %{*}
-/def rre=/set targettype=ent%;/set spell=regenerate_rift_entity%;/do_spell %{*}
+/def rre=/set targettype=ent%;/set spell=regenerate_rift_entity%;/do_spell %{*}%;@rrewear
 /def rs =/set targettype=none%;/set spell=rift_scramble%;/do_spell
 /def sb =/set targettype=off%;/set spell=spark_birth%;/set spell_rounds=2%;/do_spell %{*}
 /def sre=/set targettype=sum%;/set spell=summon_rift_entity%;/do_spell %{*}
 /def tre=/set targettype=sum%;/set spell=transform_rift_entity%;/do_spell %{*}
 
 
-;; Redo rift skills
+;; Redo rift entity skills when they stop
 /eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} strikes its opponent a glancing blow to the shield arm." fire_entity_redo_skill1 = @gem cmd use blazing sunder
 /eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} SMASHES .+ kneecap!"                                     fire_entity_redo_skill2 = @gem cmd use blazing sunder
 /eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} quickly strikes its opponent's exposed weapon hand!"     fire_entity_redo_skill3 = @gem cmd use blazing sunder
@@ -65,7 +65,7 @@
 /def -pmaxpri -F -mglob -t"Your water entity stops glowing and its skin becomes still."                water_entity_redo_skill = @gem cmd use subjugating backwash
 /def -pmaxpri -F -mglob -t"Your earth entity hunches down looking much less solid than a second ago."  earth_entity_redo_skill = @gem cmd use earthen cover
 /def -pmaxpri -F -mglob -t"Your magic entity starts to move more normally."                            magic_entity_redo_skill = @gem cmd use wondrous stimulus
-/def -ag -t"You do not have an entity to control, try summoning one." no_entity_no_target
+/def -ag -t"You do not have an entity to control, try summoning one." no_entity_no_target_gag
 
 ;; Ceremony
 /set ceremony_status=off
@@ -83,6 +83,7 @@
 /def -F -p15 -t"You start chanting." ceremony_off= /set ceremony_status=off
 
 ;; Keybindings
+;; Note: eqset status requires bat-status for info statusbar, but it's not mandatory
 /def key_f7 = /sb .
 /def key_f8 = /rp .
 /def key_f12 = /uc
@@ -90,40 +91,80 @@
 /def key_f14 = /eec
 /def key_f15 = /hs
 /def key_f16 = /bre
+/def key_f19 = @eqset wear rift%;/set eqsetstatus=RIF
+/def key_f20 = @eqset wear cast%;/set eqsetstatus=CAS
 
-;; Entity rep in numbers okthxbye
-/def -ag -mregexp -i -t'^\| Power: ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)' poikelot=\
-/set sadattonnit=%P1%;/set kymppitonnit=%P2%;/set tonnit=%P3%;/set satkut=%P4%;/set kympit=%P5%;/set ykkoset=%P6%;\
+;;
+;; Entity rep in numbers 
+;;
+
+;; Init max values
+/set firemax=25000
+/set airmax=30000
+/set watermax=50000
+/set earthmax=70000
+/set magicmax=500000
+
+;; Identify your entity when you type gem entities <xxx>
+;; Note: This might bug if your entity is not named
+/def -mregexp -t'^\| [A-Z][a-z]+, a (tiny|titchy|miniscule|small|medium|large|huge|enormous|humongous|gargantuan) (fire|air|water|earth|magic) entity (glowing|shimmering|gleaming|sizzling|sparkling|glittering|radiating|throbbing|pulsating|blazing) with (power|POWER)\s+(Pleased|Narked|Riled|Cross|ANGRY)\s+\|' entity_identifier=\
+/echo -aB Entity type: [%P2] size:  [%P1] + [%P3]%;\
+/set entity_type=%P2
+
+;; Translate rep (Single entity stats page gem entitites xx )
+/def -ag -F -mregexp -i -t'^\| Power: ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)' poikelot=\
+/let sadattonnit=%P1%;/let kymppitonnit=%P2%;/let tonnit=%P3%;/let satkut=%P4%;/let kympit=%P5%;/let ykkoset=%P6%;\
+/let pisteet_old=%pisteet%;\
 /set pisteet=\
 $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*strlen(satkut)+10*strlen(kympit)+strlen(ykkoset)]%;\
-/set stringi=$[strcat(sadattonnit,kymppitonnit,tonnit,satkut,kympit,ykkoset)]%;\
-/echo  | Power: %stringi (%pisteet points)
+/let stringi=$[strcat(sadattonnit,kymppitonnit,tonnit,satkut,kympit,ykkoset)]%;\
+/let muutos=$[{pisteet}-{pisteet_old}]%;\
+/let alkurep=$(/eval /_echo %%{%{entity_type}alkurep})%;\
+/if ($(/eval /_echo %%{%{entity_type}alkurep})=~"") /set %{entity_type}alkurep=%pisteet%;/endif%;\
+/let muutosalku=$[{pisteet}-{alkurep}]%;\
+/eval /_echo  | Power: %stringi (%pisteet points) [%muutos] [%muutosalku] [%%{%{entity_type}alkurep}]
 
-;; Eitoimi
-;;/def -ag -mregexp -i -t'^\| {Fire|Air|Water|Earth}[ ]+\| ([O]*)([o]*)([!]*)([:]*)([,]*)[.]+ \| {Pleased|Narked|Riled|Cross|ANGRY} \|$' kaikkientti_poikelot=\
-;; Toimii
-;;/def -ag -mregexp -i -t'^\| Fire[ ]+\| ([O]*)([o]*)([!]*)([:]*)([,]*)[.]+ \| Pleased \|$' kaikkientti_poikelot=\
-
-
-;;/set kymppitonnit=%P1%;/set tonnit=%P2%;/set satkut=%P3%;/set kympit=%P4%;/set ykkoset=%P5%;\
-;;/set pisteet=\
-;;$[10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*strlen(satkut)+10*strlen(kympit)+strlen(ykkoset)]%;\
-;;/set stringi=$[strcat(kymppitonnit,tonnit,satkut,kympit,ykkoset)]%;\
-;;/echo  | Power: %stringi (%pisteet points)
+;; Translate rep (All entities stats page - gem entities)
+/def -ag -F -mregexp -i -t'^\| ([A-Z][a-z]+)(\s+)\| ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)([.]+) \| (Pleased|Narked|Riled|Cross|ANGRY)\s+\|$' kaikkientti_poikelot=\
+/let enimi=%P1%;/let epad=%P2%;/let sadattonnit=%P3%;/let kymppitonnit=%P4%;/let tonnit=%P5%;/let satkut=%P6%;/let kympit=%P7%;/let ykkoset=%P8%;\
+/let loppupad=%P9%;/let huumori=%P10%;\
+/let kaikki_pisteet=\
+$[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*strlen(satkut)+10*strlen(kympit)+strlen(ykkoset)]%;\
+/let stringi=$[strcat(sadattonnit,kymppitonnit,tonnit,satkut,kympit,ykkoset)]%;\
+/let loppupad=$[substr(%loppupad,strlen(%kaikki_pisteet)+11)]%;\
+/_echo  | %enimi%epad| %stringi (%kaikki_pisteet points) %loppupad | %huumori |
 
 ;; Absorbing meld, only works if you have protter.tf loaded!
-/createprot -t0 -n"AM" -w"You utter the magic words \'bredan forswelgan\'" -u"You successfully surround yourself with a barrier of energy which melds itself with your body." -d"You feel the melded barrier of energy dissipate from your body." -p"Absorbing Meld"
+/createprot -t0 -n"AM" -w"You utter the magic words \'bredan forswelgan\'" \
+-u"You successfully surround yourself with a barrier of energy which melds itself with your body." \
+-d"You feel the melded barrier of energy dissipate from your body." -p"Absorbing Meld"
+
+;; EQ swaps for riftwalker eq
+/def -F -mglob -t"You remove Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits." removed_in_wisset = \
+@alias removeditem Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits
+/def -F -mglob -t"You remove the black grimoire labeled as Mein Humpf." removed_in_asphset = \
+@alias removeditem the black grimoire labeled as Mein Humpf
+/def -F -mglob -t"You remove a skull labeled as (s)kulli." removed_in_other_castset = \
+@alias removeditem a skull labeled as (s)kulli
+/def -F -mglob -t"You remove a wand of magic labeled as LateksiDildo." removed_in_sprset = \
+@alias removeditem a wand of magic labeled as LateksiDildo
+/def -F -mglob -t"You successfully establish control over your entity." entity_controlled = @put ohjauskeppi in bp;wear removeditem
+/def -F -mglob -t"The entity is fully healed." entity_healed = @put parannustikku in bp;wear removeditem
+/def -F -mglob -t"Nagato the magic entity sees that you are unhurt and interrupts the channelling." entity_heal_me = \
+@put parannustikku in bp;wear removeditem
+
 
 ;; Hilites
-/def -mglob -t"You successfully establish control over your entity." entity_controlled = @put ohjauskeppi in bp;wear nova arcanum
 /def -mregexp -t"(Fire|Air|Water|Earth|Magic) entity eats the last of its rift sparks, and starts to look around the room with a fierce hunger in its eyes." entity_hungry = @party report (Entity needs sparks)
-/def -mglob -t"You notice your entity's weapon glow with power!" entity_weapon_up = @party report (Entity weapon gained gem)
+/def -mglob -t"You notice your entity's weapon glow with power!" entity_weapon_up = /echo TF Info: Entity weapon gained gem
 /eval /def -mregexp -t"^%{fire_entity_name} (licks you\.|hugs you\.|cackles gleefully at you\.|slaps a thundering high-five with you\.|flexes its muscles before you\.|giggles inanely at you\.|screams happily\.|drools uncontrollably over you\.|lets out a yell of perverse delight as it feels the pain of battle\!|exclaims \'show me more pain master\!\'|lets out a yell of BEASTIAL bliss as it feels the pain of battle\!)" fire_entity_got_critted = @gem cmd parry 51
 /eval /def -mregexp -t"^%{fire_entity_name}\'s battle joys come to an end." fire_entity_battlejoy_down = @gem cmd parry 0
+/def  -F -p8 -aCbgyellow -aCred -t"You successfully sold * for * gold." sold_entity_shop
 
-;; Reports
+
+;; Reports (note: I've only listed the most useful reports here)
 /def -t'Entity sense: You feel the pain of your entity as it is stunned!' entity_is_stunned = @party report (Entity is STUNNED)
 /def -t'Entity sense: You feel free of your master but it leaves you feeling weak.' entity_ec_down = @party report (Entity Control down)
 /def -t'Entity sense: Your crystal clear shield fades out.' entity_aoa_down = @party report (Entity AOA down)
-/def -t'Entity sense: You feel no longer protected from being stunned.' entity_iw_down = @party report (Entity IW down)
+/def -t'Entity sense: You no longer feel protected from being stunned.' entity_iw_down = @party report (Entity IW down)
 /def -t'Entity sense: A skin brown flash momentarily surrounds you and then vanishes.' entity_fabs_down = @party report (Entity fabs down)

@@ -263,8 +263,6 @@
    /endif%;\
    /if ($(/eval /_echo %%{%{targettype}_target})!~"")\
      @cast %{spell} at $(/eval /_echo %%{%{targettype}_target})%;\
-;; Is this needed? debug later perhaps
-;;     /if ({targettype}=~"off")/make_report_shape %{off_target}%;/endif%;\
      /if ({targettype}!~"prot") /echo -aB -p (Tinyfugue) Casting @{Cwhite}$[replace("_"," ",{spell})]@{n} at @{Cwhite}$(/eval /_echo %%{%{targettype}_target})@{n}%;/endif%;\
      /if ({targettype}=~"prot" & {prot_target} !~"") @party report $[replace("_"," ",{spell})] -> %{prot_target}%;/endif%;\
    /else \

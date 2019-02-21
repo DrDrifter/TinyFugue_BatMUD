@@ -1,3 +1,13 @@
+;; Batmud mage essence counter
+;; Author drifter
+;;
+;; Quick usage instructions:
+;; set your countfile parameter below and create the empty textfile
+;; after that load this trigger and use the command
+;; /esset = shows your essences
+;; Everything else is automatic
+
+;; Set initial arguments when loaded
 /require textutil.tf
 /set countfile=~/tf-lib/magecount.txt
 /set ctype=fire
@@ -10,7 +20,9 @@
 /set manaessu=0
 /set poisessu=0
 
-/def -F -p5 -mregexp -t"^You feel your skills in handling elemental forces improve\." essence_reset = /set reset=true
+;; Trigger definitions
+;; Note: If you have other highlight triggers loaded, they must be fall-thru (/def -F)
+;; also area blasts increment by two
 /def -F -p5 -mregexp -t"^You watch with self-pride as your electrocution hits .+\." electrocuition_count_up = /addone elec
 /def -F -p5 -mregexp -t"^You watch with self-pride as your acid blast hits .+\." acid_blast_count_up = /addone acid
 /def -F -p5 -mregexp -t"^You watch with self-pride as your blast vacuum hits .+\." blast_vacuum_count_up = /addone asph
@@ -25,8 +37,8 @@
 /def -F -p5 -mregexp -t"^You hit .+ with your killing cloud\." killing_cloud_count_up = /addone pois%;/addone pois
 /def -F -p5 -mregexp -t"^You hit .+ with your hailstorm\." hailstorm_count_up = /addone cold%;/addone cold
 /def -F -p5 -mregexp -t"^You hit .+ with your lava storm\." lava_storm_count_up = /addone fire%;/addone fire
-
-/def -aB -t"You feel your skills in handling elemental forces improve." gain_essence =\
+/def -F -p5 -mregexp -aB -t"^You feel your skills in handling elemental forces improve\." gain_essence =\
+/set reset=true%;\
 /echo -aB ############################%;\
 /echo -aB ###### GAINED ESSENCE ######%;\
 /echo -aB ############################%;\
@@ -36,10 +48,11 @@
  /let count=%2%;\
  /_echo %count
 
+;; Function to increment the blast counter with one
 /def addone=\
  /set ctype=%1%;\
  /if (%ctype=~"") \
-   /echo -aB TF Info: Error%;\
+   /echo -aB TF Info: Error - addone function in essencecount was called without arguments%;\
  /elseif (%ctype=~"elec") \
    /set elecblast=$[%elecblast+1]%;\
    /if (%reset=~"true") /set elecblast=0%;/endif%;/set reset=false%;\
@@ -63,6 +76,7 @@
    /if (%reset=~"true") /set fireblast=0%;/endif%;/set reset=false%;\
  /endif
 
+;; parse and display data
 /def esset=\
  /writenew%;\
  /readcount%;\
@@ -97,6 +111,7 @@
 /_echo | Pois: %poisessu $[pad(%poisblast,5)] / $[pad(%poisessunext,-5)] ($[pad(substr(%poisprc,0,5),3)])% %;\
 /_echo `-----------------------------
 
+;; Write the blast numbers to the file
 /def writenew =\
  /echo elec %elecblast%|/writefile %countfile%;\
  /echo acid %acidblast%|/writefile -a %countfile%;\
@@ -106,17 +121,20 @@
  /echo cold %coldblast%|/writefile -a %countfile%;\
  /echo fire %fireblast%|/writefile -a %countfile
 
-/def -ag -p99 -F -mregexp -t"\| Essence of asphyxiation        \|  (\d+) \|" asphessutrig = /set asphessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of electricity         \|  (\d+) \|" elecessutrig = /set elecessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of corrosion           \|  (\d+) \|" acidessutrig = /set acidessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of pyromania           \|  (\d+) \|" fireessutrig = /set fireessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of arctic powers       \|  (\d+) \|" coldessutrig = /set coldessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of magic lore          \|  (\d+) \|" manaessutrig = /set manaessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of toxicology          \|  (\d+) \|" poisessutrig = /set poisessu=%P1
+;; Gags essences from list of skills
+/def -ag -p99 -F -mregexp -t"\| Essence of asphyxiation\s+\|\s+(\d+) \|" asphessutrig = /set asphessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of electricity\s+\|\s+(\d+) \|" elecessutrig = /set elecessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of corrosion\s+\|\s+(\d+) \|" acidessutrig = /set acidessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of pyromania\s+\|\s+(\d+) \|" fireessutrig = /set fireessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of arctic powers\s+\|\s+(\d+) \|" coldessutrig = /set coldessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of magic lore\s+\|\s+(\d+) \|" manaessutrig = /set manaessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of toxicology\s+\|\s+(\d+) \|" poisessutrig = /set poisessu=%P1
 
+;; wrapper to read essences from skills
 /def readessut =\
  @grep "Essence of" skills
 
+;; Read from textfile and assign to variables
 /def readcount =\
  /let eleccount=$(/readfile %countfile%| /egrep ^elec [0-9]+ )%;\
  /let acidcount=$(/readfile %countfile%| /egrep ^acid [0-9]+ )%;\
@@ -147,6 +165,7 @@
  /set coldblast=%coldcount%;\
  /set fireblast=%firecount
 
+;; Define the percentages and necessary blasts
 /def countnext =\
  /let current=%1%;\
  /if (%current>0 & %current<10) /let next=150%;\
@@ -162,10 +181,11 @@
  /endif%;\
  /_echo %next
 
-
-
+;; Write the essences into file automatically every 5 minutes
 /repeat -0:5 i /writenew
 
+;; Initial read of countfile when loading this trigger
 /readcount
 
+;; 3 seconds after login read current essences from skills
 /repeat -3 1 /readessut
