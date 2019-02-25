@@ -1,7 +1,4 @@
 
-
-
-
 ;The ship shudders as it plows into the side of *
 ;The ship shudders as it plows into the side of Curious Rose, splintering its hull.
 ;Nella tells you 'We missed tha *
@@ -148,3 +145,11 @@
 	/SET ship_autocruise=0 %; \
 	/SET ac_flag=0 %; \
 	/ECHO -aCbgyellow,Cblack *** Autocruise Aborted.  Cannot clear terrain ***
+
+
+
+
+;;; Bead map parsing
+/def -ag -F -mregexp -t"^\s\s_\.\-\._\.\-\._\.\-\._\.\-\._\.\-\._\.\-\.\_$" map_start=\ 
+/def -ag -F -mregexp -t"^\s\s.\s\s\s(.{17})" map_line = /echo %P1
+/def -ag -F -mregexp -t"^\s\s\-\._\.\-\._\.\-\._\.\-\._\.\-\._\.\-\.\_\.\-$" map_end = /echo -aB%;/undef map_line

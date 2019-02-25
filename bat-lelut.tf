@@ -23,15 +23,27 @@
 /set wlizard_ring_2_status=X
 /set fqueen_wand_status=X
 
+;; Converts seconds into minutes and seconds, very useful
+/def -i formattime=\
+ /set tmptime=%1%;\
+ /set tmpmin=$[trunc(tmptime/60)]%;\
+ /set tmpsek=$[trunc(tmptime-(tmpmin*60))]%;\
+ /if ({tmpsek}<10) /set tmpsek=0%{tmpsek}%;/endif%;\
+ /_echo %{tmpmin}:%{tmpsek}
+
 ;; Athame
 ;; Assuming 10 minute cooldown
 /def -t"The athame severs the field surrounding this area." athamesever=@remove Leikkuri;put Leikkuri in bp;/set athame_status=_%;/set athame_time=$[time()]%;/repeat -00:10 1 /set athame_status=X
 
 ;; Rain Staff
-;; Assuming 10 minute cooldown
-/def -mglob -t"You take an old oak staff with several odd knobs labeled as SaunaVihta *" setstaff01 = /set staff = 01
-/def -mglob -t"You take an old oak staff with several odd knobs labeled as KutinaKeppi *" setstaff02 = /set staff = 02
-/def -mglob -t"Some moisture begins to form on the staff." strikestaff=/set rainstaff%{staff}_status=_%;/set rainstaff_time=$[time()]%;/repeat -00:10 1 /set rainstaff%{staff}_status=X
+;; 12 minute cooldown (this varies)
+;; Rain lasts 7:30 minutes
+/def -mglob -t"You take an old oak staff with several odd knobs labeled as SaunaVihta *" setstaff01 = /set staff 01
+/def -mglob -t"You take an old oak staff with several odd knobs labeled as KutinaKeppi *" setstaff02 = /set staff 02
+/def -mglob -t"Some moisture begins to form on the staff." strikestaff=\
+  /set rainstaff%{staff}_status=_%;\
+  /set rainstaff%{staff}_time=$[time()+780]%;\
+  /repeat -00:13 1 /set rainstaff%{staff}_status=X
 
 ;; Entity drying wind
 ;; Needs update, have 2 shields
@@ -86,14 +98,23 @@
 /def -F -mglob -t'You wear Demonic Ring of Invisibility*' demonring_wear = /set demonring_status=_%;/repeat -0:10 1 /set demonring_status=X
 
 ;; Werelizard rings
-;;You wear a golden ring with a single small ruby labeled as Fritsuli (glowing) <purple glow>. -> ring 1
-;;You wear a golden ring with a single small ruby labeled as Kielari (glowing) <purple glow>.  -> ring 2
-/def -mglob -t"You feel strength flowing between you and *" ringkiss = /repeat -00:10 1 /ECHO (TF Info): Ring kiss loaded
+;; Cooldown 10 minutes
+/def -mglob -t"You wear a golden ring with a single small ruby labeled as Fritsuli *" setring01 = /set ring 01
+/def -mglob -t"You wear a golden ring with a single small ruby labeled as Kielari *" setring02 = /set ring 02
+/def -mglob -t"You feel strength flowing between you and *" ringkiss=\
+  /set wlizard_ring_%{ring}_status=_%;\
+  /set wlizard_ring_%{ring}_time=%;\
+  /repeat -00:10 1 /set wlizard_ring_%{ring}_status=X
 
 ;; Fqueen wand
 /def -mglob -t"You swing the wand one last time, pointing at *" fqueen_wand_zapped = /set fqueen_wand_status=_
 
 /def lelut=\
+/let timenow=$[time()]%;\
+/if (rainstaff01_time-timenow>0) /let rainstaff01_cd=$(/formattime $[{rainstaff01_time}-{timenow}])%;/else /let rainstaff01_cd=0:00%;/endif%;\
+/if (rainstaff02_time-timenow>0) /let rainstaff02_cd=$(/formattime $[{rainstaff02_time}-{timenow}])%;/else /let rainstaff02_cd=0:00%;/endif%;\
+/if (wlizard_ring_1_time-timenow>0) /let wlizard_ring_1_cd=$(/formattime $[{wlizard_ring_1_time}-{timenow}])%;/else /let wlizard_ring_1_cd=0:00%;/endif%;\
+/if (wlizard_ring_2_time-timenow>0) /let wlizard_ring_2_cd=$(/formattime $[{wlizard_ring_2_time}-{timenow}])%;/else /let wlizard_ring_2_cd=0:00%;/endif%;\
 /echo  .-----------------------------.%;\
 /echo  |   Drifter's tweak eq status |%;\
 /echo  +-----------------------------+%;\
@@ -119,7 +140,7 @@
 /echo  | Other: %;\
 /echo  |  Mask of Gluttony (wispill) [%mask_of_gluttony_status] [%mask_of_gluttony_cd]%;\
 /echo  |  Demonic Ring [%demonic_ring_status] [%demonic_ring_cd]%;\
-/echo  |  Lizard ring1 (rkiss)  []%;\
-/echo  |  Lizard ring2 (rkiss2) []%;\
+/echo  |  Lizard ring1 (rkiss)  [%wlizard_ring_1_status] [%wlizard_ring_1_cd]%;\
+/echo  |  Lizard ring2 (rkiss2) [%wlizard_ring_2_status] [%wlizard_ring_2_cd]%;\
 /echo  |  Fairy wand (frest) [%fqueen_wand_status] [%fqueen_wand_cd]%;\
 /echo  `-----------------------------`
