@@ -109,6 +109,13 @@
 ;; Fqueen wand
 /def -mglob -t"You swing the wand one last time, pointing at *" fqueen_wand_zapped = /set fqueen_wand_status=_
 
+
+;; Other
+/def rip = @@remove skull,nova arcanum,grimoire,wand of magic%;@@wield soul ripper%;@@rip soul from corpse
+/def -mglob -t"You finish sucking the soul. You feel younger!" katana_ripped = @@remove katana%;wear removeditem%;g
+/def -mglob -t"The corpse isn't powerful enough for this." katana_not_ripped = @@remove katana%;wear removeditem%;g
+
+
 /def lelut=\
 /let timenow=$[time()]%;\
 /if (rainstaff01_time-timenow>0) /let rainstaff01_cd=$(/formattime $[{rainstaff01_time}-{timenow}])%;/else /let rainstaff01_cd=0:00%;/endif%;\
