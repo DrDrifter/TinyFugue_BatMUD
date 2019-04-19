@@ -82,6 +82,12 @@
 /def kutanakor-darkwood=@9 nw;20 n;2 nw;13 n;5 n;3 ne;6 n;7 ne;2 n;11 ne;20 e;7 e;3 se;5 e
 /def twisted-darwood=@2 se;NE;E;NE;N;NE;N;NE;2 n;travel ne;20 e;12 e;3 se
 /def perins-orthanc=@5 n;10 e;15 se;11 s;16 se;8 s;3 w
+/def perinsarch=@3 w;4 nw;n;ne;n;ne;n
+/def perinsdemon=@3 w;4 nw;n;ne;n;se
+/def perinsend=@3 w;4 nw;n;ne;n;se
+/def perinsentrance=@3 w;4 nw;n;ne;n;2 ne;n
+/def perinsferal=@3 w;4 nw;n;ne;n;ne;sw
+
 
 ;; Roth
 /def skeep-barb=@9 s;4 sw;19 s;6 se;8 ne;13 e;20 ne;5 ne;11 e;13 ne;8 e;6 ne;6 e;6 ne;17 e;se;e;se;e;ne;e;ne;8 e;3 se;e;2 ne;e;6 ne;7 e;2 ne
