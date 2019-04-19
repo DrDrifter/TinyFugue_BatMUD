@@ -155,13 +155,13 @@ suddenly stops breathing and jerks a couple of times\
 /def -F -mglob -aB -t'Surge of power from your staff adds to the power of the spell.' staff_power1
 
 ;; bind f-keys to damtypes
-/def key_f2 = /dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
-/def key_f3 = /dam electricity%;@eqset wear elec%;/set eqsetstatus=INT
-/def key_f4 = /dam acid%;@eqset wear acid%;/set eqsetstatus=INT
-/def key_f5 = /dam fire%;@eqset wear fire%;/set eqsetstatus=INT
-/def key_f6 = /dam cold%;@eqset wear cold%;/set eqsetstatus=INT
-/def key_f17 = @eqset wear spr%;/set eqsetstatus=SPR
-/def key_f18 = @eqset wear prot%;/set eqsetstatus=WIS
+/def key_f2 = @gagoutput remove kuppakeppi%;/dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
+/def key_f3 = @gagoutput remove kuppakeppi%;/dam electricity%;@eqset wear elec%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f4 = @gagoutput remove kuppakeppi%;/dam acid%;@eqset wear acid%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f5 = @gagoutput remove kuppakeppi%;/dam fire%;@eqset wear fire%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f6 = @gagoutput remove kuppakeppi%;/dam cold%;@eqset wear cold%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f17 = @gagoutput remove kuppakeppi%;@eqset wear spr%;/set eqsetstatus=SPR
+/def key_f18 = @gagoutput remove kuppakeppi%;@eqset wear prot%;/set eqsetstatus=WIS
 
 ;; bind quickblastkeys
 ;; Depending on your keyboard settings you might want to tweak this

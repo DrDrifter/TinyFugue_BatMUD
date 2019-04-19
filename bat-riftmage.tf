@@ -91,8 +91,8 @@
 /def key_f14 = /eec
 /def key_f15 = /hs
 /def key_f16 = /bre
-/def key_f19 = @eqset wear rift%;/set eqsetstatus=RIF
-/def key_f20 = @eqset wear cast%;/set eqsetstatus=CAS
+/def key_f19 = @gagoutput remove kuppakeppi%;@eqset wear rift%;/set eqsetstatus=RIF
+/def key_f20 = @gagoutput remove kuppakeppi%;@eqset wear cast%;/set eqsetstatus=CAS
 
 ;;
 ;; Entity rep in numbers 
@@ -122,7 +122,7 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /let alkurep=$(/eval /_echo %%{%{entity_type}alkurep})%;\
 /if ($(/eval /_echo %%{%{entity_type}alkurep})=~"") /set %{entity_type}alkurep=%pisteet%;/endif%;\
 /let muutosalku=$[{pisteet}-{alkurep}]%;\
-/eval /_echo  | Power: %stringi (%pisteet points) [%muutos] [%muutosalku] [%%{%{entity_type}alkurep}]
+/eval /_echo  | Power: %stringi (%pisteet points) [%muutos] [%muutosalku]
 
 ;; Translate rep (All entities stats page - gem entities)
 /def -ag -F -mregexp -i -t'^\| ([A-Z][a-z]+)(\s+)\| ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)([.]+) \| (Pleased|Narked|Riled|Cross|ANGRY)\s+\|$' kaikkientti_poikelot=\
@@ -140,10 +140,12 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 -d"You feel the melded barrier of energy dissipate from your body." -p"Absorbing Meld"
 
 ;; EQ swaps for riftwalker eq
-/def -F -mglob -t"You remove Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits." removed_in_wisset = \
+/def -F -mglob -t"You remove lucky Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits." removed_in_wisset = \
 @alias removeditem Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits
 /def -F -mglob -t"You remove the black grimoire labeled as Mein Humpf." removed_in_asphset = \
 @alias removeditem the black grimoire labeled as Mein Humpf
+/def -F -mglob -t"You remove a dark staff adorned with a shadowy orb * labeled as KuppaKeppi from your right hand." removed_in_typeset = \
+@alias removeditem long shadowy staff
 /def -F -mglob -t"You remove a skull labeled as (s)kulli." removed_in_other_castset = \
 @alias removeditem a skull labeled as (s)kulli
 /def -F -mglob -t"You remove a wand of magic labeled as LateksiDildo." removed_in_sprset = \
