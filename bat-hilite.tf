@@ -301,8 +301,8 @@
     /def -F -p3 -P0 -mregexp -t'^%{generic_amount_list} gold coin' greed_gold = @get gold%; \
     /def -F -p3 -P0 -mregexp -t'^([Tt]he|%{generic_amount_list}) head.? of a (barbarian|troll)' greed_head = @get all head%;\
     /def -F -p9 -P0 -mregexp -t'^An old iron plate mail' greed_mail = @get mail%;\
-    /def -F -p9 -P0 -mregexp -t'^a pair of insect wings' greed_wings = @get wings%;\
-    /def -F -p9 -P0 -mregexp -t'^a pair of HUGE insect wings' greed_hugewings = @get wings%;\
+    /def -F -p9 -P0 -mregexp -t'^a pair of insect wings' greed_wings = @get all%;\
+    /def -F -p9 -P0 -mregexp -t'^a pair of HUGE insect wings' greed_hugewings = @get all%;\
     /def -F -p9 -P0 -mregexp -t'^A very sharp dagger' greed_dagger = @get dagger%;\
     /def -F -p9 -P0 -mregexp -t'^A wood club' greed_woodclub = @get wood club%;\
     /def -F -p9 -P0 -mregexp -t'^Collar of the CatDemon' greed_catcollar = @get collar%;\
