@@ -84,15 +84,15 @@
 
 ;; Keybindings
 ;; Note: eqset status requires bat-status for info statusbar, but it's not mandatory
-/def key_f7 = /sb .
+;;/def key_f7 = /sb .
 /def key_f8 = /rp .
 /def key_f12 = /uc
 /def key_f13 = /rre
 /def key_f14 = /eec
 /def key_f15 = /hs
 /def key_f16 = /bre
-/def key_f19 = @eqset wear rift%;/set eqsetstatus=RIF
-/def key_f20 = @eqset wear cast%;/set eqsetstatus=CAS
+/def key_f19 = @gagoutput remove kuppakeppi%;@eqset wear rift%;/set eqsetstatus=RIF
+/def key_f20 = @gagoutput remove kuppakeppi%;@eqset wear cast%;/set eqsetstatus=CAS
 
 ;;
 ;; Entity rep in numbers 
@@ -107,9 +107,13 @@
 
 ;; Identify your entity when you type gem entities <xxx>
 ;; Note: This might bug if your entity is not named
-/def -mregexp -t'^\| [A-Z][a-z]+, a (tiny|titchy|miniscule|small|medium|large|huge|enormous|humongous|gargantuan) (fire|air|water|earth|magic) entity (glowing|shimmering|gleaming|sizzling|sparkling|glittering|radiating|throbbing|pulsating|blazing) with (power|POWER)\s+(Pleased|Narked|Riled|Cross|ANGRY)\s+\|' entity_identifier=\
-/echo -aB Entity type: [%P2] size:  [%P1] + [%P3]%;\
-/set entity_type=%P2
+/def -mregexp -t'^\| [A-Z][a-z]+, (a|an) (tiny|titchy|miniscule|small|medium|large|huge|enormous|humongous|gargantuan) (fire|air|water|earth|magic) entity (glowing|shimmering|gleaming|sizzling|sparkling|glittering|radiating|throbbing|pulsating|blazing) with (power|POWER)\s+(Pleased|Narked|Riled|Cross|ANGRY)\s+\|' entity_identifier=\
+/echo -aB Entity type: [%P3] size:  [%P2] + [%P4]%;\
+/set entity_type=%P3%;\
+;; keybind f7 target for multiple targets
+;; (NB: this requires sufficient rep for magic entity)
+/if ({entity_type}=~"magic") /def key_f7 = /sb all%;/else /def key_f7 = /sb .%;/endif
+
 
 ;; Translate rep (Single entity stats page gem entitites xx )
 /def -ag -F -mregexp -i -t'^\| Power: ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)' poikelot=\
@@ -122,7 +126,7 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /let alkurep=$(/eval /_echo %%{%{entity_type}alkurep})%;\
 /if ($(/eval /_echo %%{%{entity_type}alkurep})=~"") /set %{entity_type}alkurep=%pisteet%;/endif%;\
 /let muutosalku=$[{pisteet}-{alkurep}]%;\
-/eval /_echo  | Power: %stringi (%pisteet points) [%muutos] [%muutosalku] [%%{%{entity_type}alkurep}]
+/eval /_echo  | Power: %stringi (%pisteet points) [%muutos] [%muutosalku]
 
 ;; Translate rep (All entities stats page - gem entities)
 /def -ag -F -mregexp -i -t'^\| ([A-Z][a-z]+)(\s+)\| ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)([.]+) \| (Pleased|Narked|Riled|Cross|ANGRY)\s+\|$' kaikkientti_poikelot=\
@@ -140,18 +144,20 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 -d"You feel the melded barrier of energy dissipate from your body." -p"Absorbing Meld"
 
 ;; EQ swaps for riftwalker eq
-/def -F -mglob -t"You remove Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits." removed_in_wisset = \
+/def -F -mglob -t"You remove lucky Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits." removed_in_wisset = \
 @alias removeditem Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits
 /def -F -mglob -t"You remove the black grimoire labeled as Mein Humpf." removed_in_asphset = \
 @alias removeditem the black grimoire labeled as Mein Humpf
+/def -F -mglob -t"You remove a dark staff adorned with a shadowy orb * labeled as KuppaKeppi from your right hand." removed_in_typeset = \
+@alias removeditem long shadowy staff
 /def -F -mglob -t"You remove a skull labeled as (s)kulli." removed_in_other_castset = \
 @alias removeditem a skull labeled as (s)kulli
 /def -F -mglob -t"You remove a wand of magic labeled as LateksiDildo." removed_in_sprset = \
 @alias removeditem a wand of magic labeled as LateksiDildo
-/def -F -mglob -t"You successfully establish control over your entity." entity_controlled = @put ohjauskeppi in bp;wear removeditem
-/def -F -mglob -t"The entity is fully healed." entity_healed = @put parannustikku in bp;wear removeditem
-/def -F -mglob -t"Nagato the magic entity sees that you are unhurt and interrupts the channelling." entity_heal_me = \
-@put parannustikku in bp;wear removeditem
+/def -F -mglob -t"You successfully establish control over your entity." entity_controlled = @put ohjauskeppi in hiivasylinteri;wear removeditem
+/def -F -mglob -t"The entity is fully healed." entity_healed = @put parannustikku in hiivasylinteri;wear removeditem
+/def -F -mglob -t"* the magic entity sees that you are unhurt and interrupts the channelling." entity_heal_me = \
+@put parannustikku in hiivasylinteri;wear removeditem
 
 
 ;; Hilites
@@ -168,3 +174,9 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /def -t'Entity sense: Your crystal clear shield fades out.' entity_aoa_down = @party report (Entity AOA down)
 /def -t'Entity sense: You no longer feel protected from being stunned.' entity_iw_down = @party report (Entity IW down)
 /def -t'Entity sense: A skin brown flash momentarily surrounds you and then vanishes.' entity_fabs_down = @party report (Entity fabs down)
+
+
+;; Just some debug stuff
+/def entdebug=\
+   /echo -aB -p (Debug) entity=%{entity_type} spell=%{spell} executing_skill=%{executing_skill} start_flag=%{start_flag} targettype=%{targettype} %{targettype}_target=%%{%{targettype}_target}
+
