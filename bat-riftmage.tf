@@ -1,6 +1,7 @@
 ;; BatMUD
 ;; Triggers for use with riftwalker
 ;;
+/loaded bat-riftmage.tf
 ;; Needs this file to run spell casting triggers
 /require -q bat-generic.tf
 /require -q bat-analysis.tf
@@ -107,16 +108,41 @@
 
 ;; Identify your entity when you type gem entities <xxx>
 ;; Note: This might bug if your entity is not named
-/def -mregexp -t'^\| [A-Z][a-z]+, (a|an) (tiny|titchy|miniscule|small|medium|large|huge|enormous|humongous|gargantuan) (fire|air|water|earth|magic) entity (glowing|shimmering|gleaming|sizzling|sparkling|glittering|radiating|throbbing|pulsating|blazing) with (power|POWER)\s+(Pleased|Narked|Riled|Cross|ANGRY)\s+\|' entity_identifier=\
-/echo -aB Entity type: [%P3] size:  [%P2] + [%P4]%;\
-/set entity_type=%P3%;\
+/def -ag -mregexp -t'^\| ([A-Z][a-z]+), (a|an) (tiny|titchy|miniscule|small|medium|large|huge|enormous|humongous|gargantuan) (fire|air|water|earth|magic) (entity) (glowing|shimmering|gleaming|sizzling|sparkling|glittering|radiating|throbbing|pulsating|blazing) (with) (power|POWER)(\s+)(Pleased|Narked|Riled|Cross|ANGRY)\s+\|' entity_identifier=\
+/set entity_type=%P4%;\
+/let entkympit=%P3%;\
+/let entykkoset=%P6%;\
+/let entkympit=$[replace("tiny","0",{entkympit})] %;\
+/let entkympit=$[replace("titchy","1",{entkympit})] %;\
+/let entkympit=$[replace("miniscule","2",{entkympit})] %;\
+/let entkympit=$[replace("small","3",{entkympit})] %;\
+/let entkympit=$[replace("medium","4",{entkympit})] %;\
+/let entkympit=$[replace("large","5",{entkympit})] %;\
+/let entkympit=$[replace("huge","6",{entkympit})] %;\
+/let entkympit=$[replace("enormous","7",{entkympit})] %;\
+/let entkympit=$[replace("humongous","8",{entkympit})] %;\
+/let entkympit=$[replace("gargantuan","9",{entkympit})] %;\
+/let entykkoset=$[replace("glowing","0",{entykkoset})] %;\
+/let entykkoset=$[replace("shimmering","1",{entykkoset})] %;\
+/let entykkoset=$[replace("gleaming","2",{entykkoset})] %;\
+/let entykkoset=$[replace("sizzling","3",{entykkoset})] %;\
+/let entykkoset=$[replace("sparkling","4",{entykkoset})] %;\
+/let entykkoset=$[replace("glittering","5",{entykkoset})] %;\
+/let entykkoset=$[replace("radiating","6",{entykkoset})] %;\
+/let entykkoset=$[replace("throbbing","7",{entykkoset})] %;\
+/let entykkoset=$[replace("pulsating","8",{entykkoset})] %;\
+/let entykkoset=$[replace("blazing","9",{entykkoset})] %;\
+/let stringi=$[strcat({P1},", ",{P2}," ",{P3}," ",{P4}," ",{P5}," ",{P6}," ",{P7}," ",{P8})]%;\
+/let pituus=$[strrep(" ",strlen({P9})-5)]%;\
+/let stringi=$[strcat(stringi," (",entkympit,entykkoset,")",pituus,{P10}," |")]%;\
+;;/echo -aB Entity type: [%P4] size:  [%P3] + [%P5] (%stringi)%;\
+/_echo | %stringi%;\
 ;; keybind f7 target for multiple targets
 ;; (NB: this requires sufficient rep for magic entity)
 /if ({entity_type}=~"magic") /def key_f7 = /sb all%;/else /def key_f7 = /sb .%;/endif
 
-
 ;; Translate rep (Single entity stats page gem entitites xx )
-/def -ag -F -mregexp -i -t'^\| Power: ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)' poikelot=\
+/def -ag -F -mregexp -i -t'^\| Power: ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)(\s+)' poikelot=\
 /let sadattonnit=%P1%;/let kymppitonnit=%P2%;/let tonnit=%P3%;/let satkut=%P4%;/let kympit=%P5%;/let ykkoset=%P6%;\
 /let pisteet_old=%pisteet%;\
 /set pisteet=\
@@ -126,7 +152,8 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /let alkurep=$(/eval /_echo %%{%{entity_type}alkurep})%;\
 /if ($(/eval /_echo %%{%{entity_type}alkurep})=~"") /set %{entity_type}alkurep=%pisteet%;/endif%;\
 /let muutosalku=$[{pisteet}-{alkurep}]%;\
-/eval /_echo  | Power: %stringi (%pisteet points) [%muutos] [%muutosalku]
+/let pituus=$[strrep(" ",strlen({P7})-strlen(%pisteet)-strlen(%muutos)-strlen(%muutosalku)-18)]%;\
+/eval /_echo  | Power: %stringi (%pisteet points) [%muutos] [%muutosalku] %pituus |
 
 ;; Translate rep (All entities stats page - gem entities)
 /def -ag -F -mregexp -i -t'^\| ([A-Z][a-z]+)(\s+)\| ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)([.]+) \| (Pleased|Narked|Riled|Cross|ANGRY)\s+\|$' kaikkientti_poikelot=\
@@ -174,6 +201,7 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /def -t'Entity sense: Your crystal clear shield fades out.' entity_aoa_down = @party report (Entity AOA down)
 /def -t'Entity sense: You no longer feel protected from being stunned.' entity_iw_down = @party report (Entity IW down)
 /def -t'Entity sense: A skin brown flash momentarily surrounds you and then vanishes.' entity_fabs_down = @party report (Entity fabs down)
+/def -t'Entity sense: Your flex shield wobbles, PINGs and vanishes.' entity_flex_down = @party report (Entity flex down)
 
 
 ;; Just some debug stuff
