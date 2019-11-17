@@ -2,6 +2,7 @@
 ;; Supplementary triggers for all caster guilds that have analysis of magic lore
 ;; Author: Drifter (drifter@bat.org)
 ;;
+/loaded bat-analysis.tf
 /set analysis_report=off
 /set last_analysis_target=none
 /set current_analysis_target=none
@@ -35,20 +36,20 @@
 /def -F -mglob -t"You utter the magic words \'cwician ysl\'" sparkbirth_cast_manual = /set spell=spark_birth
 
 ;; Analysis of magic lore messages, grab the target's short name from here
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,]+) screams in pain\." scream_pain=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,\.]+) screams in pain\." scream_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=0%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,]+) writhes in agony\." writhe_agony=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,\.]+) writhes in agony\." writhe_agony=\
   /set current_analysis_target=%P1%;\
   /set current_resist=20%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### writhes %damtype (20\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,]+) shudders from the force of the attack\." shudder=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,\.]+) shudders from the force of the attack\." shudder=\
   /set current_analysis_target=%P1%;\
   /set current_resist=40%;\
   /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
@@ -58,7 +59,7 @@
   /echo -aB ### Target shudders %damtype (40\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,]+) grunts from the pain\." grunt_pain=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,\.]+) grunts from the pain\." grunt_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=60%;\
   /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
@@ -68,7 +69,7 @@
   /echo -aB ### GRUNTS %damtype (60\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\'\,]+) winces a little from the pain\." winces=\
+/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\'\,\.]+) winces a little from the pain\." winces=\
   /set current_analysis_target=%P1%;\
   /set current_resist=80%;\
   /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
@@ -78,7 +79,7 @@
   /echo -aB ### Target winces %damtype (80\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\'\,]+) shrugs off the attack\." shrug=\
+/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\'\,\.]+) shrugs off the attack\." shrug=\
   /set current_analysis_target=%P1%;\
   /set current_resist=100%;\
   /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
