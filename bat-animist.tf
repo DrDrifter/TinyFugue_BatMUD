@@ -1,6 +1,7 @@
 ;;
 ;; Load this file AFTER bat-hilite.tf
 ;;
+/loaded bat-animist.tf
 
 ;;
 ;; Options
