@@ -11,6 +11,7 @@
 ;; Modified & maintained currently by Drifter since 2001-                     ;;
 ;; Last updated 9.1.2012                                                     ;;
 ;;                                                                            ;;
+/loaded bat-hilite.tf
 
 /set matching=glob
 
@@ -323,11 +324,11 @@
 /set touchtimer=0
 /set togwtimer=0
 
-/def -mglob -t"* turns very pale!" cotwentin = /set cottimer=$[time()]%;/set cottgt=%{1}
-/def -mglob -t"* appears weakened!" degenin = /set degentimer=$[time()]%;/set degentgt=%{1}
-/def -mglob -t"* turns very pale and shivers as if {he|she|it} had just been poisoned." touchin = /set touchtimer=$[time()]%;/set touchtgt=%{1}
-/def -mglob -t"* shivers as it is trapped in the cold center of the funnel." togwin = /set togwtimer=$[time()]%;/set togwtgt=%{1}
-/def -mglob -t"* is moving normally again." togwdown = @party report (Glacial Wind is down!)
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) turns very pale!" cotwentin = /set cottimer=$[time()]%;/set cottgt=%P1
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) appears weakened!" degenin = /set degentimer=$[time()]%;/set degentgt=%P1
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) turns very pale and shivers as if {he|she|it} had just been poisoned." touchin = /set touchtimer=$[time()]%;/set touchtgt=%P1
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) shivers as it is trapped in the cold center of the funnel." togwin = /set togwtimer=$[time()]%;/set togwtgt=%P1
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) is moving normally again." togwdown = @party report (Glacial Wind on %P1 is down!)
 
 /def lastdg= \
   /if (degentimer!=0)\
@@ -416,6 +417,11 @@
 /def -mglob -ag -t"Ramon tells you *"  ramon_gag
 /def -mglob -ag -t"Biff Swift shouts*" biffswift_gag
 /def -mglob -ag -t"Garunia tells you*" garunia_gag
+/def -mglob -ag -t"* is surrounded by an orange force field." pumpkin_shit01
+/def -mglob -ag -t"Your pumpkin shell shield begins recharging." pumpkin_shit02
+/def -mglob -ag -t"Your pumpkin shell shield is fully recharged." pumpkin_shit03
+/def -mglob -ag -t"Your pumpkin shell shield bursts and vanishes." pumpkin_shit04
+/def -mglob -ag -t"* orange force field bursts and vanishes." pumpkin_shit05
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1
