@@ -1,4 +1,5 @@
 ;barbirepu
+/loaded bat-barbrep.tf
 /def -ag -mregexp -i -t'^\[([X]*)([@]*)([#]*)([:]*)([.]*)\]$' poikelot=\
 /set kymppitonnit=%P1%;/set tonnit=%P2%;/set satkut=%P3%;/set kympit=%P4%;/set ykkoset=%P5%;\
 /set pisteet=\
