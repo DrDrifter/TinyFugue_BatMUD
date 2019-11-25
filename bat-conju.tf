@@ -13,7 +13,8 @@
 ;;                                                                         ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-/require -q /home/pi/tf-lib/bat-generic.tf
+/loaded bat-conju.tf
+/require -q bat-generic.tf
 
 ;; conjuprots
 /def aoa   = /set targettype=prot%;/set spell=armour_of_aether%;/do_spell %{*}
@@ -54,6 +55,7 @@
 /def iv  = /set targettype=help%;/set spell=infravision%;/do_spell %{*}
 /def nf  = /set targettype=none%;/set spell=neutralize_field%;/do_spell
 /def qs  = /set targettype=help%;/set spell=quicksilver%;/do_spell %{*}
+/def rc  = /set targettype=help%;/set spell=remove_curse%;/do_spell %{*}
 /def re  = /set targettype=help%;/set spell=resist_entropy%;/do_spell %{*}
 /def rst = /set targettype=help%;/set spell=restore%;/do_spell %{*}
 /def si  = /set targettype=help%;/set spell=see_invisible%;/do_spell %{*}
