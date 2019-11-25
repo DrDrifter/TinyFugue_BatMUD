@@ -6,6 +6,7 @@
 ;; after that load this trigger and use the command
 ;; /esset = shows your essences
 ;; Everything else is automatic
+/loaded bat-essencecount.tf
 
 ;; Set initial arguments when loaded
 /require textutil.tf
