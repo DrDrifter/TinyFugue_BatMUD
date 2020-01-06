@@ -51,13 +51,14 @@
 /def al=/set skill=alloying%;/set targettype=mining%;/do_skill %{*}
 /def am=/if (axe_status=~"wielded") @remove axe%;/set axe_status=unwielded%;/endif%;/set skill=amalgamate%;/set targettype=mining%;/do_skill %{*}
 /def ap=/set skill=appraise%;/set targettype=prot%;/do_skill %{*}
-/def cn=/if (axe_status =~ "wielded") @remove axe%;@get saw from bp%;@wield saw%;/set saw_status=wielded%;/endif%;/set skill=cannibalize%;/set targettype=prot%;/do_skill %{*}
+/def cn=/if (axe_status =~ "wielded") @remove axe%;@get saw,artificer gloves from frame%;@wield saw%;/set saw_status=wielded%;/endif%;/set skill=cannibalize%;/set targettype=prot%;/do_skill %{*}
 /def eol=/set skill=eye_of_loraen%;/set targettype=self%;/do_skill %{*}
 /def ex=/set skill=exchange_money%;/set targettype=coins%;/do_skill %{1}%;@drop %{1}
 /def gc=/set skill=gem_cutting%;/set targettype=mining%;/do_skill %{*}
 /def lb=/set skill=labeling%;/set targettype=prot%;/do_skill %{*}
 /def lj=/set skill=lumberjacking%;/set targettype=tree%;/do_skill %{*}
 /def mc=/set skill=mineral_cutting%;/set targettype=mining%;/do_skill %{*}
+/def mine=get all str from backpack%;@eqset mine%;/mn %{*}
 /def mmg=/set skill=make_mount_gear%;/set targettype=mining%;/do_skill %{*}
 /def mn=/set skill=mining%;/set targettype=mining%;/if (axe_status =~ "unwielded") @wield axe%;/endif%;/do_skill %{1}
 /def mr=/set skill=make_reagent%;/set targettype=mining%;/if (axe_status =~ "wielded") @remove axe%;/endif%;/do_skill %{*}
