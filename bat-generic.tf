@@ -27,6 +27,7 @@
 ;; /do_spell %{*} ->Redoes targettype off                                     ;;
 ;;                                                                            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/loaded bat-generic.tf
 ;
 ; Generic settings, modify to your own comfort
 ;

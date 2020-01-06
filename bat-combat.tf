@@ -7,6 +7,7 @@
 ;;
 ;; Modified and maintaned by Drifter since 2003
 ;;
+/loaded bat-combat.tf
 
 /def stats=\
 /if ({1}=~"") /set inform=/echo -aB TF info:%; /do_stats%;\

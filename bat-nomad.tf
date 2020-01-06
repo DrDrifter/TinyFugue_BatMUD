@@ -1,3 +1,4 @@
+/loaded bat-nomad.tf
 /require -q bat-generic.tf
 
 /def cp=/set targettype=none%;/set skill=camping%;/do_skill%;@party say (camping)

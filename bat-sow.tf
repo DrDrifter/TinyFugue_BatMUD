@@ -1,5 +1,6 @@
 ;; Hair's Sword of Wonders Trig.
 ;; All credit goes to Hair
+/loaded bat-sow.tf
 
 /DEF -ag -h"send {sow}*" sow_tuner = \
 	/IF (strlen(%{-1}) < 3) \

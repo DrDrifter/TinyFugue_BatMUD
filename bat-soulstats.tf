@@ -5,6 +5,8 @@
 ;;
 ;; Copyright drifter@bat.org 2013
 
+/loaded bat-soulstats.tf
+
 /def sstats=\
 /if ({1}=~"") /set inform=/echo -aB TF info:%; /do_stats%;\
 /elseif ({1}=~"party") /set inform=@party say%; /do_stats%;\

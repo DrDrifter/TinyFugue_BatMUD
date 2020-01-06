@@ -4,6 +4,7 @@
 ;; Changes members names to numbers
 ;; Updated 15.3.2004 by Drifter
 ;;
+/loaded bat-party.tf
 
 ;;/def -F -p29 -aCwhite -t"* [\\[{]party[\\]}]: *" lite_party_channel
 

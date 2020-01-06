@@ -2,7 +2,7 @@
 ;; Druid guild wrapper trigs
 ;;
 
-
+/loaded bat-druid.tf
 /require -q bat-generic.tf
 
 ; offspells

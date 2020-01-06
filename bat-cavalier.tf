@@ -1,3 +1,4 @@
+/loaded bat-cavalier.tf
 /require -q bat-generic.tf
 
 ;; Skills

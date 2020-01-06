@@ -3,7 +3,7 @@
 ;; By Drifter (2004->) ;;
 ;; last mod: 18.2.11   ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-
+/loaded bat-templar.tf
 /require -q bat-generic.tf
 
 /def lh=/set targettype=temp%;/set spell=laying_on_hands%;/do_spell %{*}

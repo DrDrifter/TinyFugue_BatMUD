@@ -1,6 +1,7 @@
 ;; (c) 2004:
 ;;    Eerikki Aula (era@batmud)
-;
+/loaded bat-pouch.tf
+
 ; Reagent pouch trigs
 ; Shows the reagent amounts in nice formatted lines (with spells too)
 /def -mregexp -t'^The (pouch|belt) contains:$' reagentpouch = \

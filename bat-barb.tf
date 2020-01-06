@@ -8,6 +8,7 @@
 ;;
 ;;/require -q bat-generic.tf
 ;;/require -q protter.tf
+/loaded bat-barb.tf
 /set hp_report on
 /set camp ready
 

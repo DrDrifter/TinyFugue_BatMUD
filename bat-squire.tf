@@ -1,6 +1,7 @@
 ;;
 ;; Batmud squire triggers
 ;;
+/loaded bat-squire.tf
 
 /stack impale off_skill_stack
 /def im=/set skill=impale%;/set targettype=off%;/set skill_rounds=random%;/do_skill %{*}

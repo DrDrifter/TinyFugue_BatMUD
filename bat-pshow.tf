@@ -1,3 +1,4 @@
+/loaded bat-pshow.tf
 /require items.tf
 
 /purge pcolour

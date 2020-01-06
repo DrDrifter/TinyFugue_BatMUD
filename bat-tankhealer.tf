@@ -1,3 +1,4 @@
+/loaded bat-tankhealer.tf
 
 /def rd=/set spell=raise_dead%;/set targettype=assist%;/do_spell %{*}
 /def ress=/set spell=resurrect%;/set targettype=assist%;/do_spell %{*}

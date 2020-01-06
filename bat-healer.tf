@@ -24,9 +24,9 @@
 ;; /mnp -> minor party heal        /mjp -> major party heal                   ;;
 ;;                                                                            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;                                                                            ;;
+/loaded bat-healer.tf
 /require -q ~/lib/tf-lib/bat-generic.tf
-;;                                                                            ;;
+
 ;; Misc defs
 /def cf=/set spell=create_food%;/set targettype=none%;/do_spell
 /def rd=/set spell=raise_dead%;/set targettype=assist%;/do_spell %{*}

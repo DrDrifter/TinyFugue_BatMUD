@@ -1,3 +1,4 @@
+/loaded bat-grelig.tf
 /require bat-generic.tf
 
 ;; Basic skills

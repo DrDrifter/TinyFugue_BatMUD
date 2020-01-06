@@ -3,7 +3,7 @@
 ;; BatMUD LoC:Tzarakk stuffs                                          ;;
 ;;                                                                    ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+/loaded bat-tzarakk.tf
 /require -q bat-generic.tf
 ;/require -q protter.tf
 /set hp_report on

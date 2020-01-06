@@ -1,3 +1,4 @@
+/loaded bat-hc.tf
 /dc
 /load ~/lib/tf-lib/bat-generic.tf
 /load ~/lib/tf-lib/bat-hilite.tf

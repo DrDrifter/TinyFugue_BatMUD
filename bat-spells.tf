@@ -4,7 +4,7 @@
 ;; by players (remove scar, etc) so that much less "crap" would
 ;; populate the spellcaster.txt
 ;;
-
+/loaded bat-spells.tf
 
 /require -q stack_queue.tf
 

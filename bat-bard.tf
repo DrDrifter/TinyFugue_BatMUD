@@ -1,3 +1,4 @@
+/loaded bat-bard.tf
 /require -q bat-generic.tf
 /set sp_report on
 
