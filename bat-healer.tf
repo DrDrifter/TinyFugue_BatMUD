@@ -25,29 +25,36 @@
 ;;                                                                            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 /loaded bat-healer.tf
-/require -q ~/lib/tf-lib/bat-generic.tf
+/require -q bat-generic.tf
 
 ;; Misc defs
+/def ad=/set spell=aura_detection%;/set targettype=assist%;/do_spell %{*}
+/def bs=/set spell=bless_ship%;/set targettype=none%;/do_spell
+/def bot=/set spell=blessing_of_tarmalen%;/set targettype=prot%;/do_spell %{*}
 /def cf=/set spell=create_food%;/set targettype=none%;/do_spell
+/def cot=/set spell=curse_of_tarmalen%;/set targettype=off%;/do_spell %{*}
+/def da=/set spell=detect_alignment%;/set targettype=assist%;/do_spell %{*}
+/def ev=/set spell=enhanced_vitality%;/set targettype=assist%;/do_spell %{*}
+/def hway=/set spell=holy way%;/set targettype=tele%;/do_spell %{*}
+/def ll=/set spell=life_link%;/set targettype=prot%;/do_spell %{*}
+/def lp=/set spell=lessen_poison%;/set targettype=assist%;/do_spell %{*}
+/def nb=/set spell=new_body%;/set targettype=assist%;/do_spell %{1}
+/def nr=/set spell=natural_renewal%;/set targettype=assist%;/do_spell %{1}
 /def rd=/set spell=raise_dead%;/set targettype=assist%;/do_spell %{*}
 /def ress=/set spell=resurrect%;/set targettype=assist%;/do_spell %{*}
-/def nb=/set spell=new_body%;/set targettype=assist%;/do_spell %{*}
-/def lp=/set spell=lessen_poison%;/set targettype=assist%;/do_spell %{*}
 /def rp=/set spell=remove_poison%;/set targettype=assist%;/do_spell %{*}
-/def hway=/set spell=holy way%;/set targettype=tele%;/do_spell %{*}
-/def sum=/set spell=summon%;/set targettype=tele%;/do_spell %{*}
-/def us=/set spell=unstun%;/set targettype=prot%;/do_spell %{*}
-/def unp=/set spell=unpain%;/set targettype=prot%;/do_spell %{*}
-/def bot=/set spell=blessing_of_tarmalen%;/set targettype=prot%;/do_spell %{*}
 /def rs=/set spell=remove_scar%;/set targettype=assist%;/do_spell %{*}
+/def rst=/set spell=restore%;/set targettype=assist%;/do_spell %{1}
+/def sc=/set spell=sec_change%;/set targettype=assist%;/do_spell %{1}
+/def sot=/set spell=shield_of_transcendence%;/set targettype=assist%;/do_spell %{*}
+/def sp=/set spell=satiate_person%;/set targettype=assist%;/do_spell %{*}
+/def sum=/set spell=summon%;/set targettype=tele%;/do_spell %{*}
+/def unp=/set spell=unpain%;/set targettype=prot%;/do_spell %{*}
+/def us=/set spell=unstun%;/set targettype=prot%;/do_spell %{*}
+/def ww=/set spell=water_walking%;/set targettype=assist%;/do_spell %{*}
 /stack tempt repeat_skill_stack
 /def tempt=/set skill=tempt%;/set targettype=repeat%;/do_skill %{*}
 /def bc=/set skill=burial_ceremony%;/set targettype=none%;/do_skill
-/def ll=/set spell=life_link%;/set targettype=prot%;/do_spell %{*}
-/def sp=/set spell=satiate_person%;/set targettype=assist%;/do_spell %{*}
-/def ww=/set spell=water_walking%;/set targettype=assist%;/do_spell %{*}
-/def da=/set spell=detect_alignment%;/set targettype=assist%;/do_spell %{*}
-/def cot=/set spell=curse_of_tarmalen%;/set targettype=off%;/do_spell %{*}
 
 ;;
 ;; Deaths door
@@ -99,18 +106,20 @@
 
 ;; Keybindings
 /bind § = /cot .
-/def key_f2 = /ccw 1
-/def key_f3 = /ccw 2
-/def key_f4 = /ccw 3
-/def key_f5 = /mjh 1
-/def key_f6 = /mjh 2
-/def key_f7 = /mjh 3
+/def key_f1 = /mip
+/def key_f2 = @target tank1%;/ccw .
+/def key_f3 = @target tank2%;/ccw .
+/def key_f4 = @target tank3%;/ccw .
+/def key_f5 = @target tank1%;/mjh .
+/def key_f6 = @target tank2%;/mjh .
+/def key_f7 = @target tank3%;/mjh .
 /def key_f11 = /mjp
 /def key_ctrl_f11 = /tph
 /def key_f12 = /uc
 
 ;;RessRais hilites
-/def -p9 -aB -aBCcyan -mglob -t"* accepts raise dead from you." raiscolor
-/def -p9 -aB -aBCcyan -mglob -t"* accepts resurrect from you." resscolor
+/def -F -p9 -aB -aBCcyan -mglob -t"* accepts raise dead from you." raiscolor
+/def -F -p9 -aB -aBCcyan -mglob -t"* accepts resurrect from you." resscolor
+/def -F -p9 -aB -aBCcyan -mglob -t"* accepts new body from you." resscolor
 
 /def -p9 -t"You curse *" CoT_in = @party say (CoT in!)
