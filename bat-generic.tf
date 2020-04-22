@@ -3,8 +3,8 @@
 ;;       Scripts and triggers for use with all guilds in BatMUD               ;;
 ;;                     Jenny@batmud.org 1999                                  ;;
 ;;                                                                            ;;
-;;     Modified and some parts recoded by drifter@bat.org 2001-2011           ;;
-;;                   last update 18.02.2011                                   ;;
+;;     Modified and some parts recoded by drifter@bat.org 2001-2020           ;;
+;;                   last update 22.04.2020                                   ;;
 ;;                                                                            ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                                                                            ;;
@@ -80,6 +80,28 @@
    /let time_min=$[({input_time}-({time_hr}*3600)-({time_day}*86400))/60]m%;\
    /let time_sec=$[{input_time}-({time_min}*60)-({time_hr}*3600)-({time_day}*86400)]s%;\
    /echo $[{time_day}?strcat({time_day},{time_hr}?" ":""):""]$[{time_hr}?strcat({time_hr},{time_min}?" ":""):""]$[{time_min}?strcat({time_min},{time_sec}?" ":""):""]$[{time_sec}?{time_sec}:""]
+
+;; Format floating numbers
+;; rounds floating numbers to wanted amount of decimals
+;; Input: Ffloat (eg. 56.3542123), <number_of_desired_decimals>
+/def floatd = \
+   /let v1=%1%;\
+   /let v2=%2%;\
+   /let v3=$[trunc(v1)]%;\
+   /let v1=$[trunc((v1-v3)*(pow(10,v2)))]%;\
+   /let v1=$[strcat(strrep("0",v2-strlen(v1)),v1)]%;\
+   /if (v2==0) /return "%{v3}"%;/endif%;\
+   /if (%{v1}<0) \
+      /let v3=$[abs(v3)]%;\
+      /let v1=$[abs(v1)]%;\
+      /return "-%{v3}.%{v1}"%;\
+   /endif%;\
+   /return "%{v3}.%{v1}"
+
+;; Roundf will round up to the nearest full decimal using floatd
+/def roundf = \
+   /let v1=$[%*+0.5]%;\
+   /return $[floatd(v1)]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                                                                            ;;
