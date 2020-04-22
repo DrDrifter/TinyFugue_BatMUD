@@ -270,7 +270,7 @@
 /def -F -p9 -abCyellow -mglob -t"* is the new leader of the party." party_new_leader=@party follow
 /def -F -p9 -aBCyellow -mglob -t'You are the new leader of the party.' party_leader=@party forcefollow all
 ;;/def -F -p9 -aBCyellow -t'lapses into unconsciousness from severe loss of blood.' unconscious= party say %{1} UNCONSCIOUS
-/def -F -p6 -mregexp -t' starts grappling ([A-z]*)\\.$' grapplestart = @party report %P1 has been grappled!
+/def -F -p6 -mregexp -t'([A-Za-z \-\'\,\.]+) starts grappling ([A-Za-z ]+)\\.$' grapplestart = @party report %P2 has been grappled by %P1
 /def -F -p6 -mglob -t"You feel more vital." death_stats_gone = @party report (Recovered from death)
 
 ;; Greed
