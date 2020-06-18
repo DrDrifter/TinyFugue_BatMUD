@@ -103,13 +103,13 @@
  /let manaprc=$[%manablastfloat/%manaessunext*100]%;\
  /let poisprc=$[%poisblastfloat/%poisessunext*100]%;\
 /_echo ,-Essence--count---next--%;\
-/_echo | Asph: %asphessu $[pad(%asphblast,5)] / $[pad(%asphessunext,-5)] ($[pad(substr(%asphprc,0,5),3)])% %;\
-/_echo | Elec: %elecessu $[pad(%elecblast,5)] / $[pad(%elecessunext,-5)] ($[pad(substr(%elecprc,0,5),3)])% %;\
-/_echo | Acid: %acidessu $[pad(%acidblast,5)] / $[pad(%acidessunext,-5)] ($[pad(substr(%acidprc,0,5),3)])% %;\
-/_echo | Fire: %fireessu $[pad(%fireblast,5)] / $[pad(%fireessunext,-5)] ($[pad(substr(%fireprc,0,5),3)])% %;\
-/_echo | Cold: %coldessu $[pad(%coldblast,5)] / $[pad(%coldessunext,-5)] ($[pad(substr(%coldprc,0,5),3)])% %;\
-/_echo | Mana: %manaessu $[pad(%manablast,5)] / $[pad(%manaessunext,-5)] ($[pad(substr(%manaprc,0,5),3)])% %;\
-/_echo | Pois: %poisessu $[pad(%poisblast,5)] / $[pad(%poisessunext,-5)] ($[pad(substr(%poisprc,0,5),3)])% %;\
+/_echo | Asph: %asphessu $[pad(%asphblast,5)] / $[pad(%asphessunext,-5)] ($[pad(floatd(%asphprc,2),5)])% %;\
+/_echo | Elec: %elecessu $[pad(%elecblast,5)] / $[pad(%elecessunext,-5)] ($[pad(floatd(%elecprc,2),5)])% %;\
+/_echo | Acid: %acidessu $[pad(%acidblast,5)] / $[pad(%acidessunext,-5)] ($[pad(floatd(%acidprc,2),5)])% %;\
+/_echo | Fire: %fireessu $[pad(%fireblast,5)] / $[pad(%fireessunext,-5)] ($[pad(floatd(%fireprc,2),5)])% %;\
+/_echo | Cold: %coldessu $[pad(%coldblast,5)] / $[pad(%coldessunext,-5)] ($[pad(floatd(%coldprc,2),5)])% %;\
+/_echo | Mana: %manaessu $[pad(%manablast,5)] / $[pad(%manaessunext,-5)] ($[pad(floatd(%manaprc,2),5)])% %;\
+/_echo | Pois: %poisessu $[pad(%poisblast,5)] / $[pad(%poisessunext,-5)] ($[pad(floatd(%poisprc,2),5)])% %;\
 /_echo `-----------------------------
 
 ;; Write the blast numbers to the file
