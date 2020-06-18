@@ -36,20 +36,20 @@
 /def -F -mglob -t"You utter the magic words \'cwician ysl\'" sparkbirth_cast_manual = /set spell=spark_birth
 
 ;; Analysis of magic lore messages, grab the target's short name from here
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,\.]+) screams in pain\." scream_pain=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Za-z \-\'\,\.]+) screams in pain\." scream_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=0%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,\.]+) writhes in agony\." writhe_agony=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Za-z \-\'\,\.]+) writhes in agony\." writhe_agony=\
   /set current_analysis_target=%P1%;\
   /set current_resist=20%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
   /echo -aB ### writhes %damtype (20\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,\.]+) shudders from the force of the attack\." shudder=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Za-z \-\'\,\.]+) shudders from the force of the attack\." shudder=\
   /set current_analysis_target=%P1%;\
   /set current_resist=40%;\
   /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
@@ -59,7 +59,7 @@
   /echo -aB ### Target shudders %damtype (40\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"([A-Za-z \-\'\,\.]+) grunts from the pain\." grunt_pain=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Za-z \-\'\,\.]+) grunts from the pain\." grunt_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=60%;\
   /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
@@ -69,7 +69,7 @@
   /echo -aB ### GRUNTS %damtype (60\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\'\,\.]+) winces a little from the pain\." winces=\
+/def -F -mregexp -aCbgblack -aBCred -p15 -t"^([A-Za-z \-\'\,\.]+) winces a little from the pain\." winces=\
   /set current_analysis_target=%P1%;\
   /set current_resist=80%;\
   /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
@@ -79,7 +79,7 @@
   /echo -aB ### Target winces %damtype (80\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgblack -aBCred -p15 -t"([A-Za-z \-\'\,\.]+) shrugs off the attack\." shrug=\
+/def -F -mregexp -aCbgblack -aBCred -p15 -t"^([A-Za-z \-\'\,\.]+) shrugs off the attack\." shrug=\
   /set current_analysis_target=%P1%;\
   /set current_resist=100%;\
   /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
@@ -155,19 +155,19 @@
 /echo -aB *****      <dcrit UNSEEN>      *****%;\
 /echo -aB ************************************
 
-;; Mage specials, to be added at some point
+;; Mage specials, to be added at some point - maybe
 ; You feel in contact with the essence of asphyxiation.
 ; You feel an inner warmth as you notice <target> starting to choke.
 ; The electricity crackles all around <target>.
 
-/def spell_stats=\
+/def magestats=\
 /let total_dcrit=$[%count_dcrit1+%count_dcrit2+%count_dcrit3]%;\
-@%{stats_inform} Critical statistics:%;\
-@%{stats_inform} Total single offensive casts: %total_count_blasts%;\
-@%{stats_inform} Total dcrits: %total_dcrit ($[(%total_dcrit*100) / %total_count_blasts] \%)%;\
-@%{stats_inform} Dcrit1: %count_dcrit1 ($[(%count_dcrit1*100) / %total_count_blasts] \%)%;\
-@%{stats_inform} Dcrit2: %count_dcrit2 ($[(%count_dcrit2*100) / %total_count_blasts] \%)%;\
-@%{stats_inform} Dcrit3: %count_dcrit3 ($[(%count_dcrit3*100) / %total_count_blasts] \%)%;\
+@%{analysis_inform} Critical statistics:%;\
+@%{analysis_inform} Total single offensive casts: %total_count_blasts%;\
+@%{analysis_inform} Total dcrits: %total_dcrit ($[(%total_dcrit*100) / %total_count_blasts] \%)%;\
+@%{analysis_inform} Dcrit1: %count_dcrit1 ($[(%count_dcrit1*100) / %total_count_blasts] \%)%;\
+@%{analysis_inform} Dcrit2: %count_dcrit2 ($[(%count_dcrit2*100) / %total_count_blasts] \%)%;\
+@%{analysis_inform} Dcrit3: %count_dcrit3 ($[(%count_dcrit3*100) / %total_count_blasts] \%)%;\
 
 /def anal=\
   /if (({1}=~"on") & ({2}=~"party"))\
@@ -188,19 +188,10 @@
     /set analysis_report=on%;\
     /set analysis_inform=party report%;\
     /echo -aB (TF info): damage analysis will be reported on party report channel (default) %;\
-  /elseif (({1}=~"stats") & ({2}=~"party"))\
-    /set stats_inform=party report%;\
-    /spell_stats%;\
-  /elseif (({1}=~"stats") & ({2}=~"emote"))\
-    /set stats_inform=emote%;\
-    /spell_stats%;\
-  /elseif (({1}=~"stats") & ({2}=~""))\
-    /set stats_inform=party report%;\
-    /spell_stats%;\
   /elseif ({1}=~"off")\
     /set analysis_report=off%;\
-    /echo -aB (TF info): damage analysis iwill no longer be reported%;\
+    /echo -aB (TF info): damage analysis will no longer be reported%;\
   /else \
     /echo -aB (TF info): damage analysis can be toggled either on or off.%;\
-    /echo -aB (TF info): Usage: /anal [on|off|stats] (party|report|emote)%;\
+    /echo -aB (TF info): Usage: /anal [on|off] (party|report|emote)%;\
   /endif
