@@ -1,5 +1,6 @@
 ;;
 ;; Bat-lelut.tf
+;; Please note: you will need to alias bp to your rig where you hold all your toys
 ;;
 /loaded bat-lelut.tf
 
@@ -53,20 +54,23 @@
 /def -F -mglob -t"You remove a cobalt amulet labeled as Kierukka." alias_removed_kierukka = @alias removeditem kierukka
 /def -F -mglob -t"You remove The Amberley Ankh labeled as Sissijuusto." alias_removed_sissijuusto = @alias removeditem sissijuusto
 /def -F -mglob -t"You remove Spider Amulet labeled as KokkeliVekkuli." alias_removed_kokkelivekkuli = @alias removeditem kokkelivekkuli
+/def -F -mglob -t"You remove a burning amulet labeled as PattiSmurffi." alias_removed_pattismurffi  = @alias removeditem pattismurffi
 /def -F -mglob -t"You remove bracelets made of sky-blue glass beads labeled as MinttuViina." alias_removed_minttuviina = @alias removeditem minttuviina
 /def -F -mglob -t"You remove bracelets made of sky-blue glass beads labeled as HyppyKuppa."    alias_removed_hyppykuppa = @alias removeditem hyppykuppa
 /def -F -mglob -t"You remove bracelets made of sky-blue glass beads labeled as RunkkuKahleet." alias_removed_kahleet = @alias removeditem runkkukahleet
 /def -F -mglob -t"You remove Ward Nadab's rippling lava bands."                                alias_removed_bands = @alias removeditem rippling lava bands
 /def -F -mglob -t"You remove a slab of magical moss labeled as SlaabiKyykky."                  alias_removed_slab  = @alias removeditem slaabikyykky
+/def -F -mglob -t"You remove a satyr tail bracelet." alias_removed_satyrtailbracelet = @alias removeditem all satyr tail bracelet
 
 ;; re-wears
-/def -F -mglob -t"You put A glowing green amulet labeled as SalaRaKastelija <green glow> to hiivasylinteri." = /repeat -00:00:01 1 @wear removeditem
-/def -F -mglob -t"You hold your staff in front of yourself and slowly sweep it from left to right." invisdone = @put sonnibileet in hiivasylinteri%;/repeat -00:00:01 1 @wear removeditem
+/def -F -mglob -t"You put A glowing green amulet labeled as SalaRaKastelija <green glow> to *" = /repeat -00:00:01 1 @wear removeditem
+/def -F -mglob -t"You hold your staff in front of yourself and slowly sweep it from left to right." invisdone = @put sonnibileet in bp%;/repeat -00:00:01 1 @wear removeditem
 
 
 ;; Athame
 ;; Assuming 10 minute cooldown
-/def -F -t"The athame severs the field surrounding this area." athamesever=@put Leikkuri in hiivasylinteri;/set athame_status=_%;/set athame_time=$[time()]%;/repeat -00:10 1 /set athame_status=X
+/def -F -t"The athame severs the field surrounding this area." athamesever=@put Leikkuri in bp;/set athame_status=_%;/set athame_time=$[time()]%;/repeat -00:10 1 /set athame_status=X
+/def -ag -h"send {asev}" athame_do_sever = /SEND @remove all held;get athame from bp;wield athame;sever field
 
 ;; Rain Staff
 ;; 12 minute cooldown (this varies)
@@ -77,6 +81,8 @@
   /set rainstaff%{staff}_status=_%;\
   /set rainstaff%{staff}_time=$[time()+780]%;\
   /repeat -00:13 1 /set rainstaff%{staff}_status=X
+/def -ag -h"send {rain}" rainstaff1_do_action = /SEND @get saunavihta from bp;strike staff;put saunavihta in bp
+/def -ag -h"send {rain2}" rainstaff2_do_action = /SEND @get kutinakeppi from bp;strike staff;put kutinakeppi in bp
 
 ;; Entity drying wind
 ;; Needs update, have 2 shields
@@ -111,6 +117,10 @@
 ;;/def -mglob -t"As you touch one of your translucent sleeves, they start to glow!" zashi_arms_used=@put all sparkling sleeve in bp;@wear removeditem%;/set zashi_arms_status=_%;/set zashi_arms_time=$[time()]%;/repeat -00:15 1 /set zashi_arms_status=X
 
 ;; Nithem Skull
+/def -ag -h"send {scss}" nithem_invoke_spell1 = /SEND @nithem_skull type poison;nithem_skull blast
+/def -ag -h"send {scsa}" nithem_invoke_spell2 = /SEND @nithem_skull type poison;nithem_skull area
+/def -ag -h"send {garr}" nithem_invoke_spell3 = /SEND @nithem_skull type magic;nithem_skull blast
+/def -ag -h"send {gara}" nithem_invoke_spell4 = /SEND @nithem_skull type magic;nithem_skull area
 
 ;; Pfe Helmet
 ;; Note: Cooldown is actually 15-25 minutes!
@@ -147,13 +157,14 @@
 ;; DMP ring
 /def -F -mglob -t"Your finger tingles as the Wyrm breathes its magic!" wyrm_ring_zapped = /set wyrn_ring_status=_%;@wear removeditem%;/repeat -00:20 1 /set wyrm_ring_status=X
 /def -F -mglob -t"Your ring of the Wyrm does not respond." wyrm_ring_in_cd = @wear removeditem%;/echo -aB (TF Info): Wyrm ring in cooldown!
+/def -ag -h"send {dmpall}" wyrm_ring_do_action = /SEND @get lampaannussija from bp;wear replacing lampaannussija;twist ring;put lampaannussija in bp
 
 ;; Fqueen wand
 /def -F -mglob -t"You swing the wand one last time, pointing at *" fqueen_wand_zapped = /set fqueen_wand_status=_
 
 
 ;; Other
-/def rip = @@remove skull,nova arcanum,grimoire,wand of magic%;@@wield soul ripper%;@@rip soul from corpse
+/def rip = @@remove skull,nova arcanum,grimoire,lateksidildo%;@@wield soul ripper%;@@rip soul from corpse
 /def -F -mglob -t"You finish sucking the soul. You feel younger!" katana_ripped = @@remove katana%;wear removeditem%;g
 /def -F -mglob -t"The corpse isn't powerful enough for this." katana_not_ripped = @@remove katana%;wear removeditem%;g
 ;; As you caress Fleot, an enormous water entity your gloves become painfully hot.

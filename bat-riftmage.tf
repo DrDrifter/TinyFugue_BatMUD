@@ -85,7 +85,7 @@
 
 ;; Keybindings
 ;; Note: eqset status requires bat-status for info statusbar, but it's not mandatory
-;;/def key_f7 = /sb .
+/def key_f7 = /sb .
 /def key_f8 = /rp .
 /def key_f12 = /uc
 /def key_f13 = /rre
@@ -164,6 +164,17 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /let stringi=$[strcat(sadattonnit,kymppitonnit,tonnit,satkut,kympit,ykkoset)]%;\
 /let loppupad=$[substr(%loppupad,strlen(%kaikki_pisteet)+11)]%;\
 /_echo  | %enimi%epad| %stringi (%kaikki_pisteet points) %loppupad | %huumori |
+
+;; commands for entity status
+/def -ag -h"send {GEF}" riftwalker_status_fir = /SEND gem entities fire
+/def -ag -h"send {GEA}" riftwalker_status_air = /SEND gem entities air
+/def -ag -h"send {GEW}" riftwalker_status_wat = /SEND gem entities water
+/def -ag -h"send {GEE}" riftwalker_status_ear = /SEND gem entities earth
+/def -ag -h"send {GEM}" riftwalker_status_mag = /SEND gem entities magic
+
+;;
+;; Other
+;;
 
 ;; Absorbing meld, only works if you have protter.tf loaded!
 /createprot -t0 -n"AM" -w"You utter the magic words \'bredan forswelgan\'" \
