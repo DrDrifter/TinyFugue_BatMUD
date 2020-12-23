@@ -13,7 +13,7 @@
 /def -F -mglob -aB -t"Your entity is prepared to do the skill." entti_skilli_hilite
 /def -F -mglob -aB -t"* entity starts concentrating on a new offensive skill." entti_offuskilli_hilite
 /def -F -mglob -ag -t"Your entity doesn't know that skill." gag_skilli
-/def -F -mregexp -t'Your hold on ([A-z ]+)\'s life energy slips away.' sparkbirth_off = @party report Spark birth down on %P1
+/def -F -mregexp -t'Your hold on ([A-z ]+)\'s life energy slips away.' sparkbirth_off = /echo -aB (TF Info): Spark birth down on %P1
 /def -F -mglob -aB -t'You bring the channelling to an end, and the dark shadow around * starts to dissipate.' dimleech_ends
 
 ;; Spells
@@ -35,7 +35,7 @@
 /def rp =/set targettype=off%;/set spell=rift_pulse%;/set spell_rounds=3%;/do_spell %{*}
 /def rre=/set targettype=ent%;/set spell=regenerate_rift_entity%;/do_spell %{*}%;@rrewear
 /def rs =/set targettype=none%;/set spell=rift_scramble%;/do_spell
-/def sb =/set targettype=off%;/set spell=spark_birth%;/set spell_rounds=2%;/do_spell %{*}
+/def sb =/set targettype=spa%;/set spell=spark_birth%;/set spell_rounds=2%;/do_spell %{*}
 /def sre=/set targettype=sum%;/set spell=summon_rift_entity%;/do_spell %{*}
 /def tre=/set targettype=sum%;/set spell=transform_rift_entity%;/do_spell %{*}
 
@@ -179,12 +179,12 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 @alias removeditem long shadowy staff
 /def -F -mglob -t"You remove a skull labeled as (s)kulli." removed_in_other_castset = \
 @alias removeditem a skull labeled as (s)kulli
-/def -F -mglob -t"You remove a wand of magic labeled as LateksiDildo." removed_in_sprset = \
-@alias removeditem a wand of magic labeled as LateksiDildo
-/def -F -mglob -t"You successfully establish control over your entity." entity_controlled = @put ohjauskeppi in hiivasylinteri;wear removeditem
-/def -F -mglob -t"The entity is fully healed." entity_healed = @put parannustikku in hiivasylinteri;wear removeditem
+/def -F -mglob -t"You remove a frosty birch wand, remnant of the winters past <love> labeled as LateksiDildo." removed_in_sprset = \
+@alias removeditem wand of the winters past
+/def -F -mglob -t"You successfully establish control over your entity." entity_controlled = @put ohjauskeppi in bp;wear removeditem
+/def -F -mglob -t"The entity is fully healed." entity_healed = @put parannustikku in bp;wear removeditem
 /def -F -mglob -t"* the magic entity sees that you are unhurt and interrupts the channelling." entity_heal_me = \
-@put parannustikku in hiivasylinteri;wear removeditem
+@put parannustikku in bp;wear removeditem
 
 
 ;; Hilites
