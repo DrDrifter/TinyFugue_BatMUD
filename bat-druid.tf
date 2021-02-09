@@ -33,15 +33,18 @@
 /def ad=/set spell=aura_detection%;/set targettype=assist%;/do_spell %{*}
 /def bw=/set spell=blessed_warmth%;/set targettype=none%;/do_spell
 /def cs=/set spell=charge_staff%;/set targettype=druid%;/do_spell amount %{1}
-/def cp=/set spell=call_pigeon%;/set targettype=item%;/do_spell %{*}
+/def cpi=/set spell=call_pigeon%;/set targettype=item%;/do_spell %{*}
 /def dp=/set spell=drain_pool%;/set targettype=druid%;/do_spell amount %{1}
 /def dw=/set spell=drying_wind%;/set targettype=none%;/do_spell
 /def gb=/set spell=good_berry%;/set targettype=none%;/do_spell
+/def gow=/set spell=gust_of_wind%;/set targettype=none%;/do_spell
+/def gw=/set spell=gust_of_wind%;/set targettype=none%;/do_spell
 /def iv=/set spell=infravision%;/set targettype=assist%;/do_spell %{1}
 /def re=/set spell=replenish_energy%;/set targettype=assist%;/do_spell %{1} amount %{2}
 /def reinc=/set spell=reincarnation%;/set targettype=assist%;/do_spell %{1}
 /def rh=/set spell=runic_heal%;/set targettype=heal%;/do_spell %{*}
 /def rst=/set spell=restore%;/set targettype=assist%;/do_spell %{1}
+/def sha=/set spell=shapechange%;/set targettype=self%;/do_spell %{1}
 /def tax=/set spell=inquiry_to_ahm%;/set targettype=assist%;/do_spell %{1}
 /def tm=/set spell=transfer_mana%;/set targettype=assist%;/do_spell %{1} amount %{2}
 /def wl=/set spell=wilderness_location%;/set targettype=assist%;/do_spell player %{1}

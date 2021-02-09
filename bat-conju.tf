@@ -16,25 +16,49 @@
 /loaded bat-conju.tf
 /require -q bat-generic.tf
 
-;; conjuprots
-/def aoa   = /set targettype=prot%;/set spell=armour_of_aether%;/do_spell %{*}
+;; minor conjuprots (old)
 /def fabs  = /set targettype=prot%;/set spell=force_absorption%;/do_spell %{*}
 /def acid  = /set targettype=prot%;/set spell=corrosion_shield%;/do_spell %{*}
-/def acid2 = /set targettype=prot%;/set spell=acid_shield%;/do_spell %{*}
 /def asph  = /set targettype=prot%;/set spell=ether_boundary%;/do_spell %{*}
-/def asph2 = /set targettype=prot%;/set spell=aura_of_wind%;/do_spell %{*}
 /def cold  = /set targettype=prot%;/set spell=frost_insulation%;/do_spell %{*}
-/def cold2 = /set targettype=prot%;/set spell=frost_shield%;/do_spell %{*}
 /def elec  = /set targettype=prot%;/set spell=energy_channeling%;/do_spell %{*}
-/def elec2 = /set targettype=prot%;/set spell=lightning_shield%;/do_spell %{*}
 /def fire  = /set targettype=prot%;/set spell=heat_reduction%;/do_spell %{*}
-/def fire2 = /set targettype=prot%;/set spell=flame_shield%;/do_spell %{*}
 /def mana  = /set targettype=prot%;/set spell=magic_dispersion%;/do_spell %{*}
-/def mana2 = /set targettype=prot%;/set spell=repulsor_aura%;/do_spell %{*}
 /def pois  = /set targettype=prot%;/set spell=toxic_dilution%;/do_spell %{*}
-/def pois2 = /set targettype=prot%;/set spell=shield_of_detoxification%;/do_spell %{*}
 /def psio  = /set targettype=prot%;/set spell=psychic_sanctuary%;/do_spell %{*}
-/def psio2 = /set targettype=prot%;/set spell=psionic_phalanx%;/do_spell %{*}
+
+;; major conjuprots (old)
+/def aoa   = /set targettype=prot%;/set spell=armour_of_aether%;/do_spell %{*}%;@pregfill
+/def gacid = /set targettype=prot%;/set spell=acid_shield%;/do_spell %{*}%;@pregfill
+/def gasph = /set targettype=prot%;/set spell=aura_of_wind%;/do_spell %{*}%;@pregfill
+/def gcold = /set targettype=prot%;/set spell=frost_shield%;/do_spell %{*}%;@pregfill
+/def gelec = /set targettype=prot%;/set spell=lightning_shield%;/do_spell %{*}%;@pregfill
+/def gfire = /set targettype=prot%;/set spell=flame_shield%;/do_spell %{*}%;@pregfill
+/def gmana = /set targettype=prot%;/set spell=repulsor_aura%;/do_spell %{*}%;@pregfill
+/def gpois = /set targettype=prot%;/set spell=shield_of_detoxification%;/do_spell %{*}%;@pregfill
+/def gpsio = /set targettype=prot%;/set spell=psionic_phalanx%;/do_spell %{*}
+
+;; minor conjuprots (new)
+/def -ag -h"send {fabs}*" conju_fab = /set targettype=prot%;/set spell=force_absorption%;/do_spell %{2} %{3}
+/def -ag -h"send {acid}*" conju_aci = /set targettype=prot%;/set spell=corrosion_shield%;/do_spell %{2} %{3}
+/def -ag -h"send {asph}*" conju_asp = /set targettype=prot%;/set spell=ether_boundary%;/do_spell %{2} %{3}
+/def -ag -h"send {cold}*" conju_col = /set targettype=prot%;/set spell=frost_insulation%;/do_spell %{2} %{3}
+/def -ag -h"send {elec}*" conju_ele = /set targettype=prot%;/set spell=energy_channeling%;/do_spell %{2} %{3}
+/def -ag -h"send {fire}*" conju_fir = /set targettype=prot%;/set spell=heat_reduction%;/do_spell %{2} %{3}
+/def -ag -h"send {mana}*" conju_man = /set targettype=prot%;/set spell=magic_dispersion%;/do_spell %{2} %{3}
+/def -ag -h"send {pois}*" conju_poi = /set targettype=prot%;/set spell=toxic_dilution%;/do_spell %{2} %{3}
+/def -ag -h"send {psio}*" conju_psi = /set targettype=prot%;/set spell=psychic_sanctuary%;/do_spell %{2} %{3}
+
+;; major conjuprots (new)
+/def -ag -h"send {aoa}*" conju_aoa = /set targettype=prot%;/set spell=armour_of_aether%;/do_spell %{2} %{3}%;@pregfill
+/def -ag -h"send {gacid}*" conju_gac = /set targettype=prot%;/set spell=acid_shield%;/do_spell %{2} %{3}%;@pregfill
+/def -ag -h"send {gasph}*" conju_gas = /set targettype=prot%;/set spell=aura_of_wind%;/do_spell %{2} %{3}%;@pregfill
+/def -ag -h"send {gcold}*" conju_gco = /set targettype=prot%;/set spell=frost_shield%;/do_spell %{2} %{3}%;@pregfill
+/def -ag -h"send {gelec}*" conju_gel = /set targettype=prot%;/set spell=lightning_shield%;/do_spell %{2} %{3}%;@pregfill
+/def -ag -h"send {gfire}*" conju_gfi = /set targettype=prot%;/set spell=flame_shield%;/do_spell %{2} %{3}%;@pregfill
+/def -ag -h"send {gmana}*" conju_gma = /set targettype=prot%;/set spell=repulsor_aura%;/do_spell %{2} %{3}%;@pregfill
+/def -ag -h"send {gpois}*" conju_gpo = /set targettype=prot%;/set spell=shield_of_detoxification%;/do_spell %{2} %{3}%;@pregfill
+/def -ag -h"send {gpsio}*" conju_gps = /set targettype=prot%;/set spell=psionic_phalanx%;/do_spell %{2} %{3}%;@pregfill
 
 ;; other conjuprots
 /def blur = /set targettype=prot%;/set spell=blurred_image%;/do_spell %{*}
@@ -46,9 +70,9 @@
 ;; other stuffs
 /def ad  = /set targettype=info%;/set spell=aura_detection%;/do_spell %{*}
 /def amf = /set targettype=none%;/set spell=anti_magic_field%;/do_spell
-/def ce  = /set targettype=misc%;/set spell=conjure_element%;/do_spell %{*}
+/def ce  = /set targettype=misc%;/set spell=conjure_element%;/do_spell %{*}%;@pregfill
 /def cf  = /set targettype=food%;/set spell=create_food%;/do_spell %{*}
-/def cle = /set targettype=misc%;/set spell=conjure_lesser_element%;/do_spell %{*}
+/def cle = /set targettype=misc%;/set spell=conjure_lesser_element%;/do_spell %{*}%;@pregfill
 /def da  = /set targettype=none%;/set spell=greater_darkness%;/do_spell
 /def dmp = /set targettype=prot%;/set spell=dispel_magical_protection%;/do_spell %{*}
 /def id  = /set targettype=info%;/set spell=identify%;/do_spell %{*}
