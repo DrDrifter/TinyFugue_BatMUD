@@ -145,11 +145,11 @@ suddenly stops breathing and jerks a couple of times\
 ;; Very good
 /def vg=/set spell_number=4%;/set spell_rounds=3%;/get_spell %{*}
 ;; Excellent
-/def ex=/set spell_number=5%;/set spell_rounds=4%;/get_spell %{*}
+/def ex=/set spell_number=5%;/set spell_rounds=4%;/get_spell %{*}%;@regfill
 ;; Good area
 /def ga=/set spell_number=6%;/set spell_rounds=4%;/get_spell %{*}
 ;; Excellent area
-/def ea=/set spell_number=7%;/set spell_rounds=6%;/get_spell %{*}
+/def ea=/set spell_number=7%;/set spell_rounds=6%;/get_spell %{*}%;@regfill
 
 ;;
 ;; Hi-lites
@@ -221,6 +221,7 @@ suddenly stops breathing and jerks a couple of times\
 ;; Put reagent pouch and maul to pocket
 /REPEAT -10 1 /SEND @put pew in pocket
 /REPEAT -10 1 /SEND @put mahtileka in pocket
+/REPEAT -10 1 /SEND @put pyllymyssy in pocket
 /REPEAT -10 1 /SEND @tune in
 
 ;;
