@@ -45,7 +45,8 @@
 /def rp=/set spell=remove_poison%;/set targettype=assist%;/do_spell %{*}
 /def rs=/set spell=remove_scar%;/set targettype=assist%;/do_spell %{*}
 /def rst=/set spell=restore%;/set targettype=assist%;/do_spell %{1}
-/def sc=/set spell=sec_change%;/set targettype=assist%;/do_spell %{1}
+/def sc=/set spell=sex_change%;/set targettype=assist%;/do_spell %{1}
+/def shold=/set spell=soul_hold%;/set targettype=assist%;/do_spell %{1}
 /def sot=/set spell=shield_of_transcendence%;/set targettype=assist%;/do_spell %{*}
 /def sp=/set spell=satiate_person%;/set targettype=assist%;/do_spell %{*}
 /def sum=/set spell=summon%;/set targettype=tele%;/do_spell %{*}
