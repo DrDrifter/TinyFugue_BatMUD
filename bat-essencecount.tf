@@ -10,7 +10,7 @@
 
 ;; Set initial arguments when loaded
 /require textutil.tf
-/set countfile=~/tf-lib/magecount.txt
+/set countfile=~/build/tf-lib/magecount.txt
 /set ctype=fire
 /set reset=false
 /set asphessu=0
