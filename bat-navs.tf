@@ -5,7 +5,7 @@
 /def stars    =/set targettype=none%;/set skill=stargazing%;/do_skill
 /def locmem   =/set targettype=tele%;/set skill=location_memory%;/do_skill remember %{*}
 /def locforget=/set targettype=tele%;/set skill=location_memory%;/do_skill forget %{*}
-/def dim      =/set targettype=none%;/set spell=dimension_door%;@telewear%;/do_spell
+/def dim      =/set targettype=none%;/set spell=dimension_door%;/do_spell
 /def twie     =/set targettype=none%;/set spell=teleport_with_error%;@telewear%;/do_spell
 /def sum      =/set targettype=tele%;/set spell=summon%;@telewear%;/do_spell %{*}
 /def weye     =/set targettype=tele%;/set spell=wizard_eye%;@telewear%;/do_spell %{*}
