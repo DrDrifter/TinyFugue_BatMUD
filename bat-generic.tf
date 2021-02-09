@@ -295,6 +295,7 @@
      /set executing=none%;\
      /if ({spell}=/{recast_spell_stack})\
        /do_spell%;\
+       @regfill%;\
      /endif
 
 ;; Reset spells
@@ -311,7 +312,7 @@
 ;; Find mob in database
 ;/def xmob=/quote -S /echo !~/lib/findmob.pl \'%{*}\'
 ;/def pmob=/quote -0 : !~/lib/findmob.pl \'%{*}\'
-/def fmob=/quote -S /echo -aB (TF info): !/home/pi/findmob.pl %{*}
+/def fmob=/quote -S /echo -aB (TF info): !/home/pi/build/findmob.pl %{*}
 
 ;; Just some debug stuff
 /def debug=\
