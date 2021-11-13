@@ -7,16 +7,16 @@
 
 ; offspells
 /def cm=/set spell=create_mud%;/set targettype=off%;/set spell_rounds=3%;/do_spell %{*}
-/def sl=/set spell=star_light%;/set targettype=off%;/set spell_rounds=4%;/do_spell %{*}
+/def sl=/set spell=star_light%;/set targettype=off%;/set spell_rounds=4%;/do_spell %{*}%;@@remove tabard
 /eval /set off_spell_stack=%{off_spell_stack}|star_light
-/def gf=/set spell=gem_fire%;/set targettype=off%;/set spell_rounds=3%;/do_spell %{1} use gem
+/def gf=/set spell=gem_fire%;/set targettype=off%;/set spell_rounds=3%;/do_spell %{1} use gem%;@@remove tabard
 /eval /set off_spell_stack=%{off_spell_stack}|gem_fire
-/def hf=/set spell=hoar_frost%;/set targettype=off%;/set spell_rounds=5%;/do_spell %{*}
+/def hf=/set spell=hoar_frost%;/set targettype=off%;/set spell_rounds=5%;/do_spell %{*}%;@@remove tabard
 /eval /set off_spell_stack=%{off_spell_stack}|hoar_frost
-/def wf=/set spell=wither_flesh%;/set targettype=off%;/set spell_rounds=6%;/do_spell %{*}
-/def eq=/set spell=earthquake%;/set targettype=off%;/set spell_rounds=5%;/do_spell %{*}
+/def wf=/set spell=wither_flesh%;/set targettype=off%;/set spell_rounds=6%;/do_spell %{*}%;@@remove tabard
+/def eq=/set spell=earthquake%;/set targettype=off%;/set spell_rounds=5%;/do_spell %{*}%;@@remove tabard
 /eval /set off_spell_stack=%{off_spell_stack}|earthquake
-/def ss=/set spell=summon_storm%;/set targettype=off%;/set spell_rounds=5%;/do_spell %{*}
+/def ss=/set spell=summon_storm%;/set targettype=off%;/set spell_rounds=5%;/do_spell %{*}%;@@remove tabard
 /eval /set off_spell_stack=%{off_spell_stack}|summon_storm
 
 ; prots
