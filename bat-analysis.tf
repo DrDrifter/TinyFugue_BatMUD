@@ -36,7 +36,7 @@
 /def -F -mglob -t"You utter the magic words \'cwician ysl\'" sparkbirth_cast_manual = /set spell=spark_birth
 
 ;; Analysis of magic lore messages, grab the target's short name from here
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Za-z \-\'\,\.]+) screams in pain\." scream_pain=\
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Za-z \-\'\,\.]+) screams in pain\.$" scream_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=0%;\
   /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
