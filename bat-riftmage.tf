@@ -1,6 +1,7 @@
 ;; BatMUD
 ;; Triggers for use with riftwalker
 ;;
+/loaded bat-riftmage.tf
 ;; Needs this file to run spell casting triggers
 /require -q bat-generic.tf
 /require -q bat-analysis.tf
@@ -12,7 +13,7 @@
 /def -F -mglob -aB -t"Your entity is prepared to do the skill." entti_skilli_hilite
 /def -F -mglob -aB -t"* entity starts concentrating on a new offensive skill." entti_offuskilli_hilite
 /def -F -mglob -ag -t"Your entity doesn't know that skill." gag_skilli
-/def -F -mregexp -t'Your hold on ([A-z ]+)\'s life energy slips away.' sparkbirth_off = @party report Spark birth down on %P1
+/def -F -mregexp -t'Your hold on ([A-z ]+)\'s life energy slips away.' sparkbirth_off = /echo -aB (TF Info): Spark birth down on %P1
 /def -F -mglob -aB -t'You bring the channelling to an end, and the dark shadow around * starts to dissipate.' dimleech_ends
 
 ;; Spells
@@ -34,7 +35,7 @@
 /def rp =/set targettype=off%;/set spell=rift_pulse%;/set spell_rounds=3%;/do_spell %{*}
 /def rre=/set targettype=ent%;/set spell=regenerate_rift_entity%;/do_spell %{*}%;@rrewear
 /def rs =/set targettype=none%;/set spell=rift_scramble%;/do_spell
-/def sb =/set targettype=off%;/set spell=spark_birth%;/set spell_rounds=2%;/do_spell %{*}
+/def sb =/set targettype=spa%;/set spell=spark_birth%;/set spell_rounds=2%;/do_spell %{*}
 /def sre=/set targettype=sum%;/set spell=summon_rift_entity%;/do_spell %{*}
 /def tre=/set targettype=sum%;/set spell=transform_rift_entity%;/do_spell %{*}
 
@@ -92,7 +93,7 @@
 /def key_f15 = /hs
 /def key_f16 = /bre
 /def key_f19 = @gagoutput remove kuppakeppi%;@eqset wear rift%;/set eqsetstatus=RIF
-/def key_f20 = @gagoutput remove kuppakeppi%;@eqset wear cast%;/set eqsetstatus=CAS
+/def key_f20 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;@eqset wear cast%;/set eqsetstatus=CAS
 
 ;;
 ;; Entity rep in numbers 
@@ -107,12 +108,41 @@
 
 ;; Identify your entity when you type gem entities <xxx>
 ;; Note: This might bug if your entity is not named
-/def -mregexp -t'^\| [A-Z][a-z]+, a (tiny|titchy|miniscule|small|medium|large|huge|enormous|humongous|gargantuan) (fire|air|water|earth|magic) entity (glowing|shimmering|gleaming|sizzling|sparkling|glittering|radiating|throbbing|pulsating|blazing) with (power|POWER)\s+(Pleased|Narked|Riled|Cross|ANGRY)\s+\|' entity_identifier=\
-/echo -aB Entity type: [%P2] size:  [%P1] + [%P3]%;\
-/set entity_type=%P2
+/def -ag -mregexp -t'^\| ([A-Z][a-z]+), (a|an) (tiny|titchy|miniscule|small|medium|large|huge|enormous|humongous|gargantuan) (fire|air|water|earth|magic) (entity) (glowing|shimmering|gleaming|sizzling|sparkling|glittering|radiating|throbbing|pulsating|blazing) (with) (power|POWER)(\s+)(Pleased|Narked|Riled|Cross|ANGRY)\s+\|' entity_identifier=\
+/set entity_type=%P4%;\
+/let entkympit=%P3%;\
+/let entykkoset=%P6%;\
+/let entkympit=$[replace("tiny","0",{entkympit})] %;\
+/let entkympit=$[replace("titchy","1",{entkympit})] %;\
+/let entkympit=$[replace("miniscule","2",{entkympit})] %;\
+/let entkympit=$[replace("small","3",{entkympit})] %;\
+/let entkympit=$[replace("medium","4",{entkympit})] %;\
+/let entkympit=$[replace("large","5",{entkympit})] %;\
+/let entkympit=$[replace("huge","6",{entkympit})] %;\
+/let entkympit=$[replace("enormous","7",{entkympit})] %;\
+/let entkympit=$[replace("humongous","8",{entkympit})] %;\
+/let entkympit=$[replace("gargantuan","9",{entkympit})] %;\
+/let entykkoset=$[replace("glowing","0",{entykkoset})] %;\
+/let entykkoset=$[replace("shimmering","1",{entykkoset})] %;\
+/let entykkoset=$[replace("gleaming","2",{entykkoset})] %;\
+/let entykkoset=$[replace("sizzling","3",{entykkoset})] %;\
+/let entykkoset=$[replace("sparkling","4",{entykkoset})] %;\
+/let entykkoset=$[replace("glittering","5",{entykkoset})] %;\
+/let entykkoset=$[replace("radiating","6",{entykkoset})] %;\
+/let entykkoset=$[replace("throbbing","7",{entykkoset})] %;\
+/let entykkoset=$[replace("pulsating","8",{entykkoset})] %;\
+/let entykkoset=$[replace("blazing","9",{entykkoset})] %;\
+/let stringi=$[strcat({P1},", ",{P2}," ",{P3}," ",{P4}," ",{P5}," ",{P6}," ",{P7}," ",{P8})]%;\
+/let pituus=$[strrep(" ",strlen({P9})-5)]%;\
+/let stringi=$[strcat(stringi," (",entkympit,entykkoset,")",pituus,{P10}," |")]%;\
+;;/echo -aB Entity type: [%P4] size:  [%P3] + [%P5] (%stringi)%;\
+/_echo | %stringi%;\
+;; keybind f7 target for multiple targets
+;; (NB: this requires sufficient rep for magic entity)
+/if ({entity_type}=~"magic") /def key_f7 = /sb all%;/else /def key_f7 = /sb .%;/endif
 
 ;; Translate rep (Single entity stats page gem entitites xx )
-/def -ag -F -mregexp -i -t'^\| Power: ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)' poikelot=\
+/def -ag -F -mregexp -i -t'^\| Power: ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)(\s+)' poikelot=\
 /let sadattonnit=%P1%;/let kymppitonnit=%P2%;/let tonnit=%P3%;/let satkut=%P4%;/let kympit=%P5%;/let ykkoset=%P6%;\
 /let pisteet_old=%pisteet%;\
 /set pisteet=\
@@ -122,7 +152,8 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /let alkurep=$(/eval /_echo %%{%{entity_type}alkurep})%;\
 /if ($(/eval /_echo %%{%{entity_type}alkurep})=~"") /set %{entity_type}alkurep=%pisteet%;/endif%;\
 /let muutosalku=$[{pisteet}-{alkurep}]%;\
-/eval /_echo  | Power: %stringi (%pisteet points) [%muutos] [%muutosalku]
+/let pituus=$[strrep(" ",strlen({P7})-strlen(%pisteet)-strlen(%muutos)-strlen(%muutosalku)-18)]%;\
+/eval /_echo  | Power: %stringi (%pisteet points) [%muutos] [%muutosalku] %pituus |
 
 ;; Translate rep (All entities stats page - gem entities)
 /def -ag -F -mregexp -i -t'^\| ([A-Z][a-z]+)(\s+)\| ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)([.]+) \| (Pleased|Narked|Riled|Cross|ANGRY)\s+\|$' kaikkientti_poikelot=\
@@ -134,25 +165,36 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /let loppupad=$[substr(%loppupad,strlen(%kaikki_pisteet)+11)]%;\
 /_echo  | %enimi%epad| %stringi (%kaikki_pisteet points) %loppupad | %huumori |
 
+;; commands for entity status
+/def -ag -h"send {GEF}" riftwalker_status_fir = /SEND gem entities fire
+/def -ag -h"send {GEA}" riftwalker_status_air = /SEND gem entities air
+/def -ag -h"send {GEW}" riftwalker_status_wat = /SEND gem entities water
+/def -ag -h"send {GEE}" riftwalker_status_ear = /SEND gem entities earth
+/def -ag -h"send {GEM}" riftwalker_status_mag = /SEND gem entities magic
+
+;;
+;; Other
+;;
+
 ;; Absorbing meld, only works if you have protter.tf loaded!
 /createprot -t0 -n"AM" -w"You utter the magic words \'bredan forswelgan\'" \
 -u"You successfully surround yourself with a barrier of energy which melds itself with your body." \
 -d"You feel the melded barrier of energy dissipate from your body." -p"Absorbing Meld"
 
 ;; EQ swaps for riftwalker eq
-/def -F -mglob -t"You remove lucky Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits." removed_in_wisset = \
+/def -F -mglob -t"You remove lucky Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits*" removed_in_wisset = \
 @alias removeditem Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits
-/def -F -mglob -t"You remove the black grimoire labeled as Mein Humpf." removed_in_asphset = \
+/def -F -mglob -t"You remove the black grimoire labeled as Mein Humpf*" removed_in_asphset = \
 @alias removeditem the black grimoire labeled as Mein Humpf
-/def -F -mglob -t"You remove a dark staff adorned with a shadowy orb * labeled as KuppaKeppi from your right hand." removed_in_typeset = \
+/def -F -mglob -t"You remove a dark staff adorned with a shadowy orb * labeled as KuppaKeppi from your right hand*" removed_in_typeset = \
 @alias removeditem long shadowy staff
-/def -F -mglob -t"You remove a skull labeled as (s)kulli." removed_in_other_castset = \
+/def -F -mglob -t"You remove a skull labeled as (s)kulli*" removed_in_other_castset = \
 @alias removeditem a skull labeled as (s)kulli
-/def -F -mglob -t"You remove a wand of magic labeled as LateksiDildo." removed_in_sprset = \
-@alias removeditem a wand of magic labeled as LateksiDildo
+/def -F -mglob -t"You remove a frosty birch wand, remnant of the winters past <love> labeled as LateksiDildo*" removed_in_sprset = \
+@alias removeditem wand of the winters past
 /def -F -mglob -t"You successfully establish control over your entity." entity_controlled = @put ohjauskeppi in bp;wear removeditem
 /def -F -mglob -t"The entity is fully healed." entity_healed = @put parannustikku in bp;wear removeditem
-/def -F -mglob -t"Nagato the magic entity sees that you are unhurt and interrupts the channelling." entity_heal_me = \
+/def -F -mglob -t"* the magic entity sees that you are unhurt and interrupts the channelling." entity_heal_me = \
 @put parannustikku in bp;wear removeditem
 
 
@@ -165,8 +207,20 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 
 
 ;; Reports (note: I've only listed the most useful reports here)
-/def -t'Entity sense: You feel the pain of your entity as it is stunned!' entity_is_stunned = @party report (Entity is STUNNED)
-/def -t'Entity sense: You feel free of your master but it leaves you feeling weak.' entity_ec_down = @party report (Entity Control down)
-/def -t'Entity sense: Your crystal clear shield fades out.' entity_aoa_down = @party report (Entity AOA down)
-/def -t'Entity sense: You no longer feel protected from being stunned.' entity_iw_down = @party report (Entity IW down)
-/def -t'Entity sense: A skin brown flash momentarily surrounds you and then vanishes.' entity_fabs_down = @party report (Entity fabs down)
+/def -F -p99 -mglob -t'Entity sense: You feel the pain of your entity as it is stunned!' entity_is_stunned = @party report (Entity is STUNNED)
+/def -F -p99 -mglob -t'Entity sense: You feel free of your master but it leaves you feeling weak.' entity_ec_down = @party report (Entity Control down)
+/def -F -p99 -mglob -t'Entity sense: Your crystal clear shield fades out.' entity_aoa_down = @party report (Entity AOA down)
+/def -F -p99 -mglob -t'Entity sense: You no longer feel protected from being stunned.' entity_iw_down = @party report (Entity IW down)
+/def -F -p99 -mglob -t'Entity sense: A skin brown flash momentarily surrounds you and then vanishes.' entity_fabs_down = @party report (Entity fabs down)
+/def -F -p99 -mglob -t'Entity sense: Your flex shield wobbles, PINGs and vanishes.' entity_flex_down = @party report (Entity flex down)
+
+;; Other messages
+;; Entity sense: You feel more vulnerable now. (SOP)
+;; Entity sense: You feel less invisible.   (blurred image)
+;; Entity sense: You feel much less invisible. (disp)
+
+
+;; Just some debug stuff
+/def entdebug=\
+   /echo -aB -p (Debug) entity=%{entity_type} spell=%{spell} executing_skill=%{executing_skill} start_flag=%{start_flag} targettype=%{targettype} %{targettype}_target=%%{%{targettype}_target}
+

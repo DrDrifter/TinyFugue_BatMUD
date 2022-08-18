@@ -4,6 +4,7 @@
 ;; Walk
 ;; Copyright Jenny 1998
 ;; Updates by Drifter 2002->
+/loaded bat-walk.tf
 /def walk=\
    /if (regmatch("[news]", {*}))\
      /set walk_dir=%{*}%; %{walk_dir}%;\
@@ -23,11 +24,11 @@
 /def sc-castello=@10 w;5 nw;4 w;9 nw;8 w;8 nw;5 w;5 nw;8 n
 /def sc-ranger=@4 e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;20 sw;17 sw;7 w;3 sw;2 w
 /def sc-amazon=@4 e;travel s;8 s;5 sw;8 w;12 sw;4 w;12 sw;3 s;3 sw;14 s;sw;8 s;se;12 s;5 sw;20 s;20 s;20 s;2 s;7 sw
-/def sc-mist=@4 e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;3 e;4 se;3 e;ne;2 e;3 se;4 e;4 se;9 e;3 ne;4 e;4 ne;20 e;3 e;12 se;20 s;10 s;se;10 s;sw;s
+/def sc-mist=@4 east;6 south;southeast;8 south;5 southeast;4 south;2 southeast;2 south;11 southeast;3 east;4 southeast;3 east;northeast;2 east;3 southeast;4 east;4 southeast;9 east;3 northeast;4 east;4 northeast;20 east;3 east;12 southeast;20 south;10 south;southeast;10 south;southwest;south
 /def sc-wrebie=@4 e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;3 e;4 se;ne;2 e;3 se;4 e;4 se;2 sw;7 s
 /def ranger-sc=@2 e;3 ne;7 e;17 ne;20 ne;11 nw;2 n;2 nw;4 n;5 nw;8 n;nw;6 n;4 w
 /def amazon-sc=@7 ne;20 n;20 n;20 n;2 n;travel w;4 w
-/def mist-sc=@n;ne;10 n;nw;10 n;20 n;12 nw;3 w;20 w;4 sw;4 w;3 sw;9 w;4 nw;4 w;3 nw;2 w;sw;3 w;4 nw;3 w;11 nw;2 n;2 nw;4 n;5 nw;8 n;nw;6 n;4 w
+/def mist-sc=@north;northeast;10 north;northwest;10 north;20 north;12 northwest;3 west;20 west;4 southwest;4 west;3 southwest;9 west;4 northwest;4 west;3 northwest;2 west;southwest;3 west;4 northwest;3 west;11 northwest;2 north;2 northwest;4 north;5 northwest;8 north;northwest;6 north;4 west
 /def raven-castello=@s;se;s;s;sw;se;se;sw;s;s;w;nw;w;5 ne;20 ne;5 n;3 n
 /def raven-digger=@s;se;2 s;sw;2 se;sw;2 s;2 w;nw;4 w;4 sw;2 se;e
 /def digger-raven=@w;2 nw;4 ne;4 e;se;2 e;2 n;ne;2 nw;ne;2 n;nw;n

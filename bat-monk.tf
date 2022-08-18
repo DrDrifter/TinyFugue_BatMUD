@@ -1,4 +1,5 @@
-/require -q ~/lib/tf-lib/bat-generic.tf
+/loaded bat-monk.tf
+/require -q bat-generic.tf
 
 /stack bash off_skill_stack
 /def bsh=/set skill=bash%;/set skill_rounds=2%;/set targettype=off%;/do_skill %{*}

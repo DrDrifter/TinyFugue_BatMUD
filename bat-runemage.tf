@@ -11,7 +11,7 @@
 ;;
 ;; Also I strongly suggest to atleast read the perl file contents
 ;;
-
+/loaded bat-runemage.tf
 /require -q bat-generic.tf
 
 /def researchr =\

@@ -1,6 +1,7 @@
 ;; This file has been a bit "stable" since -98 or so when I last were a ranger...
 ;; NB: I use this mostly for hcbat, so tweak it a bit for yourself mmkay?
 ;; Rangers =)
+/loaded bat-ranger.tf
 /require -q bat-generic.tf
 /set hp_report on
 

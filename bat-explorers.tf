@@ -1,5 +1,5 @@
 ;; Explorers subguild
-
+/loaded bat-explorers.tf
 
 /def fb=/set skill=fire_building%;/set targettype=none%;/do_skill
 /def cp=/set skill=camping%;/set targettype=none%;/do_skill

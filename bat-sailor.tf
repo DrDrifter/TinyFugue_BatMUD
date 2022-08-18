@@ -17,7 +17,9 @@
 ;You swing your hands in a pattern of disruption while muttering 'lnarel nox aquar'
 ;The magi on board the Curious Rose managed to counter your spell!
 
+/loaded bat-sailor.tf
 
+/require textutil.tf
 
 ;;;;;;;;;;;;; Ship combat and misc stuff
 
@@ -65,22 +67,22 @@
 
 ;;;;;;;;;; Class Identification
 
-/DEF -mregexp -t"^The ([A-Z]+) Boat " ship_c1_sub = \
+/DEF -mregexp -t"^(The|the) ([A-Z]+) Boat " ship_c1_sub = \
 	/SUBSTITUTE -p %{P0}@{BCwhite}(C1)@{n} %{PR}
 
-/DEF -mregexp -t"^The ([A-Z]+) (Sloop|Ferry|Lugger|Cutter|Cog|Curraugh|Ketch|Brig) " ship_c2_sub = \
+/DEF -mregexp -t"^(The|the) ([A-Z]+) (Sloop|Ferry|Lugger|Cutter|Cog|Curraugh|Ketch|Brig) " ship_c2_sub = \
 	/SUBSTITUTE -p %{P0}@{BCwhite}(C2)@{n} %{PR}
 
-/DEF -mregexp -t"^The ([A-Z]+) (Schooner|Clipper|Swiftship|Brigantine|Corvette|Knorr|Caravel|Balinger) " ship_c3_sub = \
+/DEF -mregexp -t"^(The|the) ([A-Z]+) (Schooner|Clipper|Swiftship|Brigantine|Corvette|Knorr|Caravel|Balinger) " ship_c3_sub = \
 	/SUBSTITUTE -p %{P0}@{BCwhite}(C3)@{n} %{PR}
 
-/DEF -mregexp -t"^The ([A-Z]+) (Frigate|Merchantman|Whaler|Carrack|Crayer|Buza|Barque|Nef) " ship_c4_sub = \
+/DEF -mregexp -t"^(The|the) ([A-Z]+) (Frigate|Merchantman|Whaler|Carrack|Crayer|Buza|Barque|Nef) " ship_c4_sub = \
 	/SUBSTITUTE -p %{P0}@{BCwhite}(C4)@{n} %{PR}
 
-/DEF -mregexp -t"^The ([A-Z]+) (Galleon|Galleass|Man-of-war|Privateer|Indiaman|Viking Longship|Bireme|Dromond) " ship_c5_sub = \
+/DEF -mregexp -t"^(The|the) ([A-Z]+) (Galleon|Galleass|Man-of-war|Privateer|Indiaman|Viking Longship|Bireme|Dromond) " ship_c5_sub = \
 	/SUBSTITUTE -p %{P0}@{BCwhite}(C5)@{n} %{PR}
 
-/DEF -mregexp -t"^The ([A-Z]+) (War Galleon|Destroyer|Juggernaut|Corsair|Dreadnought|Viking Warship|Trireme|Drakkar) " ship_c6_sub = \
+/DEF -mregexp -t"^(The|the) ([A-Z]+) (War Galleon|Destroyer|Juggernaut|Corsair|Dreadnought|Viking Warship|Trireme|Drakkar) " ship_c6_sub = \
 	/SUBSTITUTE -p %{P0}@{BCwhite}(C6)@{n} %{PR}
 
 ;;;;;;;;; Emerald Disc Identification
@@ -223,7 +225,7 @@
 
 /SET shipAutoscan=0
 
-/DEF -i -ag -h"send {as}" ship_autoscan = \
+/DEF -i -ag -h"send {autoscan}" ship_autoscan = \
 	/SET shipAutoscan=1 %; \
 	/SEND @ship scan
 
@@ -248,7 +250,7 @@
 		/SET shipAutoscan=0 %; \
 	/ENDIF
 
-/DEF -i -ag -h"send {ac}" automatic_compass = \
+/DEF -i -ag -h"send {com}" automatic_compass = \
 	/SET auto_compass=1 %; \
 	/SEND compass
 
@@ -289,9 +291,25 @@
 		/SET auto_compass=0 %; \
 	/ENDIF
 
-
-
 ;;; Bead map parsing
-/def -ag -F -mregexp -t"^\s\s_\.\-\._\.\-\._\.\-\._\.\-\._\.\-\._\.\-\.\_$" map_start=/echo -ab Map_start%;/def -ag -F -mregexp -t"^\s\s.\s\s\s(.{17})" map_line = /echo %P1
+/set beadmapfile=~/build/tf-lib/beadmap.txt
+/set warn_curly_re=off
+/def -ag -F -mregexp -t"^\s\s_\.\-\._\.\-\._\.\-\._\.\-\._\.\-\._\.\-\.\_$" map_start=/echo -ab Map_start%;/set map_echo=1%;/unset map_write
+;;/def -F -mregexp -t"^\s\s.\s\s\s(.{17})\s\s." map_line = /if (%{map_echo} == 1) /set map_pattern=$[strcat({map_pattern},"\n",%P1)]%;/endif
+/def -F -mregexp -t"^\s\s.\s\s\s(.{17})\s\s." map_line =\
+   /if (%{map_echo} == 1)\
+      /if (%{map_write} == 1)\
+         /echo %P1%|/writefile -a %beadmapfile%;\
+      /else \
+         /echo %P1%|/writefile %beadmapfile%;\
+         /set map_write=1%;\
+      /endif%;\
+   /endif
+/def -ag -F -mregexp -t"^\s\s\-\._\.\-\._\.\-\._\.\-\._\.\-\._\.\-\.\_\.\-$" map_end=\
+   /echo -aB Map end%;\
+   /unset map_echo%;\
+;;   /echo %map_pattern%|/writefile %beadmapfile
 
-/def -ag -F -mregexp -t"^\s\s\-\._\.\-\._\.\-\._\.\-\._\.\-\._\.\-\.\_\.\-$" map_end=/echo -aB Map end%;/undef map_line
+/def mapdebug = /quote -S /echo -aB !/home/pi/build/parse_map.pl
+
+

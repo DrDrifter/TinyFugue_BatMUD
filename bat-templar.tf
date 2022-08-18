@@ -3,7 +3,7 @@
 ;; By Drifter (2004->) ;;
 ;; last mod: 18.2.11   ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-
+/loaded bat-templar.tf
 /require -q bat-generic.tf
 
 /def lh=/set targettype=temp%;/set spell=laying_on_hands%;/do_spell %{*}
@@ -40,8 +40,8 @@
 /stack bash off_skill_stack
 /def bs=/set targettype=off%;/set skill=bash%;/set skill_rounds=random%;/do_skill %{*}
 
-/def -F -mglob -t"* seems to lose * concentration and stops skill." bashworks = @party say (Broke enemys skill)
-/def -F -mglob -t"* seems hurt and confused." bashworks = @party say (Broke enemys skill)
+;/def -F -mglob -t"* seems to lose * concentration and stops skill." bashworks = @party say (Broke enemys skill)
+;/def -F -mglob -t"* seems hurt and confused." bashworks = @party say (Broke enemys skill)
 
 /def -F -mglob -p9 -aB -aCwhite -t"You plant your feet and cry out \'I will not be moved!\'" stance_up
 /def -F -mglob -p9 -aB -aCwhite -t"You try to plant your feet against the attack, but cannot form a fighting stance." stance_not_up = /sr

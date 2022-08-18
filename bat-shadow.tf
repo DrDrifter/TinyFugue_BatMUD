@@ -15,3 +15,4 @@
 /def -ag -mglob -t"You feel that * is older now." shadowoldergag
 /def -ag -mglob -t"You feel that * is in great pain." shadowpaingag
 /def -ag -mglob -t"You feel that * goes unconscious." shadowuncgag
+/def -ag -mglob -t"You feel that * is satiated." shadowsatiategag

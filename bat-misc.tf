@@ -34,6 +34,3 @@
 ;Moonrind grabs Lammas with one of his branches! After a rather one-sided struggle, Moonrind lets out a mad laughter, and stuffs Lammas into the large hole in his side - the one
 ;resembling a mouth. With an enormous *gulp*, Lammas gets swallowed.
 
-;; Kizar
-/def -F -mregexp -t"^You trip over something and stumble.  Did a skeletal arm just grab you" kizar_message = @party report STUCK
-

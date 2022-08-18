@@ -1,4 +1,5 @@
 ;; Crimson guild
+/loaded bat-crimson.tf
 /require -q bat-generic.tf
 /set hp_report on
 

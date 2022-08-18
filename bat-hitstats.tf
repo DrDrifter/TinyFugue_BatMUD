@@ -5,12 +5,7 @@
 ;; hittilaskuri 2.release, jkotka@cc.tut.fi
 ;; 10.6.2000 
 ;;************************************************************
-;Broetchen (party): Gashes/butts: 0 (0.0%)                                                            
-;    Broetchen (party): Lthumps/bumps: 0 (0.0%))                                                         
-;    Broetchen (party): Cuts/thumps: 82 (3.2%)                                                         
-;    Broetchen (party): Tears/strokes: 1431 (56.0%)                                                   
-;    Broetchen (party): Incises/thrusts: 667 (26.1%)                                      
-;    Broetchen (party): Shreds/jabs: 371 (14.5%)  
+/loaded bat-hitstats.tf
 
 ;; Bashing hits
 /def -Fp5 -mregexp -i -t"^([A-z| ]+)?[Yy]ou BARBARICALLY BASH " cr_att26=/set crhit26=$[crhit26+1]

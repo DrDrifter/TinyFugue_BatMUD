@@ -1,3 +1,4 @@
+/loaded bat-paladin.tf
 /require -q bat-generic.tf
 /require protter.tf
 

@@ -1,6 +1,7 @@
 ; Psionicist guild misc spells wrapper trigs
 ; NOTE: prolly needs bat-mage for the blasts
 
+/loaded bat-psi.tf
 /def ms =/set targettype=off%;/set spell=mindseize%;/do_spell %{*}
 
 /def med=/set targettype=none%;/set skill=meditation%;/do_skill%;@party say (Starting meditation)%;@tell status meditating

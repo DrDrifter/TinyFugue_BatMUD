@@ -7,6 +7,7 @@
 ;; No changelog but meddled with lotsa stuff
 ;;
 ;; Needs this file to run spell casting triggers
+/loaded bat-mage.tf
 /require -q bat-generic.tf
 /require -q bat-analysis.tf
 /require -q bat-status.tf
@@ -144,22 +145,22 @@ suddenly stops breathing and jerks a couple of times\
 ;; Very good
 /def vg=/set spell_number=4%;/set spell_rounds=3%;/get_spell %{*}
 ;; Excellent
-/def ex=/set spell_number=5%;/set spell_rounds=4%;/get_spell %{*}
+/def ex=/set spell_number=5%;/set spell_rounds=4%;/get_spell %{*}%;@regfill
 ;; Good area
 /def ga=/set spell_number=6%;/set spell_rounds=4%;/get_spell %{*}
 ;; Excellent area
-/def ea=/set spell_number=7%;/set spell_rounds=6%;/get_spell %{*}
+/def ea=/set spell_number=7%;/set spell_rounds=6%;/get_spell %{*}%;@regfill
 
 ;;
 ;; Hi-lites
 /def -F -mglob -aB -t'Surge of power from your staff adds to the power of the spell.' staff_power1
 
 ;; bind f-keys to damtypes
-/def key_f2 = @gagoutput remove kuppakeppi%;/dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
-/def key_f3 = @gagoutput remove kuppakeppi%;/dam electricity%;@eqset wear elec%;/set eqsetstatus=INT%;@wield kuppakeppi
-/def key_f4 = @gagoutput remove kuppakeppi%;/dam acid%;@eqset wear acid%;/set eqsetstatus=INT%;@wield kuppakeppi
-/def key_f5 = @gagoutput remove kuppakeppi%;/dam fire%;@eqset wear fire%;/set eqsetstatus=INT%;@wield kuppakeppi
-/def key_f6 = @gagoutput remove kuppakeppi%;/dam cold%;@eqset wear cold%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f2 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
+/def key_f3 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam electricity%;@eqset wear elec%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f4 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam acid%;@eqset wear acid%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f5 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam fire%;@eqset wear fire%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f6 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam cold%;@eqset wear cold%;/set eqsetstatus=INT%;@wield kuppakeppi
 /def key_f17 = @gagoutput remove kuppakeppi%;@eqset wear spr%;/set eqsetstatus=SPR
 /def key_f18 = @gagoutput remove kuppakeppi%;@eqset wear prot%;/set eqsetstatus=WIS
 
@@ -186,7 +187,7 @@ suddenly stops breathing and jerks a couple of times\
 /def lb =/set targettype=lock%;/set spell=lock_biter%;/do_spell %{*}
 /def nof=/set targettype=none%;/set spell=noxious_fumes%;/do_spell
 /def mi =/set targettype=misc%;/set spell=mirror_image%;/do_spell %{*}
-/def ml =/set targettype=misc%;/set spell=magnetic_levitation%;/do_spell %{*}
+/def ml =/set targettype=item%;/set spell=magnetic_levitation%;/do_spell %{*}
 /def mns=/set targettype=none%;/set spell=moon_sense%;/do_spell
 /def pb =/set targettype=off%; /set spell=prismatic_burst%;/do_spell %{*}%;@party report Arcane Unicorn RaInBoW Fart -> %1
 /def rd =/set targettype=misc%;/set spell=resist_disintegrate%;/do_spell %{*}
@@ -220,6 +221,8 @@ suddenly stops breathing and jerks a couple of times\
 ;; Put reagent pouch and maul to pocket
 /REPEAT -10 1 /SEND @put pew in pocket
 /REPEAT -10 1 /SEND @put mahtileka in pocket
+/REPEAT -10 1 /SEND @put pyllymyssy in pocket
+/REPEAT -10 1 /SEND @tune in
 
 ;;
 ;; NB: FOR THIS TO WORK NEED protter.tf
