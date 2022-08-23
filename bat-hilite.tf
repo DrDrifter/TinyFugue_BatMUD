@@ -11,6 +11,7 @@
 ;; Modified & maintained currently by Drifter since 2001-                     ;;
 ;; Last updated 9.1.2012                                                     ;;
 ;;                                                                            ;;
+/loaded bat-hilite.tf
 
 /set matching=glob
 
@@ -23,7 +24,7 @@
 /def south = door s open ;;s ;;door n locked
 
 ;; Hilite some friends (I just hilite most important ones and those that ive met rl)
-/set friends=[Ss]tarshine|[Jj]uki|[Mm]orglum|[Ii]rmavep|[Bb]moa|[Ee]ra|[Ee]lero|[Ss]lughter|[Dd]rizzin|[Mm]oonlord|[Kk]haradus|[Ss]augor|[Cc]roesus|[Zz]enick|[Bb]roetchen|[Ff]avorit|[Mm]ithrand|[Dd]rifter|[Nn]edra|[Kk]rokodiili|[Aa]rgoroth|[Mm]iigor|[Ff]oxbat|[Rr]onald|[Rr]obinhood|[Cc]aesar|[Jj]acen|[Ss]ir|[Dd]escad|[Gg]arou|[Cc]ran|[Ss]caler|[Gg]rimpold|[Pp]hineos|[Ss]winkkel|[Kk]ozma|[Cc]ozmo|[Rr]adium|[Mm]orloc|[Kk]ragan|[Ff]emko|[Gg]ror|[Gg]idan|[Bb]else|[Dd]arkwell|[Mm]ackakkonen|[Dd]eras|[Ss]aldas|[Kk]imvais|[Hh]orns|[Mm]inesweeper|[Aa]lcal|[Zz]ithromax|[Mm]ursia|[Tt]ascruel|[Mm]yshikin|[Ee]raser|[Ll]aaban|[Bb]leezuz|[Vv]alkrist|[Ss]olarhawk|[Mm]olotov|[Zz]orb
+/set friends=[Bb]erenn|[Bb]moa|[Bb]roetchen|[Cc]roesus|[Dd]rizzin|[Ee]lero|[Jj]uki|[Nn]edra|[Mm]oonlord|[Mm]orglum|[Ss]augor|[Ss]tarshine|[Ss]lughter|[Zz]enick|[Ff]avorit|[Mm]ithrand|[Dd]rifter|[Kk]rokodiili|[Mm]iigor|[Ff]oxbat|[Rr]onald|[Rr]obinhood|[Cc]aesar|[Jj]acen|[Ss]ir|[Dd]escad|[Gg]arou|[Cc]ran|[Ss]caler|[Gg]rimpold|[Pp]hineos|[Ss]winkkel|[Kk]ozma|[Cc]ozmo|[Rr]adium|[Mm]orloc|[Kk]ragan|[Ff]emko|[Gg]ror|[Gg]idan|[Bb]else|[Dd]arkwell|[Mm]ackakkonen|[Dd]eras|[Ss]aldas|[Kk]imvais|[Hh]orns|[Mm]inesweeper|[Aa]lcal|[Zz]ithromax|[Mm]ursia|[Tt]ascruel|[Mm]yshikin|[Ee]raser|[Ll]aaban|[Bb]leezuz|[Vv]alkrist|[Ss]olarhawk|[Mm]olotov|[Zz]orb|[Oo]mnos|[Zz]erks|[Mm]erioli
 /eval /def -F -p10 -P1Cmagenta -mregexp -t"((^| )(%{friends})( |$$))" friends
 
 /set reapers=[Aa]md|[Aa]nanator|[Aa]rnac|[Bb]oog|[Bb]rog|[Cc]aruth|[Cc]hamber|[Cc]utter|[Dd]argon|[Dd]eathwind|[Ee]ntor|[Ff]imir|[Ff]obbis|[Ff]renor|[Gg]itador|[Gg]laurung|[Hh]urin|[Kk]eat|[Mm]ahon|[Mm]endar|[Ss]earc|[Ss]raz|[Ss]eptium|[Tt]atza|[Vv]iko|[Ss]har
@@ -269,7 +270,7 @@
 /def -F -p9 -abCyellow -mglob -t"* is the new leader of the party." party_new_leader=@party follow
 /def -F -p9 -aBCyellow -mglob -t'You are the new leader of the party.' party_leader=@party forcefollow all
 ;;/def -F -p9 -aBCyellow -t'lapses into unconsciousness from severe loss of blood.' unconscious= party say %{1} UNCONSCIOUS
-/def -F -p6 -mregexp -t' starts grappling ([A-z]*)\\.$' grapplestart = @party report %P1 has been grappled!
+/def -F -p6 -mregexp -t'([A-Za-z \-\'\,\.]+) starts grappling ([A-Za-z ]+)\\.$' grapplestart = @party report %P2 has been grappled by %P1
 /def -F -p6 -mglob -t"You feel more vital." death_stats_gone = @party report (Recovered from death)
 
 ;; Greed
@@ -301,8 +302,8 @@
     /def -F -p3 -P0 -mregexp -t'^%{generic_amount_list} gold coin' greed_gold = @get gold%; \
     /def -F -p3 -P0 -mregexp -t'^([Tt]he|%{generic_amount_list}) head.? of a (barbarian|troll)' greed_head = @get all head%;\
     /def -F -p9 -P0 -mregexp -t'^An old iron plate mail' greed_mail = @get mail%;\
-    /def -F -p9 -P0 -mregexp -t'^a pair of insect wings' greed_wings = @get wings%;\
-    /def -F -p9 -P0 -mregexp -t'^a pair of HUGE insect wings' greed_hugewings = @get wings%;\
+    /def -F -p9 -P0 -mregexp -t'^a pair of insect wings' greed_wings = @get all%;\
+    /def -F -p9 -P0 -mregexp -t'^a pair of HUGE insect wings' greed_hugewings = @get all%;\
     /def -F -p9 -P0 -mregexp -t'^A very sharp dagger' greed_dagger = @get dagger%;\
     /def -F -p9 -P0 -mregexp -t'^A wood club' greed_woodclub = @get wood club%;\
     /def -F -p9 -P0 -mregexp -t'^Collar of the CatDemon' greed_catcollar = @get collar%;\
@@ -323,11 +324,11 @@
 /set touchtimer=0
 /set togwtimer=0
 
-/def -mglob -t"* turns very pale!" cotwentin = /set cottimer=$[time()]%;/set cottgt=%{1}
-/def -mglob -t"* appears weakened!" degenin = /set degentimer=$[time()]%;/set degentgt=%{1}
-/def -mglob -t"* turns very pale and shivers as if {he|she|it} had just been poisoned." touchin = /set touchtimer=$[time()]%;/set touchtgt=%{1}
-/def -mglob -t"* shivers as it is trapped in the cold center of the funnel." togwin = /set togwtimer=$[time()]%;/set togwtgt=%{1}
-/def -mglob -t"* is moving normally again." togwdown = @party report (Glacial Wind is down!)
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) turns very pale!" cotwentin = /set cottimer=$[time()]%;/set cottgt=%P1
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) appears weakened!" degenin = /set degentimer=$[time()]%;/set degentgt=%P1
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) turns very pale and shivers as if (he|she|it) had just been poisoned." touchin = /set touchtimer=$[time()]%;/set touchtgt=%P1
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) shivers as it is trapped in the cold center of the funnel." togwin = /set togwtimer=$[time()]%;/set togwtgt=%P1
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) is moving normally again." togwdown = @party report (Glacial Wind on %P1 is down!)
 
 /def lastdg= \
   /if (degentimer!=0)\
@@ -416,6 +417,14 @@
 /def -mglob -ag -t"Ramon tells you *"  ramon_gag
 /def -mglob -ag -t"Biff Swift shouts*" biffswift_gag
 /def -mglob -ag -t"Garunia tells you*" garunia_gag
+/def -mglob -ag -t"* is surrounded by an orange force field." pumpkin_shit01
+/def -mglob -ag -t"Your pumpkin shell shield begins recharging." pumpkin_shit02
+/def -mglob -ag -t"Your pumpkin shell shield is fully recharged." pumpkin_shit03
+/def -mglob -ag -t"Your pumpkin shell shield bursts and vanishes." pumpkin_shit04
+/def -mglob -ag -t"* orange force field bursts and vanishes." pumpkin_shit05
+/def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before Broetchen\.$" broe_tiara1
+/def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before Ewige\.$" ewige_tiara1
+/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|echo|gurgles|mewls|says|quacks) \'Your majesty\.\'$" broe_tiara2
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1
