@@ -86,8 +86,6 @@
 ;   /else%;\
 ;     /echo -aB (Tinyfugue) ticks can be toggled either on or off.%;\
 ;   /endif
-;; Format time
-;; Converts the output from $[time()] into days, hours, minutes and seconds.
 
 ;;                                                                            ;;
 ;; Report shape                                                               ;;
