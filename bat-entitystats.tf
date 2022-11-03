@@ -1,10 +1,13 @@
 ;;************************************************************
 ;;
-;; Hittilaskuri v2.1 by thiamin@batmud.bat.org
-;; based on 
+;; Entity hit counter by drifter
+;; 
+;; based on Hittilaskuri v2.1 by thiamin@batmud.bat.org
+;; iwhich again is based on  
 ;; hittilaskuri 2.release, jkotka@cc.tut.fi
 ;; 10.6.2000 
 ;;************************************************************
+/loaded bat-entitystats.tf
 ;Broetchen (party): Gashes/butts: 0 (0.0%)                                                            
 ;    Broetchen (party): Lthumps/bumps: 0 (0.0%))                                                         
 ;    Broetchen (party): Cuts/thumps: 82 (3.2%)                                                         
@@ -169,136 +172,162 @@
 	/set total=$[mahit1+mahit2+mahit3+mahit4+mahit5+mahit6+mahit7+mahit8+mahit9+mahit10+mahit11+mahit12+mahit13+mahit14+mahit15+mahit16+mahit17+mahit18+mahit19+mahit20+mahit21+mahit22+mahit23+mahit24+mahit25+mahit26+slhit1+slhit2+slhit3+slhit4+slhit5+slhit6+slhit7+slhit8+slhit9+slhit10+slhit11+slhit12+slhit13+slhit14+slhit15+slhit16+slhit17+slhit18+slhit19+slhit20+slhit21+slhit22+slhit23+slhit24+slhit25+slhit26+puhit1+puhit2+puhit3+puhit4+puhit5+puhit6+puhit7+puhit8+puhit9+puhit10+puhit11+puhit12+puhit13+puhit14+puhit15+puhit16+puhit17+puhit18+puhit19+puhit20+puhit21+puhit22+puhit23+puhit24+puhit24+puhit26+crhit1+crhit2+crhit3+crhit4+crhit5+crhit6+crhit7+crhit8+crhit9+crhit10+crhit11+crhit12+crhit13+crhit14+crhit15+crhit16+crhit17+crhit18+crhit19+crhit20+crhit21+crhit22+crhit23+crhit24+crhit25+crhit26+shhit1+shhit2+shhit3+shhit4+shhit5+shhit6+shhit7+shhit8+shhit9+shhit10+shhit11+shhit12+shhit13+shhit14+shhit15+shhit16+shhit17+shhit18+shhit19+shhit20+shhit21+shhit22+shhit23+shhit24+shhit25+shhit26]%;\
 	/echo -ah Hits scored%;\
 	/echo .......................................%;\
-	/echo -p CRUELLY STRIKE :@{h}%mahit26@{n} (@{h}%$[(mahit26*100)/total]\@{n}\%)   \
-             CRUEL.DISMEMBER:@{h}%slhit26@{n} (@{h}%$[(slhit26*100)/total]\@{n}\%)   \
-;;             BARBARIC.PIERCE:@{h}%puhit26@{n} (@{h}%$[(puhit26*100)/total]\@{n}\%)   \
-             BARBARIC. BASH :@{h}%crhit26@{n} (@{h}%$[(crhit26*100)/total]\@{n}\%)   \
-             BARBARIC. SLAM :@{h}%shhit26@{n} (@{h}%$[(shhit26*100)/total]\@{n}\%)%;\
-	/echo -p SAVAGELY SMASH :@{h}%mahit25@{n} (@{h}%$[(mahit25*100)/total]\@{n}\%)   \
-             DISMEMBER      :@{h}%slhit25@{n} (@{h}%$[(slhit25*100)/total]\@{n}\%)   \
-;;             BRUTALLY BORE  :@{h}%puhit25@{n} (@{h}%$[(puhit25*100)/total]\@{n}\%)   \
-             CRUELLY CUFF   :@{h}%crhit25@{n} (@{h}%$[(crhit25*100)/total]\@{n}\%)   \
-             BRUTALLY CRUSH :@{h}%shhit25@{n} (@{h}%$[(shhit25*100)/total]\@{n}\%)%;\
-	/echo -p BRUTALLY TH.RIP:@{h}%mahit24@{n} (@{h}%$[(mahit24*100)/total]\@{n}\%)   \
-             BARBARICAL.REND:@{h}%slhit24@{n} (@{h}%$[(slhit24*100)/total]\@{n}\%)   \
-;;             CRUELLY RIDDLE :@{h}%puhit24@{n} (@{h}%$[(puhit24*100)/total]\@{n}\%)   \
-             BRUTALLY BEAT  :@{h}%crhit24@{n} (@{h}%$[(crhit24*100)/total]\@{n}\%)   \
-             REALLY CRUSH   :@{h}%shhit24@{n} (@{h}%$[(shhit24*100)/total]\@{n}\%)%;\
-	/echo -p DEVASTATE      :@{h}%mahit23@{n} (@{h}%$[(mahit23*100)/total]\@{n}\%)   \
-             CRUELLY REND   :@{h}%slhit23@{n} (@{h}%$[(slhit23*100)/total]\@{n}\%)   \
-;;             REALLY DRILL   :@{h}%puhit23@{n} (@{h}%$[(puhit23*100)/total]\@{n}\%)   \
-             REALLY WHACK   :@{h}%crhit23@{n} (@{h}%$[(crhit23*100)/total]\@{n}\%)   \
-             REALLY SLAM    :@{h}%shhit23@{n} (@{h}%$[(shhit23*100)/total]\@{n}\%)%;\
-	/echo -p Leap,spin,KICK :@{h}%mahit22@{n} (@{h}%$[(mahit22*100)/total]\@{n}\%)   \
-             SAVAGELY SHRED :@{h}%slhit22@{n} (@{h}%$[(slhit22*100)/total]\@{n}\%)   \
-;;             Unc.dig through:@{h}%puhit22@{n} (@{h}%$[(puhit22*100)/total]\@{n}\%)   \
-             Savagely Strike:@{h}%crhit22@{n} (@{h}%$[(crhit22*100)/total]\@{n}\%)   \
-             Cruelly bash   :@{h}%shhit22@{n} (@{h}%$[(shhit22*100)/total]\@{n}\%)%;\
-	/echo -p Pummel,ch punch:@{h}%mahit21@{n} (@{h}%$[(mahit21*100)/total]\@{n}\%)   \
-             BRUTALLY TEAR  :@{h}%slhit21@{n} (@{h}%$[(slhit21*100)/total]\@{n}\%)   \
-;;             Savagely shaft :@{h}%puhit21@{n} (@{h}%$[(puhit21*100)/total]\@{n}\%)   \
-             Savagely sock  :@{h}%crhit21@{n} (@{h}%$[(crhit21*100)/total]\@{n}\%)   \
-             Cruelly push   :@{h}%shhit21@{n} (@{h}%$[(shhit21*100)/total]\@{n}\%)%;\
-	/echo -p Sname-strike   :@{h}%mahit20@{n} (@{h}%$[(mahit20*100)/total]\@{n}\%)   \
-             Savagely rip   :@{h}%slhit20@{n} (@{h}%$[(slhit20*100)/total]\@{n}\%)   \
-;;             Cruelly crater :@{h}%puhit20@{n} (@{h}%$[(puhit20*100)/total]\@{n}\%)   \
-             Horribly Thrust:@{h}%crhit20@{n} (@{h}%$[(crhit20*100)/total]\@{n}\%)   \
-             Cruelly batter :@{h}%shhit20@{n} (@{h}%$[(shhit20*100)/total]\@{n}\%)%;\
-	/echo -p Feint groin-rip:@{h}%mahit19@{n} (@{h}%$[(mahit19*100)/total]\@{n}\%)   \
-             Quickly cut    :@{h}%slhit19@{n} (@{h}%$[(slhit19*100)/total]\@{n}\%)   \
-;;             Power.pierce   :@{h}%puhit19@{n} (@{h}%$[(puhit19*100)/total]\@{n}\%)   \
-             Badly smash    :@{h}%crhit19@{n} (@{h}%$[(crhit19*100)/total]\@{n}\%)   \
-             Cruelly shove  :@{h}%shhit19@{n} (@{h}%$[(shhit19*100)/total]\@{n}\%)%;\
-	/echo -p Dragon-claw    :@{h}%mahit18@{n} (@{h}%$[(mahit18*100)/total]\@{n}\%)   \
-             Uncontrol.slash:@{h}%slhit18@{n} (@{h}%$[(slhit18*100)/total]\@{n}\%)   \
-;;             Power.perforate:@{h}%puhit18@{n} (@{h}%$[(puhit18*100)/total]\@{n}\%)   \
-             Cruelly Beat   :@{h}%crhit18@{n} (@{h}%$[(crhit18*100)/total]\@{n}\%)   \
-             Really crush   :@{h}%shhit18@{n} (@{h}%$[(shhit18*100)/total]\@{n}\%)%;\
-	/echo -p Jump side-kick :@{h}%mahit17@{n} (@{h}%$[(mahit17*100)/total]\@{n}\%)   \
-             Cruelly slash  :@{h}%slhit17@{n} (@{h}%$[(slhit17*100)/total]\@{n}\%)   \
-;;             Drill          :@{h}%puhit17@{n} (@{h}%$[(puhit17*100)/total]\@{n}\%)   \
-             Smash          :@{h}%crhit17@{n} (@{h}%$[(crhit17*100)/total]\@{n}\%)   \
-             Really slam    :@{h}%shhit17@{n} (@{h}%$[(shhit17*100)/total]\@{n}\%)%;\
-	/echo -p Spinn backfist :@{h}%mahit16@{n} (@{h}%$[(mahit16*100)/total]\@{n}\%)   \
-             Rive           :@{h}%slhit16@{n} (@{h}%$[(slhit16*100)/total]\@{n}\%)   \
-;;             Chasm   	    :@{h}%puhit16@{n} (@{h}%$[(puhit16*100)/total]\@{n}\%)   \
-             Beat   	    :@{h}%crhit16@{n} (@{h}%$[(crhit16*100)/total]\@{n}\%)   \
-             Really bash    :@{h}%shhit16@{n} (@{h}%$[(shhit16*100)/total]\@{n}\%)%;\
-	/echo -p Phx-eye punch  :@{h}%mahit15@{n} (@{h}%$[(mahit15*100)/total]\@{n}\%)   \
-             Savagely shave :@{h}%slhit15@{n} (@{h}%$[(slhit15*100)/total]\@{n}\%)   \
-;;             Dig through    :@{h}%puhit15@{n} (@{h}%$[(puhit15*100)/total]\@{n}\%)   \
-             Whack          :@{h}%crhit15@{n} (@{h}%$[(crhit15*100)/total]\@{n}\%)   \
-             Really push    :@{h}%shhit15@{n} (@{h}%$[(shhit15*100)/total]\@{n}\%)%;\
-	/echo -p Spinn back kick:@{h}%mahit14@{n} (@{h}%$[(mahit14*100)/total]\@{n}\%)   \
-             Cruelly tatter :@{h}%slhit14@{n} (@{h}%$[(slhit14*100)/total]\@{n}\%)   \
-;;             Dig into       :@{h}%puhit14@{n} (@{h}%$[(puhit14*100)/total]\@{n}\%)   \
-             Flail          :@{h}%crhit14@{n} (@{h}%$[(crhit14*100)/total]\@{n}\%)   \
-             Really batter  :@{h}%shhit14@{n} (@{h}%$[(shhit14*100)/total]\@{n}\%)%;\
-	/echo -p Back kick      :@{h}%mahit13@{n} (@{h}%$[(mahit13*100)/total]\@{n}\%)   \
-             Slit           :@{h}%slhit13@{n} (@{h}%$[(slhit13*100)/total]\@{n}\%)   \
-;;             Riddle  	    :@{h}%puhit13@{n} (@{h}%$[(puhit13*100)/total]\@{n}\%)   \
-             Knock  	    :@{h}%crhit13@{n} (@{h}%$[(crhit13*100)/total]\@{n}\%)   \
-             Really shove   :@{h}%shhit13@{n} (@{h}%$[(shhit13*100)/total]\@{n}\%)%;\
-	/echo -p Joint-twist    :@{h}%mahit12@{n} (@{h}%$[(mahit12*100)/total]\@{n}\%)   \
-             Inc. tear      :@{h}%slhit12@{n} (@{h}%$[(slhit12*100)/total]\@{n}\%)   \
-;;             Really poke    :@{h}%puhit12@{n} (@{h}%$[(puhit12*100)/total]\@{n}\%)   \
-             Cuff           :@{h}%crhit12@{n} (@{h}%$[(crhit12*100)/total]\@{n}\%)   \
-             Crush          :@{h}%shhit12@{n} (@{h}%$[(shhit12*100)/total]\@{n}\%)%;\
-	/echo -p Finger-jab     :@{h}%mahit11@{n} (@{h}%$[(mahit11*100)/total]\@{n}\%)   \
-             Inc. cut       :@{h}%slhit11@{n} (@{h}%$[(slhit11*100)/total]\@{n}\%)   \
-;;             Gorge          :@{h}%puhit11@{n} (@{h}%$[(puhit11*100)/total]\@{n}\%)   \
-             Sock           :@{h}%crhit11@{n} (@{h}%$[(crhit11*100)/total]\@{n}\%)   \
-             Slam           :@{h}%shhit11@{n} (@{h}%$[(shhit11*100)/total]\@{n}\%)%;\
-	/echo -p Twist and throw:@{h}%mahit10@{n} (@{h}%$[(mahit10*100)/total]\@{n}\%)   \
-             Slash          :@{h}%slhit10@{n} (@{h}%$[(slhit10*100)/total]\@{n}\%)   \
-;;             Shaft          :@{h}%puhit10@{n} (@{h}%$[(puhit10*100)/total]\@{n}\%)   \
-             Strike         :@{h}%crhit10@{n} (@{h}%$[(crhit10*100)/total]\@{n}\%)   \
-             Heavily bash   :@{h}%shhit10@{n} (@{h}%$[(shhit10*100)/total]\@{n}\%)%;\
-	/echo -p Foot-step      :@{h}%mahit9@{n} (@{h}%$[(mahit9*100)/total]\@{n}\%)   \
-             Horribly shred :@{h}%slhit9@{n} (@{h}%$[(slhit9*100)/total]\@{n}\%)   \
-;;             Cavitate  	    :@{h}%puhit9@{n} (@{h}%$[(puhit9*100)/total]\@{n}\%)   \
-             Bash  	    :@{h}%crhit9@{n} (@{h}%$[(crhit9*100)/total]\@{n}\%)   \
-             Heavily push   :@{h}%shhit9@{n} (@{h}%$[(shhit9*100)/total]\@{n}\%)%;\
-	/echo -p Stomp-kick     :@{h}%mahit8@{n} (@{h}%$[(mahit8*100)/total]\@{n}\%)   \
-             Shred          :@{h}%slhit8@{n} (@{h}%$[(slhit8*100)/total]\@{n}\%)   \
-;;             Crater         :@{h}%puhit8@{n} (@{h}%$[(puhit8*100)/total]\@{n}\%)   \
-             Jab            :@{h}%crhit8@{n} (@{h}%$[(crhit8*100)/total]\@{n}\%)   \
-             Batter         :@{h}%shhit8@{n} (@{h}%$[(shhit8*100)/total]\@{n}\%)%;\
-	/echo -p Elbow-smash    :@{h}%mahit7@{n} (@{h}%$[(mahit7*100)/total]\@{n}\%)   \
-             Incise         :@{h}%slhit7@{n} (@{h}%$[(slhit7*100)/total]\@{n}\%)   \
-;;             Bore           :@{h}%puhit7@{n} (@{h}%$[(puhit7*100)/total]\@{n}\%)   \
-             Thrust         :@{h}%crhit7@{n} (@{h}%$[(crhit7*100)/total]\@{n}\%)   \
-             Heavily shove  :@{h}%shhit7@{n} (@{h}%$[(shhit7*100)/total]\@{n}\%)%;\
-	/echo -p Elbow          :@{h}%mahit6@{n} (@{h}%$[(mahit6*100)/total]\@{n}\%)   \
-             Tear           :@{h}%slhit6@{n} (@{h}%$[(slhit6*100)/total]\@{n}\%)   \
-;;             Sink           :@{h}%puhit6@{n} (@{h}%$[(puhit6*100)/total]\@{n}\%)   \
-             Stroke         :@{h}%crhit6@{n} (@{h}%$[(crhit6*100)/total]\@{n}\%)   \
-             Lightly crush  :@{h}%shhit6@{n} (@{h}%$[(shhit6*100)/total]\@{n}\%)%;\
-	/echo -p Knee           :@{h}%mahit5@{n} (@{h}%$[(mahit5*100)/total]\@{n}\%)   \
-             Cut            :@{h}%slhit5@{n} (@{h}%$[(slhit5*100)/total]\@{n}\%)   \
-;;             Puncture       :@{h}%puhit5@{n} (@{h}%$[(puhit5*100)/total]\@{n}\%)   \
-             Thump          :@{h}%crhit5@{n} (@{h}%$[(crhit5*100)/total]\@{n}\%)   \
-             Lightly slam   :@{h}%shhit5@{n} (@{h}%$[(shhit5*100)/total]\@{n}\%)%;\
-	/echo -p Toe-kick       :@{h}%mahit4@{n} (@{h}%$[(mahit4*100)/total]\@{n}\%)   \
-             Lightly cut    :@{h}%slhit4@{n} (@{h}%$[(slhit4*100)/total]\@{n}\%)   \
-;;             Pierce         :@{h}%puhit4@{n} (@{h}%$[(puhit4*100)/total]\@{n}\%)   \
-             Bump           :@{h}%crhit4@{n} (@{h}%$[(crhit4*100)/total]\@{n}\%)   \
-             Lightly bash   :@{h}%shhit4@{n} (@{h}%$[(shhit4*100)/total]\@{n}\%)%;\
-	/echo -p Grasp          :@{h}%mahit3@{n} (@{h}%$[(mahit3*100)/total]\@{n}\%)   \
-             Gash           :@{h}%slhit3@{n} (@{h}%$[(slhit3*100)/total]\@{n}\%)   \
-;;            Slightly pierce:@{h}%puhit3@{n} (@{h}%$[(puhit3*100)/total]\@{n}\%)   \
-             Butt           :@{h}%crhit3@{n} (@{h}%$[(crhit3*100)/total]\@{n}\%)   \
-             Lightly Push   :@{h}%shhit3@{n} (@{h}%$[(shhit3*100)/total]\@{n}\%)%;\
-	/echo -p Step on        :@{h}%mahit2@{n} (@{h}%$[(mahit2*100)/total]\@{n}\%)   \
-             Solidly slash  :@{h}%slhit2@{n} (@{h}%$[(slhit2*100)/total]\@{n}\%)   \
-;;             Scratch        :@{h}%puhit2@{n} (@{h}%$[(puhit2*100)/total]\@{n}\%)   \
-             Scratch        :@{h}%crhit2@{n} (@{h}%$[(crhit2*100)/total]\@{n}\%)   \
-             Lightly batter :@{h}%shhit2@{n} (@{h}%$[(shhit2*100)/total]\@{n}\%)%;\
-	/echo -p Tickle         :@{h}%mahit1@{n} (@{h}%$[(mahit1*100)/total]\@{n}\%)   \
-             Barely graze   :@{h}%slhit1@{n} (@{h}%$[(slhit1*100)/total]\@{n}\%)   \
-;;             Barely scratch :@{h}%puhit1@{n} (@{h}%$[(puhit1*100)/total]\@{n}\%)   \
-             Lightly jostle :@{h}%crhit1@{n} (@{h}%$[(crhit1*100)/total]\@{n}\%)   \
-             Lightly shove  :@{h}%shhit1@{n} (@{h}%$[(shhit1*100)/total]\@{n}\%)%;\
+	/echo -p \
+             BARBARIC.PIERCE:@{h}%$[pad(puhit26,3)]\@{n} (@{h}%$[pad((puhit26*100)/total,3)]\@{n}\%)   \
+;;             CRUELLY STRIKE :@{h}%$[pad(mahit26,3)]\@{n} (@{h}%$[pad((mahit26*100)/total,3)]\@{n}\%)   \
+             CRUEL.DISMEMBER:@{h}%$[pad(slhit26,3)]\@{n} (@{h}%$[pad((slhit26*100)/total,3)]\@{n}\%)   \
+             BARBARIC. BASH :@{h}%$[pad(crhit26,3)]\@{n} (@{h}%$[pad((crhit26*100)/total,3)]\@{n}\%)   \
+             BARBARIC. SLAM :@{h}%$[pad(shhit26,3)]\@{n} (@{h}%$[pad((shhit26*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             BRUTALLY BORE  :@{h}%$[pad(puhit25,3)]\@{n} (@{h}%$[pad((puhit25*100)/total,3)]\@{n}\%)   \
+;;             SAVAGELY SMASH :@{h}%$[pad(mahit25,3)]\@{n} (@{h}%$[pad((mahit25*100)/total,3)]\@{n}\%)   \
+             DISMEMBER      :@{h}%$[pad(slhit25,3)]\@{n} (@{h}%$[pad((slhit25*100)/total,3)]\@{n}\%)   \
+             CRUELLY CUFF   :@{h}%$[pad(crhit25,3)]\@{n} (@{h}%$[pad((crhit25*100)/total,3)]\@{n}\%)   \
+             BRUTALLY CRUSH :@{h}%$[pad(shhit25,3)]\@{n} (@{h}%$[pad((shhit25*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             CRUELLY RIDDLE :@{h}%$[pad(puhit24,3)]\@{n} (@{h}%$[pad((puhit24*100)/total,3)]\@{n}\%)   \
+;;             BRUTALLY TH.RIP:@{h}%$[pad(mahit24,3)]\@{n} (@{h}%$[pad((mahit24*100)/total,3)]\@{n}\%)   \
+             BARBARICAL.REND:@{h}%$[pad(slhit24,3)]\@{n} (@{h}%$[pad((slhit24*100)/total,3)]\@{n}\%)   \
+             BRUTALLY BEAT  :@{h}%$[pad(crhit24,3)]\@{n} (@{h}%$[pad((crhit24*100)/total,3)]\@{n}\%)   \
+             REALLY CRUSH   :@{h}%$[pad(shhit24,3)]\@{n} (@{h}%$[pad((shhit24*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             REALLY DRILL   :@{h}%$[pad(puhit23,3)]\@{n} (@{h}%$[pad((puhit23*100)/total,3)]\@{n}\%)   \
+;;             DEVASTATE      :@{h}%$[pad(mahit23,3)]\@{n} (@{h}%$[pad((mahit23*100)/total,3)]\@{n}\%)   \
+             CRUELLY REND   :@{h}%$[pad(slhit23,3)]\@{n} (@{h}%$[pad((slhit23*100)/total,3)]\@{n}\%)   \
+             REALLY WHACK   :@{h}%$[pad(crhit23,3)]\@{n} (@{h}%$[pad((crhit23*100)/total,3)]\@{n}\%)   \
+             REALLY SLAM    :@{h}%$[pad(shhit23,3)]\@{n} (@{h}%$[pad((shhit23*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Unc.dig through:@{h}%$[pad(puhit22,3)]\@{n} (@{h}%$[pad((puhit22*100)/total,3)]\@{n}\%)   \
+;;             Leap,spin,KICK :@{h}%$[pad(mahit22,3)]\@{n} (@{h}%$[pad((mahit22*100)/total,3)]\@{n}\%)   \
+             SAVAGELY SHRED :@{h}%$[pad(slhit22,3)]\@{n} (@{h}%$[pad((slhit22*100)/total,3)]\@{n}\%)   \
+             Savagely strike:@{h}%$[pad(crhit22,3)]\@{n} (@{h}%$[pad((crhit22*100)/total,3)]\@{n}\%)   \
+             Cruelly bash   :@{h}%$[pad(shhit22,3)]\@{n} (@{h}%$[pad((shhit22*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Savagely shaft :@{h}%$[pad(puhit21,3)]\@{n} (@{h}%$[pad((puhit21*100)/total,3)]\@{n}\%)   \
+;;             Pummel,ch punch:@{h}%$[pad(mahit21,3)]\@{n} (@{h}%$[pad((mahit21*100)/total,3)]\@{n}\%)   \
+             BRUTALLY TEAR  :@{h}%$[pad(slhit21,3)]\@{n} (@{h}%$[pad((slhit21*100)/total,3)]\@{n}\%)   \
+             Savagely sock  :@{h}%$[pad(crhit21,3)]\@{n} (@{h}%$[pad((crhit21*100)/total,3)]\@{n}\%)   \
+             Cruelly push   :@{h}%$[pad(shhit21,3)]\@{n} (@{h}%$[pad((shhit21*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Cruelly crater :@{h}%$[pad(puhit20,3)]\@{n} (@{h}%$[pad((puhit20*100)/total,3)]\@{n}\%)   \
+;;             Snake-strike   :@{h}%$[pad(mahit20,3)]\@{n} (@{h}%$[pad((mahit20*100)/total,3)]\@{n}\%)   \
+             Savagely rip   :@{h}%$[pad(slhit20,3)]\@{n} (@{h}%$[pad((slhit20*100)/total,3)]\@{n}\%)   \
+             Horribly thrust:@{h}%$[pad(crhit20,3)]\@{n} (@{h}%$[pad((crhit20*100)/total,3)]\@{n}\%)   \
+             Cruelly batter :@{h}%$[pad(shhit20,3)]\@{n} (@{h}%$[pad((shhit20*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Power.pierce   :@{h}%$[pad(puhit19,3)]\@{n} (@{h}%$[pad((puhit19*100)/total,3)]\@{n}\%)   \
+;;             Feint groin-rip:@{h}%$[pad(mahit19,3)]\@{n} (@{h}%$[pad((mahit19*100)/total,3)]\@{n}\%)   \
+             Quickly cut    :@{h}%$[pad(slhit19,3)]\@{n} (@{h}%$[pad((slhit19*100)/total,3)]\@{n}\%)   \
+             Badly smash    :@{h}%$[pad(crhit19,3)]\@{n} (@{h}%$[pad((crhit19*100)/total,3)]\@{n}\%)   \
+             Cruelly shove  :@{h}%$[pad(shhit19,3)]\@{n} (@{h}%$[pad((shhit19*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Power.perforate:@{h}%$[pad(puhit18,3)]\@{n} (@{h}%$[pad((puhit18*100)/total,3)]\@{n}\%)   \
+;;             Dragon-claw    :@{h}%$[pad(mahit18,3)]\@{n} (@{h}%$[pad((mahit18*100)/total,3)]\@{n}\%)   \
+             Uncontrol.slash:@{h}%$[pad(slhit18,3)]\@{n} (@{h}%$[pad((slhit18*100)/total,3)]\@{n}\%)   \
+             Cruelly beat   :@{h}%$[pad(crhit18,3)]\@{n} (@{h}%$[pad((crhit18*100)/total,3)]\@{n}\%)   \
+             Really crush   :@{h}%$[pad(shhit18,3)]\@{n} (@{h}%$[pad((shhit18*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Drill          :@{h}%$[pad(puhit17,3)]\@{n} (@{h}%$[pad((puhit17*100)/total,3)]\@{n}\%)   \
+;;             Jump side-kick :@{h}%$[pad(mahit17,3)]\@{n} (@{h}%$[pad((mahit17*100)/total,3)]\@{n}\%)   \
+             Cruelly slash  :@{h}%$[pad(slhit17,3)]\@{n} (@{h}%$[pad((slhit17*100)/total,3)]\@{n}\%)   \
+             Smash          :@{h}%$[pad(crhit17,3)]\@{n} (@{h}%$[pad((crhit17*100)/total,3)]\@{n}\%)   \
+             Really slam    :@{h}%$[pad(shhit17,3)]\@{n} (@{h}%$[pad((shhit17*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Chasm   	    :@{h}%$[pad(puhit16,3)]\@{n} (@{h}%$[pad((puhit16*100)/total,3)]\@{n}\%)   \
+;;             Spinn backfist :@{h}%$[pad(mahit16,3)]\@{n} (@{h}%$[pad((mahit16*100)/total,3)]\@{n}\%)   \
+             Rive           :@{h}%$[pad(slhit16,3)]\@{n} (@{h}%$[pad((slhit16*100)/total,3)]\@{n}\%)   \
+             Beat           :@{h}%$[pad(crhit16,3)]\@{n} (@{h}%$[pad((crhit16*100)/total,3)]\@{n}\%)   \
+             Really bash    :@{h}%$[pad(shhit16,3)]\@{n} (@{h}%$[pad((shhit16*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Dig through    :@{h}%$[pad(puhit15,3)]\@{n} (@{h}%$[pad((puhit15*100)/total,3)]\@{n}\%)   \
+;;             Phonx-eye punch:@{h}%$[pad(mahit15,3)]\@{n} (@{h}%$[pad((mahit15*100)/total,3)]\@{n}\%)   \
+             Savagely shave :@{h}%$[pad(slhit15,3)]\@{n} (@{h}%$[pad((slhit15*100)/total,3)]\@{n}\%)   \
+             Whack          :@{h}%$[pad(crhit15,3)]\@{n} (@{h}%$[pad((crhit15*100)/total,3)]\@{n}\%)   \
+             Really push    :@{h}%$[pad(shhit15,3)]\@{n} (@{h}%$[pad((shhit15*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Dig into       :@{h}%$[pad(puhit14,3)]\@{n} (@{h}%$[pad((puhit14*100)/total,3)]\@{n}\%)   \
+;;             Spinn back kick:@{h}%$[pad(mahit14,3)]\@{n} (@{h}%$[pad((mahit14*100)/total,3)]\@{n}\%)   \
+             Cruelly tatter :@{h}%$[pad(slhit14,3)]\@{n} (@{h}%$[pad((slhit14*100)/total,3)]\@{n}\%)   \
+             Flail          :@{h}%$[pad(crhit14,3)]\@{n} (@{h}%$[pad((crhit14*100)/total,3)]\@{n}\%)   \
+             Really batter  :@{h}%$[pad(shhit14,3)]\@{n} (@{h}%$[pad((shhit14*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Riddle  	    :@{h}%$[pad(puhit13,3)]\@{n} (@{h}%$[pad((puhit13*100)/total,3)]\@{n}\%)   \
+;;             Back kick      :@{h}%$[pad(mahit13,3)]\@{n} (@{h}%$[pad((mahit13*100)/total,3)]\@{n}\%)   \
+             Slit           :@{h}%$[pad(slhit13,3)]\@{n} (@{h}%$[pad((slhit13*100)/total,3)]\@{n}\%)   \
+             Knock          :@{h}%$[pad(crhit13,3)]\@{n} (@{h}%$[pad((crhit13*100)/total,3)]\@{n}\%)   \
+             Really shove   :@{h}%$[pad(shhit13,3)]\@{n} (@{h}%$[pad((shhit13*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Really poke    :@{h}%$[pad(puhit12,3)]\@{n} (@{h}%$[pad((puhit12*100)/total,3)]\@{n}\%)   \
+;;             Joint-twist    :@{h}%$[pad(mahit12,3)]\@{n} (@{h}%$[pad((mahit12*100)/total,3)]\@{n}\%)   \
+             Incisive. tear :@{h}%$[pad(slhit12,3)]\@{n} (@{h}%$[pad((slhit12*100)/total,3)]\@{n}\%)   \
+             Cuff           :@{h}%$[pad(crhit12,3)]\@{n} (@{h}%$[pad((crhit12*100)/total,3)]\@{n}\%)   \
+             Crush          :@{h}%$[pad(shhit12,3)]\@{n} (@{h}%$[pad((shhit12*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Gorge          :@{h}%$[pad(puhit11,3)]\@{n} (@{h}%$[pad((puhit11*100)/total,3)]\@{n}\%)   \
+;;             Finger-jab     :@{h}%$[pad(mahit11,3)]\@{n} (@{h}%$[pad((mahit11*100)/total,3)]\@{n}\%)   \
+             Incisive. cut  :@{h}%$[pad(slhit11,3)]\@{n} (@{h}%$[pad((slhit11*100)/total,3)]\@{n}\%)   \
+             Sock           :@{h}%$[pad(crhit11,3)]\@{n} (@{h}%$[pad((crhit11*100)/total,3)]\@{n}\%)   \
+             Slam           :@{h}%$[pad(shhit11,3)]\@{n} (@{h}%$[pad((shhit11*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Shaft          :@{h}%$[pad(puhit10,3)]\@{n} (@{h}%$[pad((puhit10*100)/total,3)]\@{n}\%)   \
+;;             Twist and throw:@{h}%$[pad(mahit10,3)]\@{n} (@{h}%$[pad((mahit10*100)/total,3)]\@{n}\%)   \
+             Slash          :@{h}%$[pad(slhit10,3)]\@{n} (@{h}%$[pad((slhit10*100)/total,3)]\@{n}\%)   \
+             Strike         :@{h}%$[pad(crhit10,3)]\@{n} (@{h}%$[pad((crhit10*100)/total,3)]\@{n}\%)   \
+             Heavily bash   :@{h}%$[pad(shhit10,3)]\@{n} (@{h}%$[pad((shhit10*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Cavitate  	    :@{h}%$[pad(puhit9,3)]\@{n} (@{h}%$[pad((puhit9*100)/total,3)]\@{n}\%)   \
+;;             Foot-step      :@{h}%$[pad(mahit9,3)]\@{n} (@{h}%$[pad((mahit9*100)/total,3)]\@{n}\%)   \
+             horribly shred :@{h}%$[pad(slhit9,3)]\@{n} (@{h}%$[pad((slhit9*100)/total,3)]\@{n}\%)   \
+             Bash           :@{h}%$[pad(crhit9,3)]\@{n} (@{h}%$[pad((crhit9*100)/total,3)]\@{n}\%)   \
+             Heavily push   :@{h}%$[pad(shhit9,3)]\@{n} (@{h}%$[pad((shhit9*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Crater         :@{h}%$[pad(puhit8,3)]\@{n} (@{h}%$[pad((puhit8*100)/total,3)]\@{n}\%)   \
+;;             Stomp-kick     :@{h}%$[pad(mahit8,3)]\@{n} (@{h}%$[pad((mahit8*100)/total,3)]\@{n}\%)   \
+             Shred          :@{h}%$[pad(slhit8,3)]\@{n} (@{h}%$[pad((slhit8*100)/total,3)]\@{n}\%)   \
+             Jab            :@{h}%$[pad(crhit8,3)]\@{n} (@{h}%$[pad((crhit8*100)/total,3)]\@{n}\%)   \
+             Batter         :@{h}%$[pad(shhit8,3)]\@{n} (@{h}%$[pad((shhit8*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Bore           :@{h}%$[pad(puhit7,3)]\@{n} (@{h}%$[pad((puhit7*100)/total,3)]\@{n}\%)   \
+;;             Elbow-smash    :@{h}%$[pad(mahit7,3)]\@{n} (@{h}%$[pad((mahit7*100)/total,3)]\@{n}\%)   \
+             Incise         :@{h}%$[pad(slhit7,3)]\@{n} (@{h}%$[pad((slhit7*100)/total,3)]\@{n}\%)   \
+             Thrust         :@{h}%$[pad(crhit7,3)]\@{n} (@{h}%$[pad((crhit7*100)/total,3)]\@{n}\%)   \
+             Heavily shove  :@{h}%$[pad(shhit7,3)]\@{n} (@{h}%$[pad((shhit7*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Sink           :@{h}%$[pad(puhit6,3)]\@{n} (@{h}%$[pad((puhit6*100)/total,3)]\@{n}\%)   \
+;;             Elbow          :@{h}%$[pad(mahit6,3)]\@{n} (@{h}%$[pad((mahit6*100)/total,3)]\@{n}\%)   \
+             Tear           :@{h}%$[pad(slhit6,3)]\@{n} (@{h}%$[pad((slhit6*100)/total,3)]\@{n}\%)   \
+             Stroke         :@{h}%$[pad(crhit6,3)]\@{n} (@{h}%$[pad((crhit6*100)/total,3)]\@{n}\%)   \
+             Lightly crush  :@{h}%$[pad(shhit6,3)]\@{n} (@{h}%$[pad((shhit6*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Puncture       :@{h}%$[pad(puhit5,3)]\@{n} (@{h}%$[pad((puhit5*100)/total,3)]\@{n}\%)   \
+;;             Knee           :@{h}%$[pad(mahit5,3)]\@{n} (@{h}%$[pad((mahit5*100)/total,3)]\@{n}\%)   \
+             Cut            :@{h}%$[pad(slhit5,3)]\@{n} (@{h}%$[pad((slhit5*100)/total,3)]\@{n}\%)   \
+             Thump          :@{h}%$[pad(crhit5,3)]\@{n} (@{h}%$[pad((crhit5*100)/total,3)]\@{n}\%)   \
+             Lightly slam   :@{h}%$[pad(shhit5,3)]\@{n} (@{h}%$[pad((shhit5*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Pierce         :@{h}%$[pad(puhit4,3)]\@{n} (@{h}%$[pad((puhit4*100)/total,3)]\@{n}\%)   \
+;;             Toe-kick       :@{h}%$[pad(mahit4,3)]\@{n} (@{h}%$[pad((mahit4*100)/total,3)]\@{n}\%)   \
+             Lightly cut    :@{h}%$[pad(slhit4,3)]\@{n} (@{h}%$[pad((slhit4*100)/total,3)]\@{n}\%)   \
+             Bump           :@{h}%$[pad(crhit4,3)]\@{n} (@{h}%$[pad((crhit4*100)/total,3)]\@{n}\%)   \
+             Lightly bash   :@{h}%$[pad(shhit4,3)]\@{n} (@{h}%$[pad((shhit4*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Slightly pierce:@{h}%$[pad(puhit3,3)]\@{n} (@{h}%$[pad((puhit3*100)/total,3)]\@{n}\%)   \
+;;             Grasp          :@{h}%$[pad(mahit3,3)]\@{n} (@{h}%$[pad((mahit3*100)/total,3)]\@{n}\%)   \
+             Gash           :@{h}%$[pad(slhit3,3)]\@{n} (@{h}%$[pad((slhit3*100)/total,3)]\@{n}\%)   \
+             Butt           :@{h}%$[pad(crhit3,3)]\@{n} (@{h}%$[pad((crhit3*100)/total,3)]\@{n}\%)   \
+             Lightly push   :@{h}%$[pad(shhit3,3)]\@{n} (@{h}%$[pad((shhit3*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Scratch        :@{h}%$[pad(puhit2,3)]\@{n} (@{h}%$[pad((puhit2*100)/total,3)]\@{n}\%)   \
+;;             Step on        :@{h}%$[pad(mahit2,3)]\@{n} (@{h}%$[pad((mahit2*100)/total,3)]\@{n}\%)   \
+             Solidly slash  :@{h}%$[pad(slhit2,3)]\@{n} (@{h}%$[pad((slhit2*100)/total,3)]\@{n}\%)   \
+             Jostle         :@{h}%$[pad(crhit2,3)]\@{n} (@{h}%$[pad((crhit2*100)/total,3)]\@{n}\%)   \
+             Lightly batter :@{h}%$[pad(shhit2,3)]\@{n} (@{h}%$[pad((shhit2*100)/total,3)]\@{n}\%)   %;\
+	/echo -p \
+             Barely scratch :@{h}%$[pad(puhit1,3)]\@{n} (@{h}%$[pad((puhit1*100)/total,3)]\@{n}\%)   \
+;;             Tickle         :@{h}%$[pad(mahit1,3)]\@{n} (@{h}%$[pad((mahit1*100)/total,3)]\@{n}\%)   \
+             Barely graze   :@{h}%$[pad(slhit1,3)]\@{n} (@{h}%$[pad((slhit1*100)/total,3)]\@{n}\%)   \
+             Lightly jostle :@{h}%$[pad(crhit1,3)]\@{n} (@{h}%$[pad((crhit1*100)/total,3)]\@{n}\%)   \
+             Lightly shove  :@{h}%$[pad(shhit1,3)]\@{n} (@{h}%$[pad((shhit1*100)/total,3)]\@{n}\%)   %;\
     /echo ........................................%;\
 	/echo -p @{h}%total \($[(100*total)/((total+miss+hitpar+hitdod))]\%\)@{n} hits scored.%;\
 	/echo -p @{h}%miss \($[(100*miss)/((total+miss+hitpar+hitdod))]\%\)@{n}  hits missed.%;\
