@@ -95,6 +95,7 @@
 /def key_f19 = @gagoutput remove kuppakeppi%;@eqset wear rift%;/set eqsetstatus=RIF
 /def key_f20 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;@eqset wear cast%;/set eqsetstatus=CAS
 
+
 ;;
 ;; Entity rep in numbers 
 ;;

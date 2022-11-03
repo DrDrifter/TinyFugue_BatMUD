@@ -658,7 +658,7 @@
 ;; Folklorists ;;
 ;;;;;;;;;;;;;;;;;
 /createprot -t0 -n"MinP" -w"{*} {consult|consults} {your|his|her|its} guide and {chant|chants} \'parvus munimentum\'" -u"You feel slightly protected." -d"The minor protection fades away." -p"Minor protection"
-/createprot -r1 -t0 -n"Racp" -w"^([A-z]+ (consult|consults) (your|his|her|its) guide and (chant|chants) \'genus munimentum\')" -u"^You feel protected from (catfolk|cyclops|demons|dragons|drows|dwarves|elves|ents|hobbit|humans|hydras|kenders|kobolds|leeches|liches|merfolk|ogres|orcs|tinmen|trolls|wolfmen)." -d"^(The racial protection fades away.)" -p"Racial protection"
+/createprot -r1 -t0 -n"Racp" -w"^([A-z]+ (consult|consults) (your|his|her|its) guide and (chant|chants) \'genus munimentum\')" -u"^You feel protected from (beasts|catfolk|cyclops|demons|dragons|drows|dwarves|elves|ents|goddesses|hobbits|humans|hydras|kenders|kobolds|leeches|liches|lizardmans|merfolk|ogres|orcs|pixies|tinmen|trolls|wolfmen)." -d"^(The racial protection fades away.)" -p"Racial protection"
 ;; /createprot -r1 -t0 -n"ZooP" -w"^([A-z]+ (consult|consults) (your|his|her|its) guide and (chant|chants) \'\')" -u"^You feel protected from (ants|apes|bats|bears|bees|bugs|cats|cows|dogs|ducks|eels|gnus|oxes|owls|pigeons|pumas|rams|rats|squids|swans|turtles|whales|yaks|zebras)" -d"^(The Zoological protection fades away.)" -p"Zoological protection"
 ;; /createprot -r1 -t0 -n"CryP" -w"^([A-z]+ )" -u"" -d"" -p"Cryptozoological Protection"
 ;; /createprot -r1 -t0 -n"KinP" -w"^([A-z]+ )" -u"" -d"" -p"Kinemortological protection"

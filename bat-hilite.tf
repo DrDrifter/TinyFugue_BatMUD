@@ -186,10 +186,6 @@
 /def -p6 -aCbgyellow -aBCred -mglob -t'* word of destruction hits *' word_of_destruction_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'* dispel evil hits *' dispel_evil_hits
 /def -p6 -aCbgyellow -aBCred -mglob -t'* ghost light hits *' ghost_light_hits
-;;Smo frantically swings BURNING crucifix of Las and shrieks ' ¤Lassum¤ '
-;;Smo is bathed in bright light as heavenly choir plays celestial fanfare. The universe halts as WRATH OF LAS
-;;    thunders through Smo's sparkling BURNING crucifix of Las, cleansing Lich's soul by vaporizing the body!
-
 
 ;; Acid blasts
 /def -F -p6 -aCbgyellow -aBCgreen -mglob -t'* disruption hits *' disruption
@@ -326,7 +322,7 @@
 
 /def -F -mregexp -t"([A-Za-z \-\'\,\.]+) turns very pale!" cotwentin = /set cottimer=$[time()]%;/set cottgt=%P1
 /def -F -mregexp -t"([A-Za-z \-\'\,\.]+) appears weakened!" degenin = /set degentimer=$[time()]%;/set degentgt=%P1
-/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) turns very pale and shivers as if (he|she|it) had just been poisoned." touchin = /set touchtimer=$[time()]%;/set touchtgt=%P1
+/def -F -mregexp -t"([A-Za-z \-\'\,\.]+) turns very pale and shivers as if {he|she|it} had just been poisoned." touchin = /set touchtimer=$[time()]%;/set touchtgt=%P1
 /def -F -mregexp -t"([A-Za-z \-\'\,\.]+) shivers as it is trapped in the cold center of the funnel." togwin = /set togwtimer=$[time()]%;/set togwtgt=%P1
 /def -F -mregexp -t"([A-Za-z \-\'\,\.]+) is moving normally again." togwdown = @party report (Glacial Wind on %P1 is down!)
 
@@ -422,9 +418,8 @@
 /def -mglob -ag -t"Your pumpkin shell shield is fully recharged." pumpkin_shit03
 /def -mglob -ag -t"Your pumpkin shell shield bursts and vanishes." pumpkin_shit04
 /def -mglob -ag -t"* orange force field bursts and vanishes." pumpkin_shit05
-/def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before Broetchen\.$" broe_tiara1
-/def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before Ewige\.$" ewige_tiara1
-/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|echo|gurgles|mewls|says|quacks) \'Your majesty\.\'$" broe_tiara2
+/def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before [A-Z][a-z]+\.$" silly_tiara_gag
+/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|echo|gurgles|mewls|says|quacks) \'Your majesty\.\'$" silly_tiara_gag_2
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1

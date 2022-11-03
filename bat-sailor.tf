@@ -311,5 +311,3 @@
 ;;   /echo %map_pattern%|/writefile %beadmapfile
 
 /def mapdebug = /quote -S /echo -aB !/home/pi/build/parse_map.pl
-
-

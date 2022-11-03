@@ -88,6 +88,7 @@
 ;; Needs update, have more shields
 /def -F -t'Drycraeft the magic entity holds the Shield of the Wind up high!' magic_entity_wind_timer=/set ewind_status=_%;/set ewind_time=$[time()]%;/repeat -00:30 1 /set ewind_status=X
 
+
 ;; Mage staff
 /def -F -mglob -t"You invoke the powers of your mage staff." invoke_magestaff=/set magestaff_status=_%;/set magestaff_time=$[time()]%;/repeat -00:5 1 /set magestaff_status=X
 
@@ -159,9 +160,9 @@
 /def -F -mglob -t"Your ring of the Wyrm does not respond." wyrm_ring_in_cd = @wear removeditem%;/echo -aB (TF Info): Wyrm ring in cooldown!
 /def -ag -h"send {dmpall}" wyrm_ring_do_action = /SEND @get lampaannussija from bp;remove muumimuki;wear replacing lampaannussija;twist ring;put lampaannussija in bp
 
+
 ;; Fqueen wand
 /def -F -mglob -t"You swing the wand one last time, pointing at *" fqueen_wand_zapped = /set fqueen_wand_status=_
-
 
 ;; Other
 /def rip = @@remove skull,nova arcanum,grimoire,lateksidildo%;@@wield soul ripper%;@@rip soul from corpse
