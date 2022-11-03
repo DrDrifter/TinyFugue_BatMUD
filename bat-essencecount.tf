@@ -6,10 +6,11 @@
 ;; after that load this trigger and use the command
 ;; /esset = shows your essences
 ;; Everything else is automatic
+/loaded bat-essencecount.tf
 
 ;; Set initial arguments when loaded
 /require textutil.tf
-/set countfile=~/tf-lib/magecount.txt
+/set countfile=~/build/tf-lib/magecount.txt
 /set ctype=fire
 /set reset=false
 /set asphessu=0
@@ -102,13 +103,13 @@
  /let manaprc=$[%manablastfloat/%manaessunext*100]%;\
  /let poisprc=$[%poisblastfloat/%poisessunext*100]%;\
 /_echo ,-Essence--count---next--%;\
-/_echo | Asph: %asphessu $[pad(%asphblast,5)] / $[pad(%asphessunext,-5)] ($[pad(substr(%asphprc,0,5),3)])% %;\
-/_echo | Elec: %elecessu $[pad(%elecblast,5)] / $[pad(%elecessunext,-5)] ($[pad(substr(%elecprc,0,5),3)])% %;\
-/_echo | Acid: %acidessu $[pad(%acidblast,5)] / $[pad(%acidessunext,-5)] ($[pad(substr(%acidprc,0,5),3)])% %;\
-/_echo | Fire: %fireessu $[pad(%fireblast,5)] / $[pad(%fireessunext,-5)] ($[pad(substr(%fireprc,0,5),3)])% %;\
-/_echo | Cold: %coldessu $[pad(%coldblast,5)] / $[pad(%coldessunext,-5)] ($[pad(substr(%coldprc,0,5),3)])% %;\
-/_echo | Mana: %manaessu $[pad(%manablast,5)] / $[pad(%manaessunext,-5)] ($[pad(substr(%manaprc,0,5),3)])% %;\
-/_echo | Pois: %poisessu $[pad(%poisblast,5)] / $[pad(%poisessunext,-5)] ($[pad(substr(%poisprc,0,5),3)])% %;\
+/_echo | Asph: %asphessu $[pad(%asphblast,5)] / $[pad(%asphessunext,-5)] ($[pad(floatd(%asphprc,2),5)])% %;\
+/_echo | Elec: %elecessu $[pad(%elecblast,5)] / $[pad(%elecessunext,-5)] ($[pad(floatd(%elecprc,2),5)])% %;\
+/_echo | Acid: %acidessu $[pad(%acidblast,5)] / $[pad(%acidessunext,-5)] ($[pad(floatd(%acidprc,2),5)])% %;\
+/_echo | Fire: %fireessu $[pad(%fireblast,5)] / $[pad(%fireessunext,-5)] ($[pad(floatd(%fireprc,2),5)])% %;\
+/_echo | Cold: %coldessu $[pad(%coldblast,5)] / $[pad(%coldessunext,-5)] ($[pad(floatd(%coldprc,2),5)])% %;\
+/_echo | Mana: %manaessu $[pad(%manablast,5)] / $[pad(%manaessunext,-5)] ($[pad(floatd(%manaprc,2),5)])% %;\
+/_echo | Pois: %poisessu $[pad(%poisblast,5)] / $[pad(%poisessunext,-5)] ($[pad(floatd(%poisprc,2),5)])% %;\
 /_echo `-----------------------------
 
 ;; Write the blast numbers to the file
@@ -122,13 +123,20 @@
  /echo fire %fireblast%|/writefile -a %countfile
 
 ;; Gags essences from list of skills
-/def -ag -p99 -F -mregexp -t"\| Essence of asphyxiation\s+\|\s+(\d+) \|" asphessutrig = /set asphessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of electricity\s+\|\s+(\d+) \|" elecessutrig = /set elecessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of corrosion\s+\|\s+(\d+) \|" acidessutrig = /set acidessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of pyromania\s+\|\s+(\d+) \|" fireessutrig = /set fireessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of arctic powers\s+\|\s+(\d+) \|" coldessutrig = /set coldessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of magic lore\s+\|\s+(\d+) \|" manaessutrig = /set manaessu=%P1
-/def -ag -p99 -F -mregexp -t"\| Essence of toxicology\s+\|\s+(\d+) \|" poisessutrig = /set poisessu=%P1
+;;/def -ag -p99 -F -mregexp -t"\| Essence of asphyxiation\s+\|\s+(\d+) \|" asphessutrig = /set asphessu=%P1
+;;/def -ag -p99 -F -mregexp -t"\| Essence of electricity\s+\|\s+(\d+) \|" elecessutrig = /set elecessu=%P1
+;;/def -ag -p99 -F -mregexp -t"\| Essence of corrosion\s+\|\s+(\d+) \|" acidessutrig = /set acidessu=%P1
+;;/def -ag -p99 -F -mregexp -t"\| Essence of pyromania\s+\|\s+(\d+) \|" fireessutrig = /set fireessu=%P1
+;;/def -ag -p99 -F -mregexp -t"\| Essence of arctic powers\s+\|\s+(\d+) \|" coldessutrig = /set coldessu=%P1
+;;/def -ag -p99 -F -mregexp -t"\| Essence of magic lore\s+\|\s+(\d+) \|" manaessutrig = /set manaessu=%P1
+;;/def -ag -p99 -F -mregexp -t"\| Essence of toxicology\s+\|\s+(\d+) \|" poisessutrig = /set poisessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of asphyxiation\s+(\d+) \|" asphessutrig = /set asphessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of electricity\s+(\d+) \|" elecessutrig = /set elecessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of corrosion\s+(\d+) \|" acidessutrig = /set acidessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of pyromania\s+(\d+) \|" fireessutrig = /set fireessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of arctic powers\s+(\d+) \|" coldessutrig = /set coldessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of magic lore\s+(\d+) \|" manaessutrig = /set manaessu=%P1
+/def -ag -p99 -F -mregexp -t"\| Essence of toxicology\s+(\d+) \|" poisessutrig = /set poisessu=%P1
 
 ;; wrapper to read essences from skills
 /def readessut =\
