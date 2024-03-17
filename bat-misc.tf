@@ -22,15 +22,3 @@
 ;; Tyra banish
 /def -mglob -t"Tyranicus waves his hand at * and says 'Begone'" tyrathrow = @party report HÄLÄRM! Tyra banished %{6}
 
-
-;Moonrind
-/def -ab -mglob -t'The very ground you are standing on begins to tremble.' moonrind_fissure_coming = /echo -aB WARNING: SPECIAL COMING
-/def -mglob -t'Some green vines are growing out of the fissures, feeling for something to grab! Better avoid them, now!' moonrind_fissue_NOW = /echo -aB *** WARNING: jump left/right NOW ***
-;; command ll grep 'Reverse damage' show effects
-/def -mglob -t'\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\**' rounds_moonrind = @ll
-/def -mregexp -t'^Moonrind tells you \'Raugh\!' moonrind_riddle = @party report MOONRIND RIDDLE!%;@quote 'tell last 1' party say
-; You feel the flow of abjurative magic towards Moonrind!
-
-;Moonrind grabs Lammas with one of his branches! After a rather one-sided struggle, Moonrind lets out a mad laughter, and stuffs Lammas into the large hole in his side - the one
-;resembling a mouth. With an enormous *gulp*, Lammas gets swallowed.
-
