@@ -24,9 +24,12 @@
 ;                                                                     ;
 ; I'll try to keep a changelog here of the version changes            ;
 ;                                                                     ;
-; Last modified 17.03.2024                                            ;
+; Last modified 29.03.2024                                            ;
 ;                                                                     ;
-; Current version 1.3.38                                              ;
+; Current version 1.3.39                                              ;
+; - Fixed Warez (changed chant)                                       ;
+;                                                                     ;
+; Changes to 1.3.38                                                   ;
 ; - Added Shield of Transciendence                                    ;
 ; - Fixed Heavenly prot (again)                                       ;
 ;                                                                     ;
@@ -607,7 +610,7 @@
 ;;;;;;;;;;
 ;; Bard ;;
 ;;;;;;;;;;
-/createprot -t2 -n"Warez" -w"{*} {sing:|sings:} \'War is TOTAL massacre, sport the war, war SUPPOORT!!!\'" -u"You feel full of battle rage! Victory is CERTAIN!" -d"The effect of war ensemble wears off." -p"War ensemble"
+/createprot -t2 -n"Warez" -w"{*} {sing|sings} \'War is TOTAL massacre, sport the war, war SUPPOORT!!!\'" -u"You feel full of battle rage! Victory is CERTAIN!" -d"The effect of war ensemble wears off." -p"War ensemble"
 /createprot -t2 -n"Melo" -w"{*} {sing|sings} \'Once there were two knights and maidens *" -u"* wraps you into an embracing melody." -d"The embracing melody subsides, leaving you longing for more." -p"Embracing melody"
 /createprot -t2 -n"Afav" -w"{*} {sing:|sings:} \'In the Shadows cast down by the moon, a certain Elven lord he strolls among *" -u"You feel optimistic about your near future!" -d"You no longer have Arches Favour on you. You feel sad." -p"Arches favour"
 ;; Missing:
