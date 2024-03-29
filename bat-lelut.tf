@@ -172,23 +172,6 @@
 
 
 ;; Special item handling
-/def -F -mglob -t"You are unable to find a suitable dimensional rift here." navs_nosummon01 = /putaway
-/def -F -mglob -t"You sense your surroundings distorting and then snap."    navs_teledone   = /putaway
-/def -F -mglob -t"* is already heavy weighted!"                             navs_hwfail01   = /putaway
-/def -F -mglob -t"You cannot summon that!"                                  navs_sumfail01  = /putaway
-/def -F -mglob -t"Summon who?"                                              navs_sumfail02  = /putaway
-/def -F -mglob -t"You can not teleport someone from another realm with this spell." navs_sumfail03 = /putaway
-/def -F -mglob -t"Cast relocate at what?"                                   navs_relofail01 = /putaway
-/def -F -mglob -t"You must be in the same realm as your target for this spell." navs_relofail02 = /putaway
-/def -F -mglob -t"You cannot relocate yourself there."                      navs_relofail03 = /putaway
-/def -F -mglob -t"You draw door frames in the air and utter \'prtolala offf pwerrrr\'" navs_dimdoor01 = /putaway
-/def -F -mglob -t"You frantically wave your hands and yell \'gwwaaajj\'"    navs_summon01   = /putaway
-/def -F -mglob -t"You hop on both legs, flap your arms and chant \'buuuummbzdiiiiiibummm\'"   navs_cannon01 = /putaway
-/def -F -mglob -t"You call forth the water spirits by chanting \'etheria aquariq pohjanmaa\'" navs_gotoship01 = /putaway
-/def -F -mglob -t"You utter the magic words \'havia kauhistus pois\'"       navs_banish01 = /putaway
-/def -F -mglob -t"Cast banish at what?"                                     navs_banish02 = /putaway
-/def -F -mglob -t"You hop on both legs, flap your arms and chant \'flzeeeziiiiying nyyyaaa\'" navs_godone01 = /putaway
-/def putaway = @gagoutput put HuuliHerpesHarppu in bp;wear removeditem
 
 
 /def lelut=\
