@@ -25,7 +25,7 @@
 /def dl =/set targettype=off%;/set spell=dimensional_leech%;/set spell_rounds=3%;/do_spell %{*}
 /def dr =/set targettype=none%;/set spell=darkness%;/do_spell
 /def dre=/set targettype=none%;/set spell=dismiss_rift_entity%;/do_spell
-/def eec=/set targettype=none%;/set spell=establish_entity_control%;/do_spell%;@eecwear
+/def eec=/set targettype=none%;/set spell=establish_entity_control%;/do_spell
 /def fab=/set targettype=prot%;/set spell=force_absorption%;/do_spell %{*}
 /def fl =/set targettype=prot%;/set spell=floating%;/do_spell %{*}
 /def inv=/set targettype=prot%;/set spell=invisibility%;/do_spell %{*}
@@ -33,7 +33,7 @@
 /def mi =/set targettype=prot%;/set spell=mirror_image%;/do_spell %{*}
 /eval /set off_spell_stack=%{off_spell_stack}|rift_pulse
 /def rp =/set targettype=off%;/set spell=rift_pulse%;/set spell_rounds=3%;/do_spell %{*}
-/def rre=/set targettype=ent%;/set spell=regenerate_rift_entity%;/do_spell %{*}%;@rrewear
+/def rre=/set targettype=ent%;/set spell=regenerate_rift_entity%;/do_spell %{*}
 /def rs =/set targettype=none%;/set spell=rift_scramble%;/do_spell
 /def sb =/set targettype=spa%;/set spell=spark_birth%;/set spell_rounds=2%;/do_spell %{*}
 /def sre=/set targettype=sum%;/set spell=summon_rift_entity%;/do_spell %{*}
@@ -181,23 +181,6 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /createprot -t0 -n"AM" -w"You utter the magic words \'bredan forswelgan\'" \
 -u"You successfully surround yourself with a barrier of energy which melds itself with your body." \
 -d"You feel the melded barrier of energy dissipate from your body." -p"Absorbing Meld"
-
-;; EQ swaps for riftwalker eq
-/def -F -mglob -t"You remove lucky Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits*" removed_in_wisset = \
-@alias removeditem Nova Arcanum, Melkior's book of necromancy labeled as Great book of Tits
-/def -F -mglob -t"You remove the black grimoire labeled as Mein Humpf*" removed_in_asphset = \
-@alias removeditem the black grimoire labeled as Mein Humpf
-/def -F -mglob -t"You remove a dark staff adorned with a shadowy orb * labeled as KuppaKeppi from your right hand*" removed_in_typeset = \
-@alias removeditem long shadowy staff
-/def -F -mglob -t"You remove a skull labeled as (s)kulli*" removed_in_other_castset = \
-@alias removeditem a skull labeled as (s)kulli
-/def -F -mglob -t"You remove a frosty birch wand, remnant of the winters past <love> labeled as LateksiDildo*" removed_in_sprset = \
-@alias removeditem wand of the winters past
-/def -F -mglob -t"You successfully establish control over your entity." entity_controlled = @put ohjauskeppi in bp;wear removeditem
-/def -F -mglob -t"The entity is fully healed." entity_healed = @put parannustikku in bp;wear removeditem
-/def -F -mglob -t"* the magic entity sees that you are unhurt and interrupts the channelling." entity_heal_me = \
-@put parannustikku in bp;wear removeditem
-
 
 ;; Hilites
 /def -mregexp -t"(Fire|Air|Water|Earth|Magic) entity eats the last of its rift sparks, and starts to look around the room with a fierce hunger in its eyes." entity_hungry = @party report (Entity needs sparks)

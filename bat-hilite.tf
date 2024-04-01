@@ -153,6 +153,7 @@
 /def -p6 -aCbggreen -aBCred -mglob -t'* hits * with * killing cloud.' killing_cloud_2
 /def -F -p6 -aCbggreen -aBCred -mglob -t'You hit * with your killing cloud.' killing_cloud_3
 /def -p6 -aCbggreen -aBCred -mglob -t'* splashes a bubbling red liquid onto {his|her|its} foe, causing a scream of pain!*' aelena_poison
+/def -p6 -aCbggreen -aBCred -mglob -t'* necrotic bane hits *' necrotic_bane
 
 ;; Magical blasts
 /def -F -p6 -aCbgyellow -aBCred -mglob -t'* golden arrow hits *' golden_arrow
