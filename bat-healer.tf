@@ -48,8 +48,9 @@
 /def rst=/set spell=restore%;/set targettype=assist%;/do_spell %{1}
 /def sc=/set spell=sex_change%;/set targettype=assist%;/do_spell %{1}
 /def shold=/set spell=soul_hold%;/set targettype=assist%;/do_spell %{1}
-/def sot=/set spell=shield_of_transcendence%;/set targettype=assist%;/do_spell %{1}
-/def sp=/set spell=satiate_person%;/set targettype=assist%;/do_spell %{1}
+/def sot=/set spell=shield_of_transcendence%;/set targettype=assist%;/do_spell %{*}
+/def sp=/set spell=satiate_person%;/set targettype=assist%;/do_spell %{*}
+/def stl=/set spell=see_the_light%;/set targettype=assist%;/do_spell %{1}
 /def sum=/set spell=summon%;/set targettype=tele%;/do_spell %{1}
 /def unp=/set spell=unpain%;/set targettype=prot%;/do_spell %{*}
 /def us=/set spell=unstun%;/set targettype=prot%;/do_spell %{*}
