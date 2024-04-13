@@ -24,7 +24,10 @@
 ;                                                                     ;
 ; I'll try to keep a changelog here of the version changes            ;
 ;                                                                     ;
-; Last modified 29.03.2024                                            ;
+; Last modified 13.04.2024                                            ;
+;                                                                     ;
+; Current version 1.3.39                                              ;
+; - Fixed Shield of Transcendience (typo)                             ;
 ;                                                                     ;
 ; Current version 1.3.39                                              ;
 ; - Fixed Warez (changed chant)                                       ;
@@ -575,7 +578,7 @@
 /createprot -t0 -n"Unp" -w"{*} {utter|utters} the magic words \'harnaxan temnahecne\'" -u"You feel your will getting stronger." -d"You feel your will returning to normal." -p"Unpain"
 /createprot -t0 -n"Us" -w"{*} {utter|utters} the magic words \'Paxus\'" -u"* chanting appears to do absolutely nothing." -d"It doesn\'t hurt *" -p"Unstun"
 /createprot -r1 -t0 -n"LLink" -w"^([A-Za-z]+ (utter|utters) the magic words \'Corporem Connecticut Corporee\')" -u"(You feel somehow linked to [A-Za-z]+.|You create a link to [A-Za-z]+.)" -d"(You hear a loud snap like sound!|You remove your link.)" -p"Life link"
-/createprot -t0 -n"SoT" -w"{*} {utter|utters} the magic words \'Esrpriestitst hjajjossa\'" -u"You sense an aura forming around your body." -d"You sense an aura forming around your body." -p2"Shield of Transciendence"
+/createprot -t0 -n"SoT" -w"{*} {utter|utters} the magic words \'Esrpriestitst hjajjossa\'" -u"You sense an aura forming around your body." -d"You sense an aura forming around your body." -p"Shield of Transciendence"
 
 ;;;;;;;;;;;
 ;; Druid ;;
