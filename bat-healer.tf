@@ -36,6 +36,7 @@
 /def cpl=/set spell=cure_player%;/set targettype=assist%;/do_spell %{1}
 /def da=/set spell=detect_alignment%;/set targettype=assist%;/do_spell %{*}
 /def ev=/set spell=enhanced_vitality%;/set targettype=assist%;/do_spell %{1}
+/def hh=/set spell=healbound_harmony%;/set targettype=assist%;/do_spell %{1}
 /def hway=/set spell=holy way%;/set targettype=tele%;/do_spell %{1}
 /def ll=/set spell=life_link%;/set targettype=prot%;/do_spell %{1}
 /def lp=/set spell=lessen_poison%;/set targettype=assist%;/do_spell %{1}
