@@ -183,9 +183,9 @@
  /elseif (%current>39 & %current<50) /let next=4500%;\
  /elseif (%current>49 & %current<60) /let next=6000%;\
  /elseif (%current>59 & %current<70) /let next=7500%;\
- /elseif (%current>60 & %current<80) /let next=9000%;\
- /elseif (%current>79 & %current<90) /let next=10500%;\
- /elseif (%current>89 & %current<101) /let next=12000%;\
+ /elseif (%current>60 & %current<80) /let next=10000%;\
+ /elseif (%current>79 & %current<90) /let next=11500%;\
+ /elseif (%current>89 & %current<101) /let next=13000%;\
  /endif%;\
  /_echo %next
 
