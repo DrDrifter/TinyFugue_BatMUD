@@ -176,7 +176,7 @@
 /def -p6 -aCbgyellow -aBCred -mglob -t'* hits * with {his|her|its} holy wind.' holy_wind_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes with {sheer|terrific|blazing|purifying|immense} {rage|force|glow|power} upon *' dispel_evil_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes {mightily|hard} upon *' dispel_evil_hit2
-/def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {bursting|slamming|detonating|exploding|popping|crashing} on *' holy_bolt_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {bursting|crashing|detonating|exploding|popping|slamming|zapping} on *' holy_bolt_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {annihilating|blowing|unbalancing|damaging|dispelling|disrupting|incinerating|rendering|pulverizing|shocking} *' dispel_undead_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*as one big burst, {badly|brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*emits fuming white aura around screaming * {badly|brutally} {burning|crushing} {him|her|it}*' dispel_undead_hit3
