@@ -164,11 +164,14 @@
 ;; Fqueen wand
 /def -F -mglob -t"You swing the wand one last time, pointing at *" fqueen_wand_zapped = /set fqueen_wand_status=_
 
+;; Ice tiara glimmer hilite
+/def -F -mglob -t"One of the jewels on your ice tiara glimmers for a moment." ice_tiara_glimmer = /echo *** Kimaltaa! ***
+/def -F -mglob -t"Ice Tiara flashes, then flickers and then flashes again." ice_tiara_flash = /echo -aB *** FLASH!!! ***
+
 ;; Other
 /def rip = @@remove skull,nova arcanum,grimoire,lateksidildo%;@@wield soul ripper%;@@rip soul from corpse
 /def -F -mglob -t"You finish sucking the soul. You feel younger!" katana_ripped = @@remove katana%;wear removeditem%;g
 /def -F -mglob -t"The corpse isn't powerful enough for this." katana_not_ripped = @@remove katana%;wear removeditem%;g
-;; As you caress Fleot, an enormous water entity your gloves become painfully hot.
 
 
 ;; Special item handling

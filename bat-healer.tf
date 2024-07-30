@@ -33,7 +33,7 @@
 /def bot=/set spell=blessing_of_tarmalen%;/set targettype=prot%;/do_spell %{1}
 /def cf=/set spell=create_food%;/set targettype=food%;/do_spell %{*}
 /def cot=/set spell=curse_of_tarmalen%;/set targettype=off%;/do_spell %{*}
-/def cpl=/set spell=cure_player%;/set targettype=assist%;/do_spell %{1}
+/def cp=/set spell=cure_player%;/set targettype=assist%;/do_spell %{1}
 /def da=/set spell=detect_alignment%;/set targettype=assist%;/do_spell %{*}
 /def ev=/set spell=enhanced_vitality%;/set targettype=assist%;/do_spell %{1}
 /def hh=/set spell=healbound_harmony%;/set targettype=assist%;/do_spell %{1}

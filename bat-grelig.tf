@@ -3,7 +3,6 @@
 
 ;; Basic skills
 /def bless=/set targettype=assist%;/set skill=bless%;/do_skill %{*}
-/def cp=/set targettype=none%;/set skill=camping%;@sleep
 /def bapt=/set targettype=assist%;/set skill=baptize%;/do_skill %{*}
 
 ;; Ceremony

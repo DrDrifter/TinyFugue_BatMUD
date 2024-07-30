@@ -30,6 +30,7 @@
 
 ; other stuff
 /def ad=/set spell=aura_detection%;/set targettype=assist%;/do_spell %{*}
+/def ahm=/set spell=inquiry_to_ahm%;/set targettype=assist%;/do_spell %{1}
 /def bw=/set spell=blessed_warmth%;/set targettype=none%;/do_spell
 /def cs=/set spell=charge_staff%;/set targettype=druid%;/do_spell amount %{1}
 /def cpi=/set spell=call_pigeon%;/set targettype=item%;/do_spell %{*}
