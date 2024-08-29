@@ -22,7 +22,7 @@
 /def castello-sc=@8 south;5 southeast;5 east;8 southeast;8 east;9 southeast;4 east;5 southeast;10 east
 /def castello-wrebie=@8 s;travel se;travel se;travel e;travel e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;3 e;4 se;3 e;ne;2 e;3 se;4 e;2 se;11 s
 /def sc-castello=@10 west;5 northwest;4 west;9 northwest;8 west;8 northwest;5 west;5 northwest;8 north
-/def sc-ranger=@4 e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;20 sw;17 sw;7 w;3 sw;2 w
+/def sc-ranger=@4 east;6 south;southeast;8 south;5 southeast;4 south;2 southeast;2 south;11 southeast;20 southwest;17 southwest;7 west;3 southwest;2 west
 /def sc-amazon=@4 e;travel s;8 s;5 sw;8 w;12 sw;4 w;12 sw;3 s;3 sw;14 s;sw;8 s;se;12 s;5 sw;20 s;20 s;20 s;2 s;7 sw
 /def sc-mist=@4 east;6 south;southeast;8 south;5 southeast;4 south;2 southeast;2 south;11 southeast;3 east;4 southeast;3 east;northeast;2 east;3 southeast;4 east;4 southeast;9 east;3 northeast;4 east;4 northeast;20 east;3 east;12 southeast;20 south;10 south;southeast;10 south;southwest;south
 /def sc-wrebie=@4 e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;3 e;4 se;ne;2 e;3 se;4 e;4 se;2 sw;7 s
@@ -36,6 +36,8 @@
 /def cave-digger=@out;w;d;w;d;2 w;5 n;nw;out
 /def digger-nforest=@w;9 nw;20 w;13 w
 /def nforest-digger=@13 e;20 e;9 se;e
+/def nforest-eforest=@18 southwest;2 south
+/def eforest-nforest=@2 north;18 northeast
 /def oakvale-castello=@11 e;3 s;7 se;5 e;3 n
 /def castello-pluras=@8 s;travel se;travel se;11 e;travel s;travel nw;travel w;20 w;2 w;2 nw;2 w
 /def castello-barb=@20 s;20 s;20 s;13 sw;w
