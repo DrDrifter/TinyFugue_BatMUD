@@ -2,9 +2,10 @@
 /loaded bat-shadow.tf
 
 ; Focus
-/def -F -t"You finish focusing ..." focusdone = @party report Shadow focus success!%;@party report
-/def -F -t"Your concentration fails and nothing happens." focusfail = /echo -aB (Tinyfugue) Focus Failed!
-/def -F -t"You start focusing in the shifting of your essence." focusstarted = /repeat -15 1 /echo -aB (TinyFugue) Focus in 2 hb!
+/def -mglob -t"You finish focusing ..." focusdone = @party report Shadow focus success!%;@party report
+/def -mglob -t"Your concentration fails and nothing happens." focusfail = /echo -aB (Tinyfugue) Focus Failed!
+/def -mglob -t"You start focusing in the shifting of your essence." focusstarted = /repeat -15 1 /echo -aB (TinyFugue) Focus in 2 hb!
+/def -mglob -t"Your body is unable to handle all of the influx of magical energy." focusfluxed = /echo -aB (TinyFugue) Fluxed out!
 
 ;; Too illuminated
 /def -F -t"You feel exhausted, being here in the light." too_much_light = /echo -aB (TinyFugue) No ticks, too much light!

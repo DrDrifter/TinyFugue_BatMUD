@@ -176,16 +176,19 @@
 /def -ag -h"send {dmpall}" wyrm_ring_do_action = \
    /SEND @get lampaannussija from bp;remove muumimuki;wear replacing lampaannussija;twist ring;put lampaannussija in bp
 
-;; Prismatic Rod
+;; Prismatic Rod (cooldown 60 min?)
+;; Note: This trigger is pretty much done with the assumption that it's such a niche item that not many players have it
 /def -ag -h"send {pfield}" prism_rod_do_field = \
    /SEND gagoutput get prismatic rod from bp;wear replacing prismatic rod;summon field;gagoutput put prismatic rod in bp
-/def -F -mglob -t"The rod flashes, then sputters." rod_on_cd = @wear removeditem
-/def -F -mglob -t"The room suddenly explodes in a burst of swirling, pulsating color and light!" prism_field_up = \
+/def -mglob -aB -t"The rod flashes, then sputters." rod_on_cd = @wear removeditem
+/def -mglob -aB -t"The room suddenly explodes in a burst of swirling, pulsating color and light!" prism_field_up = \
    /set prismfieldtimer=$[time()]
-/def -mglob -t"The field flashes a few times, then vanishes." prism_field_down = \
+/def -mregexp -aB -aCred -t"^The field flashes a few times, then vanishes.$" prism_field_down = \
    /let prismfieldtime=$[time()-prismfieldtimer]%;\
    /let fprismfieldtime=$(/formattime %prismfieldtime)%;\
    /echo -aB (TinyFugue) Prismatic Field DOWN, timer: %fprismfieldtime
+;; Prismatic field hilite (added this here and not to hilites because it's such a niche item)
+/def -mregexp -aCyellow -t"^A pulse of prismatic light fills the room.$" prismatic_field_colourizer
 
 ;; Fqueen wand
 /def -F -mglob -t"You swing the wand one last time, pointing at *" fqueen_wand_zapped = /set fqueen_wand_status=_
