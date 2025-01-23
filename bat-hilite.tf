@@ -81,7 +81,8 @@
 
 ;; Gagging
 /def -ag -hREDEF redefs
-/def -p1 -ag -mglob -t'\\*Saikou' gag_saikous_silly_triggers
+/def -p1 -ag -mglob -t'\*Saikou *' gag_saikous_silly_triggers
+/def -p1 -ag -mglob -t'\*Saros *' gag_saros_silly_triggers
 
 ;; Colours
 /def -F -P1Cwhite -mregexp -t'([Gg]lowing)' glowing
@@ -421,7 +422,7 @@
 /def -mglob -ag -t"Your pumpkin shell shield bursts and vanishes." pumpkin_shit04
 /def -mglob -ag -t"* orange force field bursts and vanishes." pumpkin_shit05
 /def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before [A-Z][a-z]+\.$" silly_tiara_gag
-/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|echo|gurgles|mewls|says|quacks|wails) \'Your majesty\.\'$" silly_tiara_gag_2
+/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|echo|grunts|gurgles|howls|mewls|says|quacks|wails) \'Your majesty\.\'$" silly_tiara_gag_2
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1

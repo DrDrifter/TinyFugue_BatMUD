@@ -36,10 +36,14 @@
  /_echo %{tmpmin}:%{tmpsek}
 
 ;; Removeditems aliases
+/def -F -mglob -t"You remove lucky Nova Arcanum, Melkior's book of necromancy*" alias_removedbook = @alias removeditem nova arcanum
+/def -F -mglob -t"You remove a frosty birch wand, remnant of the winters past*" alias_removedwand = @alias removeditem lateksidildo
+/def -F -mglob -t"You remove the black grimoire*" alias_removedgrimoire = @alias removeditem black grimoire
+/def -F -mglob -t"You remove VelliKulho the White mage staff of Power*" alias_removedmagestaff = @alias removeditem vellikulho
+/def -F -mglob -t"You remove Ice Tiara of Grand Empress Aiko*" alias_removedtiara = @alias removeditem RiemuTatti
 /def -F -mglob -t"You remove Black-white coif of Nuns labeled as HomoHuppu*" alias_removedcoif = @alias removeditem HomoHuppu
 /def -F -mglob -t"You remove A green hat of wizardy labeled as Riemutatti*" alias_riemutatti = @alias removeditem Riemutatti
 /def -F -mglob -t"You remove a black hood labeled as WhereDaHoodAt*" alias_removedhood = @alias removeditem WhereDaHoodAt
-/def -F -mglob -t"You remove A black tricorn hat with a large dark feather labeled as FolioPipo*" alias_removedpipo = @alias removeditem FolioPipo
 /def -F -mglob -t"You remove a coral crown, sturdy and orange*" alias_removedcrown = @alias removeditem coral crown
 /def -F -mglob -t"You remove an ice cap, flickering and white*" alias_removedcap = @alias removeditem ice cap
 /def -F -mglob -t"You remove a mithril ring labeled as MuumiMuki*" alias_removedring1 = @alias removeditem muumimuki
@@ -65,6 +69,8 @@
 ;; re-wears
 /def -F -mglob -t"You put A glowing green amulet labeled as SalaRaKastelija <green glow> to *" = /repeat -00:00:01 1 @wear removeditem
 /def -F -mglob -t"You hold your staff in front of yourself and slowly sweep it from left to right." invisdone = @put sonnibileet in bp%;/repeat -00:00:01 1 @wear removeditem
+/def -F -mglob -t"You press the diamond on the white dragonscale helmet." pressedhelm = @wear removeditem
+/def -F -mglob -t"The room suddenly explodes in a burst of swirling, pulsating color and light!" prismaticdone = @wear removeditem
 
 
 ;; Athame
@@ -125,11 +131,18 @@
 
 ;; Pfe Helmet
 ;; Note: Cooldown is actually 15-25 minutes!
+/def -ag -h"send {phelm}" invoke_pfe = \
+   /SEND gagoutput get PyllyMyssy from pocket;wear replacing PyllyMyssy;press diamond;gagoutput put PyllyMyssy in pocket
 /def -F -mglob -t"The spirit of Morrigaine appears in your visions and grants you protection." pfe_helmet_used =\
    /set pfe_helmet_status=_%;\
    /set pfe_helmet_time=$[time()]%;\
    /repeat -0:20 1 /set pfe_helmet_status=X
-/def -F -mglob -t"You press the diamond on the white dragonscale helmet." pressedhelm = @wear removeditem
+
+;; If you have 2 helmets, like me, they overlap the cooldown times so this allows constant PfE for you
+;; WARNING: This might end up in an endless loop if both of your helmets are used!!!
+/def -F -mglob -t"Nothing happens...the enchantment has been used recently." pfe_helmet_cooldown =\
+   /repeat 1 \
+   /SEND gagoutput get PeppuPotta from bp;wear replacing PeppuPotta;press diamond;gagoutput put PeppuPotta in bp
 
 ;; Fairy bra
 /def -F -mglob -t"You store * in the spell matrix." bra_stored = /set bra_status=X
@@ -137,11 +150,13 @@
 
 ;; Praixor gloves
 
-;; Prism mirrors
-/def -F -t"You call forth the power of your prism." prism_mirrors = /set prism_mirrors_status=_
-/def -F -t"Your prism sparkles." prism_mirrors_ready = /set prism_mirrors_status=X
+;; Prism mirrors (Commented out since I don't use one right now)
+; /def -F -t"You call forth the power of your prism." prism_mirrors = /set prism_mirrors_status=_
+; /def -F -t"Your prism sparkles." prism_mirrors_ready = /set prism_mirrors_status=X
 
 ;; Mask of Gluttony
+/def -F -mglob -t"You eat a pill glowing bright cyan" gluttony_mask_used = \
+/repeat -00:00:01 1 @wear removeditem
 
 ;; Demonic ring
 /def -F -mglob -t'You wear Demonic Ring of Invisibility*' demonring_wear = /set demonring_status=_%;/repeat -0:10 1 /set demonring_status=X
@@ -158,8 +173,19 @@
 ;; DMP ring
 /def -F -mglob -t"Your finger tingles as the Wyrm breathes its magic!" wyrm_ring_zapped = /set wyrn_ring_status=_%;@wear removeditem%;/repeat -00:20 1 /set wyrm_ring_status=X
 /def -F -mglob -t"Your ring of the Wyrm does not respond." wyrm_ring_in_cd = @wear removeditem%;/echo -aB (TF Info): Wyrm ring in cooldown!
-/def -ag -h"send {dmpall}" wyrm_ring_do_action = /SEND @get lampaannussija from bp;remove muumimuki;wear replacing lampaannussija;twist ring;put lampaannussija in bp
+/def -ag -h"send {dmpall}" wyrm_ring_do_action = \
+   /SEND @get lampaannussija from bp;remove muumimuki;wear replacing lampaannussija;twist ring;put lampaannussija in bp
 
+;; Prismatic Rod
+/def -ag -h"send {pfield}" prism_rod_do_field = \
+   /SEND gagoutput get prismatic rod from bp;wear replacing prismatic rod;summon field;gagoutput put prismatic rod in bp
+/def -F -mglob -t"The rod flashes, then sputters." rod_on_cd = @wear removeditem
+/def -F -mglob -t"The room suddenly explodes in a burst of swirling, pulsating color and light!" prism_field_up = \
+   /set prismfieldtimer=$[time()]
+/def -mglob -t"The field flashes a few times, then vanishes." prism_field_down = \
+   /let prismfieldtime=$[time()-prismfieldtimer]%;\
+   /let fprismfieldtime=$(/formattime %prismfieldtime)%;\
+   /echo -aB (TinyFugue) Prismatic Field DOWN, timer: %fprismfieldtime
 
 ;; Fqueen wand
 /def -F -mglob -t"You swing the wand one last time, pointing at *" fqueen_wand_zapped = /set fqueen_wand_status=_
@@ -177,7 +203,7 @@
 ;; Special item handling
 
 
-/def lelut=\
+/def -ag -h"send {lelut}"=\
 /let timenow=$[time()]%;\
 /if (rainstaff01_time-timenow>0) /let rainstaff01_cd=$(/formattime $[{rainstaff01_time}-{timenow}])%;/else /let rainstaff01_cd=0:00%;/endif%;\
 /if (rainstaff02_time-timenow>0) /let rainstaff02_cd=$(/formattime $[{rainstaff02_time}-{timenow}])%;/else /let rainstaff02_cd=0:00%;/endif%;\
