@@ -23,7 +23,15 @@
 /set count_unseen=0
 
 ;; Match used spell and damtype (only grab offensive mage singleblasts)
-;; NOTE: statistics only count MAGE spells
+;; NOTE: the statistics only count MAGE spells
+;;
+;; Also note: for rift spells, the default action is NOT to report on a "real" scream
+;; Rift spells use different analysis table than mage spells and "Art of war" boon also affects these
+;;
+;; Addition 9.2. : I added the "generic" type spell so that keyboard
+;; (non-function button) started spells don't get messed up
+;; This fixes analysis when nithem skull and spark birth were casted & invoked at the same time
+;;
 /def -F -mregexp -t'^You watch with self-pride as your (vacuumbolt|suffocation|chaos bolt|strangulation|blast vacuum) hits *' used_asphyx_type= /set used_type=ASPH%;/set total_count_blasts=$[total_count_blasts+1]
 /def -F -mregexp -t'^You watch with self-pride as your (electrocution|blast lightning|shocking grasp|lightning bolt|forked lightning) hits *' used_elec_type= /set used_type=ELEC%;/set total_count_blasts=$[total_count_blasts+1]
 /def -F -mregexp -t'^You watch with self-pride as your (disruption|acid wind|acid arrow|acid ray|acid blast) hits *' used_acid_type= /set used_type=ACID%;/set total_count_blasts=$[total_count_blasts+1]
@@ -36,59 +44,72 @@
 /def -F -mglob -t"You utter the magic words \'cwician ysl\'" sparkbirth_cast_manual = /set spell=spark_birth
 
 ;; Analysis of magic lore messages, grab the target's short name from here
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Za-z \-\'\,\.]+) screams in pain\.$" scream_pain=\
+
+;; Scream type
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Z][A-Za-z \-\'\,\.]+) screams in pain\.$" scream_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=0%;\
-  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
+;;  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
-  /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Za-z \-\'\,\.]+) writhes in agony\." writhe_agony=\
+;;  /endif
+
+;; Writhe type
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Z][A-Za-z \-\'\,\.]+) writhes in agony\.$" writhe_agony=\
   /set current_analysis_target=%P1%;\
   /set current_resist=20%;\
-  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
-  /echo -aB ### writhes %damtype (20\%) ###%;\
+;;  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse"))\
+  /echo -aB (TinyFugue): ### writhes %damtype (20\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
-  /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Za-z \-\'\,\.]+) shudders from the force of the attack\." shudder=\
+;;  /endif
+
+;; Shudder type
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Z][A-Za-z \-\'\,\.]+) shudders from the force of the attack\.$" shudder=\
   /set current_analysis_target=%P1%;\
   /set current_resist=40%;\
-  /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
-     @party report %current_analysis_target shudders to Spark Birth, cold resist 0\% %;\
-  /endif%;\
-  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
-  /echo -aB ### Target shudders %damtype (40\%) ###%;\
+;;  /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
+;;     @party report %current_analysis_target cold resist could be 0\% (Spark birth) %;\
+;;  /endif%;\
+;;  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
+  /echo -aB (TinyFugue) ### Target shudders %damtype (40\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
   /endif
-/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Za-z \-\'\,\.]+) grunts from the pain\." grunt_pain=\
+
+;; Grunt type
+;; Note: Added extended regexp so liberator gslash message doesn't match here
+/def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Z][A-Za-z \-\'\,]+\.{0,1}[A-Za-z \-\'\,]+) grunts from the pain\.$" grunt_pain=\
   /set current_analysis_target=%P1%;\
   /set current_resist=60%;\
-  /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
-     @party report %current_analysis_target grunts to Spark Birth, cold resist 20\% %;\
-  /endif%;\
-  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
-  /echo -aB ### GRUNTS %damtype (60\%) ###%;\
+;;  /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
+;;     @party report [%current_analysis_target] grunts to Spark birth, Cold resist can be 20\%-60\% %;\
+;;  /endif%;\
+;;  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
+  /echo -aB (TinyFugue) ### GRUNTS %damtype (60\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
-  /endif
-/def -F -mregexp -aCbgblack -aBCred -p15 -t"^([A-Za-z \-\'\,\.]+) winces a little from the pain\." winces=\
+;;  /endif
+
+;; Wince type
+/def -F -mregexp -aCbgblack -aBCred -p15 -t"^([A-Z][A-Za-z \-\'\,\.]+) winces a little from the pain\.$" winces=\
   /set current_analysis_target=%P1%;\
   /set current_resist=80%;\
-  /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
-     @party report %current_analysis_target winces to Spark Birth, cold resist 40\% %;\
-  /endif%;\
-  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
-  /echo -aB ### Target winces %damtype (80\%) ###%;\
+;;  /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
+;;     @party report %current_analysis_target cold resist could be 40\% (Spark birth)%;\
+;;  /endif%;\
+;;  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
+  /echo -aB (TinyFugue) ### Target winces %damtype (80\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
-  /endif
-/def -F -mregexp -aCbgblack -aBCred -p15 -t"^([A-Za-z \-\'\,\.]+) shrugs off the attack\." shrug=\
+;;  /endif
+
+;; Shrug type
+/def -F -mregexp -aCbgblack -aBCred -p15 -t"^([A-Z][A-Za-z \-\'\,\.]+) shrugs off the attack\.$" shrug=\
   /set current_analysis_target=%P1%;\
   /set current_resist=100%;\
-  /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
-     @party report %current_analysis_target shrugs to Spark Birth, cold resist 60+\% %;\
-  /endif%;\
-  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
-  /echo -aB ###### SHRUGS %damtype ######%;\
+;;  /if (({spell} =~ "spark_birth") & ({analysis_report} =~ "on"))\
+;;     @party report [%current_analysis_target] cold resist could be over 60+\% (Spark birth) %;\
+;;  /endif%;\
+;;  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
+  /echo -aB (TinyFugue) ###### SHRUGS %damtype ######%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
-  /endif
+;;  /endif
 
 ;; analysis target is blast target (eg. Guard) and result is the result of the latest blast
 ;; If the target has changed, we will clear the old results
