@@ -140,9 +140,9 @@
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* hits * with * hailstorm.' hail_storm_2
 /def -F -p6 -aCbgwhite -aBCcyan -mglob -t'You hit * with your hailstorm.' hail_storm_3
 /def -p6 -aCbgwhite -aBCcyan -mglob -t'* hoar frost hits *' hoar_frost
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'* spark birth hits *' spark_birth_hits
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'* rift pulse hits *' rift_pulse_hits
-/def -p6 -aCbgwhite -aBCcyan -mglob -t'* dimensional leech hits *' dimensional_leech_hits
+/def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* spark birth hits *' spark_birth_hits
+/def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* rift pulse hits *' rift_pulse_hits
+/def -F -p6 -aCbgwhite -aBCcyan -mglob -t'* dimensional leech hits *' dimensional_leech_hits
 
 ;; Poison blasts
 /def -F -p6 -aCbggreen -aBCred -mglob -t'* thorn spray hits *' thorn_spray
@@ -292,6 +292,7 @@
     /undef greed_lightstone%;\
     /undef greed_essence%;\
     /undef greed_fulgurite_map%;\
+    /undef greed_stagira_tail%;\
     /echo -aB TF info: Greed triggers (off)%; \
   /else \
     /def -F -p3 -P0 -mregexp -t'^%{generic_amount_list} mithril coin' greed_mith = @get mithril%; \
@@ -310,6 +311,7 @@
     /def -F -p9 -P0 -mregexp -t'^a brightly glowing lightstone' greed_lightstone = @get lightstone%;\
     /def -F -p9 -P0 -mregexp -t'.* spills some of (his|her|its) essence.' greed_essence = @get essence%;\
     /def -F -p9 -P0 -mregexp -t'^a piece of a map' greed_fulgurite_map = @get map%;\
+    /def -F -p9 -P0 -mregexp -t'^a beautiful tail of a bird' greed_stagira_tail = @get tail%;\
     /echo -aB TF info: Greed triggers (on)%; \
   /endif
 

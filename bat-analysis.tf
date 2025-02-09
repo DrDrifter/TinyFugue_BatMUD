@@ -42,8 +42,12 @@
 
 ;; Added this since sometimes I use direct commands that launch this manually
 /def -F -mglob -t"You utter the magic words \'cwician ysl\'" sparkbirth_cast_manual = /set spell=spark_birth
+/def -F -mregexp -t'^You watch with self-pride as your (spark birth|rift pulse|dimensional leech) hits *' used_rift_type= /set used_type=COLD
 
+
+;;
 ;; Analysis of magic lore messages, grab the target's short name from here
+;;
 
 ;; Scream type
 /def -F -mregexp -aCbgred -aBCblack -p15 -t"^([A-Z][A-Za-z \-\'\,\.]+) screams in pain\.$" scream_pain=\
