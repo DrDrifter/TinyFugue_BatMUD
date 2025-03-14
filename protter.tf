@@ -24,7 +24,12 @@
 ;                                                                     ;
 ; I'll try to keep a changelog here of the version changes            ;
 ;                                                                     ;
-; Last modified 30.7.2024                                             ;
+; Last modified 14.3.2025                                             ;
+;                                                                     ;
+; Current version 1.3.41                                              ;
+; - Fixed some folklorist prots                                       ;
+; (note: Racial doesn't capture all races, only "important" ones)     ;
+; - Fixed more nun prots, heavenly prot should work better now        ;
 ;                                                                     ;
 ; Current version 1.3.40                                              ;
 ; - Fixed some PfE and Soul shield messages with certain relics       ;
@@ -558,9 +563,10 @@
 ;;;;;;;;;
 ;; Nun ;;
 ;;;;;;;;;
-/createprot -r1 -t0 -n"PfE" -w"^[A-z ]+ (furiously (wave|waves) (your|her) [A-z \-\.]* and (utters|utter)|(stare|stares) intensively at [A-z \-\.]* and (state|states)|(hop|hops) with one leg while praising Las and (utter|utters)|(roll|rolls) (your|her) eyes while rubbing halo and (sing|sings) out|(cut|cuts) the air with [A-z \-\.]*, loudly reciting|(mutter|mutters) the holy words|(rub|rubs) (your|her) [A-z \-\.]* while humbly reciting|(roll|rolls) (her|your) eyes while rubbing halo and (sing|sings) out|(raise|raises) (your|her) [A-z \-]* toward the heavens and (recite|recites)|(cherish|cherishes) (your|her) [A-z \-\.]* and determinedly (chant|chants)|(touch|touches) (your|her) [A-z \-\.]* and quickly (recite|recites)|fuming with celestial force (utter|utters) the words|(praise|praises) the saints and (raise|raises) [A-z \-\.]* while exclaiming|(kiss|kisses) [A-z \-\.]* while chanting|frantically (swing|swings) [A-z \-\.]* and (shriek|shrieks)|(spread|spreads) white glow with (your|her) [A-z \-\.]* and (exclaim|exclaims)|(squeeze|squeezes) tightly on (your|her) [A-z \-\.]* and (utter|utters)|(mutter|mutters) the magic words|(swing|swings) (your|her) [A-z \-\.]* and humbly (utter|utters)|(wave|waves) [A-z \-\.]* while praising Las and (exclaim|exclaims)|(raise|raises) (your|her) [A-z \-\.]* while muttering|(hold|holds) (your|her) [A-z \-\.]* close and humbly (mutter|mutters)|(kneel|kneels) down squeezing [A-z \-\.]* and (recite|recites)|(raise|raises) [A-z \-\.]* high in the air and (mutter|mutters)|(hold|holds) [A-z \-\.]* tightly and (exclaim|exclaims)|(rub|rubs) [A-z \-\.]* and (utters|utter) with sinister voice|(are|is) surrounded by fuming white aura as (you|she) (mutter|mutters)|(gaze|gazes) to the heights while holding [A-z \-\.]* close and (utter|uttering)) \'sanctus Exzordus\'|appears in your visions and grants you protection." -u"([A-z \-\.]* with sheer power as you are surrounded|A white holy aura surrounds you and you feel more protected against evil.)" -d"^(You suddenly feel more vulnerable to evil.|Your glow fades away and you suddenly feel more vulnerable to evil.)" -p"Protection from Evil"
+/createprot -r1 -t0 -n"PfE" -w"^[A-Z][a-z]+ ((are|is) surrounded by fuming white aura as (you|she) (mutter|mutters)|(cherish|cherishes) (your|her) [A-z \-\.]* and determinedly (chant|chants)|(cut|cuts) the air with [A-z \-\.]*, loudly reciting|frantically (swing|swings) [A-z \-\.]* and (shriek|shrieks)|fuming with celestial force (utter|utters) the words|furiously (wave|waves) (your|her) [A-z \-\.]* and (utters|utter)|(gaze|gazes) to the heights while holding [A-z \-\.]* close and (utter|uttering)|(hold|holds) (your|her) [A-z \-\.]* close and humbly (mutter|mutters)|(hold|holds) [A-z \-\.]* tightly and (exclaim|exclaims)|(hop|hops) with one leg while praising Las and (utter|utters)|(kiss|kisses) [A-z \-\.]* while chanting|(kneel|kneels) down squeezing [A-z \-\.]* and (recite|recites)|(mutter|mutters) the holy words|(mutter|mutters) the magic words|(praise|praises) the saints and (raise|raises) [A-z \-\.]* while exclaiming|(raise|raises) [A-z \-\.]* high in the air and (mutter|mutters)|(raise|raises) (your|her) [A-z \-\.]* toward the heavens and (recite|recites)|(raise|raises) (your|her) [A-z \-\.]* while muttering|(roll|rolls) (your|her) eyes while rubbing halo and (sing|sings) out|(rub|rubs) [A-z \-\.]* and (utters|utter) with sinister voice|(rub|rubs) (your|her) [A-z \-\.]* while humbly reciting|(spread|spreads) white glow with (your|her) [A-z \-\.]* and (exclaim|exclaims)|(squeeze|squeezes) tightly on (your|her) [A-z \-\.]* and (utter|utters)|(stare|stares) intensively at [A-z \-\.]* and (state|states)|(swing|swings) (your|her) [A-z \-\.]* and humbly (utter|utters)|(touch|touches) (your|her) [A-z \-\.]* and quickly (recite|recites)|(wave|waves) [A-z \-\.]* while praising Las and (exclaim|exclaims)) \'sanctus Exzordus\'|appears in your visions and grants you protection." -u"([A-z \-\.]* with sheer power as you are surrounded|A white holy aura surrounds you and you feel more protected against evil.)" -d"^(You suddenly feel more vulnerable to evil.|Your glow fades away and you suddenly feel more vulnerable to evil.)" -p"Protection from Evil"
+;;/createprot -r1 -t0 -n"PfE" -w"^[A-Z][a-z]+ (furiously (wave|waves) (your|her) [A-z \-\.]* and (utters|utter)|(stare|stares) intensively at [A-z \-\.]* and (state|states)|(hop|hops) with one leg while praising Las and (utter|utters)|(roll|rolls) (your|her) eyes while rubbing halo and (sing|sings) out|(cut|cuts) the air with [A-z \-\.]*, loudly reciting|(mutter|mutters) the holy words|(rub|rubs) (your|her) [A-z \-\.]* while humbly reciting|(roll|rolls) (her|your) eyes while rubbing halo and (sing|sings) out|(raise|raises) (your|her) [A-z \-]* toward the heavens and (recite|recites)|(cherish|cherishes) (your|her) [A-z \-\.]* and determinedly (chant|chants)|(touch|touches) (your|her) [A-z \-\.]* and quickly (recite|recites)|fuming with celestial force (utter|utters) the words|(praise|praises) the saints and (raise|raises) [A-z \-\.]* while exclaiming|(kiss|kisses) [A-z \-\.]* while chanting|frantically (swing|swings) [A-z \-\.]* and (shriek|shrieks)|(spread|spreads) white glow with (your|her) [A-z \-\.]* and (exclaim|exclaims)|(squeeze|squeezes) tightly on (your|her) [A-z \-\.]* and (utter|utters)|(mutter|mutters) the magic words|(swing|swings) (your|her) [A-z \-\.]* and humbly (utter|utters)|(wave|waves) [A-z \-\.]* while praising Las and (exclaim|exclaims)|(raise|raises) (your|her) [A-z \-\.]* while muttering|(hold|holds) (your|her) [A-z \-\.]* close and humbly (mutter|mutters)|(kneel|kneels) down squeezing [A-z \-\.]* and (recite|recites)|(raise|raises) [A-z \-\.]* high in the air and (mutter|mutters)|(hold|holds) [A-z \-\.]* tightly and (exclaim|exclaims)|(rub|rubs) [A-z \-\.]* and (utters|utter) with sinister voice|(are|is) surrounded by fuming white aura as (you|she) (mutter|mutters)|(gaze|gazes) to the heights while holding [A-z \-\.]* close and (utter|uttering)) \'sanctus Exzordus\'|appears in your visions and grants you protection." -u"([A-z \-\.]* with sheer power as you are surrounded|A white holy aura surrounds you and you feel more protected against evil.)" -d"^(You suddenly feel more vulnerable to evil.|Your glow fades away and you suddenly feel more vulnerable to evil.)" -p"Protection from Evil"
 /createprot -r1 -t2 -n"Ss" -w"^[A-Z][a-z]+ ((rub|rubs) (your|her) [A-z \-\.]* while humbly reciting|(raise|raises) (your|her) [A-z \-\.]* toward the heavens and (recite|recites)|(swing|swings) (your|her) [A-z \-\.]* and humbly (utter|utters)|(cut|cuts) the air with [A-z \-\.]*, loudly reciting|(stare|stares) intensively at [A-z \-\.]* and (state|states)|(hop|hops) with one leg while praising Las and (utter|utters)|furiously (wave|waves) her [A-z \-\.]* and (utter|utters)|(wave|waves) [A-z \-\.]* while praising Las and (exclaim|exclaims)|(touch|touches) her pulsing halo and quickly (recite|recites)|(rub|rubs) [A-z \-\.]* and (utter|utters) with sinister voice|(roll|rolls) (your|her) eyes while rubbing halo and (singing|sings) out|(kneel|kneels) down squeezing [A-z \-\.]* and (recite|recites)|(mutter|mutters) the (holy|magic) words|(hold|holds) (your|her) [A-z \-\.]* close and humbly (mutter|mutters)|(kiss|kisses) [A-z \-\.]* while chanting|(praise|praises) the saints and (raise|raises) [A-z \-\.]* while exclaiming|(squeeze|squeezes) tightly on her [A-z \-\.]* and (utter|utters)|fuming with celestial force (utter|utters) the words|(spread|spreads) white glow with her [A-z \-\.]* and (exclaim|exclaims)|frantically (swing|swings) [A-z \-\.]* and (shriek|shrieks)|(are|is) surrounded by fuming white aura as (you|she) (mutter|mutters)|(gaze|gazes) to the heights while holding [A-z \-\.]* and (utter|uttering)|(hold|holds) [A-z \-\.]* tightly and (exclaim|exclaims)|(cherish|cherishes) (her|your) [A-z \-\.]* and determinedly (chant|chants)|(raise|raises) (your|her) [A-z \-\.]* while muttering|(raise|raises) [A-z \-\.]* high in the air and (mutter|mutters)) \'sanctus angeliq\'" -u"^([A-z]+ spiritually (reach|reaches) out for your soul, protecting it with holy force.|[A-z]+ (place|places) (your|her) hand over you and blesses your soul in the name of Las.)" -d"^(Your soul feels suddenly more vulnerable.)" -p"Soul shield"
-/createprot -r1 -t2 -n"HP" -w"^[A-Z][a-z]+ .* \'sanctus \. o O\'" -u"^[A-z]+\'s [A-z \-]* (vibrates under magical pressure|flashes uncanny) as you are suddenly by millions of dazzling white particles dancing enchantedly around your body." -d"^(Holy particles slow down, rapidly fading away.)" -p"Heavenly prot"
+/createprot -t0 -n"HP" -w"{*} .* \'sanctus \. o O\'" -u"* as you are suddenly by millions of dazzling white particles dancing enchantedly around your body." -d"Holy particles slow down, rapidly fading away." -p"Heavenly prot"
 /createprot -t2 -n"MS" -w"{*} * \'nullum driiiks umbah mana\'" -u"You feel your magical power expanding." -d"Your life force seems weaker." -p"Mana Shield"
 
 ;;Merioli fuming with celestial force utters the words 'sanctus . o O'
@@ -668,45 +674,10 @@
 ;; Folklorists ;;
 ;;;;;;;;;;;;;;;;;
 /createprot -t0 -n"MinP" -w"{*} {consult|consults} {your|his|her|its} guide and {chant|chants} \'parvus munimentum\'" -u"You feel slightly protected." -d"The minor protection fades away." -p"Minor protection"
-/createprot -r1 -t0 -n"Racp" -w"^([A-z]+ (consult|consults) (your|his|her|its) guide and (chant|chants) \'genus munimentum\')" -u"^You feel protected from (beasts|catfolk|cyclops|demons|dragons|drows|dwarves|elves|ents|goddesses|hobbits|humans|hydras|kenders|kobolds|leeches|liches|lizardmans|merfolk|ogres|orcs|pixies|tinmen|trolls|wolfmen)." -d"^(The racial protection fades away.)" -p"Racial protection"
-;; /createprot -r1 -t0 -n"ZooP" -w"^([A-z]+ (consult|consults) (your|his|her|its) guide and (chant|chants) \'\')" -u"^You feel protected from (ants|apes|bats|bears|bees|bugs|cats|cows|dogs|ducks|eels|gnus|oxes|owls|pigeons|pumas|rams|rats|squids|swans|turtles|whales|yaks|zebras)" -d"^(The Zoological protection fades away.)" -p"Zoological protection"
-;; /createprot -r1 -t0 -n"CryP" -w"^([A-z]+ )" -u"" -d"" -p"Cryptozoological Protection"
-;; /createprot -r1 -t0 -n"KinP" -w"^([A-z]+ )" -u"" -d"" -p"Kinemortological protection"
-
-;; god, roc, fly,
-;; rok, doe, air, pig, fox, imp, wasp, beam, hare, hulk, head,
-;; fire, lich, goat, blob, worm, mole, seal, wolf, bass, yeti, mule, pony, lion, soul,
-;; moth, harp, frog, pike, newt, clam, bull, deer, bird, bush, toad, boar, slug,
-;; tree, lamb, wyrm, fish, crab, solar, snail, ghost, camel, guard, fairy, skull, ettin,
-;; valar, moose, giant, louse, horse, horde, dryad, water, fiend, slime, robin,
-;; devil, cobra, demon, beast, snake, mound, tiger, nymph, shark, hydra, sheep, swarm, eagle,
-;; torso, sloth, sylph, smurf, bunny, angel, hound, mouse, pixie, error,
-;; gnoll, genie, golem, coder, gnome, dread, slaad, leech, titan, plant, harpy, skunk, satyr,
-;; drake, light, sprite, glider, shrimp, spider, zombie, oyster, badger, shadow,
-;; jackal, urvile, jumper, donkey, skaven, medusa, goblin, rodent, drider,
-;; dragon, treant, wyvern, tomato, maggot, rabbit, lizard, baboon, turkey, marmot,
-;; otyugh, sponge, beaver, jaguar, digger, spirit, mantis, insect, mutant,
-;; walrus, amoeba, winger, gopher, moomin, ferret, gorgon, urchin, shrike, fungus, daemon,
-;; beetle, monkey, raccoon, griffon, spectre, chimera, buffalo, caribou, fraggle, banshee,
-;; penguin, rooster, centaur, generic, gorilla, snowman, duergar, dolphin,
-;; process, chicken, demigod, anemone, cloaker, gremlin, phantom, aboleth,
-;; owlbear, goddess, lemming, pegasus, leopard, mammoth, vulture, default, octopus, efriiti,
-;; brownie, panther, giraffe, pudding, lobster, unicorn, vampire, dinosaur, ladybird,
-;; half-orc, elephant, bullywug, seahorse, beholder, squirrel, tentacle, gargoyle, starfish,
-;; minotaur, planetar, mosquito, tortoise, monolith, mastodon, halfling, mushroom, chipmunk,
-;; reindeer, platypus, scorpion, limb_leg, werewolf, dragonne, antelope, half-elf, stingray,
-;; beastman, hedgehog, humanoid, basilisk, skeleton, draconian, elemental, limb_hand,
-;; archdevil, cavewight, jellyfish, black_man, hobgoblin, thrikhren, alligator, wolverine,
-;; cromagnon, limb_head, lizardman, nightmare, displacer, butterfly, porcupine, stonefish,
-;; something, landshark, eye_thing, crocodile, snootling, manticore, centipede, salamander,
-;; gibberling, catoblepas, sabretooth, lizard man, rhinoceros, zhentorian, fire golem,
-;; leprechaun, troglodyte, barsoomian, slime_lord, seamonster, half_giant, tumbleweed,
-;; half-fiend, homonculus, mongrelman, jabberwocky, blue_dragon, mind_flayer, stone golem,
-;; wind_walker, neanderthal, earth golem, triceratops, grasshopper, blackpudding,
-;; swampmonster, doppelganger, rust monster, hippopotamus, wingless_wyrm, brown pudding,
-;; headless_pope, hairy_creature, slimy creature, tentacle brain, gelatinous cube,
-;; master torturer, chromatic dragon, fish_with_no_eyes, three_headed_hound and baby black pudding. 
-
+/createprot -r1 -t0 -n"Racp" -w"^([A-z]+ (consult|consults) (your|his|her|its) guide and (chant|chants) \'genus munimentum\')" -u"^You feel protected from (amoebas|angels|beasts|catfolk|chimeras|cyclops|demigods|demons|devils|dragons|drakes|dreads|drows|duergars|dwarves|elves|ents|genies|ghosts|giants|goddesses|golems|gods|hobbits|hulks|humans|hydras|kenders|kobolds|leeches|liches|lizardmans|medusas|merfolk|monkeys|nightmares|ogres|orcs|pixies|plants|rocs|satyrs|shadows|skavens|tinmen|titans|trees|trolls|unicorns|valars|vampires|wolfmen|wyrms|wyverns|zombies)." -d"^(The racial protection fades away.)" -p"Racial protection"
+/createprot -t0 -n"ZooP" -w"{*} {consult|consults} {your|his|her|its} guide and {chant|chants} \'zoologicus munimentum\'" -u"You feel protected from animals." -d"The zoological protection fades away." -p"Zoological protection"
+/createprot -t0 -n"CryP" -w"{*} {consult|consults} {your|his|her|its} guide and {chant|chants} \'cryptozoologicus munimentum\'" -u"You feel protected from mythical creatures." -d"The cryptozoological protection fades away." -p"Cryptozoological Protection"
+/createprot -t0 -n"KinP" -w"{*} {consult|consults} {your|his|her|its} guide and {chant|chants} \'kinemortologicus munimentum\'" -u"You feel protected from undead creatures." -d"The kinemortological protection fades away." -p"Kinemortological protection"
 
 ;;;;;;;;;;;;;;;;
 ;; Liberators ;;
@@ -714,10 +685,13 @@
 /createprot -t0 -n"GhV" -w"{*} {roll|rolls} {your|his|her|its} eyes and {whisper|whispers} \'kerubi on pomoni\'" -u"You feel a slight tingle in your eyes and can see more than ever." -d"The ghost vision leaves you." -p"Ghost Vision"
 
 ;;;;;;;;;;;;;;
-;; Animisit ;;
+;; Animist  ;;
 ;;;;;;;;;;;;;;
 /createprot -r1 -t0 -n"AA" -w"^([A-z]+ (touch|touches) (your|his|her|its) talisman and (whisper|whispers) to it \'Animal Aspects\')" -u"^You feel the aspect of ([A-z ]+) taking over you! You feel ([A-z ]+)." -d"^(You are no longer spellbound by the animal aspect.)" -p"Animal Aspect"
 
+;;;;;;;;;;;;;;;;
+;; Riftwalker ;;
+;;;;;;;;;;;;;;;;
 /createprot -t0 -n"RVS" -w"You deftly pluck a dark orb from the rift vortex. The orb twists and bends as you hold it, gradually solidifying into a lump of stone." -u"As you grasp the vortex stone, it melts into nothing leaving you empty handed! You feel a pulse of energy flow up through your arm, giving you a tingling sensation." -d"You no longer tingle." -p"Rift Vortex Stone"
 
 ;;;;;;;;;;;

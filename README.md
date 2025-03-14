@@ -85,3 +85,9 @@ Counter for mage essences. Loaded automatically with bat-mage.tf.
 ### bat-combat.tf
 Melee combat hilite and hit counter. Not actively updated.
 
+## Bugs & Other stuff
+As some you might note, some triggers and scripts are copied from other people. Quite a huge part of all the credit go to Jenny, Hair, Era, Ggr and many more who I might forget to mention here (sorry).
+
+In addition there are quite a few who help with testing and messages and sometimes also fixing my bugs. A huge thanks to all contributors and to the community.
+
+You can use git to suggest improvements or contact me directly in mud for fixes / changes.
