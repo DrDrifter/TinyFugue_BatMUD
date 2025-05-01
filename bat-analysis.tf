@@ -76,7 +76,7 @@
 ;;  /if (({spell} !~ "spark_birth") & ({spell} !~ "rift_pulse") & ({spell} !~ "dimensional_leech"))\
   /echo -aB (TinyFugue) ### Target shudders %damtype (40\%) ###%;\
     /if ({analysis_report} =~ "on") /set_analysis%;/endif%;\
-  /endif
+;;  /endif
 
 ;; Grunt type
 ;; Note: Added extended regexp so liberator gslash message doesn't match here

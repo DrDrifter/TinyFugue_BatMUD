@@ -92,6 +92,7 @@
 
 ;; Entity drying wind
 ;; Needs update, have more shields
+;; NB: Move this to riftwalker stuff
 /def -F -t'Drycraeft the magic entity holds the Shield of the Wind up high!' magic_entity_wind_timer=/set ewind_status=_%;/set ewind_time=$[time()]%;/repeat -00:30 1 /set ewind_status=X
 
 
@@ -244,3 +245,7 @@
 /echo  |  DMP ring (dmpall) [%wyrm_ring_status]%;\
 /echo  |  Fairy wand (frest) [%fqueen_wand_status] [%fqueen_wand_cd]%;\
 /echo  `-----------------------------`
+
+
+;; Some stuff that I just moved here for archive
+;;/def -mglob -t"Your orb sparkles." orbready = /echo -aB (TF Info): Wind invoke reloaded

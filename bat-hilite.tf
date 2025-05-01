@@ -9,7 +9,7 @@
 ;; Originally coded by Spid, changes by Jenny.                                ;;
 ;;                                                                            ;;
 ;; Modified & maintained currently by Drifter since 2001-                     ;;
-;; Last updated 9.1.2012                                                     ;;
+;; Last updated 30.4.2025                                                     ;;
 ;;                                                                            ;;
 /loaded bat-hilite.tf
 
@@ -23,7 +23,7 @@
 /def north = door n open ;;n ;;door s locked
 /def south = door s open ;;s ;;door n locked
 
-;; Hilite some friends (I just hilite most important ones and those that ive met rl)
+;; Hilite some friends (I just hilite some - this list isn't really maintained)
 /set friends=[Bb]erenn|[Bb]moa|[Bb]roetchen|[Cc]roesus|[Dd]rizzin|[Ee]lero|[Jj]uki|[Nn]edra|[Mm]oonlord|[Mm]orglum|[Ss]augor|[Ss]tarshine|[Ss]lughter|[Zz]enick|[Ff]avorit|[Mm]ithrand|[Dd]rifter|[Kk]rokodiili|[Mm]iigor|[Ff]oxbat|[Rr]onald|[Rr]obinhood|[Cc]aesar|[Jj]acen|[Ss]ir|[Dd]escad|[Gg]arou|[Cc]ran|[Ss]caler|[Gg]rimpold|[Pp]hineos|[Ss]winkkel|[Kk]ozma|[Cc]ozmo|[Rr]adium|[Mm]orloc|[Kk]ragan|[Ff]emko|[Gg]ror|[Gg]idan|[Bb]else|[Dd]arkwell|[Mm]ackakkonen|[Dd]eras|[Ss]aldas|[Kk]imvais|[Hh]orns|[Mm]inesweeper|[Aa]lcal|[Zz]ithromax|[Mm]ursia|[Tt]ascruel|[Mm]yshikin|[Ee]raser|[Ll]aaban|[Bb]leezuz|[Vv]alkrist|[Ss]olarhawk|[Mm]olotov|[Zz]orb|[Oo]mnos|[Zz]erks|[Mm]erioli
 /eval /def -F -p10 -P1Cmagenta -mregexp -t"((^| )(%{friends})( |$$))" friends
 
@@ -373,7 +373,6 @@
 
 ;;/def -mglob -t"You feel a sharp stab in your finger as if something bit you!" tazbal_special = @party report (Stats boosted by ring)
 ;;/def -mglob -t"Suddenly, the runes on the Shield of the Wind glow bright*" shield_of_wind = /echo -aB (TF Info): Wind special avail
-;;/def -mglob -t"Your orb sparkles." orbready = /echo -aB (TF Info): Wind invoke reloaded
 ;;/def -mglob -t"You feel strength flowing between you and *" ringkiss = /repeat -00:10 1 @party report (Ring kiss loaded)
 ;; Thundermace
 ;/def -mglob -aCbgblue -aBCyellow -t"* blazes with blue flames as a ray of lightning hits *" mace_special1
@@ -396,14 +395,12 @@
 ;/def -mglob -t"As you channel your will to Las through Empyrean, the god grants you a protective shield of Faith." empyrean_sof_ok = @party say (empyrean SoF active)
 ;/def -mglob -t"You try to channel your will through Empyrean.. but something goes wrong." empyrean_wof_fail = @party say EMPYREAN FUCKED!
 
-/def -mglob -t"You awaken from your short rest, and feel slightly better." campdone = @party report (done camping)
-/def -mglob -t"You stretch yourself and consider camping." campready1 = @party report (can camp)
-/def -mglob -t"You feel a bit tired." campready2 = @party report (can camp)
-/def -mglob -t"You feel like camping a little." campready3 = @party report (can camp)
+;;/def -mglob -t"You awaken from your short rest, and feel slightly better." campdone = @party report (done camping)
+;;/def -mglob -t"You stretch yourself and consider camping." campready1 = @party report (can camp)
+;;/def -mglob -t"You feel a bit tired." campready2 = @party report (can camp)
+;;/def -mglob -t"You feel like camping a little." campready3 = @party report (can camp)
 ;;/def -mglob -t"You feel extra powers flowing into you from your bracers of divine knowledge." bracelet_boost = /echo -aB (TinyFugue) Int/spr boosted from bracers
 
-/def -F -mglob -t'You wear Demonic Ring of Invisibility*' demonring_wear = /repeat -0:10 1 /echo -aB (TF Info): Demonic ring ready
-;;/def -F -mglob -t'a tiny squirrel running around' darkwood_key = @kill squirrel
 
 ;;;;;;;;;;;;;
 ;; GAGGING ;;
