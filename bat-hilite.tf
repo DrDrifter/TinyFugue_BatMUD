@@ -179,7 +179,7 @@
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes with {sheer|terrific|blazing|purifying|immense} {rage|force|glow|power} upon *' dispel_evil_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*strikes {mightily|hard} upon *' dispel_evil_hit2
 /def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {bursting|crashing|detonating|exploding|popping|slamming|zapping} on *' holy_bolt_hit
-/def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {annihilating|blowing|unbalancing|damaging|dispelling|disrupting|incinerating|rendering|pulverizing|shocking} *' dispel_undead_hit
+/def -p6 -aCbgyellow -aBCred -mglob -t'*through the air {annihilating|blowing|damaging|dispelling|disrupting|incinerating|rendering|pulverizing|shocking|splitting|unbalancing} *' dispel_undead_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*as one big burst, {badly|brutally|frantically|horribly|moderately|slightly|striking|uncontrollably} {burning|directly|dismembering|exploding|rendering|scorching|wounding}*' banish_demons_hit
 /def -p6 -aCbgyellow -aBCred -mglob -t'*emits fuming white aura around screaming * {badly|brutally} {burning|crushing} {him|her|it}*' dispel_undead_hit3
 /def -p6 -aCbgyellow -aBCred -mglob -t'*is bathed in bright light as heavenly choir plays celestial fanfare. The universe halts as WRATH OF LAS thunders through *' wrath_of_las_hit
@@ -271,6 +271,7 @@
 ;;/def -F -p9 -aBCyellow -t'lapses into unconsciousness from severe loss of blood.' unconscious= party say %{1} UNCONSCIOUS
 /def -F -p6 -mregexp -t'([A-Za-z \-\'\,\.]+) starts grappling ([A-Za-z ]+)\\.$' grapplestart = @party report %P2 has been grappled by %P1
 /def -F -p6 -mglob -t"You feel more vital." death_stats_gone = @party report (Recovered from death)
+/def -F -mglob -t"You have a feeling that somebody is watching you." = /echo -aB TF Info: --=* Being Snooped *=--
 
 ;; Greed
 /set generic_amount_list=(One|one|Two|two|Three|three|Four|four|Five|five|Six|six|[Ss]even|[Ee]ight|[Nn]ine|[Tt]en|[Mm]any|[Aa] small pile of|[Aa] pile of|[Aa] huge pile of|[Aa] big pile of|[Aa] small hill of|[Aa] mountain of|[0-9]*)

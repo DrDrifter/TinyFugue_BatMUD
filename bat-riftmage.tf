@@ -157,14 +157,15 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /eval /_echo  | Power: %stringi (%pisteet points) [%muutos] [%muutosalku] %pituus |
 
 ;; Translate rep (All entities stats page - gem entities)
-/def -ag -F -mregexp -i -t'^\| ([A-Z][a-z]+)(\s+)\| ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)([.]+) \| (Pleased|Narked|Riled|Cross|ANGRY)\s+\|$' kaikkientti_poikelot=\
-/let enimi=%P1%;/let epad=%P2%;/let sadattonnit=%P3%;/let kymppitonnit=%P4%;/let tonnit=%P5%;/let satkut=%P6%;/let kympit=%P7%;/let ykkoset=%P8%;\
-/let loppupad=%P9%;/let huumori=%P10%;\
+/def -ag -F -mregexp -i -t'^\|(\s|\+)([A-Z][a-z]+)(\s+)\| ([X]*)([O]*)([o]*)([!]*)([:]*)([,]*)([.]+) \| (Pleased|Narked|Riled|Cross|ANGRY)\s+\|$' kaikkientti_poikelot=\
+/let eactive=%P1%;/let ename=%P2%;/let epad=%P3%;\
+/let sadattonnit=%P4%;/let kymppitonnit=%P5%;/let tonnit=%P6%;/let satkut=%P7%;/let kympit=%P8%;/let ykkoset=%P9%;\
+/let loppupad=%P10%;/let huumori=%P11%;\
 /let kaikki_pisteet=\
 $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*strlen(satkut)+10*strlen(kympit)+strlen(ykkoset)]%;\
 /let stringi=$[strcat(sadattonnit,kymppitonnit,tonnit,satkut,kympit,ykkoset)]%;\
 /let loppupad=$[substr(%loppupad,strlen(%kaikki_pisteet)+11)]%;\
-/_echo  | %enimi%epad| %stringi (%kaikki_pisteet points) %loppupad | %huumori |
+/_echo  |%eactive%ename%epad| %stringi (%kaikki_pisteet points) %loppupad | %huumori |
 
 ;; commands for entity status
 /def -ag -h"send {GEF}" riftwalker_status_fir = /SEND gem entities fire
