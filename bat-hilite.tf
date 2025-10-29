@@ -422,13 +422,17 @@
 /def -mglob -ag -t"Your pumpkin shell shield bursts and vanishes." pumpkin_shit04
 /def -mglob -ag -t"* orange force field bursts and vanishes." pumpkin_shit05
 /def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before [A-Z][a-z]+\.$" silly_tiara_gag
-/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|echo|grunts|gurgles|howls|mewls|says|quacks|wails) \'Your majesty\.\'$" silly_tiara_gag_2
+/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|clatters|echoes|grunts|gurgles|hisses|howls|melodically hums|mewls|says|quacks|wails) \'Your majesty\.\'$" silly_tiara_gag_2
+
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1
 /def -mglob -ag -t"* speech doesn't seem to interest *" swashbuckling_gag2
 /def -mglob -ag -t"* speech doesn't seem to have very strong influence on *" swashbuckling_gag3
 /def -mglob -ag -t"* speech is too provocative to you." swashbuckling_gag4
+/def -mglob -ag -t"* speech doesn't give you any new ideas." swashbuckling_gag5
+/def -mglob -ag -t"You wish to make a difference by using violence." swashbuckling_gag6
+/def -mglob -ag -t"You don't like the way Goodgulf is holding his weapon and sizing you up." swashbuckling_gag7
 
 ;; Stormfall gag
 /def -mglob -ag -t"Stormfall axe says*"    stormfall_axe_gag1
