@@ -57,6 +57,12 @@ Hilites text, players, important events, tells, flex wobbles etc. Colors blasts 
 ```
 ### protter.tf
 Old-style protter that will report prots that are up and when they go down. Includes a prot spell name parser.
+Note: Some refactoring work is needed here
+- Since customizeable "party prots" command exists, this protter can be somewhat useless
+- There are some old things that don't really make sense anymore, like average times
+- There are some prots missing for new guilds that I haven't had access
+- It doesn't include any guild-specific prots that can only be cast on yourself
+- Also this means that any guild-specific prots (like "Enrage" for example) then depend on protter.tf to be loaded
 
 ### bat-magical.tf
 Magical background triggers. Basic spells that are given from the background.
