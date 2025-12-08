@@ -270,7 +270,7 @@
 /def -F -p9 -aBCyellow -mglob -t'You are the new leader of the party.' party_leader=@party forcefollow all
 ;;/def -F -p9 -aBCyellow -t'lapses into unconsciousness from severe loss of blood.' unconscious= party say %{1} UNCONSCIOUS
 /def -F -p6 -mregexp -t'([A-Za-z \-\'\,\.]+) starts grappling ([A-Za-z ]+)\\.$' grapplestart = @party report %P2 has been grappled by %P1
-/def -F -p6 -mglob -t"You feel more vital." death_stats_gone = @party report (Recovered from death)
+/def -F -p6 -mglob -t"You feel more vital." death_stats_gone = /echo -aB TF Info: Recovered from death
 /def -F -mglob -t"You have a feeling that somebody is watching you." = /echo -aB TF Info: --=* Being Snooped *=--
 
 ;; Greed
@@ -422,8 +422,7 @@
 /def -mglob -ag -t"Your pumpkin shell shield bursts and vanishes." pumpkin_shit04
 /def -mglob -ag -t"* orange force field bursts and vanishes." pumpkin_shit05
 /def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before [A-Z][a-z]+\.$" silly_tiara_gag
-/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|clatters|echoes|grunts|gurgles|hisses|howls|melodically hums|mewls|says|quacks|wails) \'Your majesty\.\'$" silly_tiara_gag_2
-
+/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|clatters|cruelly growls|echoes|grunts|gurgles|hisses|howls|melodically hums|mewls|says|quacks|wails) \'Your majesty\.\'$" silly_tiara_gag_2
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1
