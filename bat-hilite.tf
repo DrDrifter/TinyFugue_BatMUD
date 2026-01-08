@@ -422,7 +422,7 @@
 /def -mglob -ag -t"Your pumpkin shell shield bursts and vanishes." pumpkin_shit04
 /def -mglob -ag -t"* orange force field bursts and vanishes." pumpkin_shit05
 /def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before [A-Z][a-z]+\.$" silly_tiara_gag
-/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|clatters|cruelly growls|echoes|grunts|gurgles|hisses|howls|melodically hums|mewls|says|quacks|wails) \'Your majesty\.\'$" silly_tiara_gag_2
+/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|clatters|cruelly growls|echoes|grunts|gurgles|hisses|howls|melodically hums|mewls|says|quacks|thunders mightily|wails) \'Your majesty\.\'$" silly_tiara_gag_2
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1
