@@ -10,11 +10,11 @@
 /set fire_entity_name=Bael the fire entity
 
 ;; Hi-lites
-/def -F -mglob -aB -t"Your entity is prepared to do the skill." entti_skilli_hilite
-/def -F -mglob -aB -t"* entity starts concentrating on a new offensive skill." entti_offuskilli_hilite
-/def -F -mglob -ag -t"Your entity doesn't know that skill." gag_skilli
+/def -F -mglob -aB -t"Your entity is prepared to do the skill." rw_entity_skill_hilite
+/def -F -mglob -aB -t"* entity starts concentrating on a new offensive skill." rw_entity_offskill_hilite
+/def -F -mglob -ag -t"Your entity doesn't know that skill." rw_entity_gag_skill
 /def -F -mregexp -t'Your hold on ([A-z ]+)\'s life energy slips away.' sparkbirth_off = /echo -aB (TF Info): Spark birth down on %P1
-/def -F -mglob -aB -t'You bring the channelling to an end, and the dark shadow around * starts to dissipate.' dimleech_ends
+/def -F -mglob -aB -t'You bring the channelling to an end, and the dark shadow around * starts to dissipate.' rw_dimleech_ends
 
 ;; Spells
 /def am =/set targettype=none%;/set spell=absorbing_meld%;/do_spell
@@ -188,7 +188,9 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /def -mglob -t"You notice your entity's weapon glow with power!" entity_weapon_up = /echo TF Info: Entity weapon gained gem
 /eval /def -mregexp -t"^%{fire_entity_name} (licks you\.|hugs you\.|cackles gleefully at you\.|slaps a thundering high-five with you\.|flexes its muscles before you\.|giggles inanely at you\.|screams happily\.|drools uncontrollably over you\.|lets out a yell of perverse delight as it feels the pain of battle\!|exclaims \'show me more pain master\!\'|lets out a yell of BEASTIAL bliss as it feels the pain of battle\!)" fire_entity_got_critted = @gem cmd parry 51 fire
 /eval /def -mregexp -t"^%{fire_entity_name}\'s battle joys come to an end." fire_entity_battlejoy_down = @gem cmd parry 0 fire
-/def  -F -p8 -aCbgyellow -aCred -t"You successfully sold * for * gold." sold_entity_shop
+/def -F -p8 -aCbgyellow -aCred -t"You successfully sold * for * gold." sold_entity_shop
+/def -F -mglob -aCgreen -t"A stream of energy flows from you into * entity, healing it." rw_entity_heal_hilite
+/def -F -mglob -aB -t"You feel the flow of energy between you and Eard the earth entity stop." rw_entity_heal_stop
 
 
 ;; Reports (note: I've only listed the most useful reports here)
