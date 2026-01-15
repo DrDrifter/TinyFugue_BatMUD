@@ -189,8 +189,9 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /eval /def -mregexp -t"^%{fire_entity_name} (licks you\.|hugs you\.|cackles gleefully at you\.|slaps a thundering high-five with you\.|flexes its muscles before you\.|giggles inanely at you\.|screams happily\.|drools uncontrollably over you\.|lets out a yell of perverse delight as it feels the pain of battle\!|exclaims \'show me more pain master\!\'|lets out a yell of BEASTIAL bliss as it feels the pain of battle\!)" fire_entity_got_critted = @gem cmd parry 51 fire
 /eval /def -mregexp -t"^%{fire_entity_name}\'s battle joys come to an end." fire_entity_battlejoy_down = @gem cmd parry 0 fire
 /def -F -p8 -aCbgyellow -aCred -t"You successfully sold * for * gold." sold_entity_shop
-/def -F -mglob -aCgreen -t"A stream of energy flows from you into * entity, healing it." rw_entity_heal_hilite
-/def -F -mglob -aB -t"You feel the flow of energy between you and Eard the earth entity stop." rw_entity_heal_stop
+/def -mglob -aCgreen -t"A stream of energy flows from you into * entity, healing it." rw_entity_heal_hilite
+/def -mglob -aB -t"You feel the flow of energy between you and Eard the earth entity stop." rw_entity_heal_stop
+/def -mglob -aCyellow -t"The energy flow between you and your entity is disrupted." rw_entity_heal_paused
 
 
 ;; Reports (note: I've only listed the most useful reports here)
