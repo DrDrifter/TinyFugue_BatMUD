@@ -205,6 +205,7 @@ suddenly stops breathing and jerks a couple of times\
 /def -F -mglob -t"* appears weakened!" degenewentin = @party report (Degenerate person hits!)
   
 /def -aB -t"You masterfully channel the elemental powers." plaque_blast = @party report *** Plaque blast! ***
+/def -aB -t"You feel the very backbone of reality shudder as you channel RAW POWER!" = @party report *** RAW plaque blast! ***
 
 ; cold
 ; Your icy whirlwind of magic numbs Scientist to the bone.
