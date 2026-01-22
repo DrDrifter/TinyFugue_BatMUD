@@ -44,6 +44,8 @@
 /def barb-castello=@e;13 ne;20 n;20 n;20 n
 /def castello-sailor=@8 s;5 se;5 e;8 se;8 e;9 se;4 e;2 ne;2 n;ne;2 n;2 w;sw;list
 /def sailor-castello=@ne;2 e;2 s;sw;2 s;2 sw;4 w;9 nw;8 w;8 nw;5 w;5 nw;8 n
+/def castello-yard=@8 s;5 se;5 e;8 se;8 e;9 se;4 e;2 ne;2 n;ne;2 n;2 e;enter
+/def yard-castello=out;2 w;2 s;sw;2 s;2 sw;4 w;9 nw;8 w;8 nw;5 w;5 nw;8 n
 /def castello-mist=@8 s;travel se;travel se;11 e;6 s;se;8 s;5 se;4 s;2 se;2 s;11 se;3 e;4 se;3 e;ne;2 e;3 se;4 e;4 se;9 e;3 ne;4 e;4 ne;20 e;3 e;12 se;20 s;10 s;se;10 s;sw;s
 /def mist-castello=@n;ne;10 n;nw;10 n;20 n;12 nw;3 w;20 w;4 sw;4 w;3 sw;9 w;4 nw;4 w;3 nw;2 w;sw;3 w;4 nw;3 w;11 nw;2 n;2 nw;4 n;5 nw;8 n;nw;6 n;11 w;travel w;4 w;9 nw; 8 w;8 nw;5 w
 /def castello-arthur=@3 s;5 w;7 nw;10 n;nw;6 n;ne;10 n;4 ne;8 e
