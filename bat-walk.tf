@@ -53,6 +53,8 @@
 /def wrebie-sc=@7n;2 ne;4 nw;4 w;3 nw;2 w;sw;3 w;4 nw;3 w;11 nw;2 n;2 nw;4 n;5 nw;8 n;nw;6 n;4 w
 /def wrebie-castello=@11 n;travel nw;travel w;travel w;travel w;travel w 42;2 ne;e;3 n
 /def church-clock=@20 e;20 e;18 e;10 n;4 nw;2 n;2 e
+/def church-barnum=@20 east;20 east;20 east;8 east;7 north;20 east;5 north;2 east
+/def barnum-church=@2 west;5 south;20 west;7 south;8 west;20 west;20 west;20 west
 
 ;; Deso
 /def anim-deso=@13 e;4 ne;20 e;20 e;6 se;3 e;16 se;2 s;11 se;19 e
