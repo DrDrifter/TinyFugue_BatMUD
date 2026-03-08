@@ -5,6 +5,20 @@
 ;; Copyright Jenny 1998
 ;; Updates by Drifter 2002->
 /loaded bat-walk.tf
+
+;; Keyboard binds for keypad
+/def key_nkp1=sw
+/def key_nkp2=s
+/def key_nkp3=se
+/def key_nkp4=w
+/def key_nkp5=clairvoyance
+/def key_nkp6=e
+/def key_nkp7=nw
+/def key_nkp8=n
+/def key_nkp9=ne
+/def key_nkpEnt=/dokey newline
+
+;; Walk function to walk towards a dir in outerworld
 /def walk=\
    /if (regmatch("[news]", {*}))\
      /set walk_dir=%{*}%; %{walk_dir}%;\
@@ -14,6 +28,8 @@
    /def -F -p99 -mregexp -t"^([A-Za-z ]*)\[?[0-9,]*\]? \\\\\\\\([nw,n,ne,w,e,sw,s,se,u,d,enter,path,portal]+\\\\\\\\).$$$" terrain_walk= /let terrain_checked_type=%%%{P1}%%%; /if ({terrain_type}!~{terrain_checked_type}) /undef terrain_walk%%%; /undef end_walk%%%; @map%%%; /elseif ({terrain_type}=~{terrain_checked_type}) /set move_count=$$$[{move_count}+1]%%%; /if ({move_count}<31) %%%{walk_dir}%%%; /else /undef terrain_walk%%%; /undef end_walk%%%; map%%%; /endif%%%; /endif%%;\
    /def -F -p99 -n1 -t"You can't go that way!" end_walk= /undef terrain_walk%;\
    %{walk_dir}
+
+
 
 ;; Defined paths
 ;;Laenor
