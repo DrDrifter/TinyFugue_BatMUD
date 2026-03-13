@@ -292,7 +292,7 @@
 	/ENDIF
 
 ;;; Bead map parsing
-/set beadmapfile=~/build/tf-lib/beadmap.txt
+/set beadmapfile=~/build/beadmap.txt
 /set warn_curly_re=off
 /def -ag -F -mregexp -t"^\s\s_\.\-\._\.\-\._\.\-\._\.\-\._\.\-\._\.\-\.\_$" map_start=/echo -ab Map_start%;/set map_echo=1%;/unset map_write
 ;;/def -F -mregexp -t"^\s\s.\s\s\s(.{17})\s\s." map_line = /if (%{map_echo} == 1) /set map_pattern=$[strcat({map_pattern},"\n",%P1)]%;/endif
@@ -310,4 +310,4 @@
    /unset map_echo%;\
 ;;   /echo %map_pattern%|/writefile %beadmapfile
 
-/def mapdebug = /quote -S /echo -aB !/home/pi/build/parse_map.pl
+/def mapdebug = /quote -S /echo -aB !/home/pi/build/perl/parse_map.pl

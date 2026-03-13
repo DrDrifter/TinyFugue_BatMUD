@@ -11,7 +11,7 @@
 /def key_nkp2=s
 /def key_nkp3=se
 /def key_nkp4=w
-/def key_nkp5=clairvoyance
+/def key_nkp5=cl
 /def key_nkp6=e
 /def key_nkp7=nw
 /def key_nkp8=n

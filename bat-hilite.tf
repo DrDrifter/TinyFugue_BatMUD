@@ -423,6 +423,7 @@
 /def -mglob -ag -t"* orange force field bursts and vanishes." pumpkin_shit05
 /def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before [A-Z][a-z]+\.$" silly_tiara_gag
 /def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|clatters|cruelly growls|echoes|grunts|gurgles|hisses|howls|melodically hums|mewls|says|quacks|thunders mightily|wails) \'Your majesty\.\'$" silly_tiara_gag_2
+/def -mglob -ag -t"* gets some herbs out of * HUGE shiny jar." folkchannujar_gag
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1
@@ -437,35 +438,6 @@
 /def -mglob -ag -t"Stormfall axe says*"    stormfall_axe_gag1
 /def -mglob -ag -t"Stormfall axe screams*" stormfall_axe_gag2
 /def -mglob -ag -t"Stormfall axe asks*"    stormfall_axe_gag3
-
-;; Praixor glove help
-/def glovegem =\
-/echo  .-----------------------------.%;\
-/echo  |   Praixor's Gem Zap List    |%;\
-/echo  +-----------------------------+%;\
-/echo  | Amber      -> Int           |%;\
-/echo  | Aquamarine -> Rain          |%;\
-/echo  | Bloodstone -> Acid Wind     |%;\
-/echo  | Diamond    -> Lesser Spores |%;\
-/echo  | Emerald    -> Poison        |%;\
-/echo  | Hematite   -> Str           |%;\
-/echo  | Jade       -> Dex           |%;\
-/echo  | Moonstone  -> Wis           |%;\
-/echo  | Onyx       -> Flaming Ice   |%;\
-/echo  | Opal       -> Suffocation   |%;\
-/echo  | Pearl      -> Banish        |%;\
-/echo  | Pearl(blk) -> Area Banish   |%;\
-/echo  | Ruby       -> Firebolt      |%;\
-/echo  | Sapphire   -> Psibolt       |%;\
-/echo  | Sunstone   -> Wind          |%;\
-/echo  | Topaz      -> LightningBolt |%;\
-/echo  |                             |%;\
-/echo  |HEAL= carnelian,alexandrite  |%;\
-/echo  |olivine,chrysoberyl,amethyst |%;\
-/echo  |moss agate,zircon,quartz,    |%;\
-/echo  |turquoise,malachite,garnet   |%;\
-/echo  |rhodonite,                   |%;\
-/echo  `-----------------------------` 
 
 ;; Skill drain hit
 ;; You feel DRAINED of knowledge!!!

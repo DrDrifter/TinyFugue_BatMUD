@@ -1,6 +1,7 @@
 ;;
 ;; Bat-lelut.tf
 ;; Please note: you will need to alias bp to your rig where you hold all your toys
+;; so in other words, do "alias bp backpack" and replace backpack with your rig name
 ;;
 /loaded bat-lelut.tf
 
@@ -249,3 +250,33 @@
 
 ;; Some stuff that I just moved here for archive
 ;;/def -mglob -t"Your orb sparkles." orbready = /echo -aB (TF Info): Wind invoke reloaded
+
+;; Praixor glove help
+/def glovegem =\
+/echo  .-----------------------------.%;\
+/echo  |   Praixor's Gem Zap List    |%;\
+/echo  +-----------------------------+%;\
+/echo  | Amber      -> Int           |%;\
+/echo  | Aquamarine -> Rain          |%;\
+/echo  | Bloodstone -> Acid Wind     |%;\
+/echo  | Diamond    -> Lesser Spores |%;\
+/echo  | Emerald    -> Poison        |%;\
+/echo  | Hematite   -> Str           |%;\
+/echo  | Jade       -> Dex           |%;\
+/echo  | Moonstone  -> Wis           |%;\
+/echo  | Onyx       -> Flaming Ice   |%;\
+/echo  | Opal       -> Suffocation   |%;\
+/echo  | Pearl      -> Banish        |%;\
+/echo  | Pearl(blk) -> Area Banish   |%;\
+/echo  | Ruby       -> Firebolt      |%;\
+/echo  | Sapphire   -> Psibolt       |%;\
+/echo  | Sunstone   -> Wind          |%;\
+/echo  | Topaz      -> LightningBolt |%;\
+/echo  |                             |%;\
+/echo  |HEAL= carnelian,alexandrite  |%;\
+/echo  |olivine,chrysoberyl,amethyst |%;\
+/echo  |moss agate,zircon,quartz,    |%;\
+/echo  |turquoise,malachite,garnet   |%;\
+/echo  |rhodonite,                   |%;\
+/echo  `-----------------------------`
+

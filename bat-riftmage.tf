@@ -192,6 +192,7 @@ $[100000*strlen(sadattonnit)+10000*strlen(kymppitonnit)+1000*strlen(tonnit)+100*
 /def -mglob -aCgreen -t"A stream of energy flows from you into * entity, healing it." rw_entity_heal_hilite
 /def -mglob -aB -t"You feel the flow of energy between you and Eard the earth entity stop." rw_entity_heal_stop
 /def -mglob -aCyellow -t"The energy flow between you and your entity is disrupted." rw_entity_heal_paused
+/def -mglob -t"You hear tingling sound from your pocket." rw_crap_coins_drop = @drop mowgles in my disc
 
 
 ;; Reports (note: I've only listed the most useful reports here)

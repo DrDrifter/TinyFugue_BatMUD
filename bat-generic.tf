@@ -310,7 +310,7 @@
    /def -F -mregexp -p7 -t"^%{tmp_target} leaves ([a-z]+)\\\\.$$" do_follow= %%{P1}
 
 ;; Find mob in database - this calls for an external script to be executed
-/def fmob=/quote -S /echo -aB (TF info): !/home/pi/build/findmob.pl %{*}
+/def fmob=/quote -S /echo -aB (TF info): !/home/pi/build/perl/findmob.pl %{*}
 
 ;; Just some debug stuff
 /def debug=\
