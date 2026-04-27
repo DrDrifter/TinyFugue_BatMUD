@@ -24,7 +24,7 @@
 /def south = door s open ;;s ;;door n locked
 
 ;; Hilite some friends (I just hilite some - this list isn't really maintained)
-/set friends=[Bb]erenn|[Bb]moa|[Bb]roetchen|[Cc]roesus|[Dd]rizzin|[Ee]lero|[Jj]uki|[Nn]edra|[Mm]oonlord|[Mm]orglum|[Ss]augor|[Ss]tarshine|[Ss]lughter|[Zz]enick|[Ff]avorit|[Mm]ithrand|[Dd]rifter|[Kk]rokodiili|[Mm]iigor|[Ff]oxbat|[Rr]onald|[Rr]obinhood|[Cc]aesar|[Jj]acen|[Ss]ir|[Dd]escad|[Gg]arou|[Cc]ran|[Ss]caler|[Gg]rimpold|[Pp]hineos|[Ss]winkkel|[Kk]ozma|[Cc]ozmo|[Rr]adium|[Mm]orloc|[Kk]ragan|[Ff]emko|[Gg]ror|[Gg]idan|[Bb]else|[Dd]arkwell|[Mm]ackakkonen|[Dd]eras|[Ss]aldas|[Kk]imvais|[Hh]orns|[Mm]inesweeper|[Aa]lcal|[Zz]ithromax|[Mm]ursia|[Tt]ascruel|[Mm]yshikin|[Ee]raser|[Ll]aaban|[Bb]leezuz|[Vv]alkrist|[Ss]olarhawk|[Mm]olotov|[Zz]orb|[Oo]mnos|[Zz]erks|[Mm]erioli
+/set friends=[Aa]lcal|[Bb]else|[Bb]erenn|[Bb]leezuz|[Bb]moa|[Bb]roetchen|[Cc]ran|[Cc]roesus|[Cc]ozmo|[Dd]arkwell|[Dd]escad|[Dd]rizzin|[Ee]lero|[Ff]avorit|[Hh]orns|[Jj]uki|[Jj]ure|[Nn]edra|[Mm]erioli|[Mm]olotov|[Mm]oonlord|[Mm]orglum|[Ss]augor|[Ss]lughter|[Ss]tarshine|[Ss]tylus|[Oo]mnos|[Zz]enick|[Mm]ithrand|[Dd]rifter|[Kk]rokodiili|[Mm]iigor|[Ff]oxbat|[Rr]onald|[Rr]obinhood|[Cc]aesar|[Jj]acen|[Ss]ir|[Gg]arou|[Ss]caler|[Gg]rimpold|[Pp]hineos|[Ss]winkkel|[Kk]ozma|[Rr]adium|[Mm]orloc|[Kk]ragan|[Ff]emko|[Gg]ror|[Gg]idan|[Mm]ackakkonen|[Dd]eras|[Ss]aldas|[Kk]imvais|[Mm]inesweeper|[Zz]ithromax|[Mm]ursia|[Tt]ascruel|[Mm]yshikin|[Ee]raser|[Ll]aaban|[Vv]alkrist|[Ss]olarhawk|[Zz]orb|[Zz]erks
 /eval /def -F -p10 -P1Cmagenta -mregexp -t"((^| )(%{friends})( |$$))" friends
 
 /set reapers=[Aa]md|[Aa]nanator|[Aa]rnac|[Bb]oog|[Bb]rog|[Cc]aruth|[Cc]hamber|[Cc]utter|[Dd]argon|[Dd]eathwind|[Ee]ntor|[Ff]imir|[Ff]obbis|[Ff]renor|[Gg]itador|[Gg]laurung|[Hh]urin|[Kk]eat|[Mm]ahon|[Mm]endar|[Ss]earc|[Ss]raz|[Ss]eptium|[Tt]atza|[Vv]iko|[Ss]har
@@ -265,7 +265,7 @@
 /def -F -p6 -mglob -t'You cannot leave, you have been AMBUSHED.' ambush=@party say I'm AMBUSHED!
 
 ;; Party
-/def -F -p9 -t"* offers you membership to party:*" party_join=@party join
+/def -F -p9 -t"* offers you membership to party:*" party_join=@party join%;/rip_action off%;/greed off
 /def -F -p9 -abCyellow -mglob -t"* is the new leader of the party." party_new_leader=@party follow
 /def -F -p9 -aBCyellow -mglob -t'You are the new leader of the party.' party_leader=@party forcefollow all
 ;;/def -F -p9 -aBCyellow -t'lapses into unconsciousness from severe loss of blood.' unconscious= party say %{1} UNCONSCIOUS
@@ -423,11 +423,8 @@
 /def -mglob -ag -t"* orange force field bursts and vanishes." pumpkin_shit05
 /def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before [A-Z][a-z]+\.$" silly_tiara_gag
 /def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|clatters|cruelly growls|echoes|grunts|gurgles|hisses|howls|melodically hums|mewls|says|quacks|thunders mightily|wails) \'Your majesty\.\'$" silly_tiara_gag_2
-<<<<<<< HEAD
-/def -mglob -ag -t"* gets some herbs out of * HUGE shiny jar." folkchannujar_gag
-=======
 /def -mglob -ag -t"You echo \'Your majesty\.\'" silly_tiara_gag_3
->>>>>>> 13b4292c5fd928fecf0c5e584e88942a2c0d26ad
+/def -mglob -ag -t"* gets some herbs out of * HUGE shiny jar." folkchannujar_gag
 
 ;; Swashbucking gag
 /def -mglob -ag -t"* speech seems to catch *" swashbuckling_gag1

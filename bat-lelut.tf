@@ -1,11 +1,13 @@
 ;;
 ;; Bat-lelut.tf
 ;; Please note: you will need to alias bp to your rig where you hold all your toys
-;; so in other words, do "alias bp backpack" and replace backpack with your rig name
+;; so in other words, do "alias bp <backpack>" and replace "backpack" with your rig name/handle
 ;;
 /loaded bat-lelut.tf
 
-;; Init params
+;;;;;;;;;;;;;;;;;
+;; Init params ;;
+;;;;;;;;;;;;;;;;;
 /set athame_status=X
 /set rainstaff01_status=X
 /set rainstaff02_status=X
@@ -22,6 +24,7 @@
 /set nithem_skull_status=X
 /set pfe_helmet_status=X
 /set bra_status=_
+/set praixor_glove_status=X
 /set demonring_status=X
 /set wlizard_ring_1_status=X
 /set wlizard_ring_2_status=X
@@ -36,7 +39,11 @@
  /if ({tmpsek}<10) /set tmpsek=0%{tmpsek}%;/endif%;\
  /_echo %{tmpmin}:%{tmpsek}
 
-;; Removeditems aliases
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Removeditems aliases ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; This is a hodgepodge workaround, but it identifies the item that was removed
+;; or replaced by a command and stores that to the alias "removeditem".
 /def -F -mglob -t"You remove lucky Nova Arcanum, Melkior's book of necromancy*" alias_removedbook = @alias removeditem nova arcanum
 /def -F -mglob -t"You remove a frosty birch wand, remnant of the winters past*" alias_removedwand = @alias removeditem lateksidildo
 /def -F -mglob -t"You remove the black grimoire*" alias_removedgrimoire = @alias removeditem black grimoire
@@ -66,25 +73,37 @@
 /def -F -mglob -t"You remove Ward Nadab's rippling lava bands*"                                alias_removed_bands = @alias removeditem rippling lava bands
 /def -F -mglob -t"You remove a slab of magical moss labeled as SlaabiKyykky*"                  alias_removed_slab  = @alias removeditem slaabikyykky
 /def -F -mglob -t"You remove a satyr tail bracelet*" alias_removed_satyrtailbracelet = @alias removeditem all satyr tail bracelet
+/def -F -mglob -t"You remove gloves of Nimbleness labeled as ToosaTumput*" alias_removed_wisgloves = @alias removeditem toosatumput
+/def -F -mglob -t"You remove a lustrous white satin glove of the master arcanist labeled as Hentacle" alias_removed_origoglove = @alias removeditem lustrous glove
+/def -F -mglob -t"You remove a glove radiating otherworldly energy, continually morphing*" alias_removed_faroon_glove = @alias removeditem otherworldly glove
 
-;; re-wears
-/def -F -mglob -t"You put A glowing green amulet labeled as SalaRaKastelija <green glow> to *" = /repeat -00:00:01 1 @wear removeditem
-/def -F -mglob -t"You hold your staff in front of yourself and slowly sweep it from left to right." invisdone = @put sonnibileet in bp%;/repeat -00:00:01 1 @wear removeditem
-/def -F -mglob -t"You press the diamond on the white dragonscale helmet." pressedhelm = @wear removeditem
-/def -F -mglob -t"The room suddenly explodes in a burst of swirling, pulsating color and light!" prismaticdone = @wear removeditem
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; re-wears and item handling ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+/def -F -mglob -t"You put A glowing green amulet labeled as SalaRaKastelija <green glow> to *" lelut_epeeramu = \
+  @wear removeditem
+/def -F -mglob -t"You hold your staff in front of yourself and slowly sweep it from left to right." lelut_invisdone = \
+  @put sonnibileet in bp%;/repeat -00:00:01 1 @wear removeditem
+/def -F -mglob -t"You press the diamond on the white dragonscale helmet." lelut_pressedhelm = \
+  @wear removeditem
+/def -F -mglob -t"The room suddenly explodes in a burst of swirling, pulsating color and light!" lelut_prismaticdone = \
+  @wear removeditem
+/def -F -mglob -t"You zap yourself with gleaming steel gauntlet labeled as gzap*" lelut_praixor_glove_zap = \
+  /SEND @put gzap in bp%;/SEND @wear removeditem
 
 
 ;; Athame
 ;; Assuming 10 minute cooldown
-/def -F -t"The athame severs the field surrounding this area." athamesever=@put Leikkuri in bp;/set athame_status=_%;/set athame_time=$[time()]%;/repeat -00:10 1 /set athame_status=X
-/def -ag -h"send {asev}" athame_do_sever = /SEND @remove all held;get athame from bp;wield athame;sever field
+/def -F -t"The athame severs the field surrounding this area." lelut_athamesever_done = \
+  @put Leikkuri in bp;/set athame_status=_%;/set athame_time=$[time()]%;/repeat -00:10 1 /set athame_status=X
+/def -ag -h"send {asev}" lelut_athame_do_sever = /SEND @remove all held;get athame from bp;wield athame;sever field
 
 ;; Rain Staff
 ;; 12 minute cooldown (this varies)
-;; Rain lasts 7:30 minutes
+;; Rain lasts about 7:30 minutes
 /def -F -mglob -t"You take an old oak staff with several odd knobs labeled as SaunaVihta *" setstaff01 = /set staff 01
 /def -F -mglob -t"You take an old oak staff with several odd knobs labeled as KutinaKeppi *" setstaff02 = /set staff 02
-/def -F -mglob -t"Some moisture begins to form on the staff." strikestaff=\
+/def -F -mglob -t"Some moisture begins to form on the staff." lelut_strikestaff = \
   /set rainstaff%{staff}_status=_%;\
   /set rainstaff%{staff}_time=$[time()+780]%;\
   /repeat -00:13 1 /set rainstaff%{staff}_status=X
@@ -94,85 +113,120 @@
 ;; Entity drying wind
 ;; Needs update, have more shields
 ;; NB: Move this to riftwalker stuff
-/def -F -t'Drycraeft the magic entity holds the Shield of the Wind up high!' magic_entity_wind_timer=/set ewind_status=_%;/set ewind_time=$[time()]%;/repeat -00:30 1 /set ewind_status=X
+/def -F -t'Drycraeft the magic entity holds the Shield of the Wind up high!' lelut_magic_entity_wind_timer = \
+  /set ewind_status=_%;/set ewind_time=$[time()]%;/repeat -00:30 1 /set ewind_status=X
 
 
 ;; Mage staff
-/def -F -mglob -t"You invoke the powers of your mage staff." invoke_magestaff=/set magestaff_status=_%;/set magestaff_time=$[time()]%;/repeat -00:5 1 /set magestaff_status=X
+/def -F -mglob -t"You invoke the powers of your mage staff." lelut_invoke_magestaff = \
+  /set magestaff_status=_%;/set magestaff_time=$[time()]%;/repeat -00:5 1 /set magestaff_status=X
 
 ;; Orb of wind and rain
-/def -F -mglob -t"Your orb sparkles." orbready=/set orb_status=X
+/def -F -mglob -t"Your orb sparkles." lelut_orbready = /set orb_status=X
 
-;; Ankh
-/def -F -mglob -t"Your Amberley Ankh activates." ankh_activated=/set ankh_status=_%;/set ankh_time=$[time()]%;/repeat -00:30 1 /set ankh_status=X
+;;;;;;;;;;;;;;;;;;;
+;; Amberley Ankh ;;
+;;;;;;;;;;;;;;;;;;;
+;; Cooldown: 45 mins
+/def -F -mglob -t"Your Amberley Ankh activates." lelut_ankh_activated = \
+  /set ankh_status=_%;/set ankh_time=$[time()]%;/repeat -00:45 1 /set ankh_status=X
 
-;; Henry plate
-/def -F -mglob -t"You feel magical powers flowing from it back to you." henry_plate_charged=@wear removeditem%;/set henry_plate_amount=%henry_plate_amount - 50
-/def -F -mglob -t"You feel magical powers flowing from you to the breastplate." henry_plate_drained = \
+;;;;;;;;;;;;;;;;;
+;; Henry plate ;;
+;;;;;;;;;;;;;;;;;
+/def -F -mglob -t"You feel magical powers flowing from it back to you." lelut_hplate_charged = \
+  @wear removeditem%;/set henry_plate_amount=%henry_plate_amount - 50
+/def -F -mglob -t"You feel magical powers flowing from you to the breastplate." lelut_hplate_drained = \
    @wear removeditem%;\
    /set henry_plate_status=X%;\
    /set henry_plate_amount= %henry_plate_amount + 50
-/def -mglob -t"But the plate is without response." henry_plate_empty = /set henry_plate_status=_
+/def -mglob -t"But the plate is without response." lelut_hplate_empty = /set henry_plate_status=_
 
-;; Yaboz bracelets
-;; You mumble the ancient words 'chushak phuzzs'
-;; The bracelet tingles slightly and sizzles with magical powers!
-;; You mumble the ancient words 'tstss bzzr brteacle'
-;; The bracelet contains 257 spell points.
+;;;;;;;;;;;;;;;;;;;;;
+;; Yaboz bracelets ;;
+;;;;;;;;;;;;;;;;;;;;;
+/def -mglob -t"The bracelet tingles slightly and sizzles with magical powers!" lelut_yaboz_charged = \
+  /set yaboz_bracelets_status=X
+/def -mglob -t"The bracelets seem to be empty." lelut_yaboz_empty = /set yaboz_bracelets_status=_
+/def -mglob -t"The bracelet contains * spell points." lelut_yaboz_amount = /set 
 
-;; Zashi arms
-;;/def -mglob -t"The sleeves glow with magical energy!" zashi_arms_ready=/repeat -00:00:30 1 @@touch sleeve
-;;/def -mglob -t"Nothing happens as you touch one of your translucent sleeves." zashi_arms_in_cooldown=@put all sparkling sleeve in bp;wear removeditem
-;;/def -mglob -t"As you touch one of your translucent sleeves, they start to glow!" zashi_arms_used=@put all sparkling sleeve in bp;@wear removeditem%;/set zashi_arms_status=_%;/set zashi_arms_time=$[time()]%;/repeat -00:15 1 /set zashi_arms_status=X
+;;;;;;;;;;;;;;;;
+;; Zashi arms ;;
+;;;;;;;;;;;;;;;;
+;;/def -mglob -t"The sleeves glow with magical energy!" lelut_zarms_ready = /repeat -00:00:30 1 @@touch sleeve
+;;/def -mglob -t"Nothing happens as you touch one of your translucent sleeves." lelut_zarms_in_cd = @put all sparkling sleeve in bp;wear removeditem
+;;/def -mglob -t"As you touch one of your translucent sleeves, they start to glow!" lelut_zarms_used = @put all sparkling sleeve in bp;@wear removeditem%;/set zashi_arms_status=_%;/set zashi_arms_time=$[time()]%;/repeat -00:15 1 /set zashi_arms_status=X
 
-;; Nithem Skull
+;;;;;;;;;;;;;;;;;;
+;; Nithem Skull ;;
+;;;;;;;;;;;;;;;;;;
 /def -ag -h"send {scss}" nithem_invoke_spell1 = /SEND @nithem_skull type poison;nithem_skull blast
 /def -ag -h"send {scsa}" nithem_invoke_spell2 = /SEND @nithem_skull type poison;nithem_skull area
 /def -ag -h"send {garr}" nithem_invoke_spell3 = /SEND @nithem_skull type magic;nithem_skull blast
 /def -ag -h"send {gara}" nithem_invoke_spell4 = /SEND @nithem_skull type magic;nithem_skull area
 
-;; Pfe Helmet
-;; Note: Cooldown is actually 15-25 minutes!
-/def -ag -h"send {phelm}" invoke_pfe = \
+;;;;;;;;;;;;;;;;
+;; Pfe Helmet ;;
+;;;;;;;;;;;;;;;;
+;; Cooldown: varies 15-25 minutes
+/def -ag -h"send {phelm}" lelut_invoke_pfe = \
    /SEND gagoutput get PyllyMyssy from pocket;wear replacing PyllyMyssy;press diamond;gagoutput put PyllyMyssy in pocket
-/def -F -mglob -t"The spirit of Morrigaine appears in your visions and grants you protection." pfe_helmet_used =\
+/def -mglob -t"The spirit of Morrigaine appears in your visions and grants you protection." lelut_pfe_helmet_used = \
    /set pfe_helmet_status=_%;\
    /set pfe_helmet_time=$[time()]%;\
    /repeat -0:20 1 /set pfe_helmet_status=X
 
 ;; If you have 2 helmets, like me, they overlap the cooldown times so this allows constant PfE for you
 ;; WARNING: This might end up in an endless loop if both of your helmets are used!!!
-/def -F -mglob -t"Nothing happens...the enchantment has been used recently." pfe_helmet_cooldown =\
-   /repeat 1 \
+/def -mglob -t"Nothing happens...the enchantment has been used recently." lelut_pfe_helmet_cd = \
+   /repeat -0 1 \
    /SEND gagoutput get PeppuPotta from bp;wear replacing PeppuPotta;press diamond;gagoutput put PeppuPotta in bp
 
-;; Fairy bra
-/def -F -mglob -t"You store * in the spell matrix." bra_stored = /set bra_status=X
-/def -F -mglob -t"You rub the brassiere (being a little over-eager, damaging it in the process) and thus cast the spell from the spell matrix." bra_cast = /set bra_status=_
+;;;;;;;;;;;;;;;
+;; Fairy bra ;;
+;;;;;;;;;;;;;;;
+/def -F -mglob -t"You store * in the spell matrix." lelut_bra_stored = /set bra_status=X
+/def -F -mglob -t"You rub the brassiere (being a little over-eager, damaging it in the process) and thus cast the spell from the spell matrix." lelut_bra_cast = /set bra_status=_
 
-;; Praixor gloves
+;;;;;;;;;;;;;;;;;;;;
+;; Praixor gloves ;;
+;;;;;;;;;;;;;;;;;;;;
+;; Cooldown: ?
+/def -ag -h"send {wiszap}" lelut_zap_glove = /SEND @get gzap from bp;wear replacing gzap;zap drifter with gzap
 
-;; Prism mirrors (Commented out since I don't use one right now)
-; /def -F -t"You call forth the power of your prism." prism_mirrors = /set prism_mirrors_status=_
-; /def -F -t"Your prism sparkles." prism_mirrors_ready = /set prism_mirrors_status=X
+;;;;;;;;;;;;;;;;;;;
+;; Prism mirrors ;;
+;;;;;;;;;;;;;;;;;;;
+;;(Commented out since I don't use one right now)
+;; /def -F -t"You call forth the power of your prism." prism_mirrors = /set prism_mirrors_status=_
+;; /def -F -t"Your prism sparkles." prism_mirrors_ready = /set prism_mirrors_status=X
 
-;; Mask of Gluttony
-/def -F -mglob -t"You eat a pill glowing bright cyan" gluttony_mask_used = \
+;;;;;;;;;;;;;;;;;;;;;;
+;; Mask of Gluttony ;;
+;;;;;;;;;;;;;;;;;;;;;;
+;; Cooldown: 2 hours?
+/def -F -mglob -t"You eat a pill glowing bright cyan" lelut_gluttony_mask_used = \
 /repeat -00:00:01 1 @wear removeditem
 
-;; Demonic ring
+;;;;;;;;;;;;;;;;;;
+;; Demonic ring ::
+;;;;;;;;;;;;;;;;;;
 /def -F -mglob -t'You wear Demonic Ring of Invisibility*' demonring_wear = /set demonring_status=_%;/repeat -0:10 1 /set demonring_status=X
 
-;; Werelizard rings
+;;;;;;;;;;;;;;;;;;;;;;
+;; Werelizard rings ;;
+;;;;;;;;;;;;;;;;;;;;;;
 ;; Cooldown 10 minutes
 /def -F -mglob -t"You wear a golden ring with a single small ruby labeled as Fritsuli *" setring01 = /set ring 01
 /def -F -mglob -t"You wear a golden ring with a single small ruby labeled as Kielari *" setring02 = /set ring 02
 /def -F -mglob -t"You feel strength flowing between you and *" ringkiss=\
   /set wlizard_ring_%{ring}_status=_%;\
-  /set wlizard_ring_%{ring}_time=%;\
+  /set wlizard_ring_%{ring}_time=$[time()]%;\
   /repeat -00:10 1 /set wlizard_ring_%{ring}_status=X
 
-;; DMP ring
+;;;;;;;;;;;;;;
+;; DMP ring ;;
+;;;;;;;;;;;;;;
 /def -F -mglob -t"Your finger tingles as the Wyrm breathes its magic!" wyrm_ring_zapped = /set wyrn_ring_status=_%;@wear removeditem%;/repeat -00:20 1 /set wyrm_ring_status=X
 /def -F -mglob -t"Your ring of the Wyrm does not respond." wyrm_ring_in_cd = @wear removeditem%;/echo -aB (TF Info): Wyrm ring in cooldown!
 /def -ag -h"send {dmpall}" wyrm_ring_do_action = \
@@ -210,8 +264,15 @@
 
 /def -ag -h"send {lelut}"=\
 /let timenow=$[time()]%;\
-/if (rainstaff01_time-timenow>0) /let rainstaff01_cd=$(/formattime $[{rainstaff01_time}-{timenow}])%;/else /let rainstaff01_cd=0:00%;/endif%;\
-/if (rainstaff02_time-timenow>0) /let rainstaff02_cd=$(/formattime $[{rainstaff02_time}-{timenow}])%;/else /let rainstaff02_cd=0:00%;/endif%;\
+/if (rainstaff01_time-timenow>0) \
+  /let rainstaff01_cd=$(/formattime $[{rainstaff01_time}-{timenow}])%;\
+/else /let rainstaff01_cd=0:00%;\
+/endif%;\
+/if (rainstaff02_time-timenow>0) \
+  /let rainstaff02_cd=$(/formattime $[{rainstaff02_time}-{timenow}])%;\
+/else /let rainstaff02_cd=0:00%;\
+/endif%;\
+  /if (ankh_time-timenow>0) /let ankh_cd=$(/formattime $[{ankh_time}-{timenow}])%;/else /let ankh_cd=0:00%;/endif%;\
 /if (wlizard_ring_1_time-timenow>0) /let wlizard_ring_1_cd=$(/formattime $[{wlizard_ring_1_time}-{timenow}])%;/else /let wlizard_ring_1_cd=0:00%;/endif%;\
 /if (wlizard_ring_2_time-timenow>0) /let wlizard_ring_2_cd=$(/formattime $[{wlizard_ring_2_time}-{timenow}])%;/else /let wlizard_ring_2_cd=0:00%;/endif%;\
 /if (zashi_arms_time-timenow>0) /let zashi_arms_cd=$(/formattime $[{zashi_arms_time}-{timenow}])%;/else /let zashi_arms_cd=0:00%;/endif%;\
@@ -228,7 +289,7 @@
 /echo  | %;\
 /echo  | SP Stores: %;\
 /echo  |  Henry plate (bget,bput) [%henry_plate_status] [%henry_plate_amount] sp%;\
-/echo  |  Yaboz bracelets (brget,brput) [%yaboz_bracelets_status] [%yaboz_bracelets_sp] sp%;\
+/echo  |  Yaboz bracelets (brget,brput) [%yaboz_bracelets_status] [%yaboz_bracelets_amount] sp%;\
 /echo  |  Zashi sleeves (sget) [%zashi_arms_status] [%zashi_arms_cd]%;\
 /echo  | %;\
 /echo  | Zaps: %;\
