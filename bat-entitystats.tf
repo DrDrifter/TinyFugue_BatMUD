@@ -3,11 +3,11 @@
 ;; Entity hit counter by drifter
 ;; 
 ;; based on Hittilaskuri v2.1 by thiamin@batmud.bat.org
-;; iwhich again is based on  
-;; hittilaskuri 2.release, jkotka@cc.tut.fi
-;; 10.6.2000 
+;; which again is based on  
+;; hittilaskuri 2.release, jkotka@cc.tut.fi 10.6.2000 
 ;;************************************************************
 /loaded bat-entitystats.tf
+/load bat-riftmage
 ;Broetchen (party): Gashes/butts: 0 (0.0%)                                                            
 ;    Broetchen (party): Lthumps/bumps: 0 (0.0%))                                                         
 ;    Broetchen (party): Cuts/thumps: 82 (3.2%)                                                         
@@ -15,10 +15,11 @@
 ;    Broetchen (party): Incises/thrusts: 667 (26.1%)                                      
 ;    Broetchen (party): Shreds/jabs: 371 (14.5%)  
 
-;/set summoned_entity_name=Yazaemon the fire entity
 /set summoned_entity_name=(Bael the fire entity|Lyft the air entity|Fleot the water entity|Eard the earth entity)
 
-;; Bashing hits
+;;;;;;;;;;;;;;;;;;
+;; Bashing hits ;;
+;;;;;;;;;;;;;;;;;;
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} BARBARICALLY BASHES " cr_att26=/set crhit26=$$[crhit26+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} CRUELLY CUFFS " cr_att25=/set crhit25=$$[crhit25+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} BRUTALLY BEATS " cr_att24=/set crhit24=$$[crhit24+1]
@@ -45,7 +46,10 @@
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} butts " cr_att3=/set crhit3=$$[crhit3+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} jostles " cr_att2 =/set crhit2=$$[crhit2+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} lightly jostles " cr_att1 =/set crhit1=$$[crhit1+1]
-;; Cutting hits (slash)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Cutting hits (slash) ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} CRUELLY DISMEMBERS " sl_att26=/set slhit26=$$[slhit26+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} DISMEMBERS " sl_att25=/set slhit25=$$[slhit25+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} BARBARICALLY RENDS " sl_att24=/set slhit24=$$[slhit24+1]
@@ -72,7 +76,10 @@
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} gashes " sl_att3=/set slhit3=$$[slhit3+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} solidly slashes " sl_att2 =/set slhit2=$$[slhit2+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} barely grazes " sl_att1 =/set slhit1=$$[slhit1+1]
-;; Stabbing hits
+
+;;;;;;;;;;;;;;;;;;;
+;; Stabbing hits ;;
+;;;;;;;;;;;;;;;;;;;
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} BARBARICALLY PIERCES " pu_att26=/set puhit26=$$[puhit26+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} BRUTALLY BORES " pu_att25=/set puhit25=$$[puhit25+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} CRUELLY RIDDLES " pu_att24=/set puhit24=$$[puhit24+1]
@@ -99,7 +106,10 @@
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} slightly pierces " pu_att3 =/set puhit3=$$[puhit3+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} scratches " pu_att2=/set puhit2=$$[puhit2+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} barely scratches " pu_att1=/set puhit1=$$[puhit1+1]
-;; Tiger martial arts
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; Tiger martial arts ;;
+;;;;;;;;;;;;;;;;;;;;;;;;
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} tickles " ma_att1=/set mahit1=$$[mahit1+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} steps on " ma_att2=/set mahit2=$$[mahit2+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} grasps " ma_att3=/set mahit3=$$[mahit3+1]
@@ -126,7 +136,10 @@
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} BRUTALLY THROAT RIPS " ma_att24=/set mahit24=$$[mahit24+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} SAVAGELY BELLY SMASHES " ma_att25=/set mahit25=$$[mahit25+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} CRUELLY TIGER STRIKES " ma_att26=/set mahit26=$$[mahit26+1]
-;; Shield hits
+
+;;;;;;;;;;;;;;;;;
+;; Shield hits ;;
+;;;;;;;;;;;;;;;;;
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} lightly shoves "     sh_att1=/set shhit1=$$[shhit1+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} lightly batters "    sh_att2=/set shhit2=$$[shhit2+1]
 /eval /def -F -p10 -mregexp -i -t"^%{summoned_entity_name} lightly pushes "     sh_att3=/set shhit3=$$[shhit3+1]
@@ -153,7 +166,11 @@
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} REALLY CRUSHES "     sh_att24=/set shhit24=$$[shhit24+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} BRUTALLY CRUSHES "   sh_att25=/set shhit25=$$[shhit25+1]
 /eval /def -F -p10 -mregexp -i -t"%{summoned_entity_name} BARBARICALLY SLAMS " sh_att26=/set shhit26=$$[shhit26+1]
-;; All hits and misses
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;; All hits and misses ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
 /eval /def -F -p10 -mregexp -i -aBCblack -t" successfully dodges %{summoned_entity_name}\'s pierce." pu_dodges =/set hitdod=$$[hitdod+1] 
 /eval /def -F -p10 -mregexp -i -aBCblack -t" successfully dodges %{summoned_entity_name}\'s slash." sl_dodges =/set hitdod=$$[hitdod+1]
 /eval /def -F -p10 -mregexp -i -aBCblack -t" successfully dodges %{summoned_entity_name}\'s bash." cr_dodges =/set hitdod=$$[hitdod+1]
@@ -168,7 +185,7 @@
 /eval /def -F -p10 -mregexp -i -aBCblack -t" successfully parries %{summoned_entity_name}\'s shield." sh_parries=/set hitpar=$$[hitpar+1]
 /eval /def -F -p10 -mregexp -i -aBCblack -t"^%{summoned_entity_name} misses " missi=/set miss=$$[miss+1]
 
-/def -i -h'SEND hitstats' hittelot=\
+/def -i -h'SEND hitstats' hittelot = \
 	/set total=$[mahit1+mahit2+mahit3+mahit4+mahit5+mahit6+mahit7+mahit8+mahit9+mahit10+mahit11+mahit12+mahit13+mahit14+mahit15+mahit16+mahit17+mahit18+mahit19+mahit20+mahit21+mahit22+mahit23+mahit24+mahit25+mahit26+slhit1+slhit2+slhit3+slhit4+slhit5+slhit6+slhit7+slhit8+slhit9+slhit10+slhit11+slhit12+slhit13+slhit14+slhit15+slhit16+slhit17+slhit18+slhit19+slhit20+slhit21+slhit22+slhit23+slhit24+slhit25+slhit26+puhit1+puhit2+puhit3+puhit4+puhit5+puhit6+puhit7+puhit8+puhit9+puhit10+puhit11+puhit12+puhit13+puhit14+puhit15+puhit16+puhit17+puhit18+puhit19+puhit20+puhit21+puhit22+puhit23+puhit24+puhit24+puhit26+crhit1+crhit2+crhit3+crhit4+crhit5+crhit6+crhit7+crhit8+crhit9+crhit10+crhit11+crhit12+crhit13+crhit14+crhit15+crhit16+crhit17+crhit18+crhit19+crhit20+crhit21+crhit22+crhit23+crhit24+crhit25+crhit26+shhit1+shhit2+shhit3+shhit4+shhit5+shhit6+shhit7+shhit8+shhit9+shhit10+shhit11+shhit12+shhit13+shhit14+shhit15+shhit16+shhit17+shhit18+shhit19+shhit20+shhit21+shhit22+shhit23+shhit24+shhit25+shhit26]%;\
 	/echo -ah Hits scored%;\
 	/echo .......................................%;\
@@ -334,7 +351,7 @@
 	/echo -p @{h}%hitpar \($[(100*hitpar)/((total+miss+hitpar+hitdod))]\%\)@{n} hits parried.%;\
 	/echo -p @{h}%hitdod \($[(100*hitdod)/((total+miss+hitpar+hitdod))]\%\)@{n} hits dodged.%;\
 
-/def -i nollaa_hitstats=\
+/def -i nollaa_hitstats = \
  /set shhit1=0%;\
  /set shhit2=0%;\
  /set shhit3=0%;\
@@ -470,4 +487,145 @@
  /set crhit26=0%;\
  /set hitdod=0%;\
  /set hitpar=0%;\
- /set miss=0%;
+ /set miss=0
+
+/def -i hitstatsoff = \
+  /undef nollaa_hitstats%;\
+  /undef hittelot%;\
+  /undef shhit1%;\
+  /undef shhit2%;\
+  /undef shhit3%;\
+  /undef shhit4%;\
+  /undef shhit5%;\
+  /undef shhit6%;\
+  /undef shhit7%;\
+  /undef shhit8%;\
+  /undef shhit9%;\
+  /undef shhit10%;\
+  /undef shhit11%;\
+  /undef shhit12%;\
+  /undef shhit13%;\
+  /undef shhit14%;\
+  /undef shhit15%;\
+  /undef shhit16%;\
+  /undef shhit17%;\
+  /undef shhit18%;\
+  /undef shhit19%;\
+  /undef shhit20%;\
+  /undef shhit21%;\
+  /undef shhit22%;\
+  /undef shhit23%;\
+  /undef shhit24%;\
+  /undef shhit25%;\
+  /undef shhit26%;\
+  /undef slhit1%;\
+  /undef slhit2%;\
+  /undef slhit3%;\
+  /undef slhit4%;\
+  /undef slhit5%;\
+  /undef slhit6%;\
+  /undef slhit7%;\
+  /undef slhit8%;\
+  /undef slhit9%;\
+  /undef slhit10%;\
+  /undef slhit11%;\
+  /undef slhit12%;\
+  /undef slhit13%;\
+  /undef slhit14%;\
+  /undef slhit15%;\
+  /undef slhit16%;\
+  /undef slhit17%;\
+  /undef slhit18%;\
+  /undef slhit19%;\
+  /undef slhit20%;\
+  /undef slhit21%;\
+  /undef slhit22%;\
+  /undef slhit23%;\
+  /undef slhit24%;\
+  /undef slhit25%;\
+  /undef slhit26%;\
+  /undef puhit1%;\
+  /undef puhit2%;\
+  /undef puhit3%;\
+  /undef puhit4%;\
+  /undef puhit5%;\
+  /undef puhit6%;\
+  /undef puhit7%;\
+  /undef puhit8%;\
+  /undef puhit9%;\
+  /undef puhit10%;\
+  /undef puhit11%;\
+  /undef puhit12%;\
+  /undef puhit13%;\
+  /undef puhit14%;\
+  /undef puhit15%;\
+  /undef puhit16%;\
+  /undef puhit17%;\
+  /undef puhit18%;\
+  /undef puhit19%;\
+  /undef puhit20%;\
+  /undef puhit21%;\
+  /undef puhit22%;\
+  /undef puhit23%;\
+  /undef puhit23%;\
+  /undef puhit24%;\
+  /undef puhit25%;\
+  /undef puhit26%;\
+  /undef mahit1%;\
+  /undef mahit2%;\
+  /undef mahit3%;\
+  /undef mahit4%;\
+  /undef mahit5%;\
+  /undef mahit6%;\
+  /undef mahit7%;\
+  /undef mahit8%;\
+  /undef mahit9%;\
+  /undef mahit10%;\
+  /undef mahit11%;\
+  /undef mahit12%;\
+  /undef mahit13%;\
+  /undef mahit14%;\
+  /undef mahit15%;\
+  /undef mahit16%;\
+  /undef mahit17%;\
+  /undef mahit18%;\
+  /undef mahit19%;\
+  /undef mahit20%;\
+  /undef mahit21%;\
+  /undef mahit22%;\
+  /undef mahit23%;\
+  /undef mahit23%;\
+  /undef mahit24%;\
+  /undef mahit25%;\
+  /undef mahit26%;\
+  /undef crhit1%;\
+  /undef crhit2%;\
+  /undef crhit3%;\
+  /undef crhit4%;\
+  /undef crhit5%;\
+  /undef crhit6%;\
+  /undef crhit7%;\
+  /undef crhit8%;\
+  /undef crhit9%;\
+  /undef crhit10%;\
+  /undef crhit11%;\
+  /undef crhit12%;\
+  /undef crhit13%;\
+  /undef crhit14%;\
+  /undef crhit15%;\
+  /undef crhit16%;\
+  /undef crhit17%;\
+  /undef crhit18%;\
+  /undef crhit19%;\
+  /undef crhit20%;\
+  /undef crhit21%;\
+  /undef crhit22%;\
+  /undef crhit23%;\
+  /undef crhit23%;\
+  /undef crhit24%;\
+  /undef crhit25%;\
+  /undef crhit26%;\
+  /undef hitdod%;\
+  /undef hitpar%;\
+  /undef miss
+
