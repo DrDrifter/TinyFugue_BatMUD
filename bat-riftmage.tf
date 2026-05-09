@@ -58,8 +58,9 @@
 /eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} ducks aside and delivers a stout blow to .+ head!"       fire_entity_redo_skill15 = @gem cmd use blazing sunder
 /eval /def -pmaxpri -mregexp -t"You hear a muffled crunch, as %{fire_entity_name} smashes .+ collarbone!"     fire_entity_redo_skill16 = @gem cmd use blazing sunder
 /eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} strikes .+ chest REALLY hard!"                           fire_entity_redo_skill17 = @gem cmd use blazing sunder
-/eval /def -pmaxpri -mregexp -t".+ blood splatters on you as %{fire_entity_name} strikes .+ temple!"          fire_entity_redo_skill18 = @gem cmd use blazing sunder
-/eval /def -pmaxpri -mregexp -t".+ pales as they watch %{fire_entity_name} do an impossibly complex series of movements, building in momentum and energy!.*"          fire_entity_redo_skill19 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t"^%{fire_entity_name} strikes .+ to the ribcage, puncturing a lung."           fire_entity_redo_skill18 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t".+ blood splatters on you as %{fire_entity_name} strikes .+ temple!"          fire_entity_redo_skill19 = @gem cmd use blazing sunder
+/eval /def -pmaxpri -mregexp -t".+ pales as they watch %{fire_entity_name} do an impossibly complex series of movements, building in momentum and energy!.*"          fire_entity_redo_skill20 = @gem cmd use blazing sunder
 /def -pmaxpri -F -mglob -t"Your fire entity does some strange combat maneuver but doesn't hit anything."      fire_entity_missed_redo = @gem cmd use blazing sunder
 /def -pmaxpri -F -mglob -t"Your entity loses its concentration and cannot do the skill."  any_entity_skill_broke = @gem cmd use blazing sunder;@gem cmd use suffocating embrace;@gem cmd use subjugating backwash;@gem cmd use earthen cover
 /def -pmaxpri -F -mglob -t"Your air entity falters and its wispy tendrils fall to its sides."          air_entity_redo_skill = @gem cmd use suffocating embrace
