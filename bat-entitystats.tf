@@ -7,7 +7,7 @@
 ;; hittilaskuri 2.release, jkotka@cc.tut.fi 10.6.2000 
 ;;************************************************************
 /loaded bat-entitystats.tf
-/load bat-riftmage
+/load bat-riftmage.tf
 ;Broetchen (party): Gashes/butts: 0 (0.0%)                                                            
 ;    Broetchen (party): Lthumps/bumps: 0 (0.0%))                                                         
 ;    Broetchen (party): Cuts/thumps: 82 (3.2%)                                                         
