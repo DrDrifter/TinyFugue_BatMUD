@@ -12,8 +12,10 @@
 /require -q bat-analysis.tf
 /require -q bat-status.tf
 /require -q bat-essencecount.tf
+
 ;; This is the tick reporting mode, spell points only
 /set sp_report=on
+
 ;; Auto caster
 ;; To use this type /set auto_cast on
 ;; This casts of avoid ambush messages, if you doing get message, doesn't cast
@@ -83,6 +85,7 @@ skull splits wide open|\
 entrails spill all over the place|\
 suddenly stops breathing and jerks a couple of times\
 )" monster_is_dead= save
+
 ;;
 ;; Heal self
 ;; /def -F -p12 -t"You clap your hands and whisper 'judicandus littleee'" hs=\
@@ -91,7 +94,7 @@ suddenly stops breathing and jerks a couple of times\
 ;;     cast heal self%;\
 ;;     /set spell=heal self%;\
 ;;   /endif
-;;
+
 ;; Select your damtype
 ;; /dam [acid|asphyxiation|cold|electricity|fire|magical|poison|psionic]
 /def dam=\
@@ -103,64 +106,77 @@ suddenly stops breathing and jerks a couple of times\
      /echo -aB TF info: valid damage types are acid, asphyxiation, \
      cold, electricity, fire, magical and poison.%;\
    /endif
-;;
+
 ;; Table of spells
+
 ;; Psionic
 /set psi=mind_blast psibolt psi_blast mind_disruption psychic_crush psychic_shout psychic_storm
 /eval /set off_spell_stack=%{off_spell_stack}|mind_blast|psibolt|psi_blast|mind_disruption|psychic_crush|psychic_shout|psyhcic_storm
+
 ;; Acid
 /set acid=disruption acid_wind acid_arrow acid_ray acid_blast acid_rain acid_storm
 /eval /set off_spell_stack=%{off_spell_stack}|disruption|acid_wind|acid_arrow|acid_ray|acid_blast|acid_rain|acid_storm
 ;; Asphyxiation
 /set asphyxiation=vacuumbolt suffocation chaos_bolt strangulation blast_vacuum vacuum_ball vacuum_globe
 /eval /set off_spell_stack=%{off_spell_stack}|vacuumbolt|suffocation|chaos_bolt|strangulation|blast_vacuum|vacuum_ball|vacuum_globe
+
 ;; Cold
 /set cold=chill_touch flaming_ice darkfire icebolt cold_ray cone_of_cold hailstorm
 /eval /set off_spell_stack=%{off_spell_stack}|chill_touch|flaming_ice|darkfire|icebolt|cold_ray|cone_of_cold|hailstorm
+
 ;; Electricity
 /set electricity=shocking_grasp lightning_bolt blast_lightning forked_lightning electrocution chain_lightning lightning_storm
 /eval /set off_spell_stack=%{off_spell_stack}|shocking_grasp|lightning_bolt|blast_lightning|forked_lightning|electrocution|chain_lightning|lightning_storm
+
 ;; Fire
 /set fire=flame_arrow firebolt fire_blast meteor_blast lava_blast meteor_swarm lava_storm
 /eval /set off_spell_stack=%{off_spell_stack}|flame_arrow|firebolt|fire_blast|meteor_blast|lava_blast|meteor_swarm|lava_storm
+
 ;; Magical
 /set magical=magic_missile summon_lesser_spores levin_bolt summon_greater_spores golden_arrow magic_wave magic_eruption
 /eval /set off_spell_stack=%{off_spell_stack}|magic_missile|summon_lesser_spores|levin_bolt|summon_greater_spores|golden_arrow|magic_wave|magic_eruption
+
 ;; Poison
 /set poison=thorn_spray poison_blast venom_strike power_blast summon_carnal_spores poison_spray killing_cloud
 /eval /set off_spell_stack=%{off_spell_stack}|thorn_spray|poison_blast|venom_strike|power_blast|summon_carnal_spores|poison_spray|killing_cloud
-;;
+
 ;; Get the spell name and cast it
 /def get_spell=\
    /set spell=$(/nth %{spell_number} %{spells})%;\
    /set targettype=off%;/do_spell %{*}
-;;
+
 ;; Your input trigs....based on spell performance
+
 ;; Poor
 /def pr=/set spell_number=1%;/set spell_rounds=1%;/get_spell %{*}
+
 ;; Average
 /def av=/set spell_number=2%;/set spell_rounds=2%;/get_spell %{*}
+
 ;; Good
 /def gd=/set spell_number=3%;/set spell_rounds=3%;/get_spell %{*}
+
 ;; Very good
 /def vg=/set spell_number=4%;/set spell_rounds=3%;/get_spell %{*}
+
 ;; Excellent
 /def ex=/set spell_number=5%;/set spell_rounds=4%;/get_spell %{*}%;@regfill
+
 ;; Good area
 /def ga=/set spell_number=6%;/set spell_rounds=4%;/get_spell %{*}
+
 ;; Excellent area
 /def ea=/set spell_number=7%;/set spell_rounds=6%;/get_spell %{*}%;@regfill
 
-;;
 ;; Hi-lites
 /def -F -mglob -aB -t'Surge of power from your staff adds to the power of the spell.' staff_power1
 
 ;; bind f-keys to damtypes
-/def key_f2 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
-/def key_f3 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam electricity%;@eqset wear elec%;/set eqsetstatus=INT%;@wield kuppakeppi
-/def key_f4 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam acid%;@eqset wear acid%;/set eqsetstatus=INT%;@wield kuppakeppi
-/def key_f5 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam fire%;@eqset wear fire%;/set eqsetstatus=INT%;@wield kuppakeppi
-/def key_f6 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam cold%;@eqset wear cold%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f1 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
+/def key_f2 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam electricity%;@eqset wear elec%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f3 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam acid%;@eqset wear acid%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f4 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam fire%;@eqset wear fire%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f5 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam cold%;@eqset wear cold%;/set eqsetstatus=INT%;@wield kuppakeppi
 /def key_f17 = @gagoutput remove kuppakeppi%;@eqset wear spr%;/set eqsetstatus=SPR
 /def key_f18 = @gagoutput remove kuppakeppi%;@eqset wear prot%;/set eqsetstatus=WIS
 
@@ -211,7 +227,8 @@ suddenly stops breathing and jerks a couple of times\
 ; Your icy whirlwind of magic numbs Scientist to the bone.
 
 ;asph
-; You feel an inner warmth as you notice * starting to choke.
+/def -F -mglob -aCbrightmagenta -t"You feel an inner warmth as you notice * starting to choke." mage_startchoke_hilite
+/def -F -mglob -aCbrightmagenta -t"* chokes violently." mage_choke_hilite
 
 ;elec
 ; The electricity JOLTS through the * worn by *!
@@ -219,7 +236,7 @@ suddenly stops breathing and jerks a couple of times\
 ; Default to primary type
 /dam asphyxiation
 
-;; Put reagent pouch and maul to pocket
+;; Put reagent pouch and aoh maul to pocket
 /REPEAT -10 1 /SEND @put pew in pocket
 /REPEAT -10 1 /SEND @put mahtileka in pocket
 /REPEAT -10 1 /SEND @put pyllymyssy in pocket
