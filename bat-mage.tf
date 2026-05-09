@@ -226,12 +226,15 @@ suddenly stops breathing and jerks a couple of times\
 ; cold
 ; Your icy whirlwind of magic numbs Scientist to the bone.
 
-;asph
+;; Asph
 /def -F -mglob -aCbrightmagenta -t"You feel an inner warmth as you notice * starting to choke." mage_startchoke_hilite
 /def -F -mglob -aCbrightmagenta -t"* chokes violently." mage_choke_hilite
 
-;elec
-; The electricity JOLTS through the * worn by *!
+;; Elec
+/def -F -mglob -aCbrightblue -t"The electricity JOLTS through the * worn by *!" mage_elecjolt_hilite
+
+;; Acid
+/def -F -mglob -aCgreen -t"You giggle like a child while the screaming * is covered with acid!" mage_startacid_hilite
 
 ; Default to primary type
 /dam asphyxiation
