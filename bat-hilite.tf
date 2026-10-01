@@ -24,11 +24,44 @@
 /def south = door s open ;;s ;;door n locked
 
 ;; Hilite some friends (I just hilite some - this list isn't really maintained)
-/set friends=[Aa]lcal|[Bb]else|[Bb]erenn|[Bb]leezuz|[Bb]moa|[Bb]roetchen|[Cc]ran|[Cc]roesus|[Cc]ozmo|[Dd]arkwell|[Dd]escad|[Dd]rizzin|[Ee]lero|[Ff]avorit|[Hh]orns|[Jj]uki|[Jj]ure|[Nn]edra|[Mm]erioli|[Mm]olotov|[Mm]oonlord|[Mm]orglum|[Ss]augor|[Ss]lughter|[Ss]tarshine|[Ss]tylus|[Oo]mnos|[Zz]enick|[Mm]ithrand|[Dd]rifter|[Kk]rokodiili|[Mm]iigor|[Ff]oxbat|[Rr]onald|[Rr]obinhood|[Cc]aesar|[Jj]acen|[Ss]ir|[Gg]arou|[Ss]caler|[Gg]rimpold|[Pp]hineos|[Ss]winkkel|[Kk]ozma|[Rr]adium|[Mm]orloc|[Kk]ragan|[Ff]emko|[Gg]ror|[Gg]idan|[Mm]ackakkonen|[Dd]eras|[Ss]aldas|[Kk]imvais|[Mm]inesweeper|[Zz]ithromax|[Mm]ursia|[Tt]ascruel|[Mm]yshikin|[Ee]raser|[Ll]aaban|[Vv]alkrist|[Ss]olarhawk|[Zz]orb|[Zz]erks
+/set friends=[Aa]lcal|[Bb]else|[Bb]erenn|[Bb]leezuz|[Bb]moa|[Bb]roetchen|[Cc]aesar|[Cc]ran|[Cc]roesus|[Cc]ozmo|[Dd]arkwell|[Dd]escad|[Dd]rizzin|[Ee]lero|[Ff]avorit|[Hh]orns|[Jj]uki|[Jj]ure|[Ll]aaban|[Nn]edra|[Mm]erioli|[Mm]olotov|[Mm]oonlord|[Mm]orglum|[Ss]augor|[Ss]lughter|[Ss]olarhawk|[Ss]tarshine|[Ss]tylus|[Oo]mnos|[Zz]enick|[Mm]ithrand|[Dd]rifter|[Kk]rokodiili|[Mm]iigor|[Ff]oxbat|[Rr]onald|[Rr]obinhood|[Jj]acen|[Ss]ir|[Gg]arou|[Ss]caler|[Gg]rimpold|[Pp]hineos|[Ss]winkkel|[Kk]ozma|[Rr]adium|[Mm]orloc|[Kk]ragan|[Ff]emko|[Gg]ror|[Gg]idan|[Mm]ackakkonen|[Dd]eras|[Ss]aldas|[Kk]imvais|[Mm]inesweeper|[Zz]ithromax|[Mm]ursia|[Tt]ascruel|[Mm]yshikin|[Ee]raser|[Vv]alkrist|[Ww]oocca|[Zz]orb|[Zz]erks
 /eval /def -F -p10 -P1Cmagenta -mregexp -t"((^| )(%{friends})( |$$))" friends
 
 /set reapers=[Aa]md|[Aa]nanator|[Aa]rnac|[Bb]oog|[Bb]rog|[Cc]aruth|[Cc]hamber|[Cc]utter|[Dd]argon|[Dd]eathwind|[Ee]ntor|[Ff]imir|[Ff]obbis|[Ff]renor|[Gg]itador|[Gg]laurung|[Hh]urin|[Kk]eat|[Mm]ahon|[Mm]endar|[Ss]earc|[Ss]raz|[Ss]eptium|[Tt]atza|[Vv]iko|[Ss]har
 /eval /def -F -p10 -P1Ccyan -mregexp -t"((^| )(%{reapers})( |$$))" reapers
+
+;; Make sure certain channels are on
+
+/SEND @@anatea+ say on
+/SEND @@asmo+ say on
+/SEND @@darkness+ say on
+/SEND @@events on
+/SEND @@infalert on
+/SEND @@ix+ say on
+/SEND @@junkka+ say on
+/SEND @@kabula+ say on
+/SEND @@lepo+ say on
+/SEND @@mage say on
+/SEND @@nightlife+ say on
+/SEND @@order+ say on
+/SEND @@reapers+ say on
+/SEND @@reapers+ say on
+/SEND @@riftwalker say on
+/SEND @@sales on
+/SEND @@shadow+ say on
+/SEND @@smoke+ say on
+/SEND @@steel+ say on
+/SEND @@sur+ say on
+/SEND @@team+ say on
+/SEND @@terror+ say on
+/SEND @@tf+ say on
+/SEND @@tiamat+ say on
+/SEND @@tunes on
+/SEND @@void+ say on
+/SEND @@wanted on
+/SEND @@weapons+ say on
+/SEND @@weirdos+ say on
+/SEND @@whine+ say on
 
 ;; Important events and misc stuff
 /def -F -p9 -aB -aCyellow -t"* tells* you '*" tell
@@ -422,7 +455,7 @@
 /def -mglob -ag -t"Your pumpkin shell shield bursts and vanishes." pumpkin_shit04
 /def -mglob -ag -t"* orange force field bursts and vanishes." pumpkin_shit05
 /def -mregexp -ag -t"[A-Z][a-z]+ kneel|kneels down before [A-Z][a-z]+\.$" silly_tiara_gag
-/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|clatters|cruelly growls|echoes|grunts|gurgles|hisses|howls|melodically hums|mewls|says|quacks|thunders mightily|wails) \'Your majesty\.\'$" silly_tiara_gag_2
+/def -mregexp -ag -t"[A-Z][a-z]+ (booms|buzzes|clatters|cruelly growls|echoes|grunts|gurgles|hisses|howls|kvaaks|melodically hums|mewls|says|quacks|thunders mightily|tu-whits|wails) \'Your majesty\.\'$" silly_tiara_gag_2
 /def -mglob -ag -t"You echo \'Your majesty\.\'" silly_tiara_gag_3
 /def -mglob -ag -t"* gets some herbs out of * HUGE shiny jar." folkchannujar_gag
 

@@ -172,11 +172,11 @@ suddenly stops breathing and jerks a couple of times\
 /def -F -mglob -aB -t'Surge of power from your staff adds to the power of the spell.' staff_power1
 
 ;; bind f-keys to damtypes
-/def key_f1 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
-/def key_f2 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam electricity%;@eqset wear elec%;/set eqsetstatus=INT%;@wield kuppakeppi
-/def key_f3 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam acid%;@eqset wear acid%;/set eqsetstatus=INT%;@wield kuppakeppi
-/def key_f4 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam fire%;@eqset wear fire%;/set eqsetstatus=INT%;@wield kuppakeppi
-/def key_f5 = @gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam cold%;@eqset wear cold%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f1 = @gagoutput remove PoskiPuhallus%;@gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam asphyxiation%;@eqset wear asph%;/set eqsetstatus=INT
+/def key_f2 = @gagoutput remove PoskiPuhallus%;@gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam electricity%;@eqset wear elec%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f3 = @gagoutput remove PoskiPuhallus%;@gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam acid%;@eqset wear acid%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f4 = @gagoutput remove PoskiPuhallus%;@gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam fire%;@eqset wear fire%;/set eqsetstatus=INT%;@wield kuppakeppi
+/def key_f5 = @gagoutput remove PoskiPuhallus%;@gagoutput ring stat int%;@gagoutput ring regen sp%;@gagoutput remove kuppakeppi%;/dam cold%;@eqset wear cold%;/set eqsetstatus=INT%;@wield kuppakeppi
 /def key_f17 = @gagoutput remove kuppakeppi%;@eqset wear spr%;/set eqsetstatus=SPR
 /def key_f18 = @gagoutput remove kuppakeppi%;@eqset wear prot%;/set eqsetstatus=WIS
 
@@ -232,6 +232,7 @@ suddenly stops breathing and jerks a couple of times\
 
 ;; Elec
 /def -F -mglob -aCbrightblue -t"The electricity JOLTS through the * worn by *!" mage_elecjolt_hilite
+/def -F -mglob -aCbrightblue -t"The electricity crackles all around *" mage_eleccrackle_hilite
 
 ;; Acid
 /def -F -mglob -aCgreen -t"You giggle like a child while the screaming * is covered with acid!" mage_startacid_hilite

@@ -74,7 +74,7 @@
 /def -F -mglob -t"You remove a slab of magical moss labeled as SlaabiKyykky*"                  alias_removed_slab  = @alias removeditem slaabikyykky
 /def -F -mglob -t"You remove a satyr tail bracelet*" alias_removed_satyrtailbracelet = @alias removeditem all satyr tail bracelet
 /def -F -mglob -t"You remove gloves of Nimbleness labeled as ToosaTumput*" alias_removed_wisgloves = @alias removeditem toosatumput
-/def -F -mglob -t"You remove a lustrous white satin glove of the master arcanist labeled as Hentacle" alias_removed_origoglove = @alias removeditem lustrous glove
+/def -F -mglob -t"You remove a lustrous white satin glove of the master arcanist labeled as Hentacle*" alias_removed_origoglove = @alias removeditem lustrous glove
 /def -F -mglob -t"You remove a glove radiating otherworldly energy, continually morphing*" alias_removed_faroon_glove = @alias removeditem otherworldly glove
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -90,6 +90,8 @@
   @wear removeditem
 /def -F -mglob -t"You zap yourself with gleaming steel gauntlet labeled as gzap*" lelut_praixor_glove_zap = \
   /SEND @put gzap in bp%;/SEND @wear removeditem
+/def -F -mglob -t"Your Amberley Ankh activates." lelut_ankh_used = \
+  /SEND @wear replacing removeditem
 
 
 ;; Athame
